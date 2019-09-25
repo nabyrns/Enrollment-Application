@@ -5,13 +5,11 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="EnrollmentDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EnrollmentDB.dbo.AdultBasicInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AdultBasicInfo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="lastName" Type="nvarchar" MaxLength="50" />
           <Property Name="firstName" Type="nvarchar" MaxLength="50" />
           <Property Name="middleInitial" Type="nvarchar" MaxLength="50" />
@@ -28,13 +26,11 @@ warning 6002: The table/view 'EnrollmentDB.dbo.AdultBasicInfo' does not have a p
           <Property Name="gender" Type="nvarchar" MaxLength="50" />
           <Property Name="dateOfBirth" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EnrollmentDB.dbo.AdultEmergencyContact' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AdultEmergencyContact">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="contactName" Type="nvarchar" MaxLength="50" />
           <Property Name="relationship" Type="nvarchar" MaxLength="50" />
           <Property Name="primaryNum" Type="nvarchar" MaxLength="50" />
@@ -49,13 +45,11 @@ warning 6002: The table/view 'EnrollmentDB.dbo.AdultEmergencyContact' does not h
           <Property Name="NRworkNum" Type="nvarchar" MaxLength="50" />
           <Property Name="NRcellNum" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EnrollmentDB.dbo.AdultHealthInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AdultHealthInfo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="primaryPhysician" Type="nvarchar" MaxLength="50" />
           <Property Name="otherPhysician" Type="nvarchar" MaxLength="50" />
           <Property Name="pPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
@@ -77,25 +71,21 @@ warning 6002: The table/view 'EnrollmentDB.dbo.AdultHealthInfo' does not have a 
           <Property Name="specificFirstAidNeeds" Type="nvarchar(max)" />
           <Property Name="repPermissionForTreatment" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EnrollmentDB.dbo.AdultLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AdultLogins">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="passwordHash" Type="nvarchar" MaxLength="50" />
           <Property Name="passwordSalt" Type="nvarchar" MaxLength="50" />
           <Property Name="dateCreated" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolBasicInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HighSchoolBasicInfo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="lastName" Type="nvarchar" MaxLength="50" />
           <Property Name="firstName" Type="nvarchar" MaxLength="50" />
           <Property Name="middleInitial" Type="nvarchar" MaxLength="50" />
@@ -112,13 +102,11 @@ warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolBasicInfo' does not hav
           <Property Name="gender" Type="nvarchar" MaxLength="50" />
           <Property Name="dateOfBirth" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolEmergencyContact' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HighSchoolEmergencyContact">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="parentNameOne" Type="nvarchar" MaxLength="50" />
           <Property Name="parentOneRelationship" Type="nvarchar" MaxLength="50" />
           <Property Name="parentOneAddress" Type="nvarchar(max)" />
@@ -147,13 +135,11 @@ warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolEmergencyContact' does 
           <Property Name="EContactWorkNum" Type="nvarchar" MaxLength="50" />
           <Property Name="EContactCellNum" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolHealthInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HighSchoolHealthInfo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="primaryPhysician" Type="nvarchar" MaxLength="50" />
           <Property Name="otherPhysician" Type="nvarchar" MaxLength="50" />
           <Property Name="pPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
@@ -175,177 +161,25 @@ warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolHealthInfo' does not ha
           <Property Name="specificFirstAidNeeds" Type="nvarchar(max)" />
           <Property Name="repPermissionForTreatment" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HighSchoolLogins">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="passwordHash" Type="nvarchar" MaxLength="50" />
           <Property Name="passwordSalt" Type="nvarchar" MaxLength="50" />
           <Property Name="dateCreated" Type="datetime" />
         </EntityType>
         <EntityContainer Name="EnrollmentDBModelStoreContainer">
-          <EntitySet Name="AdultBasicInfo" EntityType="Self.AdultBasicInfo" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AdultBasicInfo].[Id] AS [Id], 
-    [AdultBasicInfo].[lastName] AS [lastName], 
-    [AdultBasicInfo].[firstName] AS [firstName], 
-    [AdultBasicInfo].[middleInitial] AS [middleInitial], 
-    [AdultBasicInfo].[preferredName] AS [preferredName], 
-    [AdultBasicInfo].[program] AS [program], 
-    [AdultBasicInfo].[streetAddress] AS [streetAddress], 
-    [AdultBasicInfo].[city] AS [city], 
-    [AdultBasicInfo].[state] AS [state], 
-    [AdultBasicInfo].[zipCode] AS [zipCode], 
-    [AdultBasicInfo].[primaryPhoneNum] AS [primaryPhoneNum], 
-    [AdultBasicInfo].[cellPhoneNum] AS [cellPhoneNum], 
-    [AdultBasicInfo].[hispanicOrLatino] AS [hispanicOrLatino], 
-    [AdultBasicInfo].[race] AS [race], 
-    [AdultBasicInfo].[gender] AS [gender], 
-    [AdultBasicInfo].[dateOfBirth] AS [dateOfBirth]
-    FROM [dbo].[AdultBasicInfo] AS [AdultBasicInfo]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AdultEmergencyContact" EntityType="Self.AdultEmergencyContact" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AdultEmergencyContact].[Id] AS [Id], 
-    [AdultEmergencyContact].[contactName] AS [contactName], 
-    [AdultEmergencyContact].[relationship] AS [relationship], 
-    [AdultEmergencyContact].[primaryNum] AS [primaryNum], 
-    [AdultEmergencyContact].[alternateNum] AS [alternateNum], 
-    [AdultEmergencyContact].[nameNearestRelative] AS [nameNearestRelative], 
-    [AdultEmergencyContact].[NRrelationship] AS [NRrelationship], 
-    [AdultEmergencyContact].[NRstreetAddress] AS [NRstreetAddress], 
-    [AdultEmergencyContact].[NRcity] AS [NRcity], 
-    [AdultEmergencyContact].[NRstate] AS [NRstate], 
-    [AdultEmergencyContact].[NRzip] AS [NRzip], 
-    [AdultEmergencyContact].[NRprimaryNum] AS [NRprimaryNum], 
-    [AdultEmergencyContact].[NRworkNum] AS [NRworkNum], 
-    [AdultEmergencyContact].[NRcellNum] AS [NRcellNum]
-    FROM [dbo].[AdultEmergencyContact] AS [AdultEmergencyContact]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AdultHealthInfo" EntityType="Self.AdultHealthInfo" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AdultHealthInfo].[Id] AS [Id], 
-    [AdultHealthInfo].[primaryPhysician] AS [primaryPhysician], 
-    [AdultHealthInfo].[otherPhysician] AS [otherPhysician], 
-    [AdultHealthInfo].[pPhysicianPhoneNum] AS [pPhysicianPhoneNum], 
-    [AdultHealthInfo].[oPhysicianPhoneNum] AS [oPhysicianPhoneNum], 
-    [AdultHealthInfo].[diabetic] AS [diabetic], 
-    [AdultHealthInfo].[diabeticType] AS [diabeticType], 
-    [AdultHealthInfo].[allergies] AS [allergies], 
-    [AdultHealthInfo].[heartIssues] AS [heartIssues], 
-    [AdultHealthInfo].[metabolic] AS [metabolic], 
-    [AdultHealthInfo].[jointMuscle] AS [jointMuscle], 
-    [AdultHealthInfo].[chronicIllness] AS [chronicIllness], 
-    [AdultHealthInfo].[migraines] AS [migraines], 
-    [AdultHealthInfo].[neurological] AS [neurological], 
-    [AdultHealthInfo].[pulmonary] AS [pulmonary], 
-    [AdultHealthInfo].[asthma] AS [asthma], 
-    [AdultHealthInfo].[other] AS [other], 
-    [AdultHealthInfo].[carryOtherMeds] AS [carryOtherMeds], 
-    [AdultHealthInfo].[otherMeds] AS [otherMeds], 
-    [AdultHealthInfo].[specificFirstAidNeeds] AS [specificFirstAidNeeds], 
-    [AdultHealthInfo].[repPermissionForTreatment] AS [repPermissionForTreatment]
-    FROM [dbo].[AdultHealthInfo] AS [AdultHealthInfo]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AdultLogins" EntityType="Self.AdultLogins" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AdultLogins].[Id] AS [Id], 
-    [AdultLogins].[email] AS [email], 
-    [AdultLogins].[passwordHash] AS [passwordHash], 
-    [AdultLogins].[passwordSalt] AS [passwordSalt], 
-    [AdultLogins].[dateCreated] AS [dateCreated]
-    FROM [dbo].[AdultLogins] AS [AdultLogins]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="HighSchoolBasicInfo" EntityType="Self.HighSchoolBasicInfo" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [HighSchoolBasicInfo].[Id] AS [Id], 
-    [HighSchoolBasicInfo].[lastName] AS [lastName], 
-    [HighSchoolBasicInfo].[firstName] AS [firstName], 
-    [HighSchoolBasicInfo].[middleInitial] AS [middleInitial], 
-    [HighSchoolBasicInfo].[preferredName] AS [preferredName], 
-    [HighSchoolBasicInfo].[program] AS [program], 
-    [HighSchoolBasicInfo].[streetAddress] AS [streetAddress], 
-    [HighSchoolBasicInfo].[city] AS [city], 
-    [HighSchoolBasicInfo].[state] AS [state], 
-    [HighSchoolBasicInfo].[zipCode] AS [zipCode], 
-    [HighSchoolBasicInfo].[primaryPhoneNum] AS [primaryPhoneNum], 
-    [HighSchoolBasicInfo].[cellPhoneNum] AS [cellPhoneNum], 
-    [HighSchoolBasicInfo].[hispanicOrLatino] AS [hispanicOrLatino], 
-    [HighSchoolBasicInfo].[race] AS [race], 
-    [HighSchoolBasicInfo].[gender] AS [gender], 
-    [HighSchoolBasicInfo].[dateOfBirth] AS [dateOfBirth]
-    FROM [dbo].[HighSchoolBasicInfo] AS [HighSchoolBasicInfo]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="HighSchoolEmergencyContact" EntityType="Self.HighSchoolEmergencyContact" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [HighSchoolEmergencyContact].[Id] AS [Id], 
-    [HighSchoolEmergencyContact].[parentNameOne] AS [parentNameOne], 
-    [HighSchoolEmergencyContact].[parentOneRelationship] AS [parentOneRelationship], 
-    [HighSchoolEmergencyContact].[parentOneAddress] AS [parentOneAddress], 
-    [HighSchoolEmergencyContact].[parentOneCity] AS [parentOneCity], 
-    [HighSchoolEmergencyContact].[parentOneState] AS [parentOneState], 
-    [HighSchoolEmergencyContact].[parentOneZip] AS [parentOneZip], 
-    [HighSchoolEmergencyContact].[parentOnePrimaryNum] AS [parentOnePrimaryNum], 
-    [HighSchoolEmergencyContact].[parentOneWorkNum] AS [parentOneWorkNum], 
-    [HighSchoolEmergencyContact].[parentOneCellNum] AS [parentOneCellNum], 
-    [HighSchoolEmergencyContact].[parentOneEmail] AS [parentOneEmail], 
-    [HighSchoolEmergencyContact].[residesWithP1] AS [residesWithP1], 
-    [HighSchoolEmergencyContact].[parentNameTwo] AS [parentNameTwo], 
-    [HighSchoolEmergencyContact].[parentTwoRelationship] AS [parentTwoRelationship], 
-    [HighSchoolEmergencyContact].[parentTwoAddress] AS [parentTwoAddress], 
-    [HighSchoolEmergencyContact].[parentTwoCity] AS [parentTwoCity], 
-    [HighSchoolEmergencyContact].[parentTwoState] AS [parentTwoState], 
-    [HighSchoolEmergencyContact].[parentTwoZip] AS [parentTwoZip], 
-    [HighSchoolEmergencyContact].[parentTwoPrimaryNum] AS [parentTwoPrimaryNum], 
-    [HighSchoolEmergencyContact].[parentTwoWorkNum] AS [parentTwoWorkNum], 
-    [HighSchoolEmergencyContact].[parentTwoCellNum] AS [parentTwoCellNum], 
-    [HighSchoolEmergencyContact].[parentTwoEmail] AS [parentTwoEmail], 
-    [HighSchoolEmergencyContact].[residesWithP2] AS [residesWithP2], 
-    [HighSchoolEmergencyContact].[EContactName] AS [EContactName], 
-    [HighSchoolEmergencyContact].[EContactRelationship] AS [EContactRelationship], 
-    [HighSchoolEmergencyContact].[EContactPrimaryNum] AS [EContactPrimaryNum], 
-    [HighSchoolEmergencyContact].[EContactWorkNum] AS [EContactWorkNum], 
-    [HighSchoolEmergencyContact].[EContactCellNum] AS [EContactCellNum]
-    FROM [dbo].[HighSchoolEmergencyContact] AS [HighSchoolEmergencyContact]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="HighSchoolHealthInfo" EntityType="Self.HighSchoolHealthInfo" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [HighSchoolHealthInfo].[Id] AS [Id], 
-    [HighSchoolHealthInfo].[primaryPhysician] AS [primaryPhysician], 
-    [HighSchoolHealthInfo].[otherPhysician] AS [otherPhysician], 
-    [HighSchoolHealthInfo].[pPhysicianPhoneNum] AS [pPhysicianPhoneNum], 
-    [HighSchoolHealthInfo].[oPhysicianPhoneNum] AS [oPhysicianPhoneNum], 
-    [HighSchoolHealthInfo].[diabetic] AS [diabetic], 
-    [HighSchoolHealthInfo].[diabeticType] AS [diabeticType], 
-    [HighSchoolHealthInfo].[allergies] AS [allergies], 
-    [HighSchoolHealthInfo].[heartIssues] AS [heartIssues], 
-    [HighSchoolHealthInfo].[metabolic] AS [metabolic], 
-    [HighSchoolHealthInfo].[jointMuscle] AS [jointMuscle], 
-    [HighSchoolHealthInfo].[chronicIllness] AS [chronicIllness], 
-    [HighSchoolHealthInfo].[migraines] AS [migraines], 
-    [HighSchoolHealthInfo].[neurological] AS [neurological], 
-    [HighSchoolHealthInfo].[pulmonary] AS [pulmonary], 
-    [HighSchoolHealthInfo].[asthma] AS [asthma], 
-    [HighSchoolHealthInfo].[other] AS [other], 
-    [HighSchoolHealthInfo].[carryOtherMeds] AS [carryOtherMeds], 
-    [HighSchoolHealthInfo].[otherMeds] AS [otherMeds], 
-    [HighSchoolHealthInfo].[specificFirstAidNeeds] AS [specificFirstAidNeeds], 
-    [HighSchoolHealthInfo].[repPermissionForTreatment] AS [repPermissionForTreatment]
-    FROM [dbo].[HighSchoolHealthInfo] AS [HighSchoolHealthInfo]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="HighSchoolLogins" EntityType="Self.HighSchoolLogins" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [HighSchoolLogins].[Id] AS [Id], 
-    [HighSchoolLogins].[email] AS [email], 
-    [HighSchoolLogins].[passwordHash] AS [passwordHash], 
-    [HighSchoolLogins].[passwordSalt] AS [passwordSalt], 
-    [HighSchoolLogins].[dateCreated] AS [dateCreated]
-    FROM [dbo].[HighSchoolLogins] AS [HighSchoolLogins]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="AdultBasicInfo" EntityType="Self.AdultBasicInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdultEmergencyContact" EntityType="Self.AdultEmergencyContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdultHealthInfo" EntityType="Self.AdultHealthInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdultLogins" EntityType="Self.AdultLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolBasicInfo" EntityType="Self.HighSchoolBasicInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolEmergencyContact" EntityType="Self.HighSchoolEmergencyContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolHealthInfo" EntityType="Self.HighSchoolHealthInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolLogins" EntityType="Self.HighSchoolLogins" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -356,7 +190,7 @@ warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolLogins' does not have a
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="middleInitial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -377,7 +211,7 @@ warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolLogins' does not have a
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="contactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="relationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="primaryNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -396,7 +230,7 @@ warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolLogins' does not have a
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="primaryPhysician" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="otherPhysician" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="pPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -422,7 +256,7 @@ warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolLogins' does not have a
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="passwordHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="passwordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -432,7 +266,7 @@ warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolLogins' does not have a
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="middleInitial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -453,7 +287,7 @@ warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolLogins' does not have a
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="parentNameOne" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="parentOneRelationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="parentOneAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -486,7 +320,7 @@ warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolLogins' does not have a
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="primaryPhysician" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="otherPhysician" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="pPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -512,7 +346,7 @@ warning 6002: The table/view 'EnrollmentDB.dbo.HighSchoolLogins' does not have a
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="passwordHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="passwordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
