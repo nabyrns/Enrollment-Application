@@ -71,5 +71,10 @@ namespace Enrollment_Application
             this.Close();
         }
         #endregion
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

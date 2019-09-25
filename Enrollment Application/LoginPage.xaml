@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Title="Login Page" Height="300" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" >
 
     <Grid>
