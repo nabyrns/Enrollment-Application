@@ -274,7 +274,7 @@ namespace Enrollment_Application
 
                     if (string.IsNullOrWhiteSpace(lastName))
                     {
-                        result = "Name field cannot be empty";
+                        result = "Name field cannot be empty.";
                     }
 
                     break;
@@ -283,7 +283,7 @@ namespace Enrollment_Application
 
                     if (string.IsNullOrWhiteSpace(firstName))
                     {
-                        result = "Name field cannot be empty";
+                        result = "Name field cannot be empty.";
                     }
 
                     break;

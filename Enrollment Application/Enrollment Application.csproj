@@ -91,6 +91,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="HealthInfoUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Information Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +127,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="HealthInfoTextValidation.cs" />
+    <Compile Include="HealthInfoUC.xaml.cs">
+      <DependentUpon>HealthInfoUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="HighSchoolBasicInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>

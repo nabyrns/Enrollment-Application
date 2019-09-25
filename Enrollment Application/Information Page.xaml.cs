@@ -23,6 +23,8 @@ namespace Enrollment_Application
 
         public static BasicInformationUC buc;
 
+        public static HealthInfoUC hiuc;
+
         #region Constructors
         // Constructor for window with adult login parameter
         public Information_Page(AdultLogin logIn)
@@ -30,6 +32,8 @@ namespace Enrollment_Application
             InitializeComponent();
 
             buc = BasicUC;
+
+            hiuc = HealthUC;
 
             BasicUC.Visibility = Visibility.Visible;
 
@@ -42,6 +46,8 @@ namespace Enrollment_Application
             InitializeComponent();
 
             buc = BasicUC;
+
+            hiuc = HealthUC;
 
             BasicUC.Visibility = Visibility.Visible;
 

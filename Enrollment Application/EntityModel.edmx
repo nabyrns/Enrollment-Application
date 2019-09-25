@@ -54,7 +54,6 @@
           <Property Name="otherPhysician" Type="nvarchar" MaxLength="50" />
           <Property Name="pPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
           <Property Name="oPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
-          <Property Name="diabetic" Type="nvarchar" MaxLength="50" />
           <Property Name="diabeticType" Type="nvarchar" MaxLength="50" />
           <Property Name="allergies" Type="nvarchar(max)" />
           <Property Name="heartIssues" Type="nvarchar(max)" />
@@ -66,7 +65,6 @@
           <Property Name="pulmonary" Type="nvarchar" MaxLength="50" />
           <Property Name="asthma" Type="nvarchar" MaxLength="50" />
           <Property Name="other" Type="nvarchar(max)" />
-          <Property Name="carryOtherMeds" Type="nvarchar" MaxLength="50" />
           <Property Name="otherMeds" Type="nvarchar(max)" />
           <Property Name="specificFirstAidNeeds" Type="nvarchar(max)" />
           <Property Name="repPermissionForTreatment" Type="nvarchar" MaxLength="50" />
@@ -144,7 +142,6 @@
           <Property Name="otherPhysician" Type="nvarchar" MaxLength="50" />
           <Property Name="pPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
           <Property Name="oPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
-          <Property Name="diabetic" Type="nvarchar" MaxLength="50" />
           <Property Name="diabeticType" Type="nvarchar" MaxLength="50" />
           <Property Name="allergies" Type="nvarchar(max)" />
           <Property Name="heartIssues" Type="nvarchar(max)" />
@@ -156,7 +153,6 @@
           <Property Name="pulmonary" Type="nvarchar" MaxLength="50" />
           <Property Name="asthma" Type="nvarchar" MaxLength="50" />
           <Property Name="other" Type="nvarchar(max)" />
-          <Property Name="carryOtherMeds" Type="nvarchar" MaxLength="50" />
           <Property Name="otherMeds" Type="nvarchar(max)" />
           <Property Name="specificFirstAidNeeds" Type="nvarchar(max)" />
           <Property Name="repPermissionForTreatment" Type="nvarchar" MaxLength="50" />
@@ -235,7 +231,6 @@
           <Property Name="otherPhysician" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="pPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="oPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="diabetic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="diabeticType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="allergies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="heartIssues" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -247,7 +242,6 @@
           <Property Name="pulmonary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="asthma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="carryOtherMeds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="otherMeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="specificFirstAidNeeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="repPermissionForTreatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -325,7 +319,6 @@
           <Property Name="otherPhysician" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="pPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="oPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="diabetic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="diabeticType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="allergies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="heartIssues" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -337,7 +330,6 @@
           <Property Name="pulmonary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="asthma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="carryOtherMeds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="otherMeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="specificFirstAidNeeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="repPermissionForTreatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -418,7 +410,6 @@
                 <ScalarProperty Name="otherPhysician" ColumnName="otherPhysician" />
                 <ScalarProperty Name="pPhysicianPhoneNum" ColumnName="pPhysicianPhoneNum" />
                 <ScalarProperty Name="oPhysicianPhoneNum" ColumnName="oPhysicianPhoneNum" />
-                <ScalarProperty Name="diabetic" ColumnName="diabetic" />
                 <ScalarProperty Name="diabeticType" ColumnName="diabeticType" />
                 <ScalarProperty Name="allergies" ColumnName="allergies" />
                 <ScalarProperty Name="heartIssues" ColumnName="heartIssues" />
@@ -430,7 +421,6 @@
                 <ScalarProperty Name="pulmonary" ColumnName="pulmonary" />
                 <ScalarProperty Name="asthma" ColumnName="asthma" />
                 <ScalarProperty Name="other" ColumnName="other" />
-                <ScalarProperty Name="carryOtherMeds" ColumnName="carryOtherMeds" />
                 <ScalarProperty Name="otherMeds" ColumnName="otherMeds" />
                 <ScalarProperty Name="specificFirstAidNeeds" ColumnName="specificFirstAidNeeds" />
                 <ScalarProperty Name="repPermissionForTreatment" ColumnName="repPermissionForTreatment" />
@@ -512,7 +502,6 @@
                 <ScalarProperty Name="otherPhysician" ColumnName="otherPhysician" />
                 <ScalarProperty Name="pPhysicianPhoneNum" ColumnName="pPhysicianPhoneNum" />
                 <ScalarProperty Name="oPhysicianPhoneNum" ColumnName="oPhysicianPhoneNum" />
-                <ScalarProperty Name="diabetic" ColumnName="diabetic" />
                 <ScalarProperty Name="diabeticType" ColumnName="diabeticType" />
                 <ScalarProperty Name="allergies" ColumnName="allergies" />
                 <ScalarProperty Name="heartIssues" ColumnName="heartIssues" />
@@ -524,7 +513,6 @@
                 <ScalarProperty Name="pulmonary" ColumnName="pulmonary" />
                 <ScalarProperty Name="asthma" ColumnName="asthma" />
                 <ScalarProperty Name="other" ColumnName="other" />
-                <ScalarProperty Name="carryOtherMeds" ColumnName="carryOtherMeds" />
                 <ScalarProperty Name="otherMeds" ColumnName="otherMeds" />
                 <ScalarProperty Name="specificFirstAidNeeds" ColumnName="specificFirstAidNeeds" />
                 <ScalarProperty Name="repPermissionForTreatment" ColumnName="repPermissionForTreatment" />

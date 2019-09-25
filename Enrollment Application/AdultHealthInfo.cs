@@ -19,7 +19,6 @@ namespace Enrollment_Application
         public string otherPhysician { get; set; }
         public string pPhysicianPhoneNum { get; set; }
         public string oPhysicianPhoneNum { get; set; }
-        public string diabetic { get; set; }
         public string diabeticType { get; set; }
         public string allergies { get; set; }
         public string heartIssues { get; set; }
@@ -31,7 +30,6 @@ namespace Enrollment_Application
         public string pulmonary { get; set; }
         public string asthma { get; set; }
         public string other { get; set; }
-        public string carryOtherMeds { get; set; }
         public string otherMeds { get; set; }
         public string specificFirstAidNeeds { get; set; }
         public string repPermissionForTreatment { get; set; }

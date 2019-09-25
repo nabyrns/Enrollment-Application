@@ -173,6 +173,8 @@ namespace Enrollment_Application
 
                 Information_Page.buc.Visibility = Visibility.Hidden;
 
+                Information_Page.hiuc.Visibility = Visibility.Visible;
+
                 Information_Page.lv.SelectedIndex = 1;
             }
         }
