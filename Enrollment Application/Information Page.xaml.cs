@@ -25,6 +25,10 @@ namespace Enrollment_Application
 
         public static HealthInfoUC hiuc;
 
+        // this variable will prevent clicking the listview to change which part of the form is displayed
+        // the forms may be navigated only using buttons in the user control
+        public static int selectedIndex = 0;
+
         #region Constructors
         // Constructor for window with adult login parameter
         public Information_Page(AdultLogin logIn)
@@ -38,6 +42,8 @@ namespace Enrollment_Application
             BasicUC.Visibility = Visibility.Visible;
 
             lv = ListViewMenu;
+
+            lv.DataContext = selectedIndex;
         }
 
         // Constructor for window with highschool login parameter
@@ -58,6 +64,14 @@ namespace Enrollment_Application
         #region Handles the moving of the listview cursor
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // if the selectedIndex variable was not changed before the lv.SelectedIndex was changed, the lv.SelectedIndex is reset, as this means that the listview was clicked
+            if (lv.SelectedIndex != selectedIndex)
+            {
+                lv.SelectedIndex = selectedIndex;
+                return;
+            }
+
+            // otherwise the index is assigned and passed into the method that moves the cursor that shows what listviewitem is currently displayed
             int index = ListViewMenu.SelectedIndex;
 
             MoveCursorMenu(index);
@@ -78,9 +92,11 @@ namespace Enrollment_Application
         }
         #endregion
 
+        #region Code that allows for dragging the window
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
+        #endregion
     }
 }

@@ -15,25 +15,30 @@ using System.Windows.Shapes;
 
 namespace Enrollment_Application
 {
-    /// <summary>
-    /// Interaction logic for HealthInfoUC.xaml
-    /// </summary>
     public partial class HealthInfoUC : UserControl
     {
+        // create new database connection
         EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
+        // declare variables that may be used depending on which type of student the login was for
         HighSchoolHealthInfo hshi;
         AdultHealthInfo ahi;
 
-        HealthInfoTextValidation validCheck = new HealthInfoTextValidation();
+        // create new validation object
+        HealthInfoTextValidation validCheck;
 
+        #region Constructor --- initializes variables based on student type of login and assigns datacontext for the textfields in this UC to whichever variable is used
         public HealthInfoUC()
         {
             InitializeComponent();
 
+            // initialize previously declared values to null for later checking
             hshi = null;
             ahi = null;
 
+            // check what type of student logged in
+            // then query database and pull student info, assigning values to the proper HealthInfo object
+            // then assign the datacontext for the text fields in the UC to the newly reassigned variable
             if (LoginPage.highschoolCheck != null)
             {
                 hshi = (from m in _db.HighSchoolHealthInfoes where m.Id == LoginPage.highschoolCheck.Id select m).FirstOrDefault();
@@ -49,11 +54,16 @@ namespace Enrollment_Application
                 textFields.DataContext = ahi;
             }
         }
+        #endregion
 
+        #region Code executes when NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
+
+            // check what kind of student was logged in
             if (ahi != null)
             {
+                // reassign the values of the HealthInfo object to be what is in the control for that variable
                 ahi.primaryPhysician = primaryPhysText.Text;
                 ahi.otherPhysician = oPhysicianText.Text;
                 ahi.pPhysicianPhoneNum = primaryPhysPhoneText.Text;
@@ -73,6 +83,8 @@ namespace Enrollment_Application
                 ahi.specificFirstAidNeeds = specificNeedsText.Text;
                 ahi.repPermissionForTreatment = treatmentPermissionCombo.Text;
 
+                // initialize or update validCheck to contain the newly updated values in the UC being used
+                // the connection between validCheck and the UC being used is what allows for saving to the database
                 validCheck = new HealthInfoTextValidation()
                 {
                     _primaryPhysician = ahi.primaryPhysician,
@@ -82,20 +94,21 @@ namespace Enrollment_Application
                     _diabeticType = ahi.diabeticType,
                     _allergies = ahi.allergies,
                     _heartIssues = ahi.heartIssues,
-                    _metabolic = ahi.metabolic,
-                    _jointMuscle = ahi.jointMuscle,
-                    _chronicIllness = ahi.chronicIllness,
-                    _migraines = ahi.migraines,
-                    _neurological = ahi.neurological,
-                    _pulmonary = ahi.pulmonary,
-                    _asthma = ahi.asthma,
-                    _other = ahi.other,
+                    _metabolic = bool.Parse(ahi.metabolic),
+                    _jointMuscle = bool.Parse(ahi.jointMuscle),
+                    _chronicIllness = bool.Parse(ahi.chronicIllness),
+                    _migraines = bool.Parse(ahi.migraines),
+                    _neurological = bool.Parse(ahi.neurological),
+                    _pulmonary = bool.Parse(ahi.pulmonary),
+                    _asthma = bool.Parse(ahi.asthma),
+                    _other = bool.Parse(ahi.other),
                     _otherMeds = ahi.otherMeds,
                     _specificFirstAidNeeds = ahi.specificFirstAidNeeds,
                     _repPermissionForTreatment = ahi.repPermissionForTreatment
                 };
             }
 
+            // same as above code
             else
             {
                 hshi.primaryPhysician = primaryPhysText.Text;
@@ -126,36 +139,54 @@ namespace Enrollment_Application
                     _diabeticType = hshi.diabeticType,
                     _allergies = hshi.allergies,
                     _heartIssues = hshi.heartIssues,
-                    _metabolic = hshi.metabolic,
-                    _jointMuscle = hshi.jointMuscle,
-                    _chronicIllness = hshi.chronicIllness,
-                    _migraines = hshi.migraines,
-                    _neurological = hshi.neurological,
-                    _pulmonary = hshi.pulmonary,
-                    _asthma = hshi.asthma,
-                    _other = hshi.other,
+                    _metabolic = bool.Parse(hshi.metabolic),
+                    _jointMuscle = bool.Parse(hshi.jointMuscle),
+                    _chronicIllness = bool.Parse(hshi.chronicIllness),
+                    _migraines = bool.Parse(hshi.migraines),
+                    _neurological = bool.Parse(hshi.neurological),
+                    _pulmonary = bool.Parse(hshi.pulmonary),
+                    _asthma = bool.Parse(hshi.asthma),
+                    _other = bool.Parse(hshi.other),
                     _otherMeds = hshi.otherMeds,
                     _specificFirstAidNeeds = hshi.specificFirstAidNeeds,
                     _repPermissionForTreatment = hshi.repPermissionForTreatment
                 };
             }
 
+            // update the datacontext to be validCheck if it was not already
             if (textFields.DataContext != validCheck)
             {
                 textFields.DataContext = validCheck;
             }
 
-
+            // if no errors are found, save changes to database and change visibility of UC to hidden
+            // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
             if (validCheck.IsValid)
             {
                 _db.SaveChanges();
 
                 Information_Page.hiuc.Visibility = Visibility.Hidden;
 
-                
+                Information_Page.selectedIndex = 2;
 
                 Information_Page.lv.SelectedIndex = 2;
             }
         }
+        #endregion
+
+        #region Code executes when BackBtn is clicked
+        // changes UC visibility in Information_Page
+        // also changes the selected index of the listview to match the UC that is being displayed
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Information_Page.hiuc.Visibility = Visibility.Hidden;
+
+            Information_Page.selectedIndex = 0;
+
+            Information_Page.lv.SelectedIndex = 0;
+
+            Information_Page.buc.Visibility = Visibility.Visible;
+        }
+        #endregion
     }
 }

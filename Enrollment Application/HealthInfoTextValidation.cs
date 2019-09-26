@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Enrollment_Application
@@ -16,21 +17,21 @@ namespace Enrollment_Application
         public string _diabeticType;
         public string _allergies;
         public string _heartIssues;
-        public string _metabolic;
-        public string _jointMuscle;
-        public string _chronicIllness;
-        public string _migraines;
-        public string _neurological;
-        public string _pulmonary;
-        public string _asthma;
-        public string _other;
+        public bool _metabolic;
+        public bool _jointMuscle;
+        public bool _chronicIllness;
+        public bool _migraines;
+        public bool _neurological;
+        public bool _pulmonary;
+        public bool _asthma;
+        public bool _other;
         public string _otherMeds;
         public string _specificFirstAidNeeds;
         public string _repPermissionForTreatment;
 
-        // private static readonly string[] ValidatedProperties = { "primaryPhysician", "otherPhysician", "pPhysicianPhoneNum", "oPhysicianPhoneNum", "diabeticType", "allergies", "heartIssues", "metabolic", "jointMuscle", "chronicIllness", "migraines", "neurological", "pulmonary", "asthma", "other", "otherMeds", "specificFirstAidNeeds", "repPermissionForTreatment" };
-
-        private static readonly string[] ValidatedProperties = { "primaryPhysician", "pPhysicianPhoneNum", "diabeticType", "repPermissionForTreatment"};
+        // string array that holds the values of all the variables declared above
+        // they do not have underscores because it is technically a different variable whose value is given by the declared variables above
+        private static readonly string[] ValidatedProperties = { "primaryPhysician", "pPhysicianPhoneNum", "oPhysicianPhoneNum", "diabeticType", "repPermissionForTreatment"};
 
         string IDataErrorInfo.Error { get { return null; } }
 
@@ -50,6 +51,7 @@ namespace Enrollment_Application
         }
         #endregion
 
+        #region These variables all get their values from the variables that were declared above and that are initialized at creation
         public string primaryPhysician
         {
             get
@@ -63,7 +65,7 @@ namespace Enrollment_Application
             }
         }
 
-        /*public string otherPhysician
+        public string otherPhysician
         {
             get
             {
@@ -74,7 +76,7 @@ namespace Enrollment_Application
             {
                 _otherPhysician = value;
             }
-        }*/
+        }
 
         public string pPhysicianPhoneNum
         {
@@ -89,7 +91,7 @@ namespace Enrollment_Application
             }
         }
 
-        /*public string oPhysicianPhoneNum
+        public string oPhysicianPhoneNum
         {
             get
             {
@@ -100,7 +102,7 @@ namespace Enrollment_Application
             {
                 _oPhysicianPhoneNum = value;
             }
-        }*/
+        }
 
         public string diabeticType
         {
@@ -115,7 +117,7 @@ namespace Enrollment_Application
             }
         }
 
-        /*public string allergies
+        public string allergies
         {
             get
             {
@@ -141,7 +143,7 @@ namespace Enrollment_Application
             }
         }
 
-        public string metabolic
+        public bool metabolic
         {
             get
             {
@@ -154,7 +156,7 @@ namespace Enrollment_Application
             }
         }
 
-        public string jointMuscle
+        public bool jointMuscle
         {
             get
             {
@@ -167,7 +169,7 @@ namespace Enrollment_Application
             }
         }
 
-        public string chronicIllness
+        public bool chronicIllness
         {
             get
             {
@@ -180,7 +182,7 @@ namespace Enrollment_Application
             }
         }
 
-        public string migraines
+        public bool migraines
         {
             get
             {
@@ -193,7 +195,7 @@ namespace Enrollment_Application
             }
         }
 
-        public string neurological
+        public bool neurological
         {
             get
             {
@@ -206,7 +208,7 @@ namespace Enrollment_Application
             }
         }
 
-        public string pulmonary
+        public bool pulmonary
         {
             get
             {
@@ -219,7 +221,7 @@ namespace Enrollment_Application
             }
         }
 
-        public string asthma
+        public bool asthma
         {
             get
             {
@@ -232,7 +234,7 @@ namespace Enrollment_Application
             }
         }
 
-        public string other
+        public bool other
         {
             get
             {
@@ -269,7 +271,7 @@ namespace Enrollment_Application
             {
                 _specificFirstAidNeeds = value;
             }
-        }*/
+        }
 
         public string repPermissionForTreatment
         {
@@ -283,6 +285,7 @@ namespace Enrollment_Application
                 _repPermissionForTreatment = value;
             }
         }
+        #endregion
 
         #region This region checks for errors in each variable above
         private string GetValidationError(string text)
@@ -303,9 +306,34 @@ namespace Enrollment_Application
 
                 case "pPhysicianPhoneNum":
 
+                    string PhonePattern = @"^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$";
+
+                    Regex reg = new Regex(PhonePattern);
+
                     if (string.IsNullOrWhiteSpace(pPhysicianPhoneNum))
                     {
+
                         result = "Field cannot be empty.";
+                    }
+
+                    else if (!reg.IsMatch(pPhysicianPhoneNum))
+                    {
+
+                        result = "Invalid phone number.";
+                    }
+
+                    break;
+
+                case "oPhysicianPhoneNum":
+
+                    string oPhonePattern = @"^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$";
+
+                    Regex reg2 = new Regex(oPhonePattern);
+
+                    if (!reg2.IsMatch(oPhysicianPhoneNum) && !string.IsNullOrWhiteSpace(oPhysicianPhoneNum))
+                    {
+
+                        result = "Invalid phone number.";
                     }
 
                     break;
@@ -313,11 +341,6 @@ namespace Enrollment_Application
                 case "diabeticType":
 
                     if (string.IsNullOrWhiteSpace(diabeticType))
-                    {
-                        result = "Field cannot be empty.";
-                    }
-
-                    else if (string.IsNullOrEmpty(diabeticType))
                     {
                         result = "Field cannot be empty.";
                     }

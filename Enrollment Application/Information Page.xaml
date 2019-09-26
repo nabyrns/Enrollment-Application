@@ -12,15 +12,18 @@
         Title="Information Page" Height="720" Width="1280" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
 
+        <!--#region Close button-->
         <Button x:Name="closeBtn" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" VerticalAlignment="Top" Click="CloseBtn_Click">
             <materialDesign:PackIcon Kind="Close" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
+        <!--#endregion-->
 
+        <!--#region Grid containing the listview-->
         <Grid Width="200" HorizontalAlignment="Left">
 
             <TextBlock Text="Enrollment Info" Foreground="White" FontSize="18" Margin="10" HorizontalAlignment="Center"/>
 
-            <ListView x:Name="ListViewMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="20, 55, 0, 0" SelectionChanged="ListViewMenu_SelectionChanged">
+            <ListView x:Name="ListViewMenu" SelectedIndex="{Binding selectedIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="20, 55, 0, 0" SelectionChanged="ListViewMenu_SelectionChanged">
 
                 <!--#region Code to not have hover select on listview items-->
                 <ListView.ItemContainerStyle>
@@ -70,10 +73,13 @@
             </materialDesign:TransitioningContent>
 
         </Grid>
+        <!--#endregion-->
 
+        <!--#region Grid containing all of the User Controls that will be used-->
         <Grid Margin="200, 30, 10, 10">
             <local:BasicInformationUC x:Name="BasicUC" Visibility="Hidden"/>
             <local:HealthInfoUC x:Name="HealthUC" Visibility="Hidden"/>
         </Grid>
+        <!--#endregion-->
     </Grid>
 </Window>
