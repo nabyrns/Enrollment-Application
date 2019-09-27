@@ -219,7 +219,7 @@ namespace Enrollment_Application
                 _NRcellNum = value;
             }
         }
-#endregion
+        #endregion
 
         #region This region checks for errors in each variable above
         private string GetValidationError(string text)
@@ -362,13 +362,13 @@ namespace Enrollment_Application
 
                     Regex reg4 = new Regex(NRprimaryPhonePattern);
 
-                    if (string.IsNullOrWhiteSpace(primaryNum))
+                    if (string.IsNullOrWhiteSpace(NRprimaryNum))
                     {
 
                         result = "Field cannot be empty.";
                     }
 
-                    else if (!reg4.IsMatch(primaryNum))
+                    else if (!reg4.IsMatch(NRprimaryNum))
                     {
 
                         result = "Invalid phone number.";
@@ -382,13 +382,13 @@ namespace Enrollment_Application
 
                     Regex reg5 = new Regex(workPhonePattern);
 
-                    if (string.IsNullOrWhiteSpace(primaryNum))
+                    if (string.IsNullOrWhiteSpace(NRworkNum))
                     {
 
                         result = "Field cannot be empty.";
                     }
 
-                    else if (!reg5.IsMatch(primaryNum))
+                    else if (!reg5.IsMatch(NRworkNum))
                     {
 
                         result = "Invalid phone number.";
@@ -402,13 +402,13 @@ namespace Enrollment_Application
 
                     Regex reg6 = new Regex(cellPhonePattern);
 
-                    if (string.IsNullOrWhiteSpace(primaryNum))
+                    if (string.IsNullOrWhiteSpace(NRcellNum))
                     {
 
                         result = "Field cannot be empty.";
                     }
 
-                    else if (!reg6.IsMatch(primaryNum))
+                    else if (!reg6.IsMatch(NRcellNum))
                     {
 
                         result = "Invalid phone number.";
