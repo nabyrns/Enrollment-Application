@@ -73,10 +73,10 @@
     <Compile Include="AdultBasicInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AdultECUC.xaml.cs">
+    <Compile Include="User Controls\AdultECUC.xaml.cs">
       <DependentUpon>AdultECUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdultECUCTextValidation.cs" />
+    <Compile Include="Text Validation Classes\AdultECUCTextValidation.cs" />
     <Compile Include="AdultEmergencyContact.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -86,28 +86,28 @@
     <Compile Include="AdultLogin.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="BasicInfoTextValidation.cs" />
-    <Page Include="AdultECUC.xaml">
+    <Compile Include="Text Validation Classes\BasicInfoTextValidation.cs" />
+    <Page Include="User Controls\AdultECUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BasicInformationUC.xaml">
+    <Page Include="User Controls\BasicInformationUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CreateAccountPage.xaml">
+    <Page Include="Windows\CreateAccountPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HealthInfoUC.xaml">
+    <Page Include="User Controls\HealthInfoUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Information Page.xaml">
+    <Page Include="Windows\Information Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginPage.xaml">
+    <Page Include="Windows\LoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -115,10 +115,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BasicInformationUC.xaml.cs">
+    <Compile Include="User Controls\BasicInformationUC.xaml.cs">
       <DependentUpon>BasicInformationUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CreateAccountPage.xaml.cs">
+    <Compile Include="Windows\CreateAccountPage.xaml.cs">
       <DependentUpon>CreateAccountPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntityModel.Context.cs">
@@ -136,8 +136,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="HealthInfoTextValidation.cs" />
-    <Compile Include="HealthInfoUC.xaml.cs">
+    <Compile Include="Text Validation Classes\HealthInfoTextValidation.cs" />
+    <Compile Include="User Controls\HealthInfoUC.xaml.cs">
       <DependentUpon>HealthInfoUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="HighSchoolBasicInfo.cs">
@@ -152,10 +152,10 @@
     <Compile Include="HighSchoolLogin.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Information Page.xaml.cs">
+    <Compile Include="Windows\Information Page.xaml.cs">
       <DependentUpon>Information Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginPage.xaml.cs">
+    <Compile Include="Windows\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -209,5 +209,6 @@
       <LastGenOutput>EntityModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

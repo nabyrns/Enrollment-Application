@@ -25,7 +25,9 @@ namespace Enrollment_Application
 
         public static HealthInfoUC hiuc;
 
-        public static AdultECUC aecuc;
+        public static AdultECUC aecuc = null;
+
+        public static HighSchoolECUC hsecuc = null;
 
         // this variable will prevent clicking the listview to change which part of the form is displayed
         // the forms may be navigated only using buttons in the user control
@@ -58,6 +60,8 @@ namespace Enrollment_Application
             buc = BasicUC;
 
             hiuc = HealthUC;
+
+            hsecuc = HighSchoolECUC;
 
             BasicUC.Visibility = Visibility.Visible;
 
