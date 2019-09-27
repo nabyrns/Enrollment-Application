@@ -167,6 +167,11 @@ namespace Enrollment_Application
 
                 Information_Page.hiuc.Visibility = Visibility.Hidden;
 
+                if (LoginPage.adultCheck != null)
+                {
+                    Information_Page.aecuc.Visibility = Visibility.Visible;
+                }
+
                 Information_Page.selectedIndex = 2;
 
                 Information_Page.lv.SelectedIndex = 2;

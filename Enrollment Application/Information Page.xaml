@@ -79,6 +79,7 @@
         <Grid Margin="200, 30, 10, 10">
             <local:BasicInformationUC x:Name="BasicUC" Visibility="Hidden"/>
             <local:HealthInfoUC x:Name="HealthUC" Visibility="Hidden"/>
+            <local:AdultECUC x:Name="AdultECUC" Visibility="Hidden"/>
         </Grid>
         <!--#endregion-->
     </Grid>

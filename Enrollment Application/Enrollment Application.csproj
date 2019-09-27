@@ -73,6 +73,10 @@
     <Compile Include="AdultBasicInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AdultECUC.xaml.cs">
+      <DependentUpon>AdultECUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdultECUCTextValidation.cs" />
     <Compile Include="AdultEmergencyContact.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -83,6 +87,10 @@
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BasicInfoTextValidation.cs" />
+    <Page Include="AdultECUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BasicInformationUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

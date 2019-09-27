@@ -1,0 +1,129 @@
+﻿<UserControl x:Class="Enrollment_Application.AdultECUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Enrollment_Application"
+             mc:Ignorable="d" 
+             d:DesignHeight="580" d:DesignWidth="1020" FontSize="14" FontFamily="Candara Light" DataContext="">
+    <Grid x:Name="textFields">
+        <!--#region Stack Panel containing all the text fields-->
+        <StackPanel>
+            <TextBlock Text="Emergency Contact Information" HorizontalAlignment="Center" Foreground="#2196f3" FontSize="24"/>
+
+            <!--#region Emergency Contact name field-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 50, 10, 10">
+                <TextBlock Text="Contact Name:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="EmergencyContactNameText" Width="225" Margin="10" Text="{Binding contactName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region Emergency contact information fields-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+                <TextBlock Text="Relationship:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="ECRelationshipText" Width="150" Margin="10" Text="{Binding relationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Primary Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="ECPrimaryNumText" Width="150" Margin="10" Text="{Binding primaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Alternate Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="altNumberText" Width="150" Margin="10" Text="{Binding alternateNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <!--#endregion-->
+
+            <TextBlock Text="Nearest Relative" HorizontalAlignment="Left" Margin="10, 80, 0, 0" Foreground="#2196f3" FontSize="24"/>
+
+            <!--#region Nearest relative name and relationsip fields-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+                <TextBlock Text="Name of nearest relative:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="NearestRelativeNameText" Width="225" Margin="10" Text="{Binding nameNearestRelative, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Relationship:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="NRRelationshipText" Width="150" Margin="10" Text="{Binding NRrelationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region Nearest relative address information-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+                <TextBlock Text="Street Address:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="NRAddressText" Width="150" Margin="10" Text="{Binding NRstreetAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="City:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="NRcityText" Width="150" Margin="10" Text="{Binding NRcity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="State:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <ComboBox x:Name="stateCombo" Width="50" Margin="10, 0, 10, 0" Text="{Binding NRstate, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+
+                    <ComboBoxItem Content="AK"/>
+                    <ComboBoxItem Content="AL"/>
+                    <ComboBoxItem Content="AR"/>
+                    <ComboBoxItem Content="AZ"/>
+                    <ComboBoxItem Content="CA"/>
+                    <ComboBoxItem Content="CO"/>
+                    <ComboBoxItem Content="CT"/>
+                    <ComboBoxItem Content="DE"/>
+                    <ComboBoxItem Content="FL"/>
+                    <ComboBoxItem Content="GA"/>
+                    <ComboBoxItem Content="HI"/>
+                    <ComboBoxItem Content="IA"/>
+                    <ComboBoxItem Content="ID"/>
+                    <ComboBoxItem Content="IL"/>
+                    <ComboBoxItem Content="IN"/>
+                    <ComboBoxItem Content="KS"/>
+                    <ComboBoxItem Content="KY"/>
+                    <ComboBoxItem Content="LA"/>
+                    <ComboBoxItem Content="MA"/>
+                    <ComboBoxItem Content="MD"/>
+                    <ComboBoxItem Content="ME"/>
+                    <ComboBoxItem Content="MI"/>
+                    <ComboBoxItem Content="MN"/>
+                    <ComboBoxItem Content="MO"/>
+                    <ComboBoxItem Content="MS"/>
+                    <ComboBoxItem Content="MT"/>
+                    <ComboBoxItem Content="NC"/>
+                    <ComboBoxItem Content="ND"/>
+                    <ComboBoxItem Content="NE"/>
+                    <ComboBoxItem Content="NH"/>
+                    <ComboBoxItem Content="NJ"/>
+                    <ComboBoxItem Content="NM"/>
+                    <ComboBoxItem Content="NV"/>
+                    <ComboBoxItem Content="NY"/>
+                    <ComboBoxItem Content="OH"/>
+                    <ComboBoxItem Content="OK"/>
+                    <ComboBoxItem Content="OR"/>
+                    <ComboBoxItem Content="PA"/>
+                    <ComboBoxItem Content="RI"/>
+                    <ComboBoxItem Content="SC"/>
+                    <ComboBoxItem Content="SD"/>
+                    <ComboBoxItem Content="TN"/>
+                    <ComboBoxItem Content="TX"/>
+                    <ComboBoxItem Content="UT"/>
+                    <ComboBoxItem Content="VA"/>
+                    <ComboBoxItem Content="VT"/>
+                    <ComboBoxItem Content="WA"/>
+                    <ComboBoxItem Content="WI"/>
+                    <ComboBoxItem Content="WV"/>
+                    <ComboBoxItem Content="WY"/>
+
+                </ComboBox>
+                <TextBlock Text="Zip:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="zipText" Width="150" Margin="10" Text="{Binding NRzip, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region Nearest relative contact information-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+                <TextBlock Text="Primary Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="NRPrimaryNumText" Width="150" Margin="10" Text="{Binding NRprimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Work Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="workNumberText" Width="150" Margin="10" Text="{Binding NRworkNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Cell Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
+                <TextBox x:Name="cellNumberText" Width="150" Margin="10" Text="{Binding NRcellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <!--#endregion-->
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region Button stack panel-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="backBtn" Content="Back" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="BackBtn_Click"/>
+            <Button x:Name="nextBtn" Content="Next" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="NextBtn_Click"/>
+        </StackPanel>
+        <!--#endregion-->
+    </Grid>
+</UserControl>
