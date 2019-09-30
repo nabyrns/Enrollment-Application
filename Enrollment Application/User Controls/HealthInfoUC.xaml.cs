@@ -172,6 +172,11 @@ namespace Enrollment_Application
                     Information_Page.aecuc.Visibility = Visibility.Visible;
                 }
 
+                else
+                {
+                    Information_Page.hsecuc.Visibility = Visibility.Visible;
+                }
+
                 Information_Page.selectedIndex = 2;
 
                 Information_Page.lv.SelectedIndex = 2;

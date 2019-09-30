@@ -101,6 +101,10 @@
     <Compile Include="HighSchoolBasicInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="HighSchoolECUC.xaml.cs">
+      <DependentUpon>HighSchoolECUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Text Validation Classes\HighSchoolECUCTextValidation.cs" />
     <Compile Include="User Controls\HighSchoolBasicInformationUC.xaml.cs">
       <DependentUpon>HighSchoolBasicInformationUC.xaml</DependentUpon>
     </Compile>
@@ -119,6 +123,10 @@
     </Compile>
     <Compile Include="Text Validation Classes\AdultECUCTextValidation.cs" />
     <Compile Include="Text Validation Classes\AdultBasicInfoTextValidation.cs" />
+    <Page Include="HighSchoolECUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User Controls\HighSchoolBasicInformationUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
