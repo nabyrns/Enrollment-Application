@@ -11,7 +11,7 @@ namespace Enrollment_Application
 {
 
 
-    class BasicInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
+    class HighSchoolBasicInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
         EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
@@ -33,11 +33,13 @@ namespace Enrollment_Application
         public string _race;
         public string _gender;
         public Nullable<DateTime> _dateOfBirth;
+        public string _currentEdLevel;
+        public string _sendingHS;
         #endregion
 
         // string array that holds the values of all the variables declared above
         // they do not have underscores because it is technically a different variable whose value is given by the declared variables above
-        private static readonly string[] ValidatedProperties = { "email", "lastName", "firstName", "middleInitial", "program", "streetAddress", "city", "state", "zipCode", "primaryPhoneNum", "cellPhoneNum", "hispanicOrLatino", "race", "gender", "dateOfBirth" };
+        private static readonly string[] ValidatedProperties = { "currentEdLevel", "sendingHS", "lastName", "firstName", "middleInitial", "program", "streetAddress", "city", "state", "zipCode", "primaryPhoneNum", "cellPhoneNum", "hispanicOrLatino", "race", "gender", "dateOfBirth" };
 
         #region Property Changed stuff
         // property changed event handler
@@ -56,6 +58,33 @@ namespace Enrollment_Application
         #endregion
 
         #region These variables all get their values from the variables that were declared above and that are initialized at creation
+
+        public string currentEdLevel
+        {
+            get
+            {
+                return _currentEdLevel;
+            }
+
+            set
+            {
+                _currentEdLevel = value;
+            }
+        }
+
+        public string sendingHS
+        {
+            get
+            {
+                return _sendingHS;
+            }
+
+            set
+            {
+                _sendingHS = value;
+            }
+        }
+
         public string lastName
         {
             get
@@ -248,27 +277,45 @@ namespace Enrollment_Application
             {
 
 
-               /* case "email":
+                /* case "email":
 
-                    string pattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
-                                     + "@"
-                                     + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
+                     string pattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                                      + "@"
+                                      + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
 
-                    Regex r = new Regex(pattern);
+                     Regex r = new Regex(pattern);
 
 
 
-                    if (string.IsNullOrWhiteSpace(email))
+                     if (string.IsNullOrWhiteSpace(email))
+                     {
+                         result = "Text field cannot be empty.";
+                     }
+
+                     else if (!r.IsMatch(email))
+                     {
+                         result = "Invalid email address.";
+                     }
+
+                     break;*/
+
+                case "currentEdLevel":
+
+                    if (string.IsNullOrWhiteSpace(currentEdLevel))
                     {
-                        result = "Text field cannot be empty.";
+                        result = "Field cannot be empty.";
                     }
 
-                    else if (!r.IsMatch(email))
+                    break;
+
+                case "sendingHS":
+
+                    if (string.IsNullOrWhiteSpace(sendingHS))
                     {
-                        result = "Invalid email address.";
+                        result = "Field cannot be empty.";
                     }
 
-                    break;*/
+                    break;
 
                 case "lastName":
 
@@ -339,17 +386,13 @@ namespace Enrollment_Application
 
                 case "zipCode":
 
-                    string zipPattern = "^[0-9]{5}(?:-[0-9]{4})?$";
-
-                    Regex reg = new Regex(zipPattern);
-
                     if (string.IsNullOrWhiteSpace(zipCode))
                     {
 
                         result = "Field must not be empty.";
                     }
 
-                    else if (!reg.IsMatch(zipCode))
+                    else if (!CommonMethods.IsZipCode(zipCode))
                     {
 
                         result = "Invalid ZipCode.";
@@ -359,17 +402,13 @@ namespace Enrollment_Application
 
                 case "primaryPhoneNum":
 
-                    string primaryPhonePattern = @"^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$";
-
-                    Regex reg2 = new Regex(primaryPhonePattern);
-
                     if (string.IsNullOrWhiteSpace(primaryPhoneNum))
                     {
 
                         result = "Field must not be empty.";
                     }
 
-                    else if (!reg2.IsMatch(primaryPhoneNum))
+                    else if (!CommonMethods.IsPhoneNumber(primaryPhoneNum))
                     {
 
                         result = "Invalid phone number.";
@@ -379,17 +418,13 @@ namespace Enrollment_Application
 
                 case "cellPhoneNum":
 
-                    string cellPhonePattern = @"^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$";
-
-                    Regex reg3 = new Regex(cellPhonePattern);
-
                     if (string.IsNullOrWhiteSpace(cellPhoneNum))
                     {
 
                         result = "Field must not be empty.";
                     }
 
-                    else if (!reg3.IsMatch(cellPhoneNum))
+                    else if (!CommonMethods.IsPhoneNumber(cellPhoneNum))
                     {
 
                         result = "Invalid phone number.";

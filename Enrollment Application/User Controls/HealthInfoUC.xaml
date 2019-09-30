@@ -102,5 +102,6 @@
             <Button x:Name="nextBtn" Content="Next" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="NextBtn_Click"/>
         </StackPanel>
         <!--#endregion-->
+        
     </Grid>
 </UserControl>

@@ -14,18 +14,17 @@ using System.Windows.Shapes;
 
 namespace Enrollment_Application
 {
-    /// <summary>
-    /// Interaction logic for Information_Page.xaml
-    /// </summary>
     public partial class Information_Page : Window
     {
         public static ListView lv;
 
-        public static BasicInformationUC buc;
+        public static AdultBasicInformationUC abiuc;
+
+        public static HighSchoolBasicInformationUC hsbiuc;
 
         public static HealthInfoUC hiuc;
 
-        public static AdultECUC aecuc = null;
+        public static AdultECUC aecuc;
 
         // public static HighSchoolECUC hsecuc = null;
 
@@ -39,13 +38,19 @@ namespace Enrollment_Application
         {
             InitializeComponent();
 
-            buc = BasicUC;
+            abiuc = new AdultBasicInformationUC();
+            abiuc.Visibility = Visibility.Visible;
 
-            hiuc = HealthUC;
+            hiuc = new HealthInfoUC();
+            hiuc.Visibility = Visibility.Hidden;
 
-            aecuc = AdultECUC;
+            aecuc = new AdultECUC();
+            aecuc.Visibility = Visibility.Hidden;
 
-            BasicUC.Visibility = Visibility.Visible;
+            UserControlGrid.Children.Add(abiuc);
+            UserControlGrid.Children.Add(hiuc);
+            UserControlGrid.Children.Add(aecuc);
+
 
             lv = ListViewMenu;
 
@@ -57,15 +62,21 @@ namespace Enrollment_Application
         {
             InitializeComponent();
 
-            buc = BasicUC;
+            hsbiuc = new HighSchoolBasicInformationUC();
+            hsbiuc.Visibility = Visibility.Visible;
 
-            hiuc = HealthUC;
+            hiuc = new HealthInfoUC();
+            hiuc.Visibility = Visibility.Hidden;
 
             // hsecuc = HighSchoolECUC;
 
-            BasicUC.Visibility = Visibility.Visible;
+            UserControlGrid.Children.Add(hsbiuc);
+            UserControlGrid.Children.Add(hiuc);
+            // UserControlGrid.Children.Add(hsecuc);
 
             lv = ListViewMenu;
+
+            lv.DataContext = selectedIndex;
         }
         #endregion
 

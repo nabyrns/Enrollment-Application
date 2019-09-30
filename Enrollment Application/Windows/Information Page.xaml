@@ -76,11 +76,8 @@
         <!--#endregion-->
 
         <!--#region Grid containing all of the User Controls that will be used-->
-        <Grid Margin="200, 30, 10, 10">
-            <local:BasicInformationUC x:Name="BasicUC" Visibility="Hidden"/>
-            <local:HealthInfoUC x:Name="HealthUC" Visibility="Hidden"/>
-            <local:AdultECUC x:Name="AdultECUC" Visibility="Hidden"/>
-        </Grid>
+        <Grid Margin="200, 30, 10, 10" x:Name="UserControlGrid"/>
         <!--#endregion-->
+        
     </Grid>
 </Window>

@@ -24,9 +24,6 @@ namespace Enrollment_Application
         public string _NRworkNum;
         public string _NRcellNum;
 
-        // CHECK AFTER FINISHING IF USING THIS FOR EACH PHONE NUMBER WILL WORK
-        // Regex reg = new Regex(@"^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$");
-
         // string array that holds the values of all the variables declared above
         // they do not have underscores because it is technically a different variable whose value is given by the declared variables above
         private static readonly string[] ValidatedProperties = { "contactName", "relationship", "primaryNum", "alternateNum", "nameNearestRelative", "NRrelationship", "NRstreetAddress", "NRcity", "NRstate", "NRzip", "NRprimaryNum", "NRworkNum", "NRcellNum"};
@@ -249,17 +246,13 @@ namespace Enrollment_Application
 
                 case "primaryNum":
 
-                    string PhonePattern = @"^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$";
-
-                    Regex reg = new Regex(PhonePattern);
-
                     if (string.IsNullOrWhiteSpace(primaryNum))
                     {
 
-                        result = "Field cannot be empty.";
+                        result = "Field must not be empty.";
                     }
 
-                    else if (!reg.IsMatch(primaryNum))
+                    else if (!CommonMethods.IsPhoneNumber(primaryNum))
                     {
 
                         result = "Invalid phone number.";
@@ -269,17 +262,13 @@ namespace Enrollment_Application
 
                 case "alternateNum":
 
-                    string altPhonePattern = @"^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$";
-
-                    Regex reg2 = new Regex(altPhonePattern);
-
                     if (string.IsNullOrWhiteSpace(alternateNum))
                     {
 
-                        result = "Field cannot be empty.";
+                        result = "Field must not be empty.";
                     }
 
-                    else if (!reg2.IsMatch(alternateNum))
+                    else if (!CommonMethods.IsPhoneNumber(alternateNum))
                     {
 
                         result = "Invalid phone number.";
@@ -338,17 +327,13 @@ namespace Enrollment_Application
 
                 case "NRzip":
 
-                    string zipPattern = "^[0-9]{5}(?:-[0-9]{4})?$";
-
-                    Regex reg3 = new Regex(zipPattern);
-
                     if (string.IsNullOrWhiteSpace(NRzip))
                     {
 
-                        result = "Field cannot not be empty.";
+                        result = "Field must not be empty.";
                     }
 
-                    else if (!reg3.IsMatch(NRzip))
+                    else if (!CommonMethods.IsZipCode(NRzip))
                     {
 
                         result = "Invalid ZipCode.";
@@ -358,17 +343,13 @@ namespace Enrollment_Application
 
                 case "NRprimaryNum":
 
-                    string NRprimaryPhonePattern = @"^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$";
-
-                    Regex reg4 = new Regex(NRprimaryPhonePattern);
-
                     if (string.IsNullOrWhiteSpace(NRprimaryNum))
                     {
 
-                        result = "Field cannot be empty.";
+                        result = "Field must not be empty.";
                     }
 
-                    else if (!reg4.IsMatch(NRprimaryNum))
+                    else if (!CommonMethods.IsPhoneNumber(NRprimaryNum))
                     {
 
                         result = "Invalid phone number.";
@@ -378,17 +359,13 @@ namespace Enrollment_Application
 
                 case "NRworkNum":
 
-                    string workPhonePattern = @"^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$";
-
-                    Regex reg5 = new Regex(workPhonePattern);
-
                     if (string.IsNullOrWhiteSpace(NRworkNum))
                     {
 
-                        result = "Field cannot be empty.";
+                        result = "Field must not be empty.";
                     }
 
-                    else if (!reg5.IsMatch(NRworkNum))
+                    else if (!CommonMethods.IsPhoneNumber(NRworkNum))
                     {
 
                         result = "Invalid phone number.";
@@ -398,17 +375,13 @@ namespace Enrollment_Application
 
                 case "NRcellNum":
 
-                    string cellPhonePattern = @"^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$";
-
-                    Regex reg6 = new Regex(cellPhonePattern);
-
                     if (string.IsNullOrWhiteSpace(NRcellNum))
                     {
 
-                        result = "Field cannot be empty.";
+                        result = "Field must not be empty.";
                     }
 
-                    else if (!reg6.IsMatch(NRcellNum))
+                    else if (!CommonMethods.IsPhoneNumber(NRcellNum))
                     {
 
                         result = "Invalid phone number.";

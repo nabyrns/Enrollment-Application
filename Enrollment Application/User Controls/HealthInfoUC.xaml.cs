@@ -190,7 +190,10 @@ namespace Enrollment_Application
 
             Information_Page.lv.SelectedIndex = 0;
 
-            Information_Page.buc.Visibility = Visibility.Visible;
+            if (LoginPage.adultCheck != null)
+            {
+                Information_Page.abiuc.Visibility = Visibility.Visible;
+            }
         }
         #endregion
     }

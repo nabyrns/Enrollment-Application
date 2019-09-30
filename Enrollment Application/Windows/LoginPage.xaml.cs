@@ -61,10 +61,10 @@ namespace Enrollment_Application
             if (highschoolCheck != null)
             {
                 // saltedHash is assigned the value of the salted hash that is returned by the called method
-                saltedHash = GenerateSaltedHash(Encoding.UTF8.GetBytes(pw), Encoding.UTF8.GetBytes(highschoolCheck.passwordSalt));
+                saltedHash = CommonMethods.GenerateSaltedHash(Encoding.UTF8.GetBytes(pw), Encoding.UTF8.GetBytes(highschoolCheck.passwordSalt));
 
                 // if the byte array that is stored matches the byte array produced by the user input, this code executes
-                if (CompareByteArrays(saltedHash, Convert.FromBase64String(highschoolCheck.passwordHash)))
+                if (CommonMethods.CompareByteArrays(saltedHash, Convert.FromBase64String(highschoolCheck.passwordHash)))
                 {
                     this.Visibility = Visibility.Hidden;
 
@@ -86,10 +86,10 @@ namespace Enrollment_Application
             else if (adultCheck != null)
             {
                 // salted hash is generated and assigned to saltedHash variable by calling a method
-                saltedHash = GenerateSaltedHash(Encoding.UTF8.GetBytes(pw), Encoding.UTF8.GetBytes(adultCheck.passwordSalt));
+                saltedHash = CommonMethods.GenerateSaltedHash(Encoding.UTF8.GetBytes(pw), Encoding.UTF8.GetBytes(adultCheck.passwordSalt));
 
                 // if the byte arrays match, this code executes
-                if (CompareByteArrays(saltedHash, Convert.FromBase64String(adultCheck.passwordHash)))
+                if (CommonMethods.CompareByteArrays(saltedHash, Convert.FromBase64String(adultCheck.passwordHash)))
                 {
                     this.Visibility = Visibility.Hidden;
 
@@ -109,7 +109,6 @@ namespace Enrollment_Application
             // if user is not found in either table, error message displays
             else
             {
-                textFieldBoxes.DataContext = new BasicInfoTextValidation();
 
                 MessageBox.Show("No account exists with that email.");
             }
@@ -122,49 +121,6 @@ namespace Enrollment_Application
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-        #endregion
-
-        #region Method to generate salted hash of user input for password comparison
-        // method generates the salted hash that will be compared to the stored value
-        static byte[] GenerateSaltedHash(byte[] plainText, byte[] salt)
-        {
-            HashAlgorithm algorithm = new SHA256Managed();
-
-            byte[] plainTextWithSaltBytes =
-              new byte[plainText.Length + salt.Length];
-
-            for (int i = 0; i < plainText.Length; i++)
-            {
-                plainTextWithSaltBytes[i] = plainText[i];
-            }
-            for (int i = 0; i < salt.Length; i++)
-            {
-                plainTextWithSaltBytes[plainText.Length + i] = salt[i];
-            }
-
-            return algorithm.ComputeHash(plainTextWithSaltBytes);
-        }
-        #endregion
-
-        #region Method compares the stored values of the password for the user to the entered password
-        // compares the byte arrays of the stored password and the entered password
-        public static bool CompareByteArrays(byte[] array1, byte[] array2)
-        {
-            if (array1.Length != array2.Length)
-            {
-                return false;
-            }
-
-            for (int i = 0; i < array1.Length; i++)
-            {
-                if (array1[i] != array2[i])
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
         #endregion
 
