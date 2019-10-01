@@ -41,6 +41,9 @@ namespace Enrollment_Application
         #region Code executes when NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
+            String salt = CommonMethods.CreateSalt(20);
+            byte[] hashedSSN = CommonMethods.GenerateSaltedHash(Encoding.UTF8.GetBytes(SSNtext.Text), Encoding.UTF8.GetBytes(salt));
+
             // reassign the values of the BasicInfo object to be what is in the control for that variable
             abi.lastName = lastNameText.Text;
             abi.firstName = firstNameText.Text;
@@ -57,8 +60,8 @@ namespace Enrollment_Application
             abi.gender = genderCombo.Text;
             abi.dateOfBirth = birthdateCalendar.SelectedDate;
             abi.filloutDate = DateTime.Now;
-            abi.SSNhashAndSalt = "asdfasdf";
-            abi.SSNsalt = "asdfasdf";
+            abi.SSNhashAndSalt = Convert.ToBase64String(hashedSSN);
+            abi.SSNsalt = salt;
             abi.completedEdLevel = educationLevelCombo.Text;
             abi.attendedCollegeOrTech = attendedCollegeCombo.Text;
             abi.liveWithParent = liveWithParentCombo.Text;

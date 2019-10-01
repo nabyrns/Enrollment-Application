@@ -11,7 +11,9 @@
         <StackPanel>
             <TextBlock Text="Emergency Contact Information" HorizontalAlignment="Center" Foreground="#2196f3" FontSize="24"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+            <TextBlock Text="Parent/Guardian Information" HorizontalAlignment="Left" Margin="10" Foreground="#2196f3" FontSize="18"/>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
                 <TextBlock Text="Parent/Guardian Name:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
                 <TextBox x:Name="parentOneNameText" Width="150" Margin="10" Text="{Binding parentNameOne, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Relationship:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
@@ -22,15 +24,15 @@
                 <TextBox x:Name="parentOneCellNumText" Width="100" Margin="10" Text="{Binding parentOneCellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
-                <TextBlock Text="Email:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="parentOneEmailText" Width="135" Margin="10" Text="{Binding parentOneEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Street Address:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="parentOneAddressText" Width="150" Margin="10" Text="{Binding parentOneAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Relationship:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="parentOneCityText" Width="100" Margin="10" Text="{Binding parentOneCity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="State:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <ComboBox x:Name="stateCombo" Width="50" Margin="10, 0, 10, 0" Text="{Binding parentOneState, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
+                <TextBlock Text="Email:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="parentOneEmailText" Width="135" Margin="10, 0, 10, 20" Text="{Binding parentOneEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Street Address:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="parentOneAddressText" Width="150" Margin="10, 0, 10, 20" Text="{Binding parentOneAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="City:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="parentOneCityText" Width="100" Margin="10, 0, 10, 20" Text="{Binding parentOneCity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="State:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <ComboBox x:Name="stateCombo" Width="50" Margin="10, 0, 10, 20" Text="{Binding parentOneState, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
 
                     <ComboBoxItem Content="AK"/>
                     <ComboBoxItem Content="AL"/>
@@ -84,31 +86,37 @@
                     <ComboBoxItem Content="WY"/>
 
                 </ComboBox>
-                <TextBlock Text="Zip:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="zipText" Width="80" Margin="10" Text="{Binding parentOneZip, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Zip:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="zipText" Width="80" Margin="10, 0, 10, 20" Text="{Binding parentOneZip, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <StackPanel>
+                    <TextBlock Text="Check if residing with:" Foreground="GhostWhite"/>
+                    <CheckBox x:Name="residesWithP1Check" HorizontalAlignment="Center" Margin="0, 5, 0, 0" IsChecked="{Binding residesWithP1, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
             </StackPanel>
 
+            <TextBlock Text="Optional Parent/Guardian Information" HorizontalAlignment="Left" Margin="10" Foreground="#2196f3" FontSize="18"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
-                <TextBlock Text="Parent/Guardian Name:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="parentTwoNameText" Width="150" Margin="10" Text="{Binding parentNameTwo, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Relationship:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="parentTwoRelationshipText" Width="100" Margin="10" Text="{Binding parentTwoRelationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Primary Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="parentTwoPrimaryNumText" Width="100" Margin="10" Text="{Binding parentTwoPrimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Cell Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="parentTwoCellNumText" Width="100" Margin="10" Text="{Binding parentTwoCellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
+                <TextBlock Text="Parent/Guardian Name:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="parentTwoNameText" Width="150" Margin="10, 0, 10, 20" Text="{Binding parentNameTwo, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Relationship:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="parentTwoRelationshipText" Width="100" Margin="10, 0, 10, 20" Text="{Binding parentTwoRelationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Primary Number:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="parentTwoPrimaryNumText" Width="100" Margin="10, 0, 10, 20" Text="{Binding parentTwoPrimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Cell Number:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="parentTwoCellNumText" Width="100" Margin="10, 0, 10, 20" Text="{Binding parentTwoCellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
-                <TextBlock Text="Email:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="parentTwoEmailText" Width="135" Margin="10" Text="{Binding parentTwoEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Street Address:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="parentTwoAddressText" Width="150" Margin="10" Text="{Binding parentTwoAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Relationship:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="parentTwoCityText" Width="100" Margin="10" Text="{Binding parentTwoCity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="State:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <ComboBox x:Name="stateComboTwo" Width="50" Margin="10, 0, 10, 0" Text="{Binding parentTwoState, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
+                <TextBlock Text="Email:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="parentTwoEmailText" Width="135"  Margin="10, 0, 10, 20" Text="{Binding parentTwoEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Street Address:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="parentTwoAddressText" Width="150"  Margin="10, 0, 10, 20" Text="{Binding parentTwoAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="City:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="parentTwoCityText" Width="100"  Margin="10, 0, 10, 20" Text="{Binding parentTwoCity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="State:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <ComboBox x:Name="stateComboTwo" Width="50"  Margin="10, 0, 10, 20" Text="{Binding parentTwoState, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
 
                     <ComboBoxItem Content="AK"/>
                     <ComboBoxItem Content="AL"/>
@@ -162,11 +170,18 @@
                     <ComboBoxItem Content="WY"/>
 
                 </ComboBox>
-                <TextBlock Text="Zip:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="zipTextTwo" Width="80" Margin="10" Text="{Binding parentTwoZip, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Zip:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
+                <TextBox x:Name="zipTextTwo" Width="80"  Margin="10, 0, 10, 20" Text="{Binding parentTwoZip, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <StackPanel>
+                    <TextBlock Text="Check if residing with:" Foreground="GhostWhite"/>
+                    <CheckBox x:Name="residesWithP2Check" HorizontalAlignment="Center" Margin="0, 5, 0, 0" IsChecked="{Binding residesWithP2, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+            <TextBlock Text="Emergency Contact Information" HorizontalAlignment="Left" Margin="10" Foreground="#2196f3" FontSize="18"/>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
                 <TextBlock Text="Emergency Contact:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
                 <TextBox x:Name="EContactNameText" Width="150" Margin="10" Text="{Binding EContactName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Relationship:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
@@ -174,7 +189,7 @@
                 <TextBlock Text="Primary Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
                 <TextBox x:Name="EContactPrimaryNumText" Width="100" Margin="10" Text="{Binding EContactPrimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Cell Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="EContactCellNumText" Width="100" Margin="10" Text="{Binding EContactWorkNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="EContactCellNumText" Width="100" Margin="10" Text="{Binding EContactCellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </StackPanel>
 

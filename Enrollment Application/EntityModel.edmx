@@ -24,7 +24,7 @@
           <Property Name="hispanicOrLatino" Type="nvarchar" MaxLength="50" />
           <Property Name="race" Type="nvarchar" MaxLength="50" />
           <Property Name="gender" Type="nvarchar" MaxLength="50" />
-          <Property Name="dateOfBirth" Type="datetime" />
+          <Property Name="dateOfBirth" Type="date" />
           <Property Name="filloutDate" Type="datetime" />
           <Property Name="SSNhashAndSalt" Type="nvarchar" MaxLength="50" />
           <Property Name="SSNsalt" Type="nvarchar" MaxLength="50" />
@@ -104,7 +104,7 @@
           <Property Name="hispanicOrLatino" Type="nvarchar" MaxLength="50" />
           <Property Name="race" Type="nvarchar" MaxLength="50" />
           <Property Name="gender" Type="nvarchar" MaxLength="50" />
-          <Property Name="dateOfBirth" Type="datetime" />
+          <Property Name="dateOfBirth" Type="date" />
           <Property Name="currentEdLevel" Type="nvarchar" MaxLength="50" />
           <Property Name="sendingHS" Type="nvarchar" MaxLength="50" />
           <Property Name="filloutDate" Type="datetime" />
@@ -210,7 +210,7 @@
           <Property Name="hispanicOrLatino" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="race" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="filloutDate" Type="DateTime" Precision="3" />
           <Property Name="SSNhashAndSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SSNsalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -290,7 +290,7 @@
           <Property Name="hispanicOrLatino" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="race" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="currentEdLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="sendingHS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="filloutDate" Type="DateTime" Precision="3" />

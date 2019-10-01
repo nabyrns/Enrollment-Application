@@ -15,7 +15,7 @@
             <materialDesign:PackIcon Kind="Close" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
 
-        <Grid Margin="30">
+        <Grid Margin="30" x:Name="textFields">
 
             <StackPanel>
 
@@ -23,7 +23,7 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Email:" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="EmailText" Width="120" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <TextBox x:Name="EmailText" Width="120" VerticalAlignment="Center" Margin="15, 0, 0, 0" Text="{Binding email, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -38,7 +38,7 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Student Type:" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="studentTypeBox" VerticalAlignment="Center" Width="120" Margin="15, 0, 45, 0">
+                    <ComboBox x:Name="studentTypeBox" VerticalAlignment="Center" Width="120" Margin="15, 0, 45, 0" Text="{Binding studentType, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                         <ComboBoxItem Content="High School"/>
                         <ComboBoxItem Content="Adult"/>
                     </ComboBox>

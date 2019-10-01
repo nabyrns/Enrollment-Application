@@ -143,7 +143,7 @@
             </StackPanel>
             <!--#endregion-->
 
-            <TextBlock Text="Information For State/Federal Reporting" FontSize="24" Foreground="#2196f3" Margin="10, 25, 0, 0"/>
+            <TextBlock Text="Information For State/Federal Reporting" FontSize="18" Foreground="#2196f3" Margin="10, 25, 0, 0"/>
 
             <!--#region Information for state/federal reporting-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 15, 0, 0">

@@ -83,6 +83,7 @@
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CommonMethods.cs" />
+    <Compile Include="Text Validation Classes\CreateAccountTextValidation.cs" />
     <Compile Include="EntityModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,12 +102,8 @@
     <Compile Include="HighSchoolBasicInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="HighSchoolECUC.xaml.cs">
+    <Compile Include="User Controls\HighSchoolECUC.xaml.cs">
       <DependentUpon>HighSchoolECUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Text Validation Classes\HighSchoolECUCTextValidation.cs" />
-    <Compile Include="User Controls\HighSchoolBasicInformationUC.xaml.cs">
-      <DependentUpon>HighSchoolBasicInformationUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="HighSchoolEmergencyContact.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
@@ -117,13 +114,17 @@
     <Compile Include="HighSchoolLogin.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Text Validation Classes\HighSchoolECUCTextValidation.cs" />
+    <Compile Include="User Controls\HighSchoolBasicInformationUC.xaml.cs">
+      <DependentUpon>HighSchoolBasicInformationUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Text Validation Classes\HighSchoolBasicInfoTextValidation.cs" />
     <Compile Include="User Controls\AdultECUC.xaml.cs">
       <DependentUpon>AdultECUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Text Validation Classes\AdultECUCTextValidation.cs" />
     <Compile Include="Text Validation Classes\AdultBasicInfoTextValidation.cs" />
-    <Page Include="HighSchoolECUC.xaml">
+    <Page Include="User Controls\HighSchoolECUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

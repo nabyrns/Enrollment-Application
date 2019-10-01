@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace Enrollment_Application
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class LoginPage : Window
     {
         EnrollmentDBEntities _db = new EnrollmentDBEntities();
