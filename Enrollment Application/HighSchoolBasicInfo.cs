@@ -30,5 +30,8 @@ namespace Enrollment_Application
         public string race { get; set; }
         public string gender { get; set; }
         public Nullable<System.DateTime> dateOfBirth { get; set; }
+        public string currentEdLevel { get; set; }
+        public string sendingHS { get; set; }
+        public Nullable<System.DateTime> filloutDate { get; set; }
     }
 }

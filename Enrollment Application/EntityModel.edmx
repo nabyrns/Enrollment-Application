@@ -25,6 +25,12 @@
           <Property Name="race" Type="nvarchar" MaxLength="50" />
           <Property Name="gender" Type="nvarchar" MaxLength="50" />
           <Property Name="dateOfBirth" Type="datetime" />
+          <Property Name="filloutDate" Type="datetime" />
+          <Property Name="SSNhashAndSalt" Type="nvarchar" MaxLength="50" />
+          <Property Name="SSNsalt" Type="nvarchar" MaxLength="50" />
+          <Property Name="completedEdLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="attendedCollegeOrTech" Type="nvarchar" MaxLength="50" />
+          <Property Name="liveWithParent" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="AdultEmergencyContact">
           <Key>
@@ -50,8 +56,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="primaryPhysician" Type="nvarchar" MaxLength="50" />
-          <Property Name="otherPhysician" Type="nvarchar" MaxLength="50" />
+          <Property Name="primaryPhysician" Type="nvarchar(max)" />
+          <Property Name="otherPhysician" Type="nvarchar(max)" />
           <Property Name="pPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
           <Property Name="oPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
           <Property Name="diabeticType" Type="nvarchar" MaxLength="50" />
@@ -99,6 +105,9 @@
           <Property Name="race" Type="nvarchar" MaxLength="50" />
           <Property Name="gender" Type="nvarchar" MaxLength="50" />
           <Property Name="dateOfBirth" Type="datetime" />
+          <Property Name="currentEdLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="sendingHS" Type="nvarchar" MaxLength="50" />
+          <Property Name="filloutDate" Type="datetime" />
         </EntityType>
         <EntityType Name="HighSchoolEmergencyContact">
           <Key>
@@ -202,6 +211,12 @@
           <Property Name="race" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="dateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="filloutDate" Type="DateTime" Precision="3" />
+          <Property Name="SSNhashAndSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SSNsalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="completedEdLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="attendedCollegeOrTech" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="liveWithParent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AdultEmergencyContact">
           <Key>
@@ -227,8 +242,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="primaryPhysician" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="otherPhysician" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="primaryPhysician" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="otherPhysician" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="pPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="oPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="diabeticType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -276,6 +291,9 @@
           <Property Name="race" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="dateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="currentEdLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sendingHS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="filloutDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="HighSchoolEmergencyContact">
           <Key>
@@ -379,6 +397,12 @@
                 <ScalarProperty Name="race" ColumnName="race" />
                 <ScalarProperty Name="gender" ColumnName="gender" />
                 <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="filloutDate" ColumnName="filloutDate" />
+                <ScalarProperty Name="SSNhashAndSalt" ColumnName="SSNhashAndSalt" />
+                <ScalarProperty Name="SSNsalt" ColumnName="SSNsalt" />
+                <ScalarProperty Name="completedEdLevel" ColumnName="completedEdLevel" />
+                <ScalarProperty Name="attendedCollegeOrTech" ColumnName="attendedCollegeOrTech" />
+                <ScalarProperty Name="liveWithParent" ColumnName="liveWithParent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -457,6 +481,9 @@
                 <ScalarProperty Name="race" ColumnName="race" />
                 <ScalarProperty Name="gender" ColumnName="gender" />
                 <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="currentEdLevel" ColumnName="currentEdLevel" />
+                <ScalarProperty Name="sendingHS" ColumnName="sendingHS" />
+                <ScalarProperty Name="filloutDate" ColumnName="filloutDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

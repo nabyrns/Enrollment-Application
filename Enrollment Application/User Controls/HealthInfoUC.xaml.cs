@@ -167,6 +167,16 @@ namespace Enrollment_Application
 
                 Information_Page.hiuc.Visibility = Visibility.Hidden;
 
+                if (LoginPage.adultCheck != null)
+                {
+                    Information_Page.aecuc.Visibility = Visibility.Visible;
+                }
+
+                else
+                {
+                    Information_Page.hsecuc.Visibility = Visibility.Visible;
+                }
+
                 Information_Page.selectedIndex = 2;
 
                 Information_Page.lv.SelectedIndex = 2;
@@ -185,7 +195,10 @@ namespace Enrollment_Application
 
             Information_Page.lv.SelectedIndex = 0;
 
-            Information_Page.buc.Visibility = Visibility.Visible;
+            if (LoginPage.adultCheck != null)
+            {
+                Information_Page.abiuc.Visibility = Visibility.Visible;
+            }
         }
         #endregion
     }
