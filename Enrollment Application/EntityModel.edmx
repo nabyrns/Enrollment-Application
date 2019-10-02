@@ -31,6 +31,7 @@
           <Property Name="completedEdLevel" Type="nvarchar" MaxLength="50" />
           <Property Name="attendedCollegeOrTech" Type="nvarchar" MaxLength="50" />
           <Property Name="liveWithParent" Type="nvarchar" MaxLength="50" />
+          <Property Name="signature" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="AdultEmergencyContact">
           <Key>
@@ -217,6 +218,7 @@
           <Property Name="completedEdLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="attendedCollegeOrTech" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="liveWithParent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="AdultEmergencyContact">
           <Key>
@@ -403,6 +405,7 @@
                 <ScalarProperty Name="completedEdLevel" ColumnName="completedEdLevel" />
                 <ScalarProperty Name="attendedCollegeOrTech" ColumnName="attendedCollegeOrTech" />
                 <ScalarProperty Name="liveWithParent" ColumnName="liveWithParent" />
+                <ScalarProperty Name="signature" ColumnName="signature" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -74,7 +74,9 @@ namespace Enrollment_Application
                 // otherwise an error message is displayed
                 else
                 {
-                    MessageBox.Show("Incorrect password.");
+                    ErrorMessage error = new ErrorMessage("Incorrect password.");
+
+                    error.ShowDialog();
                 }
             }
 
@@ -99,7 +101,9 @@ namespace Enrollment_Application
                 // otherwise, error message displays
                 else
                 {
-                    MessageBox.Show("Incorrect password.");
+                    ErrorMessage error = new ErrorMessage("Incorrect password.");
+
+                    error.ShowDialog();
                 }
             }
 
@@ -107,7 +111,9 @@ namespace Enrollment_Application
             else
             {
 
-                MessageBox.Show("No account exists with that email.");
+                ErrorMessage error = new ErrorMessage("No account exists with that email.");
+
+                error.ShowDialog();
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -25,33 +26,41 @@ namespace Enrollment_Application
         public CreateAccountPage()
         {
             InitializeComponent();
-
-            textFields.DataContext = validCheck;
         }
 
         #region Code executes when CreateAccBtn is clicked
         private void CreateAccBtn_Click(object sender, RoutedEventArgs e)
         {
+            textFields.DataContext = validCheck;
+
             string passPattern = @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$";
 
             Regex reg = new Regex(passPattern);
 
             if (string.IsNullOrWhiteSpace(PasswordText.Password))
             {
-                MessageBox.Show("Password field must not be empty.");
+                ErrorMessage error = new ErrorMessage("Password field must not be empty.");
+
+                error.ShowDialog();
+
                 return;
             }
 
             else if (!reg.IsMatch(PasswordText.Password))
             {
-                MessageBox.Show("Must be at least 8 characters, with: letter, number, special character.");
+                ErrorMessage error = new ErrorMessage("Password must have at least one of each: letter, number, and special character");
+
+                error.ShowDialog();
+
                 return;
             }
 
             // compares the passwords and displays error message if they do not match
             if (PasswordText.Password != ConfirmPasswordText.Password)
             {
-                MessageBox.Show("Passwords do not match.");
+                ErrorMessage error = new ErrorMessage("Passwords do not match.");
+
+                error.ShowDialog();
 
                 return;
             }
@@ -131,5 +140,10 @@ namespace Enrollment_Application
             this.Close();
         }
         #endregion
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

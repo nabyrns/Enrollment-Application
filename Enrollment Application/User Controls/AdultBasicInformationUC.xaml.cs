@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -27,6 +28,8 @@ namespace Enrollment_Application
 
         AdultBasicInfo abi;
 
+        byte[] sig;
+
         #region Constructor --- initializes variables and assigns datacontext for textfields in this UC
         public AdultBasicInformationUC()
         {
@@ -35,12 +38,37 @@ namespace Enrollment_Application
             abi = (from m in _db.AdultBasicInfoes where m.Id == LoginPage.adultCheck.Id select m).FirstOrDefault();
 
             textFields.DataContext = abi;
+
+            if (abi.signature != null)
+            {
+                using (MemoryStream ms = new MemoryStream(abi.signature))
+                {
+                    signatureCanvas.Strokes = new System.Windows.Ink.StrokeCollection(ms);
+                    ms.Close();
+                }
+            }
         }
         #endregion
 
         #region Code executes when NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (signatureCanvas.Strokes.Count == 0)
+            {
+                ErrorMessage error = new ErrorMessage("Signature field was not filled in.");
+
+                error.ShowDialog();
+
+                return;
+            }
+
+            byte[] signature;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                signatureCanvas.Strokes.Save(ms);
+                signature = ms.ToArray();
+            }
+
             String salt = CommonMethods.CreateSalt(20);
             byte[] hashedSSN = CommonMethods.GenerateSaltedHash(Encoding.UTF8.GetBytes(SSNtext.Text), Encoding.UTF8.GetBytes(salt));
 
@@ -65,6 +93,7 @@ namespace Enrollment_Application
             abi.completedEdLevel = educationLevelCombo.Text;
             abi.attendedCollegeOrTech = attendedCollegeCombo.Text;
             abi.liveWithParent = liveWithParentCombo.Text;
+            abi.signature = signature;
 
 
             // initialize or update validCheck to contain the newly updated values in the UC being used
@@ -88,7 +117,8 @@ namespace Enrollment_Application
                 _completedEdLevel = abi.completedEdLevel,
                 _attendedCollegeOrTech = abi.attendedCollegeOrTech,
                 _liveWithParent = abi.liveWithParent,
-                _SSN = SSNtext.Text
+                _SSN = SSNtext.Text,
+                _signature = abi.signature
             };
 
             // update the datacontext to be validCheck if it was not already
@@ -101,6 +131,7 @@ namespace Enrollment_Application
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
             if (validCheck.IsValid)
             {
+
                 _db.SaveChanges();
 
 
