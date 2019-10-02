@@ -82,6 +82,9 @@
     <Compile Include="AdultLogin.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AdultPolicy.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CommonMethods.cs" />
     <Compile Include="EntityModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -104,10 +107,6 @@
     <Compile Include="HighSchoolECUC.xaml.cs">
       <DependentUpon>HighSchoolECUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Text Validation Classes\HighSchoolECUCTextValidation.cs" />
-    <Compile Include="User Controls\HighSchoolBasicInformationUC.xaml.cs">
-      <DependentUpon>HighSchoolBasicInformationUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HighSchoolEmergencyContact.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -116,6 +115,14 @@
     </Compile>
     <Compile Include="HighSchoolLogin.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HighSchoolPolicy.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Text Validation Classes\HighSchoolECUCTextValidation.cs" />
+    <Compile Include="Text Validation Classes\HighSchoolPolicyTextValidation.cs" />
+    <Compile Include="User Controls\HighSchoolBasicInformationUC.xaml.cs">
+      <DependentUpon>HighSchoolBasicInformationUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Text Validation Classes\HighSchoolBasicInfoTextValidation.cs" />
     <Compile Include="User Controls\AdultECUC.xaml.cs">
@@ -136,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User Controls\AdultBasicInformationUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\HighSchoolStudentPolicy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,6 +172,9 @@
     </Compile>
     <Compile Include="User Controls\AdultBasicInformationUC.xaml.cs">
       <DependentUpon>AdultBasicInformationUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\HighSchoolStudentPolicy.xaml.cs">
+      <DependentUpon>HighSchoolStudentPolicy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\CreateAccountPage.xaml.cs">
       <DependentUpon>CreateAccountPage.xaml</DependentUpon>

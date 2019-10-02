@@ -36,5 +36,6 @@ namespace Enrollment_Application
         public string completedEdLevel { get; set; }
         public string attendedCollegeOrTech { get; set; }
         public string liveWithParent { get; set; }
+        public byte[] signature { get; set; }
     }
 }

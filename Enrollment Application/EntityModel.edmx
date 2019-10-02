@@ -24,13 +24,14 @@
           <Property Name="hispanicOrLatino" Type="nvarchar" MaxLength="50" />
           <Property Name="race" Type="nvarchar" MaxLength="50" />
           <Property Name="gender" Type="nvarchar" MaxLength="50" />
-          <Property Name="dateOfBirth" Type="datetime" />
+          <Property Name="dateOfBirth" Type="date" />
           <Property Name="filloutDate" Type="datetime" />
           <Property Name="SSNhashAndSalt" Type="nvarchar" MaxLength="50" />
           <Property Name="SSNsalt" Type="nvarchar" MaxLength="50" />
           <Property Name="completedEdLevel" Type="nvarchar" MaxLength="50" />
           <Property Name="attendedCollegeOrTech" Type="nvarchar" MaxLength="50" />
           <Property Name="liveWithParent" Type="nvarchar" MaxLength="50" />
+          <Property Name="signature" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="AdultEmergencyContact">
           <Key>
@@ -85,6 +86,21 @@
           <Property Name="passwordSalt" Type="nvarchar" MaxLength="50" />
           <Property Name="dateCreated" Type="datetime" />
         </EntityType>
+        <EntityType Name="AdultPolicy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="attendance" Type="nvarchar" MaxLength="50" />
+          <Property Name="tobacco" Type="nvarchar" MaxLength="50" />
+          <Property Name="internetAccess" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentInsurance" Type="nvarchar" MaxLength="50" />
+          <Property Name="fieldTrips" Type="nvarchar" MaxLength="50" />
+          <Property Name="drugTesting" Type="nvarchar" MaxLength="50" />
+          <Property Name="noticeOfDisclosures" Type="nvarchar" MaxLength="50" />
+          <Property Name="cellPhoneContact" Type="nvarchar" MaxLength="50" />
+          <Property Name="releaseForPhotography" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="HighSchoolBasicInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -104,7 +120,7 @@
           <Property Name="hispanicOrLatino" Type="nvarchar" MaxLength="50" />
           <Property Name="race" Type="nvarchar" MaxLength="50" />
           <Property Name="gender" Type="nvarchar" MaxLength="50" />
-          <Property Name="dateOfBirth" Type="datetime" />
+          <Property Name="dateOfBirth" Type="date" />
           <Property Name="currentEdLevel" Type="nvarchar" MaxLength="50" />
           <Property Name="sendingHS" Type="nvarchar" MaxLength="50" />
           <Property Name="filloutDate" Type="datetime" />
@@ -176,15 +192,32 @@
           <Property Name="passwordSalt" Type="nvarchar" MaxLength="50" />
           <Property Name="dateCreated" Type="datetime" />
         </EntityType>
+        <EntityType Name="HighSchoolPolicy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="attendance" Type="nvarchar" MaxLength="50" />
+          <Property Name="tobacco" Type="nvarchar" MaxLength="50" />
+          <Property Name="internetAccess" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentInsurance" Type="nvarchar" MaxLength="50" />
+          <Property Name="fieldTrips" Type="nvarchar" MaxLength="50" />
+          <Property Name="drugTesting" Type="nvarchar" MaxLength="50" />
+          <Property Name="noticeOfDisclosures" Type="nvarchar" MaxLength="50" />
+          <Property Name="cellPhoneContact" Type="nvarchar" MaxLength="50" />
+          <Property Name="releaseForPhotography" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityContainer Name="EnrollmentDBModelStoreContainer">
           <EntitySet Name="AdultBasicInfo" EntityType="Self.AdultBasicInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdultEmergencyContact" EntityType="Self.AdultEmergencyContact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdultHealthInfo" EntityType="Self.AdultHealthInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdultLogins" EntityType="Self.AdultLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdultPolicy" EntityType="Self.AdultPolicy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HighSchoolBasicInfo" EntityType="Self.HighSchoolBasicInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HighSchoolEmergencyContact" EntityType="Self.HighSchoolEmergencyContact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HighSchoolHealthInfo" EntityType="Self.HighSchoolHealthInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HighSchoolLogins" EntityType="Self.HighSchoolLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolPolicy" EntityType="Self.HighSchoolPolicy" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -210,13 +243,14 @@
           <Property Name="hispanicOrLatino" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="race" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="filloutDate" Type="DateTime" Precision="3" />
           <Property Name="SSNhashAndSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SSNsalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="completedEdLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="attendedCollegeOrTech" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="liveWithParent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="AdultEmergencyContact">
           <Key>
@@ -271,6 +305,21 @@
           <Property Name="passwordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="dateCreated" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="AdultPolicy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="attendance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tobacco" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="internetAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentInsurance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fieldTrips" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="drugTesting" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noticeOfDisclosures" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cellPhoneContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="releaseForPhotography" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="HighSchoolBasicInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -290,7 +339,7 @@
           <Property Name="hispanicOrLatino" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="race" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="currentEdLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="sendingHS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="filloutDate" Type="DateTime" Precision="3" />
@@ -362,15 +411,32 @@
           <Property Name="passwordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="dateCreated" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="HighSchoolPolicy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="attendance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tobacco" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="internetAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentInsurance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fieldTrips" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="drugTesting" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noticeOfDisclosures" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cellPhoneContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="releaseForPhotography" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityContainer Name="EnrollmentDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdultBasicInfoes" EntityType="Self.AdultBasicInfo" />
           <EntitySet Name="AdultEmergencyContacts" EntityType="Self.AdultEmergencyContact" />
           <EntitySet Name="AdultHealthInfoes" EntityType="Self.AdultHealthInfo" />
           <EntitySet Name="AdultLogins" EntityType="Self.AdultLogin" />
+          <EntitySet Name="AdultPolicies" EntityType="Self.AdultPolicy" />
           <EntitySet Name="HighSchoolBasicInfoes" EntityType="Self.HighSchoolBasicInfo" />
           <EntitySet Name="HighSchoolEmergencyContacts" EntityType="Self.HighSchoolEmergencyContact" />
           <EntitySet Name="HighSchoolHealthInfoes" EntityType="Self.HighSchoolHealthInfo" />
           <EntitySet Name="HighSchoolLogins" EntityType="Self.HighSchoolLogin" />
+          <EntitySet Name="HighSchoolPolicies" EntityType="Self.HighSchoolPolicy" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -403,6 +469,7 @@
                 <ScalarProperty Name="completedEdLevel" ColumnName="completedEdLevel" />
                 <ScalarProperty Name="attendedCollegeOrTech" ColumnName="attendedCollegeOrTech" />
                 <ScalarProperty Name="liveWithParent" ColumnName="liveWithParent" />
+                <ScalarProperty Name="signature" ColumnName="signature" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -459,6 +526,22 @@
                 <ScalarProperty Name="passwordHash" ColumnName="passwordHash" />
                 <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
                 <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdultPolicies">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.AdultPolicy">
+              <MappingFragment StoreEntitySet="AdultPolicy">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="attendance" ColumnName="attendance" />
+                <ScalarProperty Name="tobacco" ColumnName="tobacco" />
+                <ScalarProperty Name="internetAccess" ColumnName="internetAccess" />
+                <ScalarProperty Name="studentInsurance" ColumnName="studentInsurance" />
+                <ScalarProperty Name="fieldTrips" ColumnName="fieldTrips" />
+                <ScalarProperty Name="drugTesting" ColumnName="drugTesting" />
+                <ScalarProperty Name="noticeOfDisclosures" ColumnName="noticeOfDisclosures" />
+                <ScalarProperty Name="cellPhoneContact" ColumnName="cellPhoneContact" />
+                <ScalarProperty Name="releaseForPhotography" ColumnName="releaseForPhotography" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -554,6 +637,22 @@
                 <ScalarProperty Name="passwordHash" ColumnName="passwordHash" />
                 <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
                 <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HighSchoolPolicies">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.HighSchoolPolicy">
+              <MappingFragment StoreEntitySet="HighSchoolPolicy">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="attendance" ColumnName="attendance" />
+                <ScalarProperty Name="tobacco" ColumnName="tobacco" />
+                <ScalarProperty Name="internetAccess" ColumnName="internetAccess" />
+                <ScalarProperty Name="studentInsurance" ColumnName="studentInsurance" />
+                <ScalarProperty Name="fieldTrips" ColumnName="fieldTrips" />
+                <ScalarProperty Name="drugTesting" ColumnName="drugTesting" />
+                <ScalarProperty Name="noticeOfDisclosures" ColumnName="noticeOfDisclosures" />
+                <ScalarProperty Name="cellPhoneContact" ColumnName="cellPhoneContact" />
+                <ScalarProperty Name="releaseForPhotography" ColumnName="releaseForPhotography" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
