@@ -18,10 +18,12 @@ namespace Enrollment_Application
         public bool _noticeOfDisclosures;
         public bool _cellPhoneContact;
         public bool _releaseForPhotography;
+        public int _studentSignatureStrokes;
+        public int _parentSignatureStrokes;
 
         // string array that holds the values of all the variables declared above
         // they do not have underscores because it is technically a different variable whose value is given by the declared variables above
-        private static readonly string[] ValidatedProperties = { "attendance", "tobacco", "internetAccess", "studentInsurance", "fieldTrips", "drugTesting", "noticeOfDisclosures" };
+        private static readonly string[] ValidatedProperties = { "attendance", "tobacco", "internetAccess", "studentInsurance", "fieldTrips", "drugTesting", "noticeOfDisclosures", "studentSignatureStrokes", "parentSignatureStrokes" };
 
         string IDataErrorInfo.Error { get { return null; } }
 
@@ -43,6 +45,33 @@ namespace Enrollment_Application
 
 
         #region These variables all get their values from the variables that were declared above and that are initialized at creation
+
+        public int studentSignatureStrokes
+        {
+            get
+            {
+                return _studentSignatureStrokes;
+            }
+
+            set
+            {
+                _studentSignatureStrokes = value;
+            }
+        }
+
+        public int parentSignatureStrokes
+        {
+            get
+            {
+                return _parentSignatureStrokes;
+            }
+
+            set
+            {
+                _parentSignatureStrokes = value;
+            }
+        }
+
         public bool attendance
         {
             get
@@ -228,6 +257,22 @@ namespace Enrollment_Application
                     if (!noticeOfDisclosures)
                     {
                         result = "Box must be checked";
+                    }
+
+                    break;
+
+                case "studentSignatureStrokes":
+                    if (studentSignatureStrokes == 0)
+                    {
+                        result = "Test";
+                    }
+
+                    break;
+
+                case "parentSignatureStrokes":
+                    if (parentSignatureStrokes == 0)
+                    {
+                        result = "Test";
                     }
 
                     break;

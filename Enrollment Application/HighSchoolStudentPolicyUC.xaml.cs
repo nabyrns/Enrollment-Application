@@ -76,14 +76,15 @@ namespace Enrollment_Application
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (signatureCanvas.Strokes.Count == 0 || parentSignatureCanvas.Strokes.Count == 0)
+            #region Checks the signature fields, if they are not empty they are saved as byte arrays
+           /* if (signatureCanvas.Strokes.Count == 0 || parentSignatureCanvas.Strokes.Count == 0)
             {
                 ErrorMessage error = new ErrorMessage("Signature field was not filled in.");
 
                 error.ShowDialog();
 
                 return;
-            }
+            }*/
 
             byte[] signature;
             using (MemoryStream ms = new MemoryStream())
@@ -98,8 +99,9 @@ namespace Enrollment_Application
                 parentSignatureCanvas.Strokes.Save(ms);
                 parentSignature = ms.ToArray();
             }
+            #endregion
 
-            // update aec information to contain what is in the text fields
+            // update hsp information to contain what is in the text fields
             hsp.attendance = attendanceCheck.IsChecked.ToString();
             hsp.tobacco = tobaccoCheck.IsChecked.ToString();
             hsp.internetAccess = internetCheck.IsChecked.ToString();
@@ -114,7 +116,7 @@ namespace Enrollment_Application
 
 
             // initialize or update the validCheck variable, which is a text validation variable
-            // the connection between the AdultEmergencyContact variable and the validCheck variable is what allows for updating in the database
+            // the connection between the hsp variable and the validCheck variable is what allows for updating in the database
             validCheck = new HighSchoolPolicyTextValidation()
             {
                 _attendance = bool.Parse(hsp.attendance),
@@ -125,7 +127,9 @@ namespace Enrollment_Application
                 _drugTesting = bool.Parse(hsp.drugTesting),
                 _noticeOfDisclosures = bool.Parse(hsp.noticeOfDisclosures),
                 _cellPhoneContact = bool.Parse(hsp.cellPhoneContact),
-                _releaseForPhotography = bool.Parse(hsp.releaseForPhotography)
+                _releaseForPhotography = bool.Parse(hsp.releaseForPhotography),
+                _studentSignatureStrokes = signatureCanvas.Strokes.Count,
+                _parentSignatureStrokes = parentSignatureCanvas.Strokes.Count
             };
 
             // update the datacontext to be validCheck if it was not already
