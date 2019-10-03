@@ -37,7 +37,6 @@ namespace Enrollment_Application
         public string _attendedCollegeOrTech;
         public string _liveWithParent;
         public string _SSN;
-        public byte[] _signature;
         #endregion
 
         // string array that holds the values of all the variables declared above

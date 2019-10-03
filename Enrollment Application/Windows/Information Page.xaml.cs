@@ -28,6 +28,8 @@ namespace Enrollment_Application
 
         public static HighSchoolECUC hsecuc;
 
+        public static HighSchoolStudentPolicyUC hsspuc;
+
         // this variable will prevent clicking the listview to change which part of the form is displayed
         // the forms may be navigated only using buttons in the user control
         public static int selectedIndex = 0;
@@ -71,9 +73,13 @@ namespace Enrollment_Application
             hsecuc = new HighSchoolECUC();
             hsecuc.Visibility = Visibility.Hidden;
 
+            hsspuc = new HighSchoolStudentPolicyUC();
+            hsspuc.Visibility = Visibility.Hidden;
+
             UserControlGrid.Children.Add(hsbiuc);
             UserControlGrid.Children.Add(hiuc);
             UserControlGrid.Children.Add(hsecuc);
+            UserControlGrid.Children.Add(hsspuc);
 
             lv = ListViewMenu;
 

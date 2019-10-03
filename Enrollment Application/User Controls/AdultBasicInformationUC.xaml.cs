@@ -28,8 +28,6 @@ namespace Enrollment_Application
 
         AdultBasicInfo abi;
 
-        byte[] sig;
-
         #region Constructor --- initializes variables and assigns datacontext for textfields in this UC
         public AdultBasicInformationUC()
         {
@@ -117,8 +115,7 @@ namespace Enrollment_Application
                 _completedEdLevel = abi.completedEdLevel,
                 _attendedCollegeOrTech = abi.attendedCollegeOrTech,
                 _liveWithParent = abi.liveWithParent,
-                _SSN = SSNtext.Text,
-                _signature = abi.signature
+                _SSN = SSNtext.Text
             };
 
             // update the datacontext to be validCheck if it was not already

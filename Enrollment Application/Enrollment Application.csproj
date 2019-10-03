@@ -82,6 +82,9 @@
     <Compile Include="AdultLogin.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AdultPolicy.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CommonMethods.cs" />
     <Compile Include="EntityModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -113,6 +116,13 @@
     <Compile Include="HighSchoolLogin.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="HighSchoolPolicy.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HighSchoolPolicyTextValidation.cs" />
+    <Compile Include="HighSchoolStudentPolicyUC.xaml.cs">
+      <DependentUpon>HighSchoolStudentPolicyUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Text Validation Classes\CreateAccountTextValidation.cs" />
     <Compile Include="User Controls\HighSchoolECUC.xaml.cs">
       <DependentUpon>HighSchoolECUC.xaml</DependentUpon>
@@ -128,6 +138,10 @@
     <Compile Include="Text Validation Classes\AdultECUCTextValidation.cs" />
     <Compile Include="Text Validation Classes\AdultBasicInfoTextValidation.cs" />
     <Page Include="ErrorMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HighSchoolStudentPolicyUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

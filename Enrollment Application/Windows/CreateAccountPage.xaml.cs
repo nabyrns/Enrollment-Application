@@ -119,9 +119,12 @@ namespace Enrollment_Application
 
                     HighSchoolHealthInfo HInew = new HighSchoolHealthInfo();
 
+                    HighSchoolPolicy HSPnew = new HighSchoolPolicy();
+
                     _db.HighSchoolBasicInfoes.Add(newBI);
                     _db.HighSchoolEmergencyContacts.Add(ECnew);
                     _db.HighSchoolHealthInfoes.Add(HInew);
+                    _db.HighSchoolPolicies.Add(HSPnew);
 
                     _db.HighSchoolLogins.Add(newLogin);
                     _db.SaveChanges();

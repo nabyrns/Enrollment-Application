@@ -127,6 +127,8 @@ namespace Enrollment_Application
 
                 Information_Page.hsecuc.Visibility = Visibility.Hidden;
 
+                Information_Page.hsspuc.Visibility = Visibility.Visible;
+
                 Information_Page.selectedIndex = 3;
 
                 Information_Page.lv.SelectedIndex = 3;
