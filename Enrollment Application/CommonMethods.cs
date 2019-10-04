@@ -10,6 +10,8 @@ namespace Enrollment_Application
 {
     public class CommonMethods
     {
+        static EnrollmentDBEntities _db = new EnrollmentDBEntities();
+
         public static bool IsPhoneNumber(string phoneNumber)
         {
             string PhonePattern = @"^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$";
@@ -19,6 +21,22 @@ namespace Enrollment_Application
             if (!reg.IsMatch(phoneNumber))
             {
 
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool IsEmail(string email)
+        {
+            string pattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                                      + "@"
+                                      + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
+
+            Regex r = new Regex(pattern);
+
+            if (!r.IsMatch(email))
+            {
                 return false;
             }
 

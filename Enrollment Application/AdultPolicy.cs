@@ -14,7 +14,7 @@ namespace Enrollment_Application
     
     public partial class AdultPolicy
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string attendance { get; set; }
         public string tobacco { get; set; }
         public string internetAccess { get; set; }
@@ -24,5 +24,6 @@ namespace Enrollment_Application
         public string noticeOfDisclosures { get; set; }
         public string cellPhoneContact { get; set; }
         public string releaseForPhotography { get; set; }
+        public byte[] studentSignature { get; set; }
     }
 }

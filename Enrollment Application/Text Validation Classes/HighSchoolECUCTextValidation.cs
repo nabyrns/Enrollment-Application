@@ -32,8 +32,8 @@ namespace Enrollment_Application
         public string _eContactRelationship;
         public string _eContactPrimaryNum;
         public string _eContactCellNum;
-        public string _residesWithP1;
-        public string _residesWithP2;
+        public bool _residesWithP1;
+        public bool _residesWithP2;
 
         // string array that holds the values of all the variables declared above
         // they do not have underscores because it is technically a different variable whose value is given by the declared variables above
@@ -348,7 +348,7 @@ namespace Enrollment_Application
             }
         }
 
-        public string residesWithP1
+        public bool residesWithP1
         {
             get
             {
@@ -361,7 +361,7 @@ namespace Enrollment_Application
             }
         }
 
-        public string residesWithP2
+        public bool residesWithP2
         {
             get
             {
@@ -607,6 +607,32 @@ namespace Enrollment_Application
                     {
 
                         result = "Invalid phone number.";
+                    }
+
+                    break;
+
+                    case "parentOneEmail":
+
+                     if (string.IsNullOrWhiteSpace(parentOneEmail))
+                     {
+                        result = "Field must not be empty.";
+                     }
+
+                    else if (!CommonMethods.IsEmail(parentOneEmail))
+                    {
+                        result = "Invalid email address.";
+                    }
+
+                    break;
+
+                case "parentTwoEmail":
+
+                    if (!string.IsNullOrWhiteSpace(parentTwoEmail))
+                    {
+                        if (!CommonMethods.IsEmail(parentTwoEmail))
+                        {
+                            result = "Invalid email address.";
+                        }
                     }
 
                     break;

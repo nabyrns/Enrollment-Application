@@ -85,6 +85,9 @@
     <Compile Include="AdultPolicy.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="User Controls\AdultStudentPolicyUC.xaml.cs">
+      <DependentUpon>AdultStudentPolicyUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CommonMethods.cs" />
     <Compile Include="EntityModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -101,11 +104,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ErrorMessage.xaml.cs">
+      <DependentUpon>ErrorMessage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HighSchoolBasicInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolECUC.xaml.cs">
-      <DependentUpon>HighSchoolECUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="HighSchoolEmergencyContact.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
@@ -119,8 +122,15 @@
     <Compile Include="HighSchoolPolicy.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Text Validation Classes\PolicyTextValidation.cs" />
+    <Compile Include="User Controls\HighSchoolStudentPolicyUC.xaml.cs">
+      <DependentUpon>HighSchoolStudentPolicyUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Text Validation Classes\CreateAccountTextValidation.cs" />
+    <Compile Include="User Controls\HighSchoolECUC.xaml.cs">
+      <DependentUpon>HighSchoolECUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Text Validation Classes\HighSchoolECUCTextValidation.cs" />
-    <Compile Include="Text Validation Classes\HighSchoolPolicyTextValidation.cs" />
     <Compile Include="User Controls\HighSchoolBasicInformationUC.xaml.cs">
       <DependentUpon>HighSchoolBasicInformationUC.xaml</DependentUpon>
     </Compile>
@@ -130,7 +140,19 @@
     </Compile>
     <Compile Include="Text Validation Classes\AdultECUCTextValidation.cs" />
     <Compile Include="Text Validation Classes\AdultBasicInfoTextValidation.cs" />
-    <Page Include="HighSchoolECUC.xaml">
+    <Page Include="User Controls\AdultStudentPolicyUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ErrorMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\HighSchoolStudentPolicyUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\HighSchoolECUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,10 +165,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User Controls\AdultBasicInformationUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User Controls\HighSchoolStudentPolicy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,9 +190,6 @@
     </Compile>
     <Compile Include="User Controls\AdultBasicInformationUC.xaml.cs">
       <DependentUpon>AdultBasicInformationUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\HighSchoolStudentPolicy.xaml.cs">
-      <DependentUpon>HighSchoolStudentPolicy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\CreateAccountPage.xaml.cs">
       <DependentUpon>CreateAccountPage.xaml</DependentUpon>

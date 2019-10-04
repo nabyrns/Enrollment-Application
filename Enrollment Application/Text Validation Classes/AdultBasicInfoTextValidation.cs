@@ -41,7 +41,7 @@ namespace Enrollment_Application
 
         // string array that holds the values of all the variables declared above
         // they do not have underscores because it is technically a different variable whose value is given by the declared variables above
-        private static readonly string[] ValidatedProperties = { "completedEdLevel", "attendedCollegeOrTech", "liveWithParent", "lastName", "firstName", "middleInitial", "program", "streetAddress", "city", "state", "zipCode", "primaryPhoneNum", "cellPhoneNum", "hispanicOrLatino", "race", "gender", "dateOfBirth" };
+        private static readonly string[] ValidatedProperties = { "completedEdLevel", "attendedCollegeOrTech", "liveWithParent", "lastName", "firstName", "middleInitial", "program", "streetAddress", "city", "state", "zipCode", "primaryPhoneNum", "cellPhoneNum", "hispanicOrLatino", "race", "gender", "dateOfBirth", "SSN" };
 
         #region Property Changed stuff
         // property changed event handler
@@ -382,6 +382,11 @@ namespace Enrollment_Application
                     break;
 
                 case "middleInitial":
+
+                    if (string.IsNullOrWhiteSpace(middleInitial))
+                    {
+                        break;
+                    }
 
                     if (middleInitial.Length > 5)
                     {

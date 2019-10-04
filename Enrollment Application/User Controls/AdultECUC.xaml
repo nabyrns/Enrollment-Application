@@ -12,43 +12,45 @@
         <StackPanel>
             <TextBlock Text="Emergency Contact Information" HorizontalAlignment="Center" Foreground="#2196f3" FontSize="24"/>
 
+            <TextBlock Text="Emergency Contact" HorizontalAlignment="Left" Margin="10" Foreground="#2196f3" FontSize="18"/>
+            
             <!--#region Emergency Contact name field-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 50, 10, 10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 10">
                 <TextBlock Text="Contact Name:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="EmergencyContactNameText" Width="225" Margin="10" Text="{Binding contactName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="EmergencyContactNameText" Width="225" Margin="10" Text="{Binding contactName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <!--#endregion-->
 
             <!--#region Emergency contact information fields-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
                 <TextBlock Text="Relationship:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="ECRelationshipText" Width="150" Margin="10" Text="{Binding relationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="ECRelationshipText" Width="150" Margin="10" Text="{Binding relationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Primary Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="ECPrimaryNumText" Width="150" Margin="10" Text="{Binding primaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="ECPrimaryNumText" Width="150" Margin="10" Text="{Binding primaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Alternate Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="altNumberText" Width="150" Margin="10" Text="{Binding alternateNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="altNumberText" Width="150" Margin="10" Text="{Binding alternateNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <!--#endregion-->
 
-            <TextBlock Text="Nearest Relative" HorizontalAlignment="Left" Margin="10, 80, 0, 0" Foreground="#2196f3" FontSize="24"/>
+            <TextBlock Text="Nearest Relative" HorizontalAlignment="Left" Margin="10, 40, 0, 0" Foreground="#2196f3" FontSize="18"/>
 
             <!--#region Nearest relative name and relationsip fields-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
                 <TextBlock Text="Name of nearest relative:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="NearestRelativeNameText" Width="225" Margin="10" Text="{Binding nameNearestRelative, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="NearestRelativeNameText" Width="225" Margin="10" Text="{Binding nameNearestRelative, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Relationship:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="NRRelationshipText" Width="150" Margin="10" Text="{Binding NRrelationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="NRRelationshipText" Width="150" Margin="10" Text="{Binding NRrelationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <!--#endregion-->
 
             <!--#region Nearest relative address information-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
                 <TextBlock Text="Street Address:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="NRAddressText" Width="150" Margin="10" Text="{Binding NRstreetAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="NRAddressText" Width="150" Margin="10" Text="{Binding NRstreetAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="City:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="NRcityText" Width="150" Margin="10" Text="{Binding NRcity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="NRcityText" Width="150" Margin="10" Text="{Binding NRcity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="State:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <ComboBox x:Name="stateCombo" Width="50" Margin="10, 0, 10, 0" Text="{Binding NRstate, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="stateCombo" Width="50" Margin="10, 0, 10, 0" Text="{Binding NRstate, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
 
                     <ComboBoxItem Content="AK"/>
                     <ComboBoxItem Content="AL"/>
@@ -103,18 +105,18 @@
 
                 </ComboBox>
                 <TextBlock Text="Zip:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="zipText" Width="150" Margin="10" Text="{Binding NRzip, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="zipText" Width="150" Margin="10" Text="{Binding NRzip, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <!--#endregion-->
 
             <!--#region Nearest relative contact information-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
                 <TextBlock Text="Primary Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="NRPrimaryNumText" Width="150" Margin="10" Text="{Binding NRprimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="NRPrimaryNumText" Width="150" Margin="10" Text="{Binding NRprimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Work Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="workNumberText" Width="150" Margin="10" Text="{Binding NRworkNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="workNumberText" Width="150" Margin="10" Text="{Binding NRworkNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Cell Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="cellNumberText" Width="150" Margin="10" Text="{Binding NRcellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="cellNumberText" Width="150" Margin="10" Text="{Binding NRcellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <!--#endregion-->
         </StackPanel>

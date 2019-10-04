@@ -88,9 +88,9 @@
         </EntityType>
         <EntityType Name="AdultPolicy">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="attendance" Type="nvarchar" MaxLength="50" />
           <Property Name="tobacco" Type="nvarchar" MaxLength="50" />
           <Property Name="internetAccess" Type="nvarchar" MaxLength="50" />
@@ -100,6 +100,7 @@
           <Property Name="noticeOfDisclosures" Type="nvarchar" MaxLength="50" />
           <Property Name="cellPhoneContact" Type="nvarchar" MaxLength="50" />
           <Property Name="releaseForPhotography" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentSignature" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="HighSchoolBasicInfo">
           <Key>
@@ -194,9 +195,9 @@
         </EntityType>
         <EntityType Name="HighSchoolPolicy">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="attendance" Type="nvarchar" MaxLength="50" />
           <Property Name="tobacco" Type="nvarchar" MaxLength="50" />
           <Property Name="internetAccess" Type="nvarchar" MaxLength="50" />
@@ -206,6 +207,8 @@
           <Property Name="noticeOfDisclosures" Type="nvarchar" MaxLength="50" />
           <Property Name="cellPhoneContact" Type="nvarchar" MaxLength="50" />
           <Property Name="releaseForPhotography" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentSignature" Type="varbinary(max)" />
+          <Property Name="parentSignature" Type="varbinary(max)" />
         </EntityType>
         <EntityContainer Name="EnrollmentDBModelStoreContainer">
           <EntitySet Name="AdultBasicInfo" EntityType="Self.AdultBasicInfo" Schema="dbo" store:Type="Tables" />
@@ -307,9 +310,9 @@
         </EntityType>
         <EntityType Name="AdultPolicy">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="attendance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="tobacco" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="internetAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -319,6 +322,7 @@
           <Property Name="noticeOfDisclosures" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="cellPhoneContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="releaseForPhotography" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="HighSchoolBasicInfo">
           <Key>
@@ -413,9 +417,9 @@
         </EntityType>
         <EntityType Name="HighSchoolPolicy">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="attendance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="tobacco" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="internetAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -425,6 +429,8 @@
           <Property Name="noticeOfDisclosures" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="cellPhoneContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="releaseForPhotography" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="parentSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityContainer Name="EnrollmentDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdultBasicInfoes" EntityType="Self.AdultBasicInfo" />
@@ -532,7 +538,7 @@
           <EntitySetMapping Name="AdultPolicies">
             <EntityTypeMapping TypeName="EnrollmentDBModel.AdultPolicy">
               <MappingFragment StoreEntitySet="AdultPolicy">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="attendance" ColumnName="attendance" />
                 <ScalarProperty Name="tobacco" ColumnName="tobacco" />
                 <ScalarProperty Name="internetAccess" ColumnName="internetAccess" />
@@ -542,6 +548,7 @@
                 <ScalarProperty Name="noticeOfDisclosures" ColumnName="noticeOfDisclosures" />
                 <ScalarProperty Name="cellPhoneContact" ColumnName="cellPhoneContact" />
                 <ScalarProperty Name="releaseForPhotography" ColumnName="releaseForPhotography" />
+                <ScalarProperty Name="studentSignature" ColumnName="studentSignature" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -643,7 +650,7 @@
           <EntitySetMapping Name="HighSchoolPolicies">
             <EntityTypeMapping TypeName="EnrollmentDBModel.HighSchoolPolicy">
               <MappingFragment StoreEntitySet="HighSchoolPolicy">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="attendance" ColumnName="attendance" />
                 <ScalarProperty Name="tobacco" ColumnName="tobacco" />
                 <ScalarProperty Name="internetAccess" ColumnName="internetAccess" />
@@ -653,6 +660,8 @@
                 <ScalarProperty Name="noticeOfDisclosures" ColumnName="noticeOfDisclosures" />
                 <ScalarProperty Name="cellPhoneContact" ColumnName="cellPhoneContact" />
                 <ScalarProperty Name="releaseForPhotography" ColumnName="releaseForPhotography" />
+                <ScalarProperty Name="studentSignature" ColumnName="studentSignature" />
+                <ScalarProperty Name="parentSignature" ColumnName="parentSignature" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

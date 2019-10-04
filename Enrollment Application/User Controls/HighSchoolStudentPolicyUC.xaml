@@ -1,0 +1,219 @@
+﻿<UserControl x:Class="Enrollment_Application.HighSchoolStudentPolicyUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Enrollment_Application"
+             mc:Ignorable="d" 
+             d:DesignHeight="680" d:DesignWidth="1070" FontSize="14" FontFamily="Candara Light" DataContext="">
+    
+    <Grid x:Name="textFields">
+
+        <!--Everything in the UC is data bound to display already saved values-->
+        <!--This also allows for text validation by changing the DataContext in the code behind if there are errors found-->
+
+        <!--#region Stack panel holding all the text stack panels that contain all the info for the user control-->
+        <StackPanel>
+
+            <TextBlock Text="Student Policy" HorizontalAlignment="Center" Foreground="#2196f3" FontSize="24"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,3,0,10" MinWidth="750">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="attendanceCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding attendance, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="#2196f3" Text="Attendance:"/>
+                    <Run Foreground="GhostWhite" Text=" Students are expected to be in class on time every day. Chronic absenteeism may result in loss of credit or possible loss of financial aid. Students are allowed 10 absences per semester. Three tardies equal one absence. Chronic tardies will result in disciplinary action."/>
+                </TextBlock>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,3,0,10" MinWidth="750">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="tobaccoCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding tobacco, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="#2196f3" Text="Tobacco:"/>
+                    <Run Foreground="GhostWhite" Text=" All Canadian Valley Technology Center campuses are &quot;Tobacco Free.&quot; Smoking and the use of smokeless tobacco on all campuses is prohibited for high school and adult students regardless of age. This includes items intended to emulate tobacco products, such as &quot;e-cigarettes&quot; or &quot;vapes.&quot; It is a violation of state law for an adult to loan, give, or in any way furnish tobacco products to persons under the age of 18."/>
+                </TextBlock>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,3,0,10" MinWidth="750">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="internetCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding internetAccess, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" >
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="#2196f3" Text="Internet Access:"/>
+                    <Run Foreground="GhostWhite" Text=" Use of the internet is not a right; it is a privilege. Inappropriate use, as outlined in the student handbook, will result in cancellation of that privilege."/>
+                </TextBlock>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,3,0,10" MinWidth="750">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="insuranceCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding studentInsurance, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" >
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="#2196f3" Text="Student Insurance:"/>
+                    <Run Foreground="GhostWhite" Text=" Due to the nature of the programs offered at CVTC, there is a possibility of students being injured while working with various machinery and equipment. For this reason, we suggest that all students have insurance, either through the school or family insurance. Insurance may be purchased through the school at a reasonable rate. You may enroll online at http://markel.sevencorners.com or call 877-444-5014 for enrollment by phone. The school is not responsible for any medical care or treatment."/>
+                </TextBlock>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,3,0,10" MinWidth="750">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="fieldTripsCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding fieldTrips, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" >
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="#2196f3" Text="Field Trips:"/>
+                    <Run Foreground="GhostWhite" Text=" School approved field trips are used to enhance the instruction at Canadian Valley Technolgy Center. Students are expected to follow the same rules, regulations, policies, and procedures as any other school approved activity. I give my consent and permission for my child to participate in all school approved activities including off-campus field trips."/>
+                </TextBlock>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,3,0,10" MinWidth="750">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="drugTestingCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding drugTesting, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" >
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="#2196f3" Text="Drug Testing:"/>
+                    <Run Foreground="GhostWhite" Text=" Canadian Valley's drug and alcohol testing policy requires that health students be tested when they are involved in clinical assignments. Health students will be responsible for payment of the drug test. In instances of reasonable suspicion, rapid eye tests, drug dogs, on-site searches, including those of vehicles, may be conducted. If drugs or paraphernalia are found, law enforcement will be notified, along with parents of high school students. More details of this policy are available in the student handbook."/>
+                </TextBlock>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,3,0,10" MinWidth="750">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="noticeOfDisclosuresCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding noticeOfDisclosures, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" >
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="#2196f3" Text="Notice of Disclosures:"/>
+                    <Run Foreground="GhostWhite" Text=" Required disclosures and consumer information concerning CVTC are available in Student Service or at www.cvtech.edu."/>
+                </TextBlock>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,3,0,10" MinWidth="750">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="cellPhoneContactCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding cellPhoneContact, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="#2196f3" Text="Cell Phone Contact:"/>
+                    <Run Foreground="GhostWhite" Text=" Canadian Valley Technology Center may contact me for automated non-emergency purposes using the cell phone numbers provided."/>
+                </TextBlock>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,3,0,10" MinWidth="750">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="photographyReleaseCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding releaseForPhotography, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" >
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="#2196f3" Text="Release for Photography/Audiotaping/Videotaping:"/>
+                    <Run Foreground="GhostWhite" Text=" I give consent and permission to CVTC to photograph, audiotape and/or videotape the student listed for use in instructional promotional materials for career and technology education, including that posted on the CVTC web site. I waive any and all claims for compensation for such use. If you do not give consent, do not check the box."/>
+                </TextBlock>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 15, 0, 0">
+
+                <StackPanel>
+                    <TextBlock Text="Student Signature:" VerticalAlignment="Center" Foreground="GhostWhite" Margin="0, 27, 0, 0"/>
+                    <Button x:Name="sigClear" Margin="0, 10, 0, 0" Content="Clear" Width="100" Click="SigClear_Click"/>
+                </StackPanel>
+
+                <Border x:Name="sigCanBorder" BorderThickness="1" Margin="10" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="305" Height="55">
+                    <InkCanvas x:Name="signatureCanvas" Width="300" Height="50" Background="Transparent"/>
+                </Border>
+
+                <StackPanel>
+                    <TextBlock Text="Parent/Guardian Signature:" VerticalAlignment="Center" Foreground="GhostWhite" Margin="0, 27, 0, 0"/>
+                    <Button x:Name="parSigClear" Margin="0, 10, 0, 0" Content="Clear" Width="100" Click="ParSigClear_Click"/>
+                </StackPanel>
+
+                <Border x:Name="parSigCanBorder" BorderThickness="1" Margin="10" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="305" Height="55">
+                    <InkCanvas x:Name="parentSignatureCanvas" Width="300" Height="50" Background="Transparent"/>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+
+        <!--#region Button stack panel-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="backBtn" Content="Back" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="BackBtn_Click"/>
+            <Button x:Name="nextBtn" Content="Next" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="NextBtn_Click"/>
+        </StackPanel>
+        <!--#endregion-->
+
+    </Grid>
+</UserControl>
