@@ -66,6 +66,15 @@
                         </StackPanel>
                     </Grid>
                 </ListViewItem>
+
+                <ListViewItem Height="40"  x:Name="studentPolicy">
+                    <Grid x:Name="studentPolicyBtn">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ClipboardCheck" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Student Policy" FontSize="14" VerticalAlignment="Center" Margin="10, 0" FontWeight="Light"/>
+                        </StackPanel>
+                    </Grid>
+                </ListViewItem>
             </ListView>
 
             <materialDesign:TransitioningContent x:Name="TransitionSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft}">

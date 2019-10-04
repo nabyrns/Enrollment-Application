@@ -90,6 +90,8 @@ namespace Enrollment_Application
 
                 Information_Page.aecuc.Visibility = Visibility.Hidden;
 
+                Information_Page.aspuc.Visibility = Visibility.Visible;
+
                 Information_Page.selectedIndex = 3;
 
                 Information_Page.lv.SelectedIndex = 3;
@@ -108,7 +110,7 @@ namespace Enrollment_Application
 
             Information_Page.lv.SelectedIndex = 1;
 
-            Information_Page.hiuc.Visibility = Visibility.Visible;
+            Information_Page.abiuc.Visibility = Visibility.Visible;
         }
         #endregion
     }

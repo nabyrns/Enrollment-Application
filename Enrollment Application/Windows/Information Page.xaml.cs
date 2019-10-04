@@ -20,6 +20,8 @@ namespace Enrollment_Application
 
         public static AdultBasicInformationUC abiuc;
 
+        public static AdultStudentPolicyUC aspuc;
+
         public static HighSchoolBasicInformationUC hsbiuc;
 
         public static HealthInfoUC hiuc;
@@ -49,9 +51,13 @@ namespace Enrollment_Application
             aecuc = new AdultECUC();
             aecuc.Visibility = Visibility.Hidden;
 
+            aspuc = new AdultStudentPolicyUC();
+            aspuc.Visibility = Visibility.Hidden;
+
             UserControlGrid.Children.Add(abiuc);
             UserControlGrid.Children.Add(hiuc);
             UserControlGrid.Children.Add(aecuc);
+            UserControlGrid.Children.Add(aspuc);
 
 
             lv = ListViewMenu;

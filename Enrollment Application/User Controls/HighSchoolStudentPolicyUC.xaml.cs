@@ -26,7 +26,7 @@ namespace Enrollment_Application
 
         HighSchoolPolicy hsp;
 
-        HighSchoolPolicyTextValidation validCheck;
+        PolicyTextValidation validCheck;
 
         #region Constructor --- initializes variables and assigns datacontext for textfields in this UC
         public HighSchoolStudentPolicyUC()
@@ -56,6 +56,9 @@ namespace Enrollment_Application
 
             // set the datacontext of the text fields to be the AdultEmergencyContact variable
             textFields.DataContext = hsp;
+
+            sigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
+            parSigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
         }
         #endregion
 
@@ -76,15 +79,45 @@ namespace Enrollment_Application
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            #region Checks the signature fields, if they are not empty they are saved as byte arrays
-           /* if (signatureCanvas.Strokes.Count == 0 || parentSignatureCanvas.Strokes.Count == 0)
+            // variable to tell whether the signature fields have been filled out
+            bool sigError = false;
+
+            #region Checks the signature fields, if they are not empty they are saved as byte arrays --- also changes signature field border colors based on input
+            if (signatureCanvas.Strokes.Count == 0 && parentSignatureCanvas.Strokes.Count == 0)
             {
-                ErrorMessage error = new ErrorMessage("Signature field was not filled in.");
+                sigCanBorder.BorderBrush = Brushes.Red;
+                parSigCanBorder.BorderBrush = Brushes.Red;
+                sigError = true;
+            }
 
-                error.ShowDialog();
+            else if (signatureCanvas.Strokes.Count == 0)
+            {
+                sigCanBorder.BorderBrush = Brushes.Red;
+                parSigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
+                sigError = true;
+            }
 
-                return;
-            }*/
+            else if (parentSignatureCanvas.Strokes.Count == 0)
+            {
+                parSigCanBorder.BorderBrush = Brushes.Red;
+                sigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
+                sigError = true;
+            }
+
+            else
+            {
+                if (sigCanBorder.BorderBrush == Brushes.Red)
+                {
+                    sigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
+                }
+
+                if (parSigCanBorder.BorderBrush == Brushes.Red)
+                {
+                    parSigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
+                }
+
+                sigError = false;
+            }
 
             byte[] signature;
             using (MemoryStream ms = new MemoryStream())
@@ -117,7 +150,7 @@ namespace Enrollment_Application
 
             // initialize or update the validCheck variable, which is a text validation variable
             // the connection between the hsp variable and the validCheck variable is what allows for updating in the database
-            validCheck = new HighSchoolPolicyTextValidation()
+            validCheck = new PolicyTextValidation()
             {
                 _attendance = bool.Parse(hsp.attendance),
                 _tobacco = bool.Parse(hsp.tobacco),
@@ -127,9 +160,7 @@ namespace Enrollment_Application
                 _drugTesting = bool.Parse(hsp.drugTesting),
                 _noticeOfDisclosures = bool.Parse(hsp.noticeOfDisclosures),
                 _cellPhoneContact = bool.Parse(hsp.cellPhoneContact),
-                _releaseForPhotography = bool.Parse(hsp.releaseForPhotography),
-                _studentSignatureStrokes = signatureCanvas.Strokes.Count,
-                _parentSignatureStrokes = parentSignatureCanvas.Strokes.Count
+                _releaseForPhotography = bool.Parse(hsp.releaseForPhotography)
             };
 
             // update the datacontext to be validCheck if it was not already
@@ -140,7 +171,7 @@ namespace Enrollment_Application
 
             // if no errors are found, save changes to database and change visibility of UC to hidden
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
-            if (validCheck.IsValid)
+            if (validCheck.IsValid && !sigError)
             {
                 _db.SaveChanges();
 
@@ -153,6 +184,16 @@ namespace Enrollment_Application
 
                 Information_Page.lv.SelectedIndex = 4;
             }
+        }
+
+        private void SigClear_Click(object sender, RoutedEventArgs e)
+        {
+            signatureCanvas.Strokes.Clear();
+        }
+
+        private void ParSigClear_Click(object sender, RoutedEventArgs e)
+        {
+            parentSignatureCanvas.Strokes.Clear();
         }
     }
 }

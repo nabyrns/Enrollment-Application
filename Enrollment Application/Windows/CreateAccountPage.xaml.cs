@@ -90,9 +90,12 @@ namespace Enrollment_Application
 
                     AdultHealthInfo HInew = new AdultHealthInfo();
 
+                    AdultPolicy APnew = new AdultPolicy();
+
                     _db.AdultBasicInfoes.Add(newBI);
                     _db.AdultEmergencyContacts.Add(ECnew);
                     _db.AdultHealthInfoes.Add(HInew);
+                    _db.AdultPolicies.Add(APnew);
 
                     _db.AdultLogins.Add(newLogin);
 
