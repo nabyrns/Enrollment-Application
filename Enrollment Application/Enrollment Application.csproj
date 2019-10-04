@@ -85,7 +85,7 @@
     <Compile Include="AdultPolicy.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AdultStudentPolicyUC.xaml.cs">
+    <Compile Include="User Controls\AdultStudentPolicyUC.xaml.cs">
       <DependentUpon>AdultStudentPolicyUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="CommonMethods.cs" />
@@ -140,7 +140,7 @@
     </Compile>
     <Compile Include="Text Validation Classes\AdultECUCTextValidation.cs" />
     <Compile Include="Text Validation Classes\AdultBasicInfoTextValidation.cs" />
-    <Page Include="AdultStudentPolicyUC.xaml">
+    <Page Include="User Controls\AdultStudentPolicyUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

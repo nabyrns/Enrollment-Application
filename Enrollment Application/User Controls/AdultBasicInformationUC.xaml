@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Enrollment_Application"
              mc:Ignorable="d" 
              d:DesignHeight="580" d:DesignWidth="1020" FontSize="14" FontFamily="Candara Light" DataContext="">
-
+    
     <!--Grid for user control-->
     <Grid x:Name="textFields">
 
@@ -20,36 +20,36 @@
             <!--#region First row of UC-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 15, 0, 0">
                 <TextBlock Text="Last Name:" Foreground="GhostWhite" Margin="0, 10, 5, 0"/>
-                <TextBox x:Name="lastNameText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding lastName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="lastNameText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding lastName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="First Name:" Foreground="GhostWhite" Margin="10, 10, 5, 0"/>
-                <TextBox x:Name="firstNameText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding firstName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="firstNameText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding firstName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Middle Initial:" Foreground="GhostWhite" Margin="10, 10, 5, 0"/>
-                <TextBox x:Name="middleInitialText" Width="50" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding middleInitial, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="middleInitialText" Width="50" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding middleInitial, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Preferred Name:" Foreground="GhostWhite" Margin="10, 10, 5, 0"/>
-                <TextBox x:Name="preferredNameText" Margin="10, 0, 10, 0" Width="150" VerticalAlignment="Top" Text="{Binding preferredName}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="preferredNameText" Margin="10, 0, 10, 0" Width="150" VerticalAlignment="Top" Text="{Binding preferredName}"/>
             </StackPanel>
             <!--#endregion-->
 
             <!--#region Program, SSN, DOB text field-->
             <StackPanel Orientation="Horizontal" Margin="10, 15, 0, 0" HorizontalAlignment="Left">
                 <TextBlock Text="Social Security Number:" Foreground="GhostWhite" Margin="0, 10, 5, 0"/>
-                <TextBox x:Name="SSNtext" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding SSN, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="SSNtext" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding SSN, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Program:" Foreground="GhostWhite" Margin="10, 10, 5, 0"/>
-                <TextBox x:Name="programText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding program, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="programText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding program, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Date of Birth:" Foreground="GhostWhite" Margin="10, 10, 5, 0"/>
-                <DatePicker x:Name="birthdateCalendar" Width="100" Margin="10, 0, 10, 0" SelectedDate="{Binding dateOfBirth, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <DatePicker ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" x:Name="birthdateCalendar" Width="100" Margin="10, 0, 10, 0" SelectedDate="{Binding dateOfBirth, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Validation.ErrorTemplate="{x:Null}"/>
             </StackPanel>
             <!--#endregion-->
 
             <!--#region Third row of UC-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 15, 0, 0">
                 <TextBlock Text="Street Address:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
-                <TextBox x:Name="streetAddressText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding streetAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="streetAddressText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding streetAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="City:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
-                <TextBox x:Name="cityText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding city, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="cityText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding city, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="State:" Foreground="GhostWhite" Margin="0, 10, 0, 0" />
 
-                <ComboBox x:Name="stateCombo" Width="50" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding state, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="stateCombo" Width="50" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding state, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                     
                     <ComboBoxItem Content="AK"/>
                     <ComboBoxItem Content="AL"/>
@@ -106,28 +106,28 @@
 
 
                 <TextBlock Text="ZIP Code:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
-                <TextBox x:Name="zipCodeText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding zipCode, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="zipCodeText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding zipCode, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <!--#endregion-->
 
             <!--#region Fourth row of UC-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 15, 0, 0">
                 <TextBlock Text="Primary Phone Number:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
-                <TextBox x:Name="primaryPhoneText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding primaryPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="primaryPhoneText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding primaryPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Cell Phone Number:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
-                <TextBox x:Name="cellPhoneText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding cellPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="cellPhoneText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding cellPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <!--#endregion-->
 
             <!--#region Fifth row of UC-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 15, 0, 0">
                 <TextBlock Text="Are you hispanic/latino?" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
-                <ComboBox x:Name="ethnicityCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding hispanicOrLatino, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="ethnicityCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding hispanicOrLatino, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                     <ComboBoxItem Content="Yes"/>
                     <ComboBoxItem Content="No"/>
                 </ComboBox>
                 <TextBlock Text="Race:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
-                <ComboBox x:Name="raceCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding race, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="raceCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding race, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                     <ComboBoxItem Content="American Indian or Alaskan Native"/>
                     <ComboBoxItem Content="Asian"/>
                     <ComboBoxItem Content="Black or African American"/>
@@ -136,7 +136,7 @@
                 </ComboBox>
 
                 <TextBlock Text="Gender:" Foreground="GhostWhite" Margin="0, 10, 0, 0" />
-                <ComboBox x:Name="genderCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding gender, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="genderCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding gender, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                     <ComboBoxItem Content="Male"/>
                     <ComboBoxItem Content="Female"/>
                 </ComboBox>
@@ -148,7 +148,7 @@
             <!--#region Information for state/federal reporting-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 15, 0, 0">
                 <TextBlock Text="Completed Education Level:" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
-                <ComboBox Name="educationLevelCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding completedEdLevel, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Name="educationLevelCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding completedEdLevel, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                     <ComboBoxItem Content="Some High School"/>
                     <ComboBoxItem Content="High School Graduate"/>
                     <ComboBoxItem Content="GED"/>
@@ -158,7 +158,7 @@
                 </ComboBox>
 
                 <TextBlock Text="Have you attended a college or technology center after high school?" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
-                <ComboBox Name="attendedCollegeCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding attendedCollegeOrTech, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Name="attendedCollegeCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding attendedCollegeOrTech, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                     <ComboBoxItem Content="Yes"/>
                     <ComboBoxItem Content="No"/>
                 </ComboBox>
@@ -166,7 +166,7 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 15, 0, 0">
                 <TextBlock Text="Do you live with your parent/guardian?" Foreground="GhostWhite" Margin="0, 10, 0, 0"/>
-                <ComboBox Name="liveWithParentCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding liveWithParent, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Name="liveWithParentCombo" Width="100" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding liveWithParent, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                     <ComboBoxItem Content="Yes"/>
                     <ComboBoxItem Content="No"/>
                 </ComboBox>
