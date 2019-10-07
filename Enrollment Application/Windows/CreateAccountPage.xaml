@@ -24,7 +24,7 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Email:" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="EmailText" Width="120" VerticalAlignment="Center" Margin="15, 0, 0, 0" Text="{Binding email, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                    <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="EmailText" Width="120" VerticalAlignment="Center" Margin="15, 0, 0, 0" Text="{Binding email, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -39,7 +39,7 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Student Type:" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="studentTypeBox" VerticalAlignment="Center" Width="120" Margin="15, 0, 45, 0" Text="{Binding studentType, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="studentTypeBox" VerticalAlignment="Center" Width="120" Margin="15, 0, 45, 0" Text="{Binding studentType, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                         <ComboBoxItem Content="High School"/>
                         <ComboBoxItem Content="Adult"/>
                     </ComboBox>

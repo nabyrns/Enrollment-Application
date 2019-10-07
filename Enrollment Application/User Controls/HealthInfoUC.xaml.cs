@@ -199,6 +199,11 @@ namespace Enrollment_Application
             {
                 Information_Page.abiuc.Visibility = Visibility.Visible;
             }
+
+            else
+            {
+                Information_Page.hsbiuc.Visibility = Visibility.Visible;
+            }
         }
         #endregion
     }
