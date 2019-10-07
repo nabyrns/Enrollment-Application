@@ -75,6 +75,7 @@
           <Property Name="otherMeds" Type="nvarchar(max)" />
           <Property Name="specificFirstAidNeeds" Type="nvarchar(max)" />
           <Property Name="repPermissionForTreatment" Type="nvarchar" MaxLength="50" />
+          <Property Name="healthSignature" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="AdultLogins">
           <Key>
@@ -182,6 +183,7 @@
           <Property Name="otherMeds" Type="nvarchar(max)" />
           <Property Name="specificFirstAidNeeds" Type="nvarchar(max)" />
           <Property Name="repPermissionForTreatment" Type="nvarchar" MaxLength="50" />
+          <Property Name="healthSignature" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="HighSchoolLogins">
           <Key>
@@ -297,6 +299,7 @@
           <Property Name="otherMeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="specificFirstAidNeeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="repPermissionForTreatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="healthSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="AdultLogin">
           <Key>
@@ -404,6 +407,7 @@
           <Property Name="otherMeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="specificFirstAidNeeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="repPermissionForTreatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="healthSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="HighSchoolLogin">
           <Key>
@@ -521,6 +525,7 @@
                 <ScalarProperty Name="otherMeds" ColumnName="otherMeds" />
                 <ScalarProperty Name="specificFirstAidNeeds" ColumnName="specificFirstAidNeeds" />
                 <ScalarProperty Name="repPermissionForTreatment" ColumnName="repPermissionForTreatment" />
+                <ScalarProperty Name="healthSignature" ColumnName="healthSignature" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -633,6 +638,7 @@
                 <ScalarProperty Name="otherMeds" ColumnName="otherMeds" />
                 <ScalarProperty Name="specificFirstAidNeeds" ColumnName="specificFirstAidNeeds" />
                 <ScalarProperty Name="repPermissionForTreatment" ColumnName="repPermissionForTreatment" />
+                <ScalarProperty Name="healthSignature" ColumnName="healthSignature" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
