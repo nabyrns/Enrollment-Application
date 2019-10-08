@@ -4,17 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="34cc6dea4c314cdfa7d9a291548e1e73" Name="Diagram1">
+      <Diagram DiagramId="56e9fecbd010489eb43c80a0d6b83d57" Name="Diagram1">
         <EntityTypeShape EntityType="EnrollmentDBModel.AdultBasicInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnrollmentDBModel.AdultEmergencyContact" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnrollmentDBModel.AdultHealthInfo" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnrollmentDBModel.AdultLogin" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnrollmentDBModel.AdultPolicy" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnrollmentDBModel.HighSchoolBasicInfo" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnrollmentDBModel.HighSchoolEmergencyContact" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnrollmentDBModel.HighSchoolHealthInfo" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnrollmentDBModel.HighSchoolLogin" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnrollmentDBModel.HighSchoolPolicy" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrollmentDBModel.AdultConfidentialInfo" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrollmentDBModel.AdultEmergencyContact" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrollmentDBModel.AdultHealthInfo" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrollmentDBModel.AdultLogin" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrollmentDBModel.AdultPolicy" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrollmentDBModel.HighSchoolBasicInfo" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrollmentDBModel.HighSchoolConfidentialInfo" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrollmentDBModel.HighSchoolEmergencyContact" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrollmentDBModel.HighSchoolHealthInfo" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrollmentDBModel.HighSchoolLogin" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnrollmentDBModel.HighSchoolPolicy" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

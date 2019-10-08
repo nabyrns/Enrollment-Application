@@ -33,6 +33,20 @@
           <Property Name="liveWithParent" Type="nvarchar" MaxLength="50" />
           <Property Name="signature" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="AdultConfidentialInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foodStamps" Type="varchar" MaxLength="50" />
+          <Property Name="dependentChildrenAid" Type="varchar" MaxLength="50" />
+          <Property Name="supplementaryIncome" Type="varchar" MaxLength="50" />
+          <Property Name="housingAssistance" Type="varchar" MaxLength="50" />
+          <Property Name="none" Type="varchar" MaxLength="50" />
+          <Property Name="homeless" Type="varchar" MaxLength="50" />
+          <Property Name="agedOutFosterCare" Type="varchar" MaxLength="50" />
+          <Property Name="outOfWorkforce" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="AdultEmergencyContact">
           <Key>
             <PropertyRef Name="Id" />
@@ -127,6 +141,20 @@
           <Property Name="sendingHS" Type="nvarchar" MaxLength="50" />
           <Property Name="filloutDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="HighSchoolConfidentialInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foodStamps" Type="varchar" MaxLength="50" />
+          <Property Name="dependentChildrenAid" Type="varchar" MaxLength="50" />
+          <Property Name="supplementaryIncome" Type="varchar" MaxLength="50" />
+          <Property Name="housingAssistance" Type="varchar" MaxLength="50" />
+          <Property Name="none" Type="varchar" MaxLength="50" />
+          <Property Name="homeless" Type="varchar" MaxLength="50" />
+          <Property Name="agedOutFosterCare" Type="varchar" MaxLength="50" />
+          <Property Name="outOfWorkforce" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="HighSchoolEmergencyContact">
           <Key>
             <PropertyRef Name="Id" />
@@ -214,11 +242,13 @@
         </EntityType>
         <EntityContainer Name="EnrollmentDBModelStoreContainer">
           <EntitySet Name="AdultBasicInfo" EntityType="Self.AdultBasicInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdultConfidentialInfo" EntityType="Self.AdultConfidentialInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdultEmergencyContact" EntityType="Self.AdultEmergencyContact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdultHealthInfo" EntityType="Self.AdultHealthInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdultLogins" EntityType="Self.AdultLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdultPolicy" EntityType="Self.AdultPolicy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HighSchoolBasicInfo" EntityType="Self.HighSchoolBasicInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolConfidentialInfo" EntityType="Self.HighSchoolConfidentialInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HighSchoolEmergencyContact" EntityType="Self.HighSchoolEmergencyContact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HighSchoolHealthInfo" EntityType="Self.HighSchoolHealthInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HighSchoolLogins" EntityType="Self.HighSchoolLogins" Schema="dbo" store:Type="Tables" />
@@ -256,6 +286,20 @@
           <Property Name="attendedCollegeOrTech" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="liveWithParent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AdultConfidentialInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foodStamps" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dependentChildrenAid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplementaryIncome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="housingAssistance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="none" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="homeless" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="agedOutFosterCare" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="outOfWorkforce" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="AdultEmergencyContact">
           <Key>
@@ -351,6 +395,20 @@
           <Property Name="sendingHS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="filloutDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="HighSchoolConfidentialInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foodStamps" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dependentChildrenAid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplementaryIncome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="housingAssistance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="none" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="homeless" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="agedOutFosterCare" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="outOfWorkforce" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="HighSchoolEmergencyContact">
           <Key>
             <PropertyRef Name="Id" />
@@ -438,11 +496,13 @@
         </EntityType>
         <EntityContainer Name="EnrollmentDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdultBasicInfoes" EntityType="Self.AdultBasicInfo" />
+          <EntitySet Name="AdultConfidentialInfoes" EntityType="Self.AdultConfidentialInfo" />
           <EntitySet Name="AdultEmergencyContacts" EntityType="Self.AdultEmergencyContact" />
           <EntitySet Name="AdultHealthInfoes" EntityType="Self.AdultHealthInfo" />
           <EntitySet Name="AdultLogins" EntityType="Self.AdultLogin" />
           <EntitySet Name="AdultPolicies" EntityType="Self.AdultPolicy" />
           <EntitySet Name="HighSchoolBasicInfoes" EntityType="Self.HighSchoolBasicInfo" />
+          <EntitySet Name="HighSchoolConfidentialInfoes" EntityType="Self.HighSchoolConfidentialInfo" />
           <EntitySet Name="HighSchoolEmergencyContacts" EntityType="Self.HighSchoolEmergencyContact" />
           <EntitySet Name="HighSchoolHealthInfoes" EntityType="Self.HighSchoolHealthInfo" />
           <EntitySet Name="HighSchoolLogins" EntityType="Self.HighSchoolLogin" />
@@ -480,6 +540,21 @@
                 <ScalarProperty Name="attendedCollegeOrTech" ColumnName="attendedCollegeOrTech" />
                 <ScalarProperty Name="liveWithParent" ColumnName="liveWithParent" />
                 <ScalarProperty Name="signature" ColumnName="signature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdultConfidentialInfoes">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.AdultConfidentialInfo">
+              <MappingFragment StoreEntitySet="AdultConfidentialInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="foodStamps" ColumnName="foodStamps" />
+                <ScalarProperty Name="dependentChildrenAid" ColumnName="dependentChildrenAid" />
+                <ScalarProperty Name="supplementaryIncome" ColumnName="supplementaryIncome" />
+                <ScalarProperty Name="housingAssistance" ColumnName="housingAssistance" />
+                <ScalarProperty Name="none" ColumnName="none" />
+                <ScalarProperty Name="homeless" ColumnName="homeless" />
+                <ScalarProperty Name="agedOutFosterCare" ColumnName="agedOutFosterCare" />
+                <ScalarProperty Name="outOfWorkforce" ColumnName="outOfWorkforce" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -579,6 +654,21 @@
                 <ScalarProperty Name="currentEdLevel" ColumnName="currentEdLevel" />
                 <ScalarProperty Name="sendingHS" ColumnName="sendingHS" />
                 <ScalarProperty Name="filloutDate" ColumnName="filloutDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HighSchoolConfidentialInfoes">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.HighSchoolConfidentialInfo">
+              <MappingFragment StoreEntitySet="HighSchoolConfidentialInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="foodStamps" ColumnName="foodStamps" />
+                <ScalarProperty Name="dependentChildrenAid" ColumnName="dependentChildrenAid" />
+                <ScalarProperty Name="supplementaryIncome" ColumnName="supplementaryIncome" />
+                <ScalarProperty Name="housingAssistance" ColumnName="housingAssistance" />
+                <ScalarProperty Name="none" ColumnName="none" />
+                <ScalarProperty Name="homeless" ColumnName="homeless" />
+                <ScalarProperty Name="agedOutFosterCare" ColumnName="agedOutFosterCare" />
+                <ScalarProperty Name="outOfWorkforce" ColumnName="outOfWorkforce" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

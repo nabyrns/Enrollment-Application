@@ -15,7 +15,7 @@
             <TextBlock Text="Error" FontSize="24" HorizontalAlignment="Center" Margin="10" Foreground="#2196f3"/>
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Error" Width="40" Height="40" VerticalAlignment="Center" Foreground="Red" Margin="10"/>
-                <TextBlock x:Name="errorMessageText" VerticalAlignment="Center"/>
+                <TextBlock x:Name="errorMessageText" Width="335" VerticalAlignment="Center" Margin="10" TextWrapping="Wrap"/>
             </StackPanel>
         </StackPanel>
 

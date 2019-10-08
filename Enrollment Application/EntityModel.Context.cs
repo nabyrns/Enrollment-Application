@@ -26,11 +26,13 @@ namespace Enrollment_Application
         }
     
         public virtual DbSet<AdultBasicInfo> AdultBasicInfoes { get; set; }
+        public virtual DbSet<AdultConfidentialInfo> AdultConfidentialInfoes { get; set; }
         public virtual DbSet<AdultEmergencyContact> AdultEmergencyContacts { get; set; }
         public virtual DbSet<AdultHealthInfo> AdultHealthInfoes { get; set; }
         public virtual DbSet<AdultLogin> AdultLogins { get; set; }
         public virtual DbSet<AdultPolicy> AdultPolicies { get; set; }
         public virtual DbSet<HighSchoolBasicInfo> HighSchoolBasicInfoes { get; set; }
+        public virtual DbSet<HighSchoolConfidentialInfo> HighSchoolConfidentialInfoes { get; set; }
         public virtual DbSet<HighSchoolEmergencyContact> HighSchoolEmergencyContacts { get; set; }
         public virtual DbSet<HighSchoolHealthInfo> HighSchoolHealthInfoes { get; set; }
         public virtual DbSet<HighSchoolLogin> HighSchoolLogins { get; set; }

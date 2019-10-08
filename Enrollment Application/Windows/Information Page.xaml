@@ -21,7 +21,7 @@
         <!--#region Grid containing the listview-->
         <Grid Width="200" HorizontalAlignment="Left">
 
-            <TextBlock Text="Enrollment Info" Foreground="White" FontSize="18" Margin="10" HorizontalAlignment="Center"/>
+            <TextBlock Text="Enrollment Info" Foreground="GhostWhite" FontSize="18" Margin="10" HorizontalAlignment="Center"/>
 
             <ListView x:Name="ListViewMenu" SelectedIndex="{Binding selectedIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="20, 55, 0, 0" SelectionChanged="ListViewMenu_SelectionChanged">
 
@@ -75,6 +75,15 @@
                         </StackPanel>
                     </Grid>
                 </ListViewItem>
+
+                <ListViewItem Height="40"  x:Name="confidentialInfoItem">
+                    <Grid x:Name="confidentialInfoBtn">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ConfidentialMode" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Confidential Information" FontSize="14" VerticalAlignment="Center" Margin="10, 0" FontWeight="Light"/>
+                        </StackPanel>
+                    </Grid>
+                </ListViewItem>
             </ListView>
 
             <materialDesign:TransitioningContent x:Name="TransitionSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft}">
@@ -83,6 +92,8 @@
 
         </Grid>
         <!--#endregion-->
+
+        <Grid Width="1" Margin="200, 25, 0, 0" Height="670" Background="#2196f3" HorizontalAlignment="Left"/>
 
         <!--#region Grid containing all of the User Controls that will be used-->
         <Grid Margin="200, 30, 10, 10" x:Name="UserControlGrid"/>

@@ -92,10 +92,13 @@ namespace Enrollment_Application
 
                     AdultPolicy APnew = new AdultPolicy();
 
+                    AdultConfidentialInfo ACInew = new AdultConfidentialInfo();
+
                     _db.AdultBasicInfoes.Add(newBI);
                     _db.AdultEmergencyContacts.Add(ECnew);
                     _db.AdultHealthInfoes.Add(HInew);
                     _db.AdultPolicies.Add(APnew);
+                    _db.AdultConfidentialInfoes.Add(ACInew);
 
                     _db.AdultLogins.Add(newLogin);
 

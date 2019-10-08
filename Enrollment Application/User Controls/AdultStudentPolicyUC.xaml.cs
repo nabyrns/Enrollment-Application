@@ -140,7 +140,7 @@ namespace Enrollment_Application
 
                 Information_Page.aspuc.Visibility = Visibility.Hidden;
 
-
+                Information_Page.aciuc.Visibility = Visibility.Visible;
 
                 Information_Page.selectedIndex = 4;
 
