@@ -110,7 +110,7 @@ namespace Enrollment_Application
 
             Information_Page.lv.SelectedIndex = 1;
 
-            Information_Page.abiuc.Visibility = Visibility.Visible;
+            Information_Page.hiuc.Visibility = Visibility.Visible;
         }
         #endregion
     }

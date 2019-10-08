@@ -33,5 +33,6 @@ namespace Enrollment_Application
         public string otherMeds { get; set; }
         public string specificFirstAidNeeds { get; set; }
         public string repPermissionForTreatment { get; set; }
+        public byte[] healthSignature { get; set; }
     }
 }

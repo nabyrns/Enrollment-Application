@@ -85,10 +85,6 @@
     <Compile Include="AdultPolicy.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="User Controls\AdultStudentPolicyUC.xaml.cs">
-      <DependentUpon>AdultStudentPolicyUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CommonMethods.cs" />
     <Compile Include="EntityModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,9 +100,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Windows\ErrorMessage.xaml.cs">
-      <DependentUpon>ErrorMessage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HighSchoolBasicInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -121,6 +114,13 @@
     </Compile>
     <Compile Include="HighSchoolPolicy.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\AdultStudentPolicyUC.xaml.cs">
+      <DependentUpon>AdultStudentPolicyUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommonMethods.cs" />
+    <Compile Include="Windows\ErrorMessage.xaml.cs">
+      <DependentUpon>ErrorMessage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Text Validation Classes\PolicyTextValidation.cs" />
     <Compile Include="User Controls\HighSchoolStudentPolicyUC.xaml.cs">

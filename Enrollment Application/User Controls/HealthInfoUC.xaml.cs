@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,21 +45,70 @@ namespace Enrollment_Application
                 hshi = (from m in _db.HighSchoolHealthInfoes where m.Id == LoginPage.highschoolCheck.Id select m).FirstOrDefault();
 
 
+                if (hshi.healthSignature != null)
+                {
+                    using (MemoryStream ms = new MemoryStream(hshi.healthSignature))
+                    {
+                        signatureCanvas.Strokes = new System.Windows.Ink.StrokeCollection(ms);
+                        ms.Close();
+                    }
+                }
+
+
                 textFields.DataContext = hshi;
+
+                siglabel.Text = "Parent/Guardian Signature: ";
             }
 
             else
             {
                 ahi = (from m in _db.AdultHealthInfoes where m.Id == LoginPage.adultCheck.Id select m).FirstOrDefault();
 
+                if (ahi.healthSignature != null)
+                {
+                    using (MemoryStream ms = new MemoryStream(ahi.healthSignature))
+                    {
+                        signatureCanvas.Strokes = new System.Windows.Ink.StrokeCollection(ms);
+                        ms.Close();
+                    }
+                }
+
                 textFields.DataContext = ahi;
+
+                siglabel.Text = "Student Signature: ";
             }
+
+            sigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
         }
         #endregion
 
         #region Code executes when NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
+            bool sigError = false;
+
+            if (signatureCanvas.Strokes.Count == 0)
+            {
+                sigCanBorder.BorderBrush = Brushes.Red;
+                sigError = true;
+            }
+
+            else
+            {
+                if (sigCanBorder.BorderBrush == Brushes.Red)
+                {
+                    sigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
+                }
+
+                sigError = false;
+            }
+
+            byte[] signature;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                signatureCanvas.Strokes.Save(ms);
+                signature = ms.ToArray();
+            }
 
             // check what kind of student was logged in
             if (ahi != null)
@@ -82,6 +132,7 @@ namespace Enrollment_Application
                 ahi.otherMeds = otherMedsText.Text;
                 ahi.specificFirstAidNeeds = specificNeedsText.Text;
                 ahi.repPermissionForTreatment = treatmentPermissionCombo.Text;
+                ahi.healthSignature = signature;
 
                 // initialize or update validCheck to contain the newly updated values in the UC being used
                 // the connection between validCheck and the UC being used is what allows for saving to the database
@@ -129,6 +180,7 @@ namespace Enrollment_Application
                 hshi.otherMeds = otherMedsText.Text;
                 hshi.specificFirstAidNeeds = specificNeedsText.Text;
                 hshi.repPermissionForTreatment = treatmentPermissionCombo.Text;
+                hshi.healthSignature = signature;
 
                 validCheck = new HealthInfoTextValidation()
                 {
@@ -161,7 +213,7 @@ namespace Enrollment_Application
 
             // if no errors are found, save changes to database and change visibility of UC to hidden
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
-            if (validCheck.IsValid)
+            if (validCheck.IsValid && !sigError)
             {
                 _db.SaveChanges();
 
@@ -206,5 +258,10 @@ namespace Enrollment_Application
             }
         }
         #endregion
+
+        private void SigClear_Click(object sender, RoutedEventArgs e)
+        {
+            signatureCanvas.Strokes.Clear();
+        }
     }
 }
