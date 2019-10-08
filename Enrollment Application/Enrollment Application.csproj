@@ -70,6 +70,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdultBasicInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -86,6 +89,9 @@
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AdultPolicy.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllLogin.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityModel.Context.cs">
@@ -109,9 +115,6 @@
     <Compile Include="HighSchoolConfidentialInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="HighSchoolConfidentialInfoUC.xaml.cs">
-      <DependentUpon>HighSchoolConfidentialInfoUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HighSchoolEmergencyContact.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -123,6 +126,9 @@
     </Compile>
     <Compile Include="HighSchoolPolicy.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\HighSchoolConfidentialInfoUC.xaml.cs">
+      <DependentUpon>HighSchoolConfidentialInfoUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="User Controls\AdultConfidentialInfoUC.xaml.cs">
       <DependentUpon>AdultConfidentialInfoUC.xaml</DependentUpon>
@@ -152,7 +158,11 @@
     </Compile>
     <Compile Include="Text Validation Classes\AdultECUCTextValidation.cs" />
     <Compile Include="Text Validation Classes\AdultBasicInfoTextValidation.cs" />
-    <Page Include="HighSchoolConfidentialInfoUC.xaml">
+    <Page Include="AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\HighSchoolConfidentialInfoUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

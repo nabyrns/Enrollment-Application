@@ -117,6 +117,16 @@
           <Property Name="releaseForPhotography" Type="nvarchar" MaxLength="50" />
           <Property Name="studentSignature" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="AllLogins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="passwordHash" Type="nvarchar" MaxLength="50" />
+          <Property Name="passwordSalt" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateCreated" Type="datetime" />
+        </EntityType>
         <EntityType Name="HighSchoolBasicInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -249,6 +259,7 @@
           <EntitySet Name="AdultHealthInfo" EntityType="Self.AdultHealthInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdultLogins" EntityType="Self.AdultLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdultPolicy" EntityType="Self.AdultPolicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AllLogins" EntityType="Self.AllLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HighSchoolBasicInfo" EntityType="Self.HighSchoolBasicInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HighSchoolConfidentialInfo" EntityType="Self.HighSchoolConfidentialInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HighSchoolEmergencyContact" EntityType="Self.HighSchoolEmergencyContact" Schema="dbo" store:Type="Tables" />
@@ -372,6 +383,16 @@
           <Property Name="cellPhoneContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="releaseForPhotography" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="studentSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AllLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passwordHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passwordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateCreated" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="HighSchoolBasicInfo">
           <Key>
@@ -505,6 +526,7 @@
           <EntitySet Name="AdultHealthInfoes" EntityType="Self.AdultHealthInfo" />
           <EntitySet Name="AdultLogins" EntityType="Self.AdultLogin" />
           <EntitySet Name="AdultPolicies" EntityType="Self.AdultPolicy" />
+          <EntitySet Name="AllLogins" EntityType="Self.AllLogin" />
           <EntitySet Name="HighSchoolBasicInfoes" EntityType="Self.HighSchoolBasicInfo" />
           <EntitySet Name="HighSchoolConfidentialInfoes" EntityType="Self.HighSchoolConfidentialInfo" />
           <EntitySet Name="HighSchoolEmergencyContacts" EntityType="Self.HighSchoolEmergencyContact" />
@@ -633,6 +655,17 @@
                 <ScalarProperty Name="cellPhoneContact" ColumnName="cellPhoneContact" />
                 <ScalarProperty Name="releaseForPhotography" ColumnName="releaseForPhotography" />
                 <ScalarProperty Name="studentSignature" ColumnName="studentSignature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllLogins">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.AllLogin">
+              <MappingFragment StoreEntitySet="AllLogins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="passwordHash" ColumnName="passwordHash" />
+                <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

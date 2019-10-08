@@ -92,8 +92,18 @@ namespace Enrollment_Application
                 {
                     this.Visibility = Visibility.Hidden;
 
-                    Information_Page ip = new Information_Page(adultCheck);
-                    ip.ShowDialog();
+                    if (EmailText.Text.ToLower().Equals("cvtcadmin"))
+                    {
+                        AdminWindow aw = new AdminWindow();
+
+                        aw.ShowDialog();
+                    }
+
+                    else
+                    {
+                        Information_Page ip = new Information_Page(adultCheck);
+                        ip.ShowDialog();
+                    }
 
                     this.Close();
                 }

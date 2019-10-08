@@ -84,6 +84,14 @@ namespace Enrollment_Application
                         dateCreated = DateTime.Now
                     };
 
+                    AllLogin newAllLogin = new AllLogin()
+                    {
+                        email = EmailText.Text,
+                        passwordHash = Convert.ToBase64String(hashedPassword),
+                        passwordSalt = salt,
+                        dateCreated = DateTime.Now
+                    };
+
                     AdultBasicInfo newBI = new AdultBasicInfo();
 
                     AdultEmergencyContact ECnew = new AdultEmergencyContact();
@@ -101,6 +109,7 @@ namespace Enrollment_Application
                     _db.AdultConfidentialInfoes.Add(ACInew);
 
                     _db.AdultLogins.Add(newLogin);
+                    _db.AllLogins.Add(newAllLogin);
 
                     // changes to the database are saved and the create account page is closed
                     _db.SaveChanges();
@@ -112,6 +121,14 @@ namespace Enrollment_Application
                 else
                 {
                     HighSchoolLogin newLogin = new HighSchoolLogin()
+                    {
+                        email = EmailText.Text,
+                        passwordHash = Convert.ToBase64String(hashedPassword),
+                        passwordSalt = salt,
+                        dateCreated = DateTime.Now
+                    };
+
+                    AllLogin newAllLogin = new AllLogin()
                     {
                         email = EmailText.Text,
                         passwordHash = Convert.ToBase64String(hashedPassword),
@@ -136,6 +153,8 @@ namespace Enrollment_Application
                     _db.HighSchoolConfidentialInfoes.Add(HSCInew);
 
                     _db.HighSchoolLogins.Add(newLogin);
+                    _db.AllLogins.Add(newAllLogin);
+
                     _db.SaveChanges();
 
                     this.Close();
