@@ -23,5 +23,7 @@ namespace Enrollment_Application
         public string homeless { get; set; }
         public string agedOutFosterCare { get; set; }
         public string outOfWorkforce { get; set; }
+        public string reducedLunch { get; set; }
+        public byte[] parentSignature { get; set; }
     }
 }

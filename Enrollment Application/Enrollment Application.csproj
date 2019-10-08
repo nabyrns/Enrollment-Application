@@ -76,9 +76,6 @@
     <Compile Include="AdultConfidentialInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AdultConfidentialInfoUC.xaml.cs">
-      <DependentUpon>AdultConfidentialInfoUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AdultEmergencyContact.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -112,6 +109,9 @@
     <Compile Include="HighSchoolConfidentialInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="HighSchoolConfidentialInfoUC.xaml.cs">
+      <DependentUpon>HighSchoolConfidentialInfoUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HighSchoolEmergencyContact.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -123,6 +123,9 @@
     </Compile>
     <Compile Include="HighSchoolPolicy.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\AdultConfidentialInfoUC.xaml.cs">
+      <DependentUpon>AdultConfidentialInfoUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="User Controls\AdultStudentPolicyUC.xaml.cs">
       <DependentUpon>AdultStudentPolicyUC.xaml</DependentUpon>
@@ -149,7 +152,11 @@
     </Compile>
     <Compile Include="Text Validation Classes\AdultECUCTextValidation.cs" />
     <Compile Include="Text Validation Classes\AdultBasicInfoTextValidation.cs" />
-    <Page Include="AdultConfidentialInfoUC.xaml">
+    <Page Include="HighSchoolConfidentialInfoUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\AdultConfidentialInfoUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -35,6 +35,8 @@ namespace Enrollment_Application
 
         public static AdultConfidentialInfoUC aciuc;
 
+        public static HighSchoolConfidentialInfoUC hsciuc;
+
         public static Grid ucg;
 
         // this variable will prevent clicking the listview to change which part of the form is displayed
@@ -92,10 +94,14 @@ namespace Enrollment_Application
             hsspuc = new HighSchoolStudentPolicyUC();
             hsspuc.Visibility = Visibility.Hidden;
 
+            hsciuc = new HighSchoolConfidentialInfoUC();
+            hsciuc.Visibility = Visibility.Hidden;
+
             UserControlGrid.Children.Add(hsbiuc);
             UserControlGrid.Children.Add(hiuc);
             UserControlGrid.Children.Add(hsecuc);
             UserControlGrid.Children.Add(hsspuc);
+            UserControlGrid.Children.Add(hsciuc);
 
 
             ucg = UserControlGrid;

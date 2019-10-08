@@ -1,0 +1,194 @@
+﻿<UserControl x:Class="Enrollment_Application.HighSchoolConfidentialInfoUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Enrollment_Application"
+             mc:Ignorable="d" 
+             d:DesignHeight="680" d:DesignWidth="1070" FontSize="12">
+    <Grid x:Name="textFields">
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" Foreground="#2196f3" FontSize="24" Text="Confidential Information"/>
+            <TextBlock Margin="10" TextWrapping="Wrap" Foreground="GhostWhite" Text="As a public school, we are eligible to participate in the federal e-rate program."/>
+            <TextBlock Margin="10" TextWrapping="Wrap">
+                <Run Text="This allows us to receive significant discounts for communication systems, internet access, and other technology related services. The discounts are based on the income level of our students. In order to receive the greatest benefits we ask that you provide some general information." Foreground="GhostWhite"/>
+            </TextBlock>
+
+            <TextBlock Foreground="#2196f3" Text="Please mark any of the following that apply to your family:" Margin="10"/>
+
+            <StackPanel Orientation="Horizontal" Margin="40, 10, 10, 10">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="reducedLunchCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding reducedLunch, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="GhostWhite" Text="Eligible for free or reduced priced lunches (does not mean you actually have to be using this service)"/>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="40, 10, 10, 10">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="foodStampsCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding foodStamps, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="GhostWhite" Text="Eligible for or receive food stamps"/>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="40, 10, 10, 10">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="dependentChildrenCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding dependentChildrenAid, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="GhostWhite" Text="Receive aid to families with dependent children (TANF)"/>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="40, 10, 10, 10">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="SSIcheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding supplementaryIncome, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="GhostWhite" Text="Receive Supplementary Security Income (SSI)"/>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="40, 10, 10, 10">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="section8Check" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding housingAssistance, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="GhostWhite" Text="Receive housing assistance (Section 8)"/>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="40, 10, 10, 10">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="noneCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding none, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="GhostWhite" Text="None of these apply to me or my family"/>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,10,0,0">
+
+                <StackPanel>
+                    <TextBlock x:Name="siglabel" Text="Parent/Guardian Signature:" VerticalAlignment="Center" Foreground="GhostWhite" Margin="0, 27, 0, 0"/>
+                    <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="sigClear" Margin="0, 10, 0, 0" Content="Clear" Width="100" Click="SigClear_Click"/>
+                </StackPanel>
+
+                <Border x:Name="sigCanBorder" BorderThickness="1" Margin="10" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="305" Height="55">
+                    <InkCanvas x:Name="signatureCanvas" Width="300" Height="50" Background="Transparent"/>
+                </Border>
+            </StackPanel>
+
+            <TextBlock Margin="10" TextWrapping="Wrap" Foreground="GhostWhite" Text="In addition to this information that we collect for E-rate discounts, we are also required to collect and report the following information to the state and federal governments."/>
+
+            <TextBlock Foreground="#2196f3" Text="Please mark any of the following that apply to you:" Margin="10"/>
+
+            <StackPanel Orientation="Horizontal" Margin="40, 10, 10, 10">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="homelessCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding homeless, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="GhostWhite" Text="Homeless individuals"/>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="40, 10, 10, 10">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="agedOutCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding agedOutFosterCare, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="GhostWhite" Text="Individual that has aged out of foster care"/>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="40, 10, 10, 10">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="workforceCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding outOfWorkforce, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
+                    <Run Foreground="GhostWhite" Text="Out of Workforce individuals"/>
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="backBtn" Content="Back" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="BackBtn_Click"/>
+            <Button x:Name="submitBtn" Content="Submit" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="SubmitBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -127,10 +127,13 @@ namespace Enrollment_Application
 
                     HighSchoolPolicy HSPnew = new HighSchoolPolicy();
 
+                    HighSchoolConfidentialInfo HSCInew = new HighSchoolConfidentialInfo();
+
                     _db.HighSchoolBasicInfoes.Add(newBI);
                     _db.HighSchoolEmergencyContacts.Add(ECnew);
                     _db.HighSchoolHealthInfoes.Add(HInew);
                     _db.HighSchoolPolicies.Add(HSPnew);
+                    _db.HighSchoolConfidentialInfoes.Add(HSCInew);
 
                     _db.HighSchoolLogins.Add(newLogin);
                     _db.SaveChanges();

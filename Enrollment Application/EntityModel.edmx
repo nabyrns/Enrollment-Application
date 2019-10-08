@@ -154,6 +154,8 @@
           <Property Name="homeless" Type="varchar" MaxLength="50" />
           <Property Name="agedOutFosterCare" Type="varchar" MaxLength="50" />
           <Property Name="outOfWorkforce" Type="varchar" MaxLength="50" />
+          <Property Name="reducedLunch" Type="varchar" MaxLength="50" />
+          <Property Name="parentSignature" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="HighSchoolEmergencyContact">
           <Key>
@@ -408,6 +410,8 @@
           <Property Name="homeless" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="agedOutFosterCare" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="outOfWorkforce" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reducedLunch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="parentSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="HighSchoolEmergencyContact">
           <Key>
@@ -669,6 +673,8 @@
                 <ScalarProperty Name="homeless" ColumnName="homeless" />
                 <ScalarProperty Name="agedOutFosterCare" ColumnName="agedOutFosterCare" />
                 <ScalarProperty Name="outOfWorkforce" ColumnName="outOfWorkforce" />
+                <ScalarProperty Name="reducedLunch" ColumnName="reducedLunch" />
+                <ScalarProperty Name="parentSignature" ColumnName="parentSignature" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
