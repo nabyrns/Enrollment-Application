@@ -56,30 +56,30 @@ namespace Enrollment_Application
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             // update aec information to contain what is in the text fields
-            hsec.parentNameOne = parentOneNameText.Text;
-            hsec.parentOneRelationship = parentOneRelationshipText.Text;
-            hsec.parentOneAddress = parentOneAddressText.Text;
-            hsec.parentOneCity = parentOneCityText.Text;
+            hsec.parentNameOne = parentOneNameText.Text.Trim();
+            hsec.parentOneRelationship = parentOneRelationshipText.Text.Trim();
+            hsec.parentOneAddress = parentOneAddressText.Text.Trim();
+            hsec.parentOneCity = parentOneCityText.Text.Trim();
             hsec.parentOneState = stateCombo.Text;
-            hsec.parentOneZip = zipText.Text;
-            hsec.parentOnePrimaryNum = parentOnePrimaryNumText.Text;
-            hsec.parentOneCellNum = parentOneCellNumText.Text;
-            hsec.parentOneEmail = parentOneEmailText.Text;
+            hsec.parentOneZip = zipText.Text.Trim();
+            hsec.parentOnePrimaryNum = parentOnePrimaryNumText.Text.Trim();
+            hsec.parentOneCellNum = parentOneCellNumText.Text.Trim();
+            hsec.parentOneEmail = parentOneEmailText.Text.Trim();
             hsec.residesWithP1 = residesWithP1Check.IsChecked.ToString();
-            hsec.parentNameTwo = parentTwoNameText.Text;
-            hsec.parentTwoRelationship = parentTwoRelationshipText.Text;
-            hsec.parentTwoAddress = parentTwoAddressText.Text;
-            hsec.parentTwoCity = parentTwoCityText.Text;
+            hsec.parentNameTwo = parentTwoNameText.Text.Trim();
+            hsec.parentTwoRelationship = parentTwoRelationshipText.Text.Trim();
+            hsec.parentTwoAddress = parentTwoAddressText.Text.Trim();
+            hsec.parentTwoCity = parentTwoCityText.Text.Trim();
             hsec.parentTwoState = stateComboTwo.Text;
-            hsec.parentTwoZip = zipTextTwo.Text;
-            hsec.parentTwoPrimaryNum = parentTwoPrimaryNumText.Text;
-            hsec.parentTwoCellNum = parentTwoCellNumText.Text;
-            hsec.parentTwoEmail = parentTwoEmailText.Text;
+            hsec.parentTwoZip = zipTextTwo.Text.Trim();
+            hsec.parentTwoPrimaryNum = parentTwoPrimaryNumText.Text.Trim();
+            hsec.parentTwoCellNum = parentTwoCellNumText.Text.Trim();
+            hsec.parentTwoEmail = parentTwoEmailText.Text.Trim();
             hsec.residesWithP2 = residesWithP2Check.IsChecked.ToString();
-            hsec.EContactName = EContactNameText.Text;
-            hsec.EContactRelationship = EContactRelationshipText.Text;
-            hsec.EContactPrimaryNum = EContactPrimaryNumText.Text;
-            hsec.EContactCellNum = EContactCellNumText.Text;
+            hsec.EContactName = EContactNameText.Text.Trim();
+            hsec.EContactRelationship = EContactRelationshipText.Text.Trim();
+            hsec.EContactPrimaryNum = EContactPrimaryNumText.Text.Trim();
+            hsec.EContactCellNum = EContactCellNumText.Text.Trim();
 
 
             // initialize or update the validCheck variable, which is a text validation variable

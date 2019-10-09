@@ -114,13 +114,13 @@ namespace Enrollment_Application
             if (ahi != null)
             {
                 // reassign the values of the HealthInfo object to be what is in the control for that variable
-                ahi.primaryPhysician = primaryPhysText.Text;
-                ahi.otherPhysician = oPhysicianText.Text;
-                ahi.pPhysicianPhoneNum = primaryPhysPhoneText.Text;
-                ahi.oPhysicianPhoneNum = oPhysicianPhoneNum.Text;
+                ahi.primaryPhysician = primaryPhysText.Text.Trim();
+                ahi.otherPhysician = oPhysicianText.Text.Trim();
+                ahi.pPhysicianPhoneNum = primaryPhysPhoneText.Text.Trim();
+                ahi.oPhysicianPhoneNum = oPhysicianPhoneNum.Text.Trim();
                 ahi.diabeticType = diabetesCombo.Text;
-                ahi.allergies = allergiesText.Text;
-                ahi.heartIssues = heartConditionsText.Text;
+                ahi.allergies = allergiesText.Text.Trim();
+                ahi.heartIssues = heartConditionsText.Text.Trim();
                 ahi.metabolic = metabolicCheck.IsChecked.ToString();
                 ahi.jointMuscle = jointMuscleCheck.IsChecked.ToString();
                 ahi.chronicIllness = chronicIllnessCheck.IsChecked.ToString();
@@ -129,8 +129,8 @@ namespace Enrollment_Application
                 ahi.pulmonary = pulmonaryCheck.IsChecked.ToString();
                 ahi.asthma = asthmaCheck.IsChecked.ToString();
                 ahi.other = otherCheck.IsChecked.ToString();
-                ahi.otherMeds = otherMedsText.Text;
-                ahi.specificFirstAidNeeds = specificNeedsText.Text;
+                ahi.otherMeds = otherMedsText.Text.Trim();
+                ahi.specificFirstAidNeeds = specificNeedsText.Text.Trim();
                 ahi.repPermissionForTreatment = treatmentPermissionCombo.Text;
                 ahi.healthSignature = signature;
 
@@ -162,13 +162,13 @@ namespace Enrollment_Application
             // same as above code
             else
             {
-                hshi.primaryPhysician = primaryPhysText.Text;
-                hshi.otherPhysician = oPhysicianText.Text;
-                hshi.pPhysicianPhoneNum = primaryPhysPhoneText.Text;
-                hshi.oPhysicianPhoneNum = oPhysicianPhoneNum.Text;
+                hshi.primaryPhysician = primaryPhysText.Text.Trim();
+                hshi.otherPhysician = oPhysicianText.Text.Trim();
+                hshi.pPhysicianPhoneNum = primaryPhysPhoneText.Text.Trim();
+                hshi.oPhysicianPhoneNum = oPhysicianPhoneNum.Text.Trim();
                 hshi.diabeticType = diabetesCombo.Text;
-                hshi.allergies = allergiesText.Text;
-                hshi.heartIssues = heartConditionsText.Text;
+                hshi.allergies = allergiesText.Text.Trim();
+                hshi.heartIssues = heartConditionsText.Text.Trim();
                 hshi.metabolic = metabolicCheck.IsChecked.ToString();
                 hshi.jointMuscle = jointMuscleCheck.IsChecked.ToString();
                 hshi.chronicIllness = chronicIllnessCheck.IsChecked.ToString();
@@ -177,8 +177,8 @@ namespace Enrollment_Application
                 hshi.pulmonary = pulmonaryCheck.IsChecked.ToString();
                 hshi.asthma = asthmaCheck.IsChecked.ToString();
                 hshi.other = otherCheck.IsChecked.ToString();
-                hshi.otherMeds = otherMedsText.Text;
-                hshi.specificFirstAidNeeds = specificNeedsText.Text;
+                hshi.otherMeds = otherMedsText.Text.Trim();
+                hshi.specificFirstAidNeeds = specificNeedsText.Text.Trim();
                 hshi.repPermissionForTreatment = treatmentPermissionCombo.Text;
                 hshi.healthSignature = signature;
 

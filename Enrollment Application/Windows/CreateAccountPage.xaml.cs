@@ -78,7 +78,7 @@ namespace Enrollment_Application
                 {
                     AdultLogin newLogin = new AdultLogin()
                     {
-                        email = EmailText.Text,
+                        email = EmailText.Text.Trim(),
                         passwordHash = Convert.ToBase64String(hashedPassword),
                         passwordSalt = salt,
                         dateCreated = DateTime.Now
@@ -86,7 +86,7 @@ namespace Enrollment_Application
 
                     AllLogin newAllLogin = new AllLogin()
                     {
-                        email = EmailText.Text,
+                        email = EmailText.Text.Trim(),
                         passwordHash = Convert.ToBase64String(hashedPassword),
                         passwordSalt = salt,
                         dateCreated = DateTime.Now
@@ -122,7 +122,7 @@ namespace Enrollment_Application
                 {
                     HighSchoolLogin newLogin = new HighSchoolLogin()
                     {
-                        email = EmailText.Text,
+                        email = EmailText.Text.Trim(),
                         passwordHash = Convert.ToBase64String(hashedPassword),
                         passwordSalt = salt,
                         dateCreated = DateTime.Now
@@ -130,7 +130,7 @@ namespace Enrollment_Application
 
                     AllLogin newAllLogin = new AllLogin()
                     {
-                        email = EmailText.Text,
+                        email = EmailText.Text.Trim(),
                         passwordHash = Convert.ToBase64String(hashedPassword),
                         passwordSalt = salt,
                         dateCreated = DateTime.Now

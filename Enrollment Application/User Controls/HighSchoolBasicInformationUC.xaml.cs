@@ -37,21 +37,21 @@ namespace Enrollment_Application
         #region Code executes when NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            hbi.lastName = lastNameText.Text;
-            hbi.firstName = firstNameText.Text;
-            hbi.middleInitial = middleInitialText.Text;
-            hbi.program = programText.Text;
-            hbi.streetAddress = streetAddressText.Text;
-            hbi.city = cityText.Text;
+            hbi.lastName = lastNameText.Text.Trim();
+            hbi.firstName = firstNameText.Text.Trim();
+            hbi.middleInitial = middleInitialText.Text.Trim();
+            hbi.program = programText.Text.Trim();
+            hbi.streetAddress = streetAddressText.Text.Trim();
+            hbi.city = cityText.Text.Trim();
             hbi.state = stateCombo.Text;
-            hbi.zipCode = zipCodeText.Text;
-            hbi.primaryPhoneNum = primaryPhoneText.Text;
-            hbi.cellPhoneNum = cellPhoneText.Text;
+            hbi.zipCode = zipCodeText.Text.Trim();
+            hbi.primaryPhoneNum = primaryPhoneText.Text.Trim();
+            hbi.cellPhoneNum = cellPhoneText.Text.Trim();
             hbi.hispanicOrLatino = ethnicityCombo.Text;
             hbi.race = raceCombo.Text;
             hbi.gender = genderCombo.Text;
             hbi.dateOfBirth = birthdateCalendar.SelectedDate;
-            hbi.sendingHS = sendingHSText.Text;
+            hbi.sendingHS = sendingHSText.Text.Trim();
             hbi.currentEdLevel = educationLevelCombo.Text;
             hbi.filloutDate = DateTime.Now;
 

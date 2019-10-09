@@ -33,7 +33,7 @@
             <!--#region Program, SSN, DOB text field-->
             <StackPanel Orientation="Horizontal" Margin="10, 15, 0, 0" HorizontalAlignment="Left">
                 <TextBlock Text="Social Security Number:" Foreground="GhostWhite" Margin="0, 10, 5, 0"/>
-                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="SSNtext" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding SSN, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="SSNtext" KeyDown="SSNtext_KeyDown" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding SSN, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Program:" Foreground="GhostWhite" Margin="10, 10, 5, 0"/>
                 <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="programText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding program, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Date of Birth:" Foreground="GhostWhite" Margin="10, 10, 5, 0"/>

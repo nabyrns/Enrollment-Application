@@ -302,6 +302,11 @@ namespace Enrollment_Application
                         result = "Field cannot be empty.";
                     }
 
+                    else if (primaryPhysician.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "pPhysicianPhoneNum":

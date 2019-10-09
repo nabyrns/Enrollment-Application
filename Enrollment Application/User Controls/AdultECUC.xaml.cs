@@ -42,19 +42,19 @@ namespace Enrollment_Application
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             // update aec information to contain what is in the text fields
-            aec.contactName = EmergencyContactNameText.Text;
-            aec.relationship = ECRelationshipText.Text;
-            aec.primaryNum = ECPrimaryNumText.Text;
-            aec.alternateNum = altNumberText.Text;
-            aec.nameNearestRelative = NearestRelativeNameText.Text;
-            aec.NRrelationship = NRRelationshipText.Text;
-            aec.NRstreetAddress = NRAddressText.Text;
-            aec.NRcity = NRcityText.Text;
+            aec.contactName = EmergencyContactNameText.Text.Trim();
+            aec.relationship = ECRelationshipText.Text.Trim();
+            aec.primaryNum = ECPrimaryNumText.Text.Trim();
+            aec.alternateNum = altNumberText.Text.Trim();
+            aec.nameNearestRelative = NearestRelativeNameText.Text.Trim();
+            aec.NRrelationship = NRRelationshipText.Text.Trim();
+            aec.NRstreetAddress = NRAddressText.Text.Trim();
+            aec.NRcity = NRcityText.Text.Trim();
             aec.NRstate = stateCombo.Text;
-            aec.NRzip = zipText.Text;
-            aec.NRprimaryNum = NRPrimaryNumText.Text;
-            aec.NRworkNum = workNumberText.Text;
-            aec.NRcellNum = cellNumberText.Text;
+            aec.NRzip = zipText.Text.Trim();
+            aec.NRprimaryNum = NRPrimaryNumText.Text.Trim();
+            aec.NRworkNum = workNumberText.Text.Trim();
+            aec.NRcellNum = cellNumberText.Text.Trim();
 
             // initialize or update the validCheck variable, which is a text validation variable
             // the connection between the AdultEmergencyContact variable and the validCheck variable is what allows for updating in the database
