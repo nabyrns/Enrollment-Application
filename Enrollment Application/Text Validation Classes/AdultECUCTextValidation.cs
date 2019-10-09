@@ -233,6 +233,11 @@ namespace Enrollment_Application
                         result = "Field cannot be empty.";
                     }
 
+                    else if (contactName.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "relationship":
@@ -240,6 +245,11 @@ namespace Enrollment_Application
                     if (string.IsNullOrWhiteSpace(relationship))
                     {
                         result = "Field cannot be empty.";
+                    }
+
+                    else if (relationship.Length >= 50)
+                    {
+                        result = "Too many characters.";
                     }
 
                     break;
@@ -283,6 +293,11 @@ namespace Enrollment_Application
                         result = "Field cannot be empty.";
                     }
 
+                    else if (nameNearestRelative.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "NRrelationship":
@@ -291,6 +306,11 @@ namespace Enrollment_Application
                     {
 
                         result = "Field cannot be empty.";
+                    }
+
+                    else if (NRrelationship.Length >= 50)
+                    {
+                        result = "Too many characters.";
                     }
 
                     break;
@@ -303,6 +323,11 @@ namespace Enrollment_Application
                         result = "Field cannot not be empty.";
                     }
 
+                    else if (NRstreetAddress.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "NRcity":
@@ -311,6 +336,11 @@ namespace Enrollment_Application
                     {
 
                         result = "Field cannot not be empty.";
+                    }
+
+                    else if (NRcity.Length >= 50)
+                    {
+                        result = "Too many characters.";
                     }
 
                     break;

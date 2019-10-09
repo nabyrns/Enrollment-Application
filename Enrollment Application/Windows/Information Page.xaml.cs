@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +33,12 @@ namespace Enrollment_Application
 
         public static HighSchoolStudentPolicyUC hsspuc;
 
+        public static AdultConfidentialInfoUC aciuc;
+
+        public static HighSchoolConfidentialInfoUC hsciuc;
+
+        public static Grid ucg;
+
         // this variable will prevent clicking the listview to change which part of the form is displayed
         // the forms may be navigated only using buttons in the user control
         public static int selectedIndex = 0;
@@ -54,11 +61,16 @@ namespace Enrollment_Application
             aspuc = new AdultStudentPolicyUC();
             aspuc.Visibility = Visibility.Hidden;
 
+            aciuc = new AdultConfidentialInfoUC();
+            aciuc.Visibility = Visibility.Hidden;
+
             UserControlGrid.Children.Add(abiuc);
             UserControlGrid.Children.Add(hiuc);
             UserControlGrid.Children.Add(aecuc);
             UserControlGrid.Children.Add(aspuc);
+            UserControlGrid.Children.Add(aciuc);
 
+            ucg = UserControlGrid;
 
             lv = ListViewMenu;
 
@@ -82,10 +94,17 @@ namespace Enrollment_Application
             hsspuc = new HighSchoolStudentPolicyUC();
             hsspuc.Visibility = Visibility.Hidden;
 
+            hsciuc = new HighSchoolConfidentialInfoUC();
+            hsciuc.Visibility = Visibility.Hidden;
+
             UserControlGrid.Children.Add(hsbiuc);
             UserControlGrid.Children.Add(hiuc);
             UserControlGrid.Children.Add(hsecuc);
             UserControlGrid.Children.Add(hsspuc);
+            UserControlGrid.Children.Add(hsciuc);
+
+
+            ucg = UserControlGrid;
 
             lv = ListViewMenu;
 
@@ -130,5 +149,22 @@ namespace Enrollment_Application
             DragMove();
         }
         #endregion
+
+        public static void SuccessMessageAndShutdown()
+        {
+            TextBlock sm = new TextBlock();
+
+            sm.Foreground = new SolidColorBrush(Color.FromRgb(33, 148, 243));
+
+            sm.Text = "Your information was successfully saved!";
+
+            sm.FontSize = 36;
+
+            sm.HorizontalAlignment = HorizontalAlignment.Center;
+
+            sm.VerticalAlignment = VerticalAlignment.Center;
+
+            ucg.Children.Add(sm);
+        }
     }
 }

@@ -47,16 +47,16 @@ namespace Enrollment_Application
             byte[] hashedSSN = CommonMethods.GenerateSaltedHash(Encoding.UTF8.GetBytes(SSNtext.Text), Encoding.UTF8.GetBytes(salt));
 
             // reassign the values of the BasicInfo object to be what is in the control for that variable
-            abi.lastName = lastNameText.Text;
-            abi.firstName = firstNameText.Text;
-            abi.middleInitial = abi.middleInitial;
-            abi.program = programText.Text;
-            abi.streetAddress = streetAddressText.Text;
-            abi.city = cityText.Text;
+            abi.lastName = lastNameText.Text.Trim();
+            abi.firstName = firstNameText.Text.Trim();
+            abi.middleInitial = middleInitialText.Text.Trim();
+            abi.program = programText.Text.Trim();
+            abi.streetAddress = streetAddressText.Text.Trim();
+            abi.city = cityText.Text.Trim();
             abi.state = stateCombo.Text;
-            abi.zipCode = zipCodeText.Text;
-            abi.primaryPhoneNum = primaryPhoneText.Text;
-            abi.cellPhoneNum = cellPhoneText.Text;
+            abi.zipCode = zipCodeText.Text.Trim();
+            abi.primaryPhoneNum = primaryPhoneText.Text.Trim();
+            abi.cellPhoneNum = cellPhoneText.Text.Trim();
             abi.hispanicOrLatino = ethnicityCombo.Text;
             abi.race = raceCombo.Text;
             abi.gender = genderCombo.Text;
@@ -117,6 +117,25 @@ namespace Enrollment_Application
             }
         }
 
+
         #endregion
+
+        private void SSNtext_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(SSNtext.Text) && e.Key != Key.Back && SSNtext.Text.Length < 10)
+            {
+                if (SSNtext.Text.Length == 3)
+                {
+                    SSNtext.Text += "-";
+                }
+
+                else if (SSNtext.Text.Length == 6)
+                {
+                    SSNtext.Text += "-";
+                }
+
+                SSNtext.SelectionStart = SSNtext.Text.Length;
+            }
+        }
     }
 }

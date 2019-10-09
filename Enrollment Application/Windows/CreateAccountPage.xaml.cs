@@ -78,7 +78,15 @@ namespace Enrollment_Application
                 {
                     AdultLogin newLogin = new AdultLogin()
                     {
-                        email = EmailText.Text,
+                        email = EmailText.Text.Trim(),
+                        passwordHash = Convert.ToBase64String(hashedPassword),
+                        passwordSalt = salt,
+                        dateCreated = DateTime.Now
+                    };
+
+                    AllLogin newAllLogin = new AllLogin()
+                    {
+                        email = EmailText.Text.Trim(),
                         passwordHash = Convert.ToBase64String(hashedPassword),
                         passwordSalt = salt,
                         dateCreated = DateTime.Now
@@ -92,12 +100,16 @@ namespace Enrollment_Application
 
                     AdultPolicy APnew = new AdultPolicy();
 
+                    AdultConfidentialInfo ACInew = new AdultConfidentialInfo();
+
                     _db.AdultBasicInfoes.Add(newBI);
                     _db.AdultEmergencyContacts.Add(ECnew);
                     _db.AdultHealthInfoes.Add(HInew);
                     _db.AdultPolicies.Add(APnew);
+                    _db.AdultConfidentialInfoes.Add(ACInew);
 
                     _db.AdultLogins.Add(newLogin);
+                    _db.AllLogins.Add(newAllLogin);
 
                     // changes to the database are saved and the create account page is closed
                     _db.SaveChanges();
@@ -110,7 +122,15 @@ namespace Enrollment_Application
                 {
                     HighSchoolLogin newLogin = new HighSchoolLogin()
                     {
-                        email = EmailText.Text,
+                        email = EmailText.Text.Trim(),
+                        passwordHash = Convert.ToBase64String(hashedPassword),
+                        passwordSalt = salt,
+                        dateCreated = DateTime.Now
+                    };
+
+                    AllLogin newAllLogin = new AllLogin()
+                    {
+                        email = EmailText.Text.Trim(),
                         passwordHash = Convert.ToBase64String(hashedPassword),
                         passwordSalt = salt,
                         dateCreated = DateTime.Now
@@ -124,12 +144,17 @@ namespace Enrollment_Application
 
                     HighSchoolPolicy HSPnew = new HighSchoolPolicy();
 
+                    HighSchoolConfidentialInfo HSCInew = new HighSchoolConfidentialInfo();
+
                     _db.HighSchoolBasicInfoes.Add(newBI);
                     _db.HighSchoolEmergencyContacts.Add(ECnew);
                     _db.HighSchoolHealthInfoes.Add(HInew);
                     _db.HighSchoolPolicies.Add(HSPnew);
+                    _db.HighSchoolConfidentialInfoes.Add(HSCInew);
 
                     _db.HighSchoolLogins.Add(newLogin);
+                    _db.AllLogins.Add(newAllLogin);
+
                     _db.SaveChanges();
 
                     this.Close();

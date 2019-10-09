@@ -304,34 +304,42 @@ namespace Enrollment_Application
             switch (text)
             {
 
-
-                /* case "email":
-
-                     string pattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
-                                      + "@"
-                                      + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
-
-                     Regex r = new Regex(pattern);
-
-
-
-                     if (string.IsNullOrWhiteSpace(email))
-                     {
-                         result = "Text field cannot be empty.";
-                     }
-
-                     else if (!r.IsMatch(email))
-                     {
-                         result = "Invalid email address.";
-                     }
-
-                     break;*/
-
                 case "SSN":
+
+                    string SSNpattern = @"^\d{3}-\d{2}-\d{4}$";
+
+                    Regex reg = new Regex(SSNpattern);
 
                     if (string.IsNullOrWhiteSpace(SSN))
                     {
                         result = "Field cannot be empty.";
+                    }
+
+                    else if (!reg.IsMatch(SSN))
+                    {
+                        result = "Invalid Social Security Number.";
+                    }
+
+                    else
+                    {
+                        byte[] saltedHash;
+
+                        var query = (from q in _db.AdultBasicInfoes where q.SSNhashAndSalt != null && q.firstName != _firstName && q.lastName != _lastName select q).ToList();
+
+                        foreach (var v in query)
+                        {
+                            var hashAndSalt = v.SSNhashAndSalt;
+
+                            saltedHash = CommonMethods.GenerateSaltedHash(Encoding.UTF8.GetBytes(SSN), Encoding.UTF8.GetBytes(v.SSNsalt));
+
+                            if (CommonMethods.CompareByteArrays(saltedHash, Convert.FromBase64String(v.SSNhashAndSalt)))
+                            {
+                                result = "An account already exists with that SSN.";
+
+                                break;
+                            }
+                        }
+                        
                     }
 
                     break;
@@ -370,6 +378,11 @@ namespace Enrollment_Application
                         result = "Name field cannot be empty.";
                     }
 
+                    else if (lastName.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "firstName":
@@ -379,14 +392,14 @@ namespace Enrollment_Application
                         result = "Name field cannot be empty.";
                     }
 
+                    else if (firstName.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "middleInitial":
-
-                    if (string.IsNullOrWhiteSpace(middleInitial))
-                    {
-                        break;
-                    }
 
                     if (middleInitial.Length > 5)
                     {
@@ -403,6 +416,11 @@ namespace Enrollment_Application
                         result = "Please state the program you wish to attend.";
                     }
 
+                    else if (program.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "streetAddress":
@@ -413,6 +431,11 @@ namespace Enrollment_Application
                         result = "Field must not be empty.";
                     }
 
+                    else if (streetAddress.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "city":
@@ -421,6 +444,11 @@ namespace Enrollment_Application
                     {
 
                         result = "Field must not be empty.";
+                    }
+
+                    else if (city.Length >= 50)
+                    {
+                        result = "Too many characters.";
                     }
 
                     break;

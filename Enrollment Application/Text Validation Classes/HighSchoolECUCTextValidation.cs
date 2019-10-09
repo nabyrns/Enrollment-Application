@@ -390,6 +390,11 @@ namespace Enrollment_Application
                         result = "Field cannot be empty.";
                     }
 
+                    else if (parentNameOne.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "parentOneRelationship":
@@ -397,6 +402,11 @@ namespace Enrollment_Application
                     if (string.IsNullOrWhiteSpace(parentOneRelationship))
                     {
                         result = "Field cannot be empty.";
+                    }
+
+                    else if (parentOneRelationship.Length >= 50)
+                    {
+                        result = "Too many characters.";
                     }
 
                     break;
@@ -409,6 +419,11 @@ namespace Enrollment_Application
                         result = "Field must not be empty.";
                     }
 
+                    else if (parentOneAddress.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "parentOneCity":
@@ -419,6 +434,11 @@ namespace Enrollment_Application
                         result = "Field must not be empty.";
                     }
 
+                    else if (parentOneCity.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "parentOneState":
@@ -426,6 +446,11 @@ namespace Enrollment_Application
                     if (string.IsNullOrWhiteSpace(parentOneState))
                     {
                         result = "Field cannot be empty.";
+                    }
+
+                    else if (parentOneState.Length >= 50)
+                    {
+                        result = "Too many characters.";
                     }
 
                     break;
@@ -478,52 +503,45 @@ namespace Enrollment_Application
 
                     break;
 
-                /*case "parentNameTwo":
+                case "parentNameTwo":
 
-                    if (string.IsNullOrWhiteSpace(parentNameTwo))
+                    if (parentNameTwo.Length >= 50)
                     {
-                        result = "Field cannot be empty.";
+                        result = "Too many characters.";
                     }
 
                     break;
 
                 case "parentTwoRelationship":
 
-                    if (string.IsNullOrWhiteSpace(parentTwoRelationship))
+                    if (parentTwoRelationship.Length >= 50)
                     {
-                        result = "Field cannot be empty.";
+                        result = "Too many characters.";
                     }
 
                     break;
 
                 case "parentTwoAddress":
 
-                    if (string.IsNullOrWhiteSpace(parentTwoAddress))
+                    if (parentTwoAddress.Length >= 50)
                     {
-
-                        result = "Field must not be empty.";
+                        result = "Too many characters.";
                     }
 
                     break;
 
                 case "parentTwoCity":
 
-                    if (string.IsNullOrWhiteSpace(parentTwoCity))
+                    if (parentTwoCity.Length >= 50)
                     {
-
-                        result = "Field must not be empty.";
+                        result = "Too many characters.";
                     }
 
                     break;
 
                 case "parentTwoState":
 
-                    if (string.IsNullOrWhiteSpace(parentTwoState))
-                    {
-                        result = "Field cannot be empty.";
-                    }
-
-                    break;*/
+                    break;
 
                 case "parentTwoZip":
 
@@ -568,6 +586,11 @@ namespace Enrollment_Application
                         result = "Field must not be empty.";
                     }
 
+                    else if (EContactName.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "EContactRelationship":
@@ -575,6 +598,11 @@ namespace Enrollment_Application
                     if (string.IsNullOrWhiteSpace(EContactRelationship))
                     {
                         result = "Field must not be empty.";
+                    }
+
+                    else if (EContactRelationship.Length >= 50)
+                    {
+                        result = "Too many characters.";
                     }
 
                     break;
@@ -611,12 +639,12 @@ namespace Enrollment_Application
 
                     break;
 
-                    case "parentOneEmail":
+                case "parentOneEmail":
 
-                     if (string.IsNullOrWhiteSpace(parentOneEmail))
-                     {
+                    if (string.IsNullOrWhiteSpace(parentOneEmail))
+                    {
                         result = "Field must not be empty.";
-                     }
+                    }
 
                     else if (!CommonMethods.IsEmail(parentOneEmail))
                     {

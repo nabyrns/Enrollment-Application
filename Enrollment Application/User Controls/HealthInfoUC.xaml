@@ -21,20 +21,20 @@
             <!--#region First row of UC-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 3, 0, 0">
                 <TextBlock Text="Primary Physician:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="primaryPhysText" Width="125" Margin="10" Text="{Binding primaryPhysician, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="primaryPhysText" Width="125" Margin="10" Text="{Binding primaryPhysician, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Phone Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="primaryPhysPhoneText" Width="125" Margin="10" Text="{Binding pPhysicianPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="primaryPhysPhoneText" Width="125" Margin="10" Text="{Binding pPhysicianPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Other Physician:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="oPhysicianText" Width="125" Margin="10" Text="{Binding otherPhysician, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="oPhysicianText" Width="125" Margin="10" Text="{Binding otherPhysician, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Phone Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="oPhysicianPhoneNum" Width="125" Margin="10" Text="{Binding oPhysicianPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="oPhysicianPhoneNum" Width="125" Margin="10" Text="{Binding oPhysicianPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <!--#endregion-->
 
             <!--#region Diabetes-->
             <StackPanel Orientation="Horizontal" Margin="10, 3, 0, 0" HorizontalAlignment="Left">
                 <TextBlock Text="Diabetes:" Margin="0, 20, 0, 0" Foreground="GhostWhite"/>
-                <ComboBox Name="diabetesCombo" Width="100" Margin="10, 0, 10, 0" Text="{Binding diabeticType, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Name="diabetesCombo" Width="100" Margin="10, 0, 10, 0" Text="{Binding diabeticType, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                     <ComboBoxItem Content="None"/>
                     <ComboBoxItem Content="Type I"/>
                     <ComboBoxItem Content="Type II"/>
@@ -45,30 +45,30 @@
             <!--#region Third row of UC-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 3, 0, 0">
                 <TextBlock Text="Allergies:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="allergiesText" MaxHeight="35" Width="200" Margin="10, 0, 10, 0" TextWrapping="WrapWithOverflow" Text="{Binding allergies, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="allergiesText" MaxHeight="35" Width="200" Margin="10, 0, 10, 0" TextWrapping="WrapWithOverflow" Text="{Binding allergies, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Heart Conditions:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="heartConditionsText" MaxHeight="35" Width="200" Margin="10, 0, 10, 0" TextWrapping="WrapWithOverflow" Text="{Binding heartIssues, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="heartConditionsText" MaxHeight="35" Width="200" Margin="10, 0, 10, 0" TextWrapping="WrapWithOverflow" Text="{Binding heartIssues, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <!--#endregion-->
 
             <!--#region Fourth row of UC-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 3, 0, 0">
                 <TextBlock Text="Check relevant condition(s):" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <CheckBox x:Name="metabolicCheck" Content="Metabolic" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding metabolic, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
-                <CheckBox x:Name="jointMuscleCheck" Content="Joint/Muscle" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding jointMuscle, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
-                <CheckBox x:Name="chronicIllnessCheck" Content="Chronic Illness" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding chronicIllness, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
-                <CheckBox x:Name="migrainesCheck" Content="Migraines" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding migraines, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
-                <CheckBox x:Name="neurologicalCheck" Content="Neurological" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding neurological, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
-                <CheckBox x:Name="pulmonaryCheck" Content="Pulmonary" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding pulmonary, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
-                <CheckBox x:Name="asthmaCheck" Content="Asthma" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding asthma, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
-                <CheckBox x:Name="otherCheck" Content="Other" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding other, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="metabolicCheck" Content="Metabolic" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding metabolic, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="jointMuscleCheck" Content="Joint/Muscle" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding jointMuscle, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="chronicIllnessCheck" Content="Chronic Illness" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding chronicIllness, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="migrainesCheck" Content="Migraines" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding migraines, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="neurologicalCheck" Content="Neurological" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding neurological, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="pulmonaryCheck" Content="Pulmonary" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding pulmonary, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="asthmaCheck" Content="Asthma" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding asthma, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="otherCheck" Content="Other" Margin="10, 0, 10, 0" Foreground="GhostWhite" IsChecked="{Binding other, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"/>
             </StackPanel>
             <!--#endregion-->
 
             <!--#region Fifth row of UC-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 3, 0, 0">
                 <TextBlock Text="List any medications the student will be carrying other than inhaled medications: " Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="otherMedsText" Width="450" Margin="10, 0, 10, 0" TextWrapping="Wrap" Text="{Binding otherMeds, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="otherMedsText" Width="450" Margin="10, 0, 10, 0" TextWrapping="Wrap" Text="{Binding otherMeds, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <!--#endregion-->
 
@@ -77,7 +77,7 @@
             <!--#region Specific First Aid needs-->
             <StackPanel Orientation="Horizontal" Margin="10, 3, 0, 0">
                 <TextBlock Text="Specific first aid needs for medical conditions: " Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <TextBox x:Name="specificNeedsText" MaxHeight="35" Width="450" Margin="10, 0, 10, 0" TextWrapping="WrapWithOverflow" Text="{Binding specificFirstAidNeeds, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="specificNeedsText" MaxHeight="35" Width="450" Margin="10, 0, 10, 0" TextWrapping="WrapWithOverflow" Text="{Binding specificFirstAidNeeds, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <!--#endregion-->
 
@@ -86,13 +86,12 @@
             <!--#region Medical treatment permission-->
             <StackPanel Orientation="Horizontal" Margin="10, 3, 0, 0">
                 <TextBlock Text="A school representative has permission to authorize medical treatment as needed: " Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
-                <ComboBox Name="treatmentPermissionCombo" Width="100" Margin="10, 0, 10, 0" Text="{Binding repPermissionForTreatment, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Name="treatmentPermissionCombo" Width="100" Margin="10, 0, 10, 0" Text="{Binding repPermissionForTreatment, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                     <ComboBoxItem Content="Yes"/>
                     <ComboBoxItem Content="No"/>
                 </ComboBox>
             </StackPanel>
             <!--#endregion-->
-
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,10,0,0">
 
@@ -106,15 +105,9 @@
                 </Border>
             </StackPanel>
 
-
-
         </StackPanel>
         <!--#endregion-->
 
-        
-        
-        
-        
         <!--#region Button stack panel-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="backBtn" Content="Back" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="BackBtn_Click"/>

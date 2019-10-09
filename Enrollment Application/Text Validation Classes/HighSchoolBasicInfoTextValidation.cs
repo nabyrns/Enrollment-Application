@@ -315,6 +315,11 @@ namespace Enrollment_Application
                         result = "Field cannot be empty.";
                     }
 
+                    else if (sendingHS.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "lastName":
@@ -324,6 +329,11 @@ namespace Enrollment_Application
                         result = "Name field cannot be empty.";
                     }
 
+                    else if (lastName.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "firstName":
@@ -331,6 +341,11 @@ namespace Enrollment_Application
                     if (string.IsNullOrWhiteSpace(firstName))
                     {
                         result = "Name field cannot be empty.";
+                    }
+
+                    else if (firstName.Length >= 50)
+                    {
+                        result = "Too many characters.";
                     }
 
                     break;
@@ -352,6 +367,11 @@ namespace Enrollment_Application
                         result = "Please state the program you wish to attend.";
                     }
 
+                    else if (program.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "streetAddress":
@@ -362,6 +382,11 @@ namespace Enrollment_Application
                         result = "Field must not be empty.";
                     }
 
+                    else if (streetAddress.Length >= 50)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     break;
 
                 case "city":
@@ -370,6 +395,11 @@ namespace Enrollment_Application
                     {
 
                         result = "Field must not be empty.";
+                    }
+
+                    else if (city.Length >= 50)
+                    {
+                        result = "Too many characters.";
                     }
 
                     break;
