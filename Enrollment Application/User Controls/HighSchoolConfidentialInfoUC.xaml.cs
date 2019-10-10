@@ -51,6 +51,8 @@ namespace Enrollment_Application
         {
             bool sigError = false;
 
+            
+
             if (signatureCanvas.Strokes.Count == 0)
             {
                 sigCanBorder.BorderBrush = Brushes.Red;
@@ -105,6 +107,10 @@ namespace Enrollment_Application
 
             if (!sigError)
             {
+                HighSchoolLogin hsl = (from m in _db.HighSchoolLogins where m.Id == LoginPage.highschoolCheck.Id select m).FirstOrDefault();
+
+                hsl.submitted = "Yes";
+
                 _db.SaveChanges();
 
                 Information_Page.hsciuc.Visibility = Visibility.Hidden;

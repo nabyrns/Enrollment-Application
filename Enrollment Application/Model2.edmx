@@ -1,0 +1,832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EnrollmentDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdultBasicInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="middleInitial" Type="nvarchar" MaxLength="50" />
+          <Property Name="preferredName" Type="nvarchar" MaxLength="50" />
+          <Property Name="program" Type="nvarchar" MaxLength="50" />
+          <Property Name="streetAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="state" Type="nvarchar" MaxLength="50" />
+          <Property Name="zipCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="primaryPhoneNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="cellPhoneNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="hispanicOrLatino" Type="nvarchar" MaxLength="50" />
+          <Property Name="race" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateOfBirth" Type="date" />
+          <Property Name="filloutDate" Type="datetime" />
+          <Property Name="SSNhashAndSalt" Type="nvarchar" MaxLength="50" />
+          <Property Name="SSNsalt" Type="nvarchar" MaxLength="50" />
+          <Property Name="completedEdLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="attendedCollegeOrTech" Type="nvarchar" MaxLength="50" />
+          <Property Name="liveWithParent" Type="nvarchar" MaxLength="50" />
+          <Property Name="signature" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="AdultConfidentialInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foodStamps" Type="varchar" MaxLength="50" />
+          <Property Name="dependentChildrenAid" Type="varchar" MaxLength="50" />
+          <Property Name="supplementaryIncome" Type="varchar" MaxLength="50" />
+          <Property Name="housingAssistance" Type="varchar" MaxLength="50" />
+          <Property Name="none" Type="varchar" MaxLength="50" />
+          <Property Name="homeless" Type="varchar" MaxLength="50" />
+          <Property Name="agedOutFosterCare" Type="varchar" MaxLength="50" />
+          <Property Name="outOfWorkforce" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AdultEmergencyContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contactName" Type="nvarchar" MaxLength="50" />
+          <Property Name="relationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="primaryNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="alternateNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="nameNearestRelative" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRrelationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRstreetAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRcity" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRstate" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRzip" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRprimaryNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRworkNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRcellNum" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AdultHealthInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="primaryPhysician" Type="nvarchar(max)" />
+          <Property Name="otherPhysician" Type="nvarchar(max)" />
+          <Property Name="pPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="oPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="diabeticType" Type="nvarchar" MaxLength="50" />
+          <Property Name="allergies" Type="nvarchar(max)" />
+          <Property Name="heartIssues" Type="nvarchar(max)" />
+          <Property Name="metabolic" Type="nvarchar" MaxLength="50" />
+          <Property Name="jointMuscle" Type="nvarchar" MaxLength="50" />
+          <Property Name="chronicIllness" Type="nvarchar" MaxLength="50" />
+          <Property Name="migraines" Type="nvarchar" MaxLength="50" />
+          <Property Name="neurological" Type="nvarchar" MaxLength="50" />
+          <Property Name="pulmonary" Type="nvarchar" MaxLength="50" />
+          <Property Name="asthma" Type="nvarchar" MaxLength="50" />
+          <Property Name="other" Type="nvarchar(max)" />
+          <Property Name="otherMeds" Type="nvarchar(max)" />
+          <Property Name="specificFirstAidNeeds" Type="nvarchar(max)" />
+          <Property Name="repPermissionForTreatment" Type="nvarchar" MaxLength="50" />
+          <Property Name="healthSignature" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="AdultLogins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="passwordHash" Type="nvarchar" MaxLength="50" />
+          <Property Name="passwordSalt" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateCreated" Type="datetime" />
+          <Property Name="submitted" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AdultPolicy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="attendance" Type="nvarchar" MaxLength="50" />
+          <Property Name="tobacco" Type="nvarchar" MaxLength="50" />
+          <Property Name="internetAccess" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentInsurance" Type="nvarchar" MaxLength="50" />
+          <Property Name="fieldTrips" Type="nvarchar" MaxLength="50" />
+          <Property Name="drugTesting" Type="nvarchar" MaxLength="50" />
+          <Property Name="noticeOfDisclosures" Type="nvarchar" MaxLength="50" />
+          <Property Name="cellPhoneContact" Type="nvarchar" MaxLength="50" />
+          <Property Name="releaseForPhotography" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentSignature" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="AllLogins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="passwordHash" Type="nvarchar" MaxLength="50" />
+          <Property Name="passwordSalt" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HighSchoolBasicInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="middleInitial" Type="nvarchar" MaxLength="50" />
+          <Property Name="preferredName" Type="nvarchar" MaxLength="50" />
+          <Property Name="program" Type="nvarchar" MaxLength="50" />
+          <Property Name="streetAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="state" Type="nvarchar" MaxLength="50" />
+          <Property Name="zipCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="primaryPhoneNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="cellPhoneNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="hispanicOrLatino" Type="nvarchar" MaxLength="50" />
+          <Property Name="race" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateOfBirth" Type="date" />
+          <Property Name="currentEdLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="sendingHS" Type="nvarchar" MaxLength="50" />
+          <Property Name="filloutDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HighSchoolConfidentialInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foodStamps" Type="varchar" MaxLength="50" />
+          <Property Name="dependentChildrenAid" Type="varchar" MaxLength="50" />
+          <Property Name="supplementaryIncome" Type="varchar" MaxLength="50" />
+          <Property Name="housingAssistance" Type="varchar" MaxLength="50" />
+          <Property Name="none" Type="varchar" MaxLength="50" />
+          <Property Name="homeless" Type="varchar" MaxLength="50" />
+          <Property Name="agedOutFosterCare" Type="varchar" MaxLength="50" />
+          <Property Name="outOfWorkforce" Type="varchar" MaxLength="50" />
+          <Property Name="reducedLunch" Type="varchar" MaxLength="50" />
+          <Property Name="parentSignature" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="HighSchoolEmergencyContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parentNameOne" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentOneRelationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentOneAddress" Type="nvarchar(max)" />
+          <Property Name="parentOneCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentOneState" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentOneZip" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentOnePrimaryNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentOneWorkNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentOneCellNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentOneEmail" Type="nvarchar(max)" />
+          <Property Name="residesWithP1" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentNameTwo" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentTwoRelationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentTwoAddress" Type="nvarchar(max)" />
+          <Property Name="parentTwoCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentTwoState" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentTwoZip" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentTwoPrimaryNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentTwoWorkNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentTwoCellNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentTwoEmail" Type="nvarchar(max)" />
+          <Property Name="residesWithP2" Type="nvarchar" MaxLength="50" />
+          <Property Name="EContactName" Type="nvarchar(max)" />
+          <Property Name="EContactRelationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="EContactPrimaryNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="EContactWorkNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="EContactCellNum" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HighSchoolHealthInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="primaryPhysician" Type="nvarchar" MaxLength="50" />
+          <Property Name="otherPhysician" Type="nvarchar" MaxLength="50" />
+          <Property Name="pPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="oPhysicianPhoneNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="diabeticType" Type="nvarchar" MaxLength="50" />
+          <Property Name="allergies" Type="nvarchar(max)" />
+          <Property Name="heartIssues" Type="nvarchar(max)" />
+          <Property Name="metabolic" Type="nvarchar" MaxLength="50" />
+          <Property Name="jointMuscle" Type="nvarchar" MaxLength="50" />
+          <Property Name="chronicIllness" Type="nvarchar" MaxLength="50" />
+          <Property Name="migraines" Type="nvarchar" MaxLength="50" />
+          <Property Name="neurological" Type="nvarchar" MaxLength="50" />
+          <Property Name="pulmonary" Type="nvarchar" MaxLength="50" />
+          <Property Name="asthma" Type="nvarchar" MaxLength="50" />
+          <Property Name="other" Type="nvarchar(max)" />
+          <Property Name="otherMeds" Type="nvarchar(max)" />
+          <Property Name="specificFirstAidNeeds" Type="nvarchar(max)" />
+          <Property Name="repPermissionForTreatment" Type="nvarchar" MaxLength="50" />
+          <Property Name="healthSignature" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="HighSchoolLogins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="passwordHash" Type="nvarchar" MaxLength="50" />
+          <Property Name="passwordSalt" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateCreated" Type="datetime" />
+          <Property Name="submitted" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HighSchoolPolicy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="attendance" Type="nvarchar" MaxLength="50" />
+          <Property Name="tobacco" Type="nvarchar" MaxLength="50" />
+          <Property Name="internetAccess" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentInsurance" Type="nvarchar" MaxLength="50" />
+          <Property Name="fieldTrips" Type="nvarchar" MaxLength="50" />
+          <Property Name="drugTesting" Type="nvarchar" MaxLength="50" />
+          <Property Name="noticeOfDisclosures" Type="nvarchar" MaxLength="50" />
+          <Property Name="cellPhoneContact" Type="nvarchar" MaxLength="50" />
+          <Property Name="releaseForPhotography" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentSignature" Type="varbinary(max)" />
+          <Property Name="parentSignature" Type="varbinary(max)" />
+        </EntityType>
+        <EntityContainer Name="EnrollmentDBModelStoreContainer">
+          <EntitySet Name="AdultBasicInfo" EntityType="Self.AdultBasicInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdultConfidentialInfo" EntityType="Self.AdultConfidentialInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdultEmergencyContact" EntityType="Self.AdultEmergencyContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdultHealthInfo" EntityType="Self.AdultHealthInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdultLogins" EntityType="Self.AdultLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdultPolicy" EntityType="Self.AdultPolicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AllLogins" EntityType="Self.AllLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolBasicInfo" EntityType="Self.HighSchoolBasicInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolConfidentialInfo" EntityType="Self.HighSchoolConfidentialInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolEmergencyContact" EntityType="Self.HighSchoolEmergencyContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolHealthInfo" EntityType="Self.HighSchoolHealthInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolLogins" EntityType="Self.HighSchoolLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighSchoolPolicy" EntityType="Self.HighSchoolPolicy" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EnrollmentDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdultBasicInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="middleInitial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="preferredName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="program" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="streetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="primaryPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cellPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hispanicOrLatino" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="race" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="filloutDate" Type="DateTime" Precision="3" />
+          <Property Name="SSNhashAndSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SSNsalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="completedEdLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="attendedCollegeOrTech" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="liveWithParent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AdultConfidentialInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foodStamps" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dependentChildrenAid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplementaryIncome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="housingAssistance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="none" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="homeless" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="agedOutFosterCare" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="outOfWorkforce" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AdultEmergencyContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="relationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="primaryNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="alternateNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nameNearestRelative" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRrelationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRstreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRcity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRstate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRzip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRprimaryNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRworkNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRcellNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AdultHealthInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="primaryPhysician" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="otherPhysician" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="oPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diabeticType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="allergies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="heartIssues" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="metabolic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="jointMuscle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chronicIllness" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="migraines" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="neurological" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pulmonary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="asthma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="otherMeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="specificFirstAidNeeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="repPermissionForTreatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="healthSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AdultLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passwordHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passwordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateCreated" Type="DateTime" Precision="3" />
+          <Property Name="submitted" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AdultPolicy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="attendance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tobacco" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="internetAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentInsurance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fieldTrips" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="drugTesting" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noticeOfDisclosures" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cellPhoneContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="releaseForPhotography" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AllLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passwordHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passwordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateCreated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="HighSchoolBasicInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="middleInitial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="preferredName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="program" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="streetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="primaryPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cellPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hispanicOrLatino" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="race" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="currentEdLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sendingHS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="filloutDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="HighSchoolConfidentialInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foodStamps" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dependentChildrenAid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplementaryIncome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="housingAssistance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="none" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="homeless" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="agedOutFosterCare" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="outOfWorkforce" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reducedLunch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="parentSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="HighSchoolEmergencyContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parentNameOne" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentOneRelationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentOneAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="parentOneCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentOneState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentOneZip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentOnePrimaryNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentOneWorkNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentOneCellNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentOneEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="residesWithP1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentNameTwo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentTwoRelationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentTwoAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="parentTwoCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentTwoState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentTwoZip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentTwoPrimaryNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentTwoWorkNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentTwoCellNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentTwoEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="residesWithP2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EContactName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EContactRelationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EContactPrimaryNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EContactWorkNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EContactCellNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HighSchoolHealthInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="primaryPhysician" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="otherPhysician" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="oPhysicianPhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diabeticType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="allergies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="heartIssues" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="metabolic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="jointMuscle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="chronicIllness" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="migraines" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="neurological" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pulmonary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="asthma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="otherMeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="specificFirstAidNeeds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="repPermissionForTreatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="healthSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="HighSchoolLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passwordHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passwordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateCreated" Type="DateTime" Precision="3" />
+          <Property Name="submitted" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HighSchoolPolicy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="attendance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tobacco" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="internetAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentInsurance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fieldTrips" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="drugTesting" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noticeOfDisclosures" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cellPhoneContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="releaseForPhotography" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="parentSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="EnrollmentDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdultBasicInfoes" EntityType="Self.AdultBasicInfo" />
+          <EntitySet Name="AdultConfidentialInfoes" EntityType="Self.AdultConfidentialInfo" />
+          <EntitySet Name="AdultEmergencyContacts" EntityType="Self.AdultEmergencyContact" />
+          <EntitySet Name="AdultHealthInfoes" EntityType="Self.AdultHealthInfo" />
+          <EntitySet Name="AdultLogins" EntityType="Self.AdultLogin" />
+          <EntitySet Name="AdultPolicies" EntityType="Self.AdultPolicy" />
+          <EntitySet Name="AllLogins" EntityType="Self.AllLogin" />
+          <EntitySet Name="HighSchoolBasicInfoes" EntityType="Self.HighSchoolBasicInfo" />
+          <EntitySet Name="HighSchoolConfidentialInfoes" EntityType="Self.HighSchoolConfidentialInfo" />
+          <EntitySet Name="HighSchoolEmergencyContacts" EntityType="Self.HighSchoolEmergencyContact" />
+          <EntitySet Name="HighSchoolHealthInfoes" EntityType="Self.HighSchoolHealthInfo" />
+          <EntitySet Name="HighSchoolLogins" EntityType="Self.HighSchoolLogin" />
+          <EntitySet Name="HighSchoolPolicies" EntityType="Self.HighSchoolPolicy" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EnrollmentDBModelStoreContainer" CdmEntityContainer="EnrollmentDBEntities">
+          <EntitySetMapping Name="AdultBasicInfoes">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.AdultBasicInfo">
+              <MappingFragment StoreEntitySet="AdultBasicInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="middleInitial" ColumnName="middleInitial" />
+                <ScalarProperty Name="preferredName" ColumnName="preferredName" />
+                <ScalarProperty Name="program" ColumnName="program" />
+                <ScalarProperty Name="streetAddress" ColumnName="streetAddress" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+                <ScalarProperty Name="primaryPhoneNum" ColumnName="primaryPhoneNum" />
+                <ScalarProperty Name="cellPhoneNum" ColumnName="cellPhoneNum" />
+                <ScalarProperty Name="hispanicOrLatino" ColumnName="hispanicOrLatino" />
+                <ScalarProperty Name="race" ColumnName="race" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="filloutDate" ColumnName="filloutDate" />
+                <ScalarProperty Name="SSNhashAndSalt" ColumnName="SSNhashAndSalt" />
+                <ScalarProperty Name="SSNsalt" ColumnName="SSNsalt" />
+                <ScalarProperty Name="completedEdLevel" ColumnName="completedEdLevel" />
+                <ScalarProperty Name="attendedCollegeOrTech" ColumnName="attendedCollegeOrTech" />
+                <ScalarProperty Name="liveWithParent" ColumnName="liveWithParent" />
+                <ScalarProperty Name="signature" ColumnName="signature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdultConfidentialInfoes">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.AdultConfidentialInfo">
+              <MappingFragment StoreEntitySet="AdultConfidentialInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="foodStamps" ColumnName="foodStamps" />
+                <ScalarProperty Name="dependentChildrenAid" ColumnName="dependentChildrenAid" />
+                <ScalarProperty Name="supplementaryIncome" ColumnName="supplementaryIncome" />
+                <ScalarProperty Name="housingAssistance" ColumnName="housingAssistance" />
+                <ScalarProperty Name="none" ColumnName="none" />
+                <ScalarProperty Name="homeless" ColumnName="homeless" />
+                <ScalarProperty Name="agedOutFosterCare" ColumnName="agedOutFosterCare" />
+                <ScalarProperty Name="outOfWorkforce" ColumnName="outOfWorkforce" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdultEmergencyContacts">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.AdultEmergencyContact">
+              <MappingFragment StoreEntitySet="AdultEmergencyContact">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="contactName" ColumnName="contactName" />
+                <ScalarProperty Name="relationship" ColumnName="relationship" />
+                <ScalarProperty Name="primaryNum" ColumnName="primaryNum" />
+                <ScalarProperty Name="alternateNum" ColumnName="alternateNum" />
+                <ScalarProperty Name="nameNearestRelative" ColumnName="nameNearestRelative" />
+                <ScalarProperty Name="NRrelationship" ColumnName="NRrelationship" />
+                <ScalarProperty Name="NRstreetAddress" ColumnName="NRstreetAddress" />
+                <ScalarProperty Name="NRcity" ColumnName="NRcity" />
+                <ScalarProperty Name="NRstate" ColumnName="NRstate" />
+                <ScalarProperty Name="NRzip" ColumnName="NRzip" />
+                <ScalarProperty Name="NRprimaryNum" ColumnName="NRprimaryNum" />
+                <ScalarProperty Name="NRworkNum" ColumnName="NRworkNum" />
+                <ScalarProperty Name="NRcellNum" ColumnName="NRcellNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdultHealthInfoes">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.AdultHealthInfo">
+              <MappingFragment StoreEntitySet="AdultHealthInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="primaryPhysician" ColumnName="primaryPhysician" />
+                <ScalarProperty Name="otherPhysician" ColumnName="otherPhysician" />
+                <ScalarProperty Name="pPhysicianPhoneNum" ColumnName="pPhysicianPhoneNum" />
+                <ScalarProperty Name="oPhysicianPhoneNum" ColumnName="oPhysicianPhoneNum" />
+                <ScalarProperty Name="diabeticType" ColumnName="diabeticType" />
+                <ScalarProperty Name="allergies" ColumnName="allergies" />
+                <ScalarProperty Name="heartIssues" ColumnName="heartIssues" />
+                <ScalarProperty Name="metabolic" ColumnName="metabolic" />
+                <ScalarProperty Name="jointMuscle" ColumnName="jointMuscle" />
+                <ScalarProperty Name="chronicIllness" ColumnName="chronicIllness" />
+                <ScalarProperty Name="migraines" ColumnName="migraines" />
+                <ScalarProperty Name="neurological" ColumnName="neurological" />
+                <ScalarProperty Name="pulmonary" ColumnName="pulmonary" />
+                <ScalarProperty Name="asthma" ColumnName="asthma" />
+                <ScalarProperty Name="other" ColumnName="other" />
+                <ScalarProperty Name="otherMeds" ColumnName="otherMeds" />
+                <ScalarProperty Name="specificFirstAidNeeds" ColumnName="specificFirstAidNeeds" />
+                <ScalarProperty Name="repPermissionForTreatment" ColumnName="repPermissionForTreatment" />
+                <ScalarProperty Name="healthSignature" ColumnName="healthSignature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdultLogins">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.AdultLogin">
+              <MappingFragment StoreEntitySet="AdultLogins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="passwordHash" ColumnName="passwordHash" />
+                <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="submitted" ColumnName="submitted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdultPolicies">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.AdultPolicy">
+              <MappingFragment StoreEntitySet="AdultPolicy">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="attendance" ColumnName="attendance" />
+                <ScalarProperty Name="tobacco" ColumnName="tobacco" />
+                <ScalarProperty Name="internetAccess" ColumnName="internetAccess" />
+                <ScalarProperty Name="studentInsurance" ColumnName="studentInsurance" />
+                <ScalarProperty Name="fieldTrips" ColumnName="fieldTrips" />
+                <ScalarProperty Name="drugTesting" ColumnName="drugTesting" />
+                <ScalarProperty Name="noticeOfDisclosures" ColumnName="noticeOfDisclosures" />
+                <ScalarProperty Name="cellPhoneContact" ColumnName="cellPhoneContact" />
+                <ScalarProperty Name="releaseForPhotography" ColumnName="releaseForPhotography" />
+                <ScalarProperty Name="studentSignature" ColumnName="studentSignature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllLogins">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.AllLogin">
+              <MappingFragment StoreEntitySet="AllLogins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="passwordHash" ColumnName="passwordHash" />
+                <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HighSchoolBasicInfoes">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.HighSchoolBasicInfo">
+              <MappingFragment StoreEntitySet="HighSchoolBasicInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="middleInitial" ColumnName="middleInitial" />
+                <ScalarProperty Name="preferredName" ColumnName="preferredName" />
+                <ScalarProperty Name="program" ColumnName="program" />
+                <ScalarProperty Name="streetAddress" ColumnName="streetAddress" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+                <ScalarProperty Name="primaryPhoneNum" ColumnName="primaryPhoneNum" />
+                <ScalarProperty Name="cellPhoneNum" ColumnName="cellPhoneNum" />
+                <ScalarProperty Name="hispanicOrLatino" ColumnName="hispanicOrLatino" />
+                <ScalarProperty Name="race" ColumnName="race" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="currentEdLevel" ColumnName="currentEdLevel" />
+                <ScalarProperty Name="sendingHS" ColumnName="sendingHS" />
+                <ScalarProperty Name="filloutDate" ColumnName="filloutDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HighSchoolConfidentialInfoes">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.HighSchoolConfidentialInfo">
+              <MappingFragment StoreEntitySet="HighSchoolConfidentialInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="foodStamps" ColumnName="foodStamps" />
+                <ScalarProperty Name="dependentChildrenAid" ColumnName="dependentChildrenAid" />
+                <ScalarProperty Name="supplementaryIncome" ColumnName="supplementaryIncome" />
+                <ScalarProperty Name="housingAssistance" ColumnName="housingAssistance" />
+                <ScalarProperty Name="none" ColumnName="none" />
+                <ScalarProperty Name="homeless" ColumnName="homeless" />
+                <ScalarProperty Name="agedOutFosterCare" ColumnName="agedOutFosterCare" />
+                <ScalarProperty Name="outOfWorkforce" ColumnName="outOfWorkforce" />
+                <ScalarProperty Name="reducedLunch" ColumnName="reducedLunch" />
+                <ScalarProperty Name="parentSignature" ColumnName="parentSignature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HighSchoolEmergencyContacts">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.HighSchoolEmergencyContact">
+              <MappingFragment StoreEntitySet="HighSchoolEmergencyContact">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="parentNameOne" ColumnName="parentNameOne" />
+                <ScalarProperty Name="parentOneRelationship" ColumnName="parentOneRelationship" />
+                <ScalarProperty Name="parentOneAddress" ColumnName="parentOneAddress" />
+                <ScalarProperty Name="parentOneCity" ColumnName="parentOneCity" />
+                <ScalarProperty Name="parentOneState" ColumnName="parentOneState" />
+                <ScalarProperty Name="parentOneZip" ColumnName="parentOneZip" />
+                <ScalarProperty Name="parentOnePrimaryNum" ColumnName="parentOnePrimaryNum" />
+                <ScalarProperty Name="parentOneWorkNum" ColumnName="parentOneWorkNum" />
+                <ScalarProperty Name="parentOneCellNum" ColumnName="parentOneCellNum" />
+                <ScalarProperty Name="parentOneEmail" ColumnName="parentOneEmail" />
+                <ScalarProperty Name="residesWithP1" ColumnName="residesWithP1" />
+                <ScalarProperty Name="parentNameTwo" ColumnName="parentNameTwo" />
+                <ScalarProperty Name="parentTwoRelationship" ColumnName="parentTwoRelationship" />
+                <ScalarProperty Name="parentTwoAddress" ColumnName="parentTwoAddress" />
+                <ScalarProperty Name="parentTwoCity" ColumnName="parentTwoCity" />
+                <ScalarProperty Name="parentTwoState" ColumnName="parentTwoState" />
+                <ScalarProperty Name="parentTwoZip" ColumnName="parentTwoZip" />
+                <ScalarProperty Name="parentTwoPrimaryNum" ColumnName="parentTwoPrimaryNum" />
+                <ScalarProperty Name="parentTwoWorkNum" ColumnName="parentTwoWorkNum" />
+                <ScalarProperty Name="parentTwoCellNum" ColumnName="parentTwoCellNum" />
+                <ScalarProperty Name="parentTwoEmail" ColumnName="parentTwoEmail" />
+                <ScalarProperty Name="residesWithP2" ColumnName="residesWithP2" />
+                <ScalarProperty Name="EContactName" ColumnName="EContactName" />
+                <ScalarProperty Name="EContactRelationship" ColumnName="EContactRelationship" />
+                <ScalarProperty Name="EContactPrimaryNum" ColumnName="EContactPrimaryNum" />
+                <ScalarProperty Name="EContactWorkNum" ColumnName="EContactWorkNum" />
+                <ScalarProperty Name="EContactCellNum" ColumnName="EContactCellNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HighSchoolHealthInfoes">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.HighSchoolHealthInfo">
+              <MappingFragment StoreEntitySet="HighSchoolHealthInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="primaryPhysician" ColumnName="primaryPhysician" />
+                <ScalarProperty Name="otherPhysician" ColumnName="otherPhysician" />
+                <ScalarProperty Name="pPhysicianPhoneNum" ColumnName="pPhysicianPhoneNum" />
+                <ScalarProperty Name="oPhysicianPhoneNum" ColumnName="oPhysicianPhoneNum" />
+                <ScalarProperty Name="diabeticType" ColumnName="diabeticType" />
+                <ScalarProperty Name="allergies" ColumnName="allergies" />
+                <ScalarProperty Name="heartIssues" ColumnName="heartIssues" />
+                <ScalarProperty Name="metabolic" ColumnName="metabolic" />
+                <ScalarProperty Name="jointMuscle" ColumnName="jointMuscle" />
+                <ScalarProperty Name="chronicIllness" ColumnName="chronicIllness" />
+                <ScalarProperty Name="migraines" ColumnName="migraines" />
+                <ScalarProperty Name="neurological" ColumnName="neurological" />
+                <ScalarProperty Name="pulmonary" ColumnName="pulmonary" />
+                <ScalarProperty Name="asthma" ColumnName="asthma" />
+                <ScalarProperty Name="other" ColumnName="other" />
+                <ScalarProperty Name="otherMeds" ColumnName="otherMeds" />
+                <ScalarProperty Name="specificFirstAidNeeds" ColumnName="specificFirstAidNeeds" />
+                <ScalarProperty Name="repPermissionForTreatment" ColumnName="repPermissionForTreatment" />
+                <ScalarProperty Name="healthSignature" ColumnName="healthSignature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HighSchoolLogins">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.HighSchoolLogin">
+              <MappingFragment StoreEntitySet="HighSchoolLogins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="passwordHash" ColumnName="passwordHash" />
+                <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="submitted" ColumnName="submitted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HighSchoolPolicies">
+            <EntityTypeMapping TypeName="EnrollmentDBModel.HighSchoolPolicy">
+              <MappingFragment StoreEntitySet="HighSchoolPolicy">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="attendance" ColumnName="attendance" />
+                <ScalarProperty Name="tobacco" ColumnName="tobacco" />
+                <ScalarProperty Name="internetAccess" ColumnName="internetAccess" />
+                <ScalarProperty Name="studentInsurance" ColumnName="studentInsurance" />
+                <ScalarProperty Name="fieldTrips" ColumnName="fieldTrips" />
+                <ScalarProperty Name="drugTesting" ColumnName="drugTesting" />
+                <ScalarProperty Name="noticeOfDisclosures" ColumnName="noticeOfDisclosures" />
+                <ScalarProperty Name="cellPhoneContact" ColumnName="cellPhoneContact" />
+                <ScalarProperty Name="releaseForPhotography" ColumnName="releaseForPhotography" />
+                <ScalarProperty Name="studentSignature" ColumnName="studentSignature" />
+                <ScalarProperty Name="parentSignature" ColumnName="parentSignature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

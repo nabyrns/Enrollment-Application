@@ -19,5 +19,6 @@ namespace Enrollment_Application
         public string passwordHash { get; set; }
         public string passwordSalt { get; set; }
         public Nullable<System.DateTime> dateCreated { get; set; }
+        public string submitted { get; set; }
     }
 }

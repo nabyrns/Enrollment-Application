@@ -65,6 +65,10 @@ namespace Enrollment_Application
                 return;
             }
 
+            AdultLogin adl = (from m in _db.AdultLogins where m.Id == LoginPage.Adul.Id select m).FirstOrDefault();
+
+            adl.submitted = "Yes";
+
             _db.SaveChanges();
 
             Information_Page.aciuc.Visibility = Visibility.Hidden;

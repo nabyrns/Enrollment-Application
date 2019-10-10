@@ -119,7 +119,7 @@ namespace Enrollment_Application
                 signature = ms.ToArray();
             }
 
-            bool sigError = false;
+            sigError = false;
 
             if (signatureCanvas.Strokes.Count == 0)
             {
@@ -137,7 +137,7 @@ namespace Enrollment_Application
                 sigError = false;
             }
 
-            byte[] signature;
+            
             using (MemoryStream ms = new MemoryStream())
             {
                 signatureCanvas.Strokes.Save(ms);

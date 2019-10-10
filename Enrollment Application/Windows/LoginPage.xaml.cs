@@ -63,6 +63,15 @@ namespace Enrollment_Application
                 // if the byte array that is stored matches the byte array produced by the user input, this code executes
                 if (CommonMethods.CompareByteArrays(saltedHash, Convert.FromBase64String(highschoolCheck.passwordHash)))
                 {
+                    if (highschoolCheck.submitted == "Yes")
+                    {
+                        ErrorMessage error = new ErrorMessage("Form has already been submitted. If you would like to change information on the form, please contact: 666-666-6666");
+
+                        error.ShowDialog();
+
+                        return;
+                    }
+
                     this.Visibility = Visibility.Hidden;
 
                     Information_Page ip = new Information_Page(highschoolCheck);
@@ -90,6 +99,18 @@ namespace Enrollment_Application
                 // if the byte arrays match, this code executes
                 if (CommonMethods.CompareByteArrays(saltedHash, Convert.FromBase64String(adultCheck.passwordHash)))
                 {
+
+
+                    if (adultCheck.submitted == "Yes")
+                    {
+                        ErrorMessage error = new ErrorMessage("Form has already been submitted. If you would like to change information on the form, please contact: 666-666-6666");
+
+                        error.ShowDialog();
+
+                        return;
+                    }
+
+
                     this.Visibility = Visibility.Hidden;
 
                     if (EmailText.Text.ToLower().Equals("cvtcadmin"))
