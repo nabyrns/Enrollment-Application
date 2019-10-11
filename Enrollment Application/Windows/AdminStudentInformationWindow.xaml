@@ -10,14 +10,14 @@
         Background="{DynamicResource MaterialDesignPaper}"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         FontFamily="Candara Light"
-        Title="Information Page" BorderBrush="#2196f3" BorderThickness="1" Height="680" Width="1070" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="Information Page" BorderBrush="#2196f3" BorderThickness="1" Height="4000" Width="1070" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     
     
     <Grid>
         <StackPanel Orientation="Vertical" >
             <TextBlock Text="Student Information" Foreground="#2196f3" FontSize="24" HorizontalAlignment="Center" Margin="10"/>
 
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Height="40000">
                 <StackPanel Orientation="Vertical" Margin="10">
 
         
@@ -194,9 +194,400 @@
 
 
 
-                    <TextBlock Foreground="#2196f3" Text="Emergency Contact Information" FontSize="24" TextAlignment="Center" HorizontalAlignment="Left"  />
-               
+                    <TextBlock Foreground="#2196f3" Text="Emergency Contact Information" FontSize="24" TextAlignment="Center" HorizontalAlignment="Left" Margin="0,20"  />
 
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+
+                        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
+                            <TextBlock Foreground="#2196f3" Text="Parent/Guardian" FontSize="20" TextAlignment="Center" HorizontalAlignment="Left" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Name: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="300" TextAlignment="Center" Margin="0,0,0,15" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Email: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="200" TextAlignment="Center" Margin="0,0,0,15" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Relationship: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Primary Number: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Cell Number: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Address: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="300" TextAlignment="Center" Margin="0,0,0,15" />
+
+                                <StackPanel Margin="10,0,0,0">
+                                    <TextBlock Text="Residing with:" Foreground="GhostWhite" FontSize="18" Margin="0,0,0,5"/>
+                                    <CheckBox HorizontalAlignment="Center" Margin="0, 5, 0, 0" RenderTransformOrigin="0.5,0.5">
+                                        <CheckBox.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </CheckBox.RenderTransform>
+                                    </CheckBox>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="City: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+
+                                <TextBlock Text="State: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <ComboBox Width="50" Margin="0,0,0,10">
+                                    <ComboBoxItem Content="AK"/>
+                                    <ComboBoxItem Content="AL"/>
+                                    <ComboBoxItem Content="AR"/>
+                                    <ComboBoxItem Content="AZ"/>
+                                    <ComboBoxItem Content="CA"/>
+                                    <ComboBoxItem Content="CO"/>
+                                    <ComboBoxItem Content="CT"/>
+                                    <ComboBoxItem Content="DE"/>
+                                    <ComboBoxItem Content="FL"/>
+                                    <ComboBoxItem Content="GA"/>
+                                    <ComboBoxItem Content="HI"/>
+                                    <ComboBoxItem Content="IA"/>
+                                    <ComboBoxItem Content="ID"/>
+                                    <ComboBoxItem Content="IL"/>
+                                    <ComboBoxItem Content="IN"/>
+                                    <ComboBoxItem Content="KS"/>
+                                    <ComboBoxItem Content="KY"/>
+                                    <ComboBoxItem Content="LA"/>
+                                    <ComboBoxItem Content="MA"/>
+                                    <ComboBoxItem Content="MD"/>
+                                    <ComboBoxItem Content="ME"/>
+                                    <ComboBoxItem Content="MI"/>
+                                    <ComboBoxItem Content="MN"/>
+                                    <ComboBoxItem Content="MO"/>
+                                    <ComboBoxItem Content="MS"/>
+                                    <ComboBoxItem Content="MT"/>
+                                    <ComboBoxItem Content="NC"/>
+                                    <ComboBoxItem Content="ND"/>
+                                    <ComboBoxItem Content="NE"/>
+                                    <ComboBoxItem Content="NH"/>
+                                    <ComboBoxItem Content="NJ"/>
+                                    <ComboBoxItem Content="NM"/>
+                                    <ComboBoxItem Content="NV"/>
+                                    <ComboBoxItem Content="NY"/>
+                                    <ComboBoxItem Content="OH"/>
+                                    <ComboBoxItem Content="OK"/>
+                                    <ComboBoxItem Content="OR"/>
+                                    <ComboBoxItem Content="PA"/>
+                                    <ComboBoxItem Content="RI"/>
+                                    <ComboBoxItem Content="SC"/>
+                                    <ComboBoxItem Content="SD"/>
+                                    <ComboBoxItem Content="TN"/>
+                                    <ComboBoxItem Content="TX"/>
+                                    <ComboBoxItem Content="UT"/>
+                                    <ComboBoxItem Content="VA"/>
+                                    <ComboBoxItem Content="VT"/>
+                                    <ComboBoxItem Content="WA"/>
+                                    <ComboBoxItem Content="WI"/>
+                                    <ComboBoxItem Content="WV"/>
+                                    <ComboBoxItem Content="WY"/>
+
+                                </ComboBox>
+
+                                <TextBlock Text="ZIP: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <TextBox Text="" FontSize="18" Width="75" TextAlignment="Center" Margin="0,0,0,15" />
+
+
+                            </StackPanel>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="0">
+                            <TextBlock Foreground="#2196f3" Text="Optional Parent/Guardian" FontSize="20" TextAlignment="Center" HorizontalAlignment="Left" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Name: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="300" TextAlignment="Center" Margin="0,0,0,15" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Email: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="200" TextAlignment="Center" Margin="0,0,0,15" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Relationship: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Primary Number: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Cell Number: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Address: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="300" TextAlignment="Center" Margin="0,0,0,15" />
+
+                                <StackPanel Margin="10,0,0,0">
+                                    <TextBlock Text="Residing with:" Foreground="GhostWhite" FontSize="18" Margin="0,0,0,5"/>
+                                    <CheckBox HorizontalAlignment="Center" Margin="0, 5, 0, 0" RenderTransformOrigin="0.5,0.5">
+                                        <CheckBox.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </CheckBox.RenderTransform>
+                                    </CheckBox>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="City: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+
+                                <TextBlock Text="State: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <ComboBox Width="50" Margin="0,0,0,10">
+                                    <ComboBoxItem Content="AK"/>
+                                    <ComboBoxItem Content="AL"/>
+                                    <ComboBoxItem Content="AR"/>
+                                    <ComboBoxItem Content="AZ"/>
+                                    <ComboBoxItem Content="CA"/>
+                                    <ComboBoxItem Content="CO"/>
+                                    <ComboBoxItem Content="CT"/>
+                                    <ComboBoxItem Content="DE"/>
+                                    <ComboBoxItem Content="FL"/>
+                                    <ComboBoxItem Content="GA"/>
+                                    <ComboBoxItem Content="HI"/>
+                                    <ComboBoxItem Content="IA"/>
+                                    <ComboBoxItem Content="ID"/>
+                                    <ComboBoxItem Content="IL"/>
+                                    <ComboBoxItem Content="IN"/>
+                                    <ComboBoxItem Content="KS"/>
+                                    <ComboBoxItem Content="KY"/>
+                                    <ComboBoxItem Content="LA"/>
+                                    <ComboBoxItem Content="MA"/>
+                                    <ComboBoxItem Content="MD"/>
+                                    <ComboBoxItem Content="ME"/>
+                                    <ComboBoxItem Content="MI"/>
+                                    <ComboBoxItem Content="MN"/>
+                                    <ComboBoxItem Content="MO"/>
+                                    <ComboBoxItem Content="MS"/>
+                                    <ComboBoxItem Content="MT"/>
+                                    <ComboBoxItem Content="NC"/>
+                                    <ComboBoxItem Content="ND"/>
+                                    <ComboBoxItem Content="NE"/>
+                                    <ComboBoxItem Content="NH"/>
+                                    <ComboBoxItem Content="NJ"/>
+                                    <ComboBoxItem Content="NM"/>
+                                    <ComboBoxItem Content="NV"/>
+                                    <ComboBoxItem Content="NY"/>
+                                    <ComboBoxItem Content="OH"/>
+                                    <ComboBoxItem Content="OK"/>
+                                    <ComboBoxItem Content="OR"/>
+                                    <ComboBoxItem Content="PA"/>
+                                    <ComboBoxItem Content="RI"/>
+                                    <ComboBoxItem Content="SC"/>
+                                    <ComboBoxItem Content="SD"/>
+                                    <ComboBoxItem Content="TN"/>
+                                    <ComboBoxItem Content="TX"/>
+                                    <ComboBoxItem Content="UT"/>
+                                    <ComboBoxItem Content="VA"/>
+                                    <ComboBoxItem Content="VT"/>
+                                    <ComboBoxItem Content="WA"/>
+                                    <ComboBoxItem Content="WI"/>
+                                    <ComboBoxItem Content="WV"/>
+                                    <ComboBoxItem Content="WY"/>
+
+                                </ComboBox>
+
+                                <TextBlock Text="ZIP: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <TextBox Text="" FontSize="18" Width="75" TextAlignment="Center" Margin="0,0,0,15" />
+
+
+                            </StackPanel>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,5,0,0">
+                            <TextBlock Foreground="#2196f3" Text="Emergency Contact" FontSize="20" TextAlignment="Center" HorizontalAlignment="Left" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Name: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="300" TextAlignment="Center" Margin="0,0,0,15" />
+
+                                <TextBlock Text="Relationship: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+
+                                
+                                
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Primary Number: " FontSize="18" VerticalAlignment="Center" />
+                                <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+
+                                <TextBlock Text="Cell Number: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+                    </Grid>
+
+
+
+                    <TextBlock Foreground="#2196f3" Text="Health Information" FontSize="24" TextAlignment="Center" HorizontalAlignment="Left" Margin="0,20"  />
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Primary Physician: " FontSize="18" VerticalAlignment="Center" />
+                        <TextBox Text="" FontSize="18" Width="300" TextAlignment="Center" Margin="0,0,0,15" />
+
+                        <TextBlock Text="Phone Number: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                        <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Other Physician: " FontSize="18" VerticalAlignment="Center" />
+                        <TextBox Text="" FontSize="18" Width="300" TextAlignment="Center" Margin="0,0,0,15" />
+
+                        <TextBlock Text="Phone Number: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                        <TextBox Text="" FontSize="18" Width="150" TextAlignment="Center" Margin="0,0,0,15" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Diabetes:" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center"/>
+                        <ComboBox Width="100" Margin="10, 0, 0, 15">
+                            <ComboBoxItem Content="None"/>
+                            <ComboBoxItem Content="Type I"/>
+                            <ComboBoxItem Content="Type II"/>
+                        </ComboBox>
+
+                        <TextBlock Text="Allergies: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                        <TextBox Text="" FontSize="18" Width="300" TextAlignment="Center" Margin="0,0,0,15" />
+
+                        <TextBlock Text="Heart Conditions: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                        <TextBox Text="" FontSize="18" Width="300" TextAlignment="Center" Margin="0,0,0,15" />
+
+                    </StackPanel>
+
+                    <TextBlock Text="Relevant Condition(s):" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="0,10"/>
+                    <StackPanel Orientation="Horizontal" >
+                        
+
+                        <CheckBox HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <CheckBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </CheckBox.RenderTransform>
+                        </CheckBox>
+                        <TextBlock Text="Metabolic" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                        <CheckBox HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <CheckBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </CheckBox.RenderTransform>
+                        </CheckBox>
+                        <TextBlock Text="Joint/Muscle" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                        <CheckBox HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <CheckBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </CheckBox.RenderTransform>
+                        </CheckBox>
+                        <TextBlock Text="Chronic Illness" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                        <CheckBox HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <CheckBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </CheckBox.RenderTransform>
+                        </CheckBox>
+                        <TextBlock Text="Migraines" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                        <CheckBox HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <CheckBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </CheckBox.RenderTransform>
+                        </CheckBox>
+                        <TextBlock Text="Neurological" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                        <CheckBox HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <CheckBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </CheckBox.RenderTransform>
+                        </CheckBox>
+                        <TextBlock Text="Pulmonary" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                        <CheckBox HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <CheckBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </CheckBox.RenderTransform>
+                        </CheckBox>
+                        <TextBlock Text="Asthma" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                        <CheckBox HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <CheckBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </CheckBox.RenderTransform>
+                        </CheckBox>
+                        <TextBlock Text="Other" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
+                        <TextBlock Text="Medications: " FontSize="18" VerticalAlignment="Center" />
+                        <TextBox Text="" FontSize="18" Width="400" TextAlignment="Center" Margin="0,0,0,15" />
+
+                        <TextBlock Text="First aid needs: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                        <TextBox Text="" FontSize="18" Width="400" TextAlignment="Center" Margin="0,0,0,15" />
+                    </StackPanel>
+                    
+                    
 
 
 
