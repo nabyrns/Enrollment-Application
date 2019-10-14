@@ -207,6 +207,8 @@
                 </Border>
             </StackPanel>
         </StackPanel>
+        
+        <!--#endregion-->
 
         <!--#region Button stack panel-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

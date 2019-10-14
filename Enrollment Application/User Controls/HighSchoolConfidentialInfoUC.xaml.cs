@@ -16,23 +16,23 @@ using System.Windows.Shapes;
 
 namespace Enrollment_Application
 {
-    /// <summary>
-    /// Interaction logic for HighSchoolConfidentialInfoUC.xaml
-    /// </summary>
     public partial class HighSchoolConfidentialInfoUC : UserControl
     {
         // declare variables that will be used
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
-        HighSchoolConfidentialInfo hsci;
+        HighSchoolConfidentialInfoClass hsci;
 
+        #region Constructor
         public HighSchoolConfidentialInfoUC()
         {
             InitializeComponent();
 
-            // initialize AdultEmergencyContact variable to contain matching information pulled from the database
-            hsci = (from m in _db.HighSchoolConfidentialInfoes where m.Id == LoginPage.highschoolCheck.Id select m).FirstOrDefault();
+            // DataAccess variable to retrieve and autofill previously saved information for the user
+            DataAccess db = new DataAccess();
 
+            hsci = db.GetHSCI(LoginPage.highschoolCheck.Id);
+
+            // code avoids an error when retrieving data to autofill if the signature has not been filled out yet
             if (hsci.parentSignature != null)
             {
                 using (MemoryStream ms = new MemoryStream(hsci.parentSignature))
@@ -42,21 +42,28 @@ namespace Enrollment_Application
                 }
             }
 
+            // set datacontext
             textFields.DataContext = hsci;
 
+            // set base color for signature border
             sigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
         }
+        #endregion
 
+        #region Code executes when SubmitBtn is clicked
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
+            // variable that will validate the signature field
             bool sigError = false;
 
+            // if the signature has not been filled out, changes border color and alters value of sigError
             if (signatureCanvas.Strokes.Count == 0)
             {
                 sigCanBorder.BorderBrush = Brushes.Red;
                 sigError = true;
             }
 
+            // changes signature border to base color if it has been filled out
             else
             {
                 if (sigCanBorder.BorderBrush == Brushes.Red)
@@ -64,9 +71,11 @@ namespace Enrollment_Application
                     sigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
                 }
 
+                // sets sigError to false, as the signature has now been filled out
                 sigError = false;
             }
 
+            // byte array to hold the stroke values of the signature field
             byte[] signature;
             using (MemoryStream ms = new MemoryStream())
             {
@@ -74,6 +83,7 @@ namespace Enrollment_Application
                 signature = ms.ToArray();
             }
 
+            // update ConfidentialInfo object to contain current values
             hsci.foodStamps = foodStampsCheck.IsChecked.ToString();
             hsci.dependentChildrenAid = dependentChildrenCheck.IsChecked.ToString();
             hsci.supplementaryIncome = SSIcheck.IsChecked.ToString();
@@ -85,6 +95,7 @@ namespace Enrollment_Application
             hsci.reducedLunch = reducedLunchCheck.IsChecked.ToString();
             hsci.parentSignature = signature;
 
+            // if no boxes are selected, display error
             if (hsci.foodStamps == "False" && hsci.dependentChildrenAid == "False" && hsci.supplementaryIncome == "False" && hsci.housingAssistance == "False" && hsci.none == "False")
             {
                 ErrorMessage error = new ErrorMessage("Please select all that apply to your family, if none apply --- select \'None of these apply to me or my family\'");
@@ -94,6 +105,7 @@ namespace Enrollment_Application
                 return;
             }
 
+            // if 'None' box is checked, while others are also checked, display error
             if ((hsci.foodStamps == "True" || hsci.dependentChildrenAid == "True" || hsci.supplementaryIncome == "True" || hsci.housingAssistance == "True") && hsci.none == "True")
             {
                 ErrorMessage error = new ErrorMessage("You cannot select \'None apply\' and also check other boxes.");
@@ -103,16 +115,23 @@ namespace Enrollment_Application
                 return;
             }
 
+            // if there was no signature error, save
             if (!sigError)
             {
-                _db.SaveChanges();
+                // DataAccess variable to save information to database
+                DataAccess db = new DataAccess();
 
+                db.SaveHSCI(hsci);
+
+                // alter UC visibility
                 Information_Page.hsciuc.Visibility = Visibility.Hidden;
 
                 Information_Page.SuccessMessageAndShutdown();
             }
         }
+        #endregion
 
+        #region Code executes when BackBtn is clicked
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             Information_Page.hsciuc.Visibility = Visibility.Hidden;
@@ -123,10 +142,13 @@ namespace Enrollment_Application
 
             Information_Page.hsspuc.Visibility = Visibility.Visible;
         }
+        #endregion
 
+        #region Code executes when SigClear is clicked
         private void SigClear_Click(object sender, RoutedEventArgs e)
         {
             signatureCanvas.Strokes.Clear();
         }
+        #endregion
     }
 }

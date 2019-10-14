@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -49,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -70,62 +74,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper Classes\DataAccess.cs" />
+    <Compile Include="DBTableClasses\AdultBasicInfoClass.cs" />
+    <Compile Include="DBTableClasses\AdultConfidentialInfoClass.cs" />
+    <Compile Include="DBTableClasses\AdultEmergencyContactClass.cs" />
+    <Compile Include="DBTableClasses\AdultHealthInfoClass.cs" />
+    <Compile Include="DBTableClasses\AdultPolicyClass.cs" />
+    <Compile Include="DBTableClasses\HighSchoolBasicInfoClass.cs" />
+    <Compile Include="DBTableClasses\HighSchoolConfidentialInfoClass.cs" />
+    <Compile Include="DBTableClasses\HighSchoolEmergencyContactClass.cs" />
+    <Compile Include="DBTableClasses\HighSchoolHealthInfoClass.cs" />
+    <Compile Include="DBTableClasses\HighSchoolPolicyClass.cs" />
+    <Compile Include="Helper Classes\Helper.cs" />
+    <Compile Include="DBTableClasses\Login.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AdultBasicInfo.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AdultConfidentialInfo.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AdultEmergencyContact.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AdultHealthInfo.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AdultLogin.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AdultPolicy.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AllLogin.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntityModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntityModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolBasicInfo.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolConfidentialInfo.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolEmergencyContact.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolHealthInfo.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolLogin.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolPolicy.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User Controls\HighSchoolConfidentialInfoUC.xaml.cs">
       <DependentUpon>HighSchoolConfidentialInfoUC.xaml</DependentUpon>
@@ -136,7 +99,7 @@
     <Compile Include="User Controls\AdultStudentPolicyUC.xaml.cs">
       <DependentUpon>AdultStudentPolicyUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CommonMethods.cs" />
+    <Compile Include="Helper Classes\CommonMethods.cs" />
     <Compile Include="Windows\ErrorMessage.xaml.cs">
       <DependentUpon>ErrorMessage.xaml</DependentUpon>
     </Compile>
@@ -254,13 +217,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="EntityModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EntityModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="EntityModel.edmx.diagram">
-      <DependentUpon>EntityModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -272,18 +228,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="EntityModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EntityModel.edmx</DependentUpon>
-      <LastGenOutput>EntityModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EntityModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EntityModel.edmx</DependentUpon>
-      <LastGenOutput>EntityModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

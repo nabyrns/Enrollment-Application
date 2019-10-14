@@ -17,18 +17,20 @@ namespace Enrollment_Application
 {
     public partial class HighSchoolBasicInformationUC : UserControl
     {
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
+        // declare variables that will be used
+        HighSchoolBasicInfoTextValidation validCheck = new HighSchoolBasicInfoTextValidation();
 
-        HighSchoolBasicInfoTextValidation validCheck;
-
-        HighSchoolBasicInfo hbi;
+        HighSchoolBasicInfoClass hbi;
 
         #region Constructor --- initializes variables and assigns datacontext for textfields in this UC
         public HighSchoolBasicInformationUC()
         {
             InitializeComponent();
 
-            hbi = (from m in _db.HighSchoolBasicInfoes where m.Id == LoginPage.highschoolCheck.Id select m).FirstOrDefault();
+            // DataAccess variable to retrieve and autofill previously saved information
+            DataAccess db = new DataAccess();
+
+            hbi = db.GetHSBI(LoginPage.highschoolCheck.Id);
 
             textFields.DataContext = hbi;
         }
@@ -37,6 +39,7 @@ namespace Enrollment_Application
         #region Code executes when NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
+            // update object variables to be current
             hbi.lastName = lastNameText.Text.Trim();
             hbi.firstName = firstNameText.Text.Trim();
             hbi.middleInitial = middleInitialText.Text.Trim();
@@ -55,25 +58,8 @@ namespace Enrollment_Application
             hbi.currentEdLevel = educationLevelCombo.Text;
             hbi.filloutDate = DateTime.Now;
 
-            validCheck = new HighSchoolBasicInfoTextValidation()
-            {
-                _lastName = hbi.lastName,
-                _firstName = hbi.firstName,
-                _middleInitial = hbi.middleInitial,
-                _program = hbi.program,
-                _streetAddress = hbi.streetAddress,
-                _city = hbi.city,
-                _state = hbi.state,
-                _zip = hbi.zipCode,
-                _primaryPhoneNum = hbi.primaryPhoneNum,
-                _cellPhoneNum = hbi.cellPhoneNum,
-                _hispanicOrLatino = hbi.hispanicOrLatino,
-                _race = hbi.race,
-                _gender = hbi.gender,
-                _dateOfBirth = hbi.dateOfBirth,
-                _currentEdLevel = hbi.currentEdLevel,
-                _sendingHS = hbi.sendingHS
-            };
+            // update values of validCheck
+            validCheck.UpdateValues(hbi);
 
             // update the datacontext to be validCheck if it was not already
             if (textFields.DataContext != validCheck)
@@ -85,8 +71,10 @@ namespace Enrollment_Application
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
             if (validCheck.IsValid)
             {
-                _db.SaveChanges();
+                // DataAccess variable to save information to the database
+                DataAccess db = new DataAccess();
 
+                db.SaveHSBI(hbi);
 
                 Information_Page.hsbiuc.Visibility = Visibility.Hidden;
 

@@ -21,8 +21,8 @@ namespace Enrollment_Application
         EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
         // declare both types of login variables that are possible for later use
-        public static HighSchoolLogin highschoolCheck;
-        public static AdultLogin adultCheck;
+        public static Login highschoolCheck;
+        public static Login adultCheck;
 
         public LoginPage()
         {
@@ -41,13 +41,15 @@ namespace Enrollment_Application
         #region Code executes when signin button is clicked
         private void SignInBtn_Click(object sender, RoutedEventArgs e)
         {
+            DataAccess db = new DataAccess();
+
             // assign value from password box to temp variable
             string pw = PasswordText.Password;
 
             // perform searches to see if the user exists in either login table in the db
-            highschoolCheck = (from m in _db.HighSchoolLogins where m.email.ToLower().Equals(EmailText.Text.ToLower()) select m).FirstOrDefault();
+            highschoolCheck = db.HSCheck(EmailText.Text);
 
-            adultCheck = (from m in _db.AdultLogins where m.email.ToLower().Equals(EmailText.Text.ToLower()) select m).FirstOrDefault();
+            adultCheck = db.AdultCheck(EmailText.Text);
 
 
             // declare byte array that will hold the saltedHash of the user entered password

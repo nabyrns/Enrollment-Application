@@ -6,8 +6,13 @@
              xmlns:local="clr-namespace:Enrollment_Application"
              mc:Ignorable="d" 
              d:DesignHeight="680" d:DesignWidth="1070" FontSize="16">
+
     <Grid x:Name="textFields">
+        
+        <!--#region StackPanel that contains majority of the information inside the User Control-->
+        
         <StackPanel>
+            <!--#region This region contains all of the textblocks and checkboxes-->
             <TextBlock HorizontalAlignment="Center" Foreground="#2196f3" FontSize="24" Text="Confidential Information"/>
             <TextBlock Margin="10" TextWrapping="Wrap" Foreground="GhostWhite" Text="The following information will allow us to obtain E-rate discounts on telephone service, internet access, and the internal connections we use to build and maintain the computer networks that link our classrooms. The size of the discounts which we receive is based on the income level of our students' families. Discounts also save the district and taxpayers a substantial amount of money."/>
             <TextBlock Margin="10" TextWrapping="Wrap">
@@ -156,11 +161,15 @@
                     <Run Foreground="GhostWhite" Text="Out of Workforce individuals"/>
                 </TextBlock>
             </StackPanel>
+            <!--#endregion-->
         </StackPanel>
+        <!--#endregion-->
 
+        <!--#region Button StackPanel-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="backBtn" Content="Back" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="BackBtn_Click"/>
             <Button x:Name="submitBtn" Content="Submit" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="SubmitBtn_Click"/>
         </StackPanel>
+        <!--#endregion-->
     </Grid>
 </UserControl>

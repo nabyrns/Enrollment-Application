@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="680" d:DesignWidth="1070" FontSize="12">
     <Grid x:Name="textFields">
+        
+        <!--#region StackPanel containing majority of the information in the UC-->
         <StackPanel>
             <TextBlock HorizontalAlignment="Center" Foreground="#2196f3" FontSize="24" Text="Confidential Information"/>
             <TextBlock Margin="10" TextWrapping="Wrap" Foreground="GhostWhite" Text="As a public school, we are eligible to participate in the federal e-rate program."/>
@@ -185,10 +187,14 @@
                 </TextBlock>
             </StackPanel>
         </StackPanel>
+        <!--#endregion-->
 
+        <!--#region Button StackPanel-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="backBtn" Content="Back" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="BackBtn_Click"/>
             <Button x:Name="submitBtn" Content="Submit" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="SubmitBtn_Click"/>
         </StackPanel>
+        <!--#endregion-->
+        
     </Grid>
 </UserControl>

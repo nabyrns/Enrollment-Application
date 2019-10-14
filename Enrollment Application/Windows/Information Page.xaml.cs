@@ -45,30 +45,57 @@ namespace Enrollment_Application
 
         #region Constructors
         // Constructor for window with adult login parameter
-        public Information_Page(AdultLogin logIn)
+        public Information_Page(Login logIn)
         {
             InitializeComponent();
 
-            abiuc = new AdultBasicInformationUC();
-            abiuc.Visibility = Visibility.Visible;
+            if (logIn.studentType == "High School")
+            {
+                hsbiuc = new HighSchoolBasicInformationUC();
+                hsbiuc.Visibility = Visibility.Visible;
 
-            hiuc = new HealthInfoUC();
-            hiuc.Visibility = Visibility.Hidden;
+                hiuc = new HealthInfoUC();
+                hiuc.Visibility = Visibility.Hidden;
 
-            aecuc = new AdultECUC();
-            aecuc.Visibility = Visibility.Hidden;
+                hsecuc = new HighSchoolECUC();
+                hsecuc.Visibility = Visibility.Hidden;
 
-            aspuc = new AdultStudentPolicyUC();
-            aspuc.Visibility = Visibility.Hidden;
+                hsspuc = new HighSchoolStudentPolicyUC();
+                hsspuc.Visibility = Visibility.Hidden;
 
-            aciuc = new AdultConfidentialInfoUC();
-            aciuc.Visibility = Visibility.Hidden;
+                hsciuc = new HighSchoolConfidentialInfoUC();
+                hsciuc.Visibility = Visibility.Hidden;
 
-            UserControlGrid.Children.Add(abiuc);
-            UserControlGrid.Children.Add(hiuc);
-            UserControlGrid.Children.Add(aecuc);
-            UserControlGrid.Children.Add(aspuc);
-            UserControlGrid.Children.Add(aciuc);
+                UserControlGrid.Children.Add(hsbiuc);
+                UserControlGrid.Children.Add(hiuc);
+                UserControlGrid.Children.Add(hsecuc);
+                UserControlGrid.Children.Add(hsspuc);
+                UserControlGrid.Children.Add(hsciuc);
+            }
+
+            else
+            {
+                abiuc = new AdultBasicInformationUC();
+                abiuc.Visibility = Visibility.Visible;
+
+                hiuc = new HealthInfoUC();
+                hiuc.Visibility = Visibility.Hidden;
+
+                aecuc = new AdultECUC();
+                aecuc.Visibility = Visibility.Hidden;
+
+                aspuc = new AdultStudentPolicyUC();
+                aspuc.Visibility = Visibility.Hidden;
+
+                aciuc = new AdultConfidentialInfoUC();
+                aciuc.Visibility = Visibility.Hidden;
+
+                UserControlGrid.Children.Add(abiuc);
+                UserControlGrid.Children.Add(hiuc);
+                UserControlGrid.Children.Add(aecuc);
+                UserControlGrid.Children.Add(aspuc);
+                UserControlGrid.Children.Add(aciuc);
+            }
 
             ucg = UserControlGrid;
 

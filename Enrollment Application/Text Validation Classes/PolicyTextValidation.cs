@@ -9,6 +9,7 @@ namespace Enrollment_Application
 {
     class PolicyTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
+        #region Declare variables of the class
         public bool _attendance;
         public bool _tobacco;
         public bool _internetAccess;
@@ -18,12 +19,17 @@ namespace Enrollment_Application
         public bool _noticeOfDisclosures;
         public bool _cellPhoneContact;
         public bool _releaseForPhotography;
+        #endregion
 
+        #region String array that holds the values that will be validated
         // string array that holds the values of all the variables declared above
         // they do not have underscores because it is technically a different variable whose value is given by the declared variables above
         private static readonly string[] ValidatedProperties = { "attendance", "tobacco", "internetAccess", "studentInsurance", "fieldTrips", "drugTesting", "noticeOfDisclosures" };
+        #endregion
 
+        #region IDataErrorInfo.Error
         string IDataErrorInfo.Error { get { return null; } }
+        #endregion
 
         #region Property Changed stuff
         // property changed event handler
@@ -40,7 +46,6 @@ namespace Enrollment_Application
             }
         }
         #endregion
-
 
         #region These variables all get their values from the variables that were declared above and that are initialized at creation
 
@@ -264,6 +269,34 @@ namespace Enrollment_Application
                 return true;
             }
 
+        }
+        #endregion
+
+        #region Methods update the values of the object of this class
+        public void UpdateValues(AdultPolicyClass ap)
+        {
+            _attendance = bool.Parse(ap.attendance);
+            _tobacco = bool.Parse(ap.tobacco);
+            _internetAccess = bool.Parse(ap.internetAccess);
+            _studentInsurance = bool.Parse(ap.studentInsurance);
+            _fieldTrips = bool.Parse(ap.fieldTrips);
+            _drugTesting = bool.Parse(ap.drugTesting);
+            _noticeOfDisclosures = bool.Parse(ap.noticeOfDisclosures);
+            _cellPhoneContact = bool.Parse(ap.cellPhoneContact);
+            _releaseForPhotography = bool.Parse(ap.releaseForPhotography);
+        }
+
+        public void UpdateValues(HighSchoolPolicyClass hsp)
+        {
+            _attendance = bool.Parse(hsp.attendance);
+            _tobacco = bool.Parse(hsp.tobacco);
+            _internetAccess = bool.Parse(hsp.internetAccess);
+            _studentInsurance = bool.Parse(hsp.studentInsurance);
+            _fieldTrips = bool.Parse(hsp.fieldTrips);
+            _drugTesting = bool.Parse(hsp.drugTesting);
+            _noticeOfDisclosures = bool.Parse(hsp.noticeOfDisclosures);
+            _cellPhoneContact = bool.Parse(hsp.cellPhoneContact);
+            _releaseForPhotography = bool.Parse(hsp.releaseForPhotography);
         }
         #endregion
     }

@@ -15,29 +15,30 @@ using System.Windows.Shapes;
 
 namespace Enrollment_Application
 {
-    /// <summary>
-    /// Interaction logic for AdultConfidentialInfoUC.xaml
-    /// </summary>
     public partial class AdultConfidentialInfoUC : UserControl
     {
         // declare variables that will be used
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
-        AdultConfidentialInfo aci;
+        AdultConfidentialInfoClass aci;
 
+        #region Constructor
         public AdultConfidentialInfoUC()
         {
             InitializeComponent();
 
-            // initialize AdultEmergencyContact variable to contain matching information pulled from the database
-            aci = (from m in _db.AdultConfidentialInfoes where m.Id == LoginPage.adultCheck.Id select m).FirstOrDefault();
+            DataAccess db = new DataAccess();
 
-            // set the datacontext of the text fields to be the AdultEmergencyContact variable
+            aci = db.GetACI(LoginPage.adultCheck.Id);
+
+            // set the datacontext of the text fields
             textFields.DataContext = aci;
         }
+        #endregion
 
+        #region Code executes when SubmitBtn is clicked
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
+            // update values of AdultConfidentialInfo object
             aci.foodStamps = foodStampsCheck.IsChecked.ToString();
             aci.dependentChildrenAid = dependentChildrenCheck.IsChecked.ToString();
             aci.supplementaryIncome = SSIcheck.IsChecked.ToString();
@@ -47,6 +48,7 @@ namespace Enrollment_Application
             aci.agedOutFosterCare = agedOutCheck.IsChecked.ToString();
             aci.outOfWorkforce = workforceCheck.IsChecked.ToString();
 
+            // if no boxes are checked, display error message
             if (aci.foodStamps == "False" && aci.dependentChildrenAid == "False" && aci.supplementaryIncome == "False" && aci.housingAssistance == "False" && aci.none == "False")
             {
                 ErrorMessage error = new ErrorMessage("Please select all that apply to your family, if none apply --- select \'None of these apply to me or my family\'");
@@ -56,6 +58,7 @@ namespace Enrollment_Application
                 return;
             }
 
+            // if the 'None' box is checked, and another box is also check, error message displays
             if ((aci.foodStamps == "True" || aci.dependentChildrenAid == "True" || aci.supplementaryIncome == "True" || aci.housingAssistance == "True") && aci.none == "True")
             {
                 ErrorMessage error = new ErrorMessage("You cannot select \'None apply\' and also check other boxes.");
@@ -65,15 +68,24 @@ namespace Enrollment_Application
                 return;
             }
 
-            _db.SaveChanges();
+            // create DataAccess variable to then save the information to the DataBase
+            DataAccess db = new DataAccess();
+
+            db.SaveACI(aci);
+
+            // change UserControl Visibility and display success message
 
             Information_Page.aciuc.Visibility = Visibility.Hidden;
 
             Information_Page.SuccessMessageAndShutdown();
         }
 
+        #endregion
+
+        #region Code executes when BackBtn is clicked
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
+            // change selected index and alter UC visibility to act accordingly
             Information_Page.aciuc.Visibility = Visibility.Hidden;
 
             Information_Page.selectedIndex = 3;
@@ -82,5 +94,7 @@ namespace Enrollment_Application
 
             Information_Page.aspuc.Visibility = Visibility.Visible;
         }
+
+        #endregion
     }
 }

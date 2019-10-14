@@ -78,6 +78,7 @@
 
                 </Grid>
 
+                <Grid Width="1" Background="#2196f3" Height="670"/>
 
                 <Grid>
 
