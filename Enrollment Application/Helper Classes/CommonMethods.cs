@@ -10,7 +10,6 @@ namespace Enrollment_Application
 {
     public class CommonMethods
     {
-        static EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
         public static bool IsPhoneNumber(string phoneNumber)
         {

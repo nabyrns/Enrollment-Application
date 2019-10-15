@@ -10,7 +10,6 @@ namespace Enrollment_Application
 {
     class CreateAccountTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
         string IDataErrorInfo.Error { get { return null; } }
 

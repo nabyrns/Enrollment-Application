@@ -74,6 +74,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Windows\AdminStudentInformationWindowHS.xaml.cs">
+      <DependentUpon>AdminStudentInformationWindowHS.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helper Classes\DataAccess.cs" />
     <Compile Include="DBTableClasses\AdultBasicInfoClass.cs" />
     <Compile Include="DBTableClasses\AdultConfidentialInfoClass.cs" />
@@ -87,6 +90,9 @@
     <Compile Include="DBTableClasses\HighSchoolPolicyClass.cs" />
     <Compile Include="Helper Classes\Helper.cs" />
     <Compile Include="DBTableClasses\Login.cs" />
+    <Compile Include="Windows\OverwriteConfirmation.xaml.cs">
+      <DependentUpon>OverwriteConfirmation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -121,6 +127,14 @@
     </Compile>
     <Compile Include="Text Validation Classes\AdultECUCTextValidation.cs" />
     <Compile Include="Text Validation Classes\AdultBasicInfoTextValidation.cs" />
+    <Page Include="Windows\AdminStudentInformationWindowHS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\OverwriteConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

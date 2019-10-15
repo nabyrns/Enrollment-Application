@@ -15,7 +15,6 @@ namespace Enrollment_Application
 
     class AdultBasicInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
         string IDataErrorInfo.Error { get { return null; } }
 
@@ -346,11 +345,11 @@ namespace Enrollment_Application
                     {
                         byte[] saltedHash;
 
-                        List<AdultBasicInfo> ab;
+                        List<AdultBasicInfoClass> ab;
 
                         using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("EnrollmentDB")))
                         {
-                            ab = connection.Query<AdultBasicInfo>($"Select * From AdultBasicInfo Where SSNhashAndSalt != 'NULL' And Id != '{ Id }'").ToList();
+                            ab = connection.Query<AdultBasicInfoClass>($"Select * From AdultBasicInfo Where SSNhashAndSalt != 'NULL' And Id != '{ Id }'").ToList();
 
                             foreach (var v in ab)
                             {

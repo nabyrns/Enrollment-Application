@@ -43,7 +43,7 @@ namespace Enrollment_Application
         // the forms may be navigated only using buttons in the user control
         public static int selectedIndex = 0;
 
-        #region Constructors
+        #region Constructor
         // Constructor for window with adult login parameter
         public Information_Page(Login logIn)
         {
@@ -96,40 +96,6 @@ namespace Enrollment_Application
                 UserControlGrid.Children.Add(aspuc);
                 UserControlGrid.Children.Add(aciuc);
             }
-
-            ucg = UserControlGrid;
-
-            lv = ListViewMenu;
-
-            lv.DataContext = selectedIndex;
-        }
-
-        // Constructor for window with highschool login parameter
-        public Information_Page(HighSchoolLogin logIn)
-        {
-            InitializeComponent();
-
-            hsbiuc = new HighSchoolBasicInformationUC();
-            hsbiuc.Visibility = Visibility.Visible;
-
-            hiuc = new HealthInfoUC();
-            hiuc.Visibility = Visibility.Hidden;
-
-            hsecuc = new HighSchoolECUC();
-            hsecuc.Visibility = Visibility.Hidden;
-
-            hsspuc = new HighSchoolStudentPolicyUC();
-            hsspuc.Visibility = Visibility.Hidden;
-
-            hsciuc = new HighSchoolConfidentialInfoUC();
-            hsciuc.Visibility = Visibility.Hidden;
-
-            UserControlGrid.Children.Add(hsbiuc);
-            UserControlGrid.Children.Add(hiuc);
-            UserControlGrid.Children.Add(hsecuc);
-            UserControlGrid.Children.Add(hsspuc);
-            UserControlGrid.Children.Add(hsciuc);
-
 
             ucg = UserControlGrid;
 

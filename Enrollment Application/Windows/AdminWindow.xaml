@@ -49,9 +49,9 @@
                             <DataGrid.Columns>
 
 
-                                <DataGridTextColumn x:Name="adultFirstNameCol" Header="First Name" Binding="{Binding firstName}"/>
-                                <DataGridTextColumn x:Name="adultLastNameCol" Header="Last Name" Binding="{Binding lastName}"/>
-                                <DataGridTextColumn x:Name="adultPhoneNumCol" Header="Phone Number" Binding="{Binding primaryPhoneNum}"/>
+                                <DataGridTextColumn Header="First Name" Binding="{Binding firstName}"/>
+                                <DataGridTextColumn Header="Last Name" Binding="{Binding lastName}"/>
+                                <DataGridTextColumn Header="Phone Number" Binding="{Binding primaryPhoneNum}"/>
 
 
                                 <DataGridTemplateColumn Header="Options">

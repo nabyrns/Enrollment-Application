@@ -19,7 +19,6 @@ namespace Enrollment_Application
 {
     public partial class CreateAccountPage : Window
     {
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
         CreateAccountTextValidation validCheck = new CreateAccountTextValidation();
 

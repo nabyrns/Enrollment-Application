@@ -18,7 +18,6 @@ namespace Enrollment_Application
 {
     public partial class LoginPage : Window
     {
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
         // declare both types of login variables that are possible for later use
         public static Login highschoolCheck;

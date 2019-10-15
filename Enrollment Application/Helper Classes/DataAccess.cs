@@ -298,5 +298,57 @@ namespace Enrollment_Application
         }
 
         #endregion
+
+        #region Methods set the datacontext for datagrids in admin window
+
+        public List<AdultBasicInfoClass> AdultDGSearch()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("EnrollmentDB")))
+            {
+                 return connection.Query<AdultBasicInfoClass>($"Select * from AdultBasicInfo where lastName != 'null' AND firstName != 'null' Order By lastName").ToList();
+            }
+        }
+
+        public List<AdultBasicInfoClass> AdultDGSearch(string search)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("EnrollmentDB")))
+            {
+                return connection.Query<AdultBasicInfoClass>($"Select * from AdultBasicInfo where firstName Like '%" + search + "%' OR lastName Like '%" + search + "%' Order By lastName").ToList();
+            }
+        }
+
+        public List<AdultBasicInfoClass> AdultDGSearch(string first, string second)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("EnrollmentDB")))
+            {
+                return connection.Query<AdultBasicInfoClass>($"Select * from AdultBasicInfo where (firstName Like '%" + first + "%' AND lastName Like '%" + second + "%') OR (firstName Like '%" + second + "%' AND lastName Like '%" + first + "%') Order By lastName").ToList();
+            }
+        }
+
+        public List<HighSchoolBasicInfoClass> HSDGSearch()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("EnrollmentDB")))
+            {
+                return connection.Query<HighSchoolBasicInfoClass>($"Select * from HighSchoolBasicInfo where lastName != 'null' AND firstName != 'null' Order By lastName").ToList();
+            }
+        }
+
+        public List<HighSchoolBasicInfoClass> HSDGSearch(string search)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("EnrollmentDB")))
+            {
+                return connection.Query<HighSchoolBasicInfoClass>($"Select * from HighSchoolBasicInfo where firstName Like '%" + search + "%' OR lastName Like '%" + search + "%' Order By lastName").ToList();
+            }
+        }
+
+        public List<HighSchoolBasicInfoClass> HSDGSearch(string first, string second)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("EnrollmentDB")))
+            {
+                return connection.Query<HighSchoolBasicInfoClass>($"Select * from HighSchoolBasicInfo where (firstName Like '%" + first + "%' AND lastName Like '%" + second + "%') OR (firstName Like '%" + second + "%' AND lastName Like '%" + first + "%') Order By lastName").ToList();
+            }
+        }
+
+        #endregion
     }
 }
