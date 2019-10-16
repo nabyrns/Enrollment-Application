@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -49,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -70,62 +74,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdultBasicInfo.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+    <Compile Include="Windows\AdminStudentInformationWindowHS.xaml.cs">
+      <DependentUpon>AdminStudentInformationWindowHS.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdultConfidentialInfo.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AdultEmergencyContact.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AdultHealthInfo.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AdultLogin.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AdultPolicy.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AllLogin.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolBasicInfo.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolConfidentialInfo.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolEmergencyContact.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolHealthInfo.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolLogin.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HighSchoolPolicy.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model2.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\AdminStudentInformationWindow.xaml.cs">
-      <DependentUpon>AdminStudentInformationWindow.xaml</DependentUpon>
+    <Compile Include="Helper Classes\DataAccess.cs" />
+    <Compile Include="DBTableClasses\AdultBasicInfoClass.cs" />
+    <Compile Include="DBTableClasses\AdultConfidentialInfoClass.cs" />
+    <Compile Include="DBTableClasses\AdultEmergencyContactClass.cs" />
+    <Compile Include="DBTableClasses\AdultHealthInfoClass.cs" />
+    <Compile Include="DBTableClasses\AdultPolicyClass.cs" />
+    <Compile Include="DBTableClasses\HighSchoolBasicInfoClass.cs" />
+    <Compile Include="DBTableClasses\HighSchoolConfidentialInfoClass.cs" />
+    <Compile Include="DBTableClasses\HighSchoolEmergencyContactClass.cs" />
+    <Compile Include="DBTableClasses\HighSchoolHealthInfoClass.cs" />
+    <Compile Include="DBTableClasses\HighSchoolPolicyClass.cs" />
+    <Compile Include="Helper Classes\Helper.cs" />
+    <Compile Include="DBTableClasses\Login.cs" />
+    <Compile Include="Windows\OverwriteConfirmation.xaml.cs">
+      <DependentUpon>OverwriteConfirmation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
@@ -139,7 +105,7 @@
     <Compile Include="User Controls\AdultStudentPolicyUC.xaml.cs">
       <DependentUpon>AdultStudentPolicyUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CommonMethods.cs" />
+    <Compile Include="Helper Classes\CommonMethods.cs" />
     <Compile Include="Windows\ErrorMessage.xaml.cs">
       <DependentUpon>ErrorMessage.xaml</DependentUpon>
     </Compile>
@@ -161,7 +127,11 @@
     </Compile>
     <Compile Include="Text Validation Classes\AdultECUCTextValidation.cs" />
     <Compile Include="Text Validation Classes\AdultBasicInfoTextValidation.cs" />
-    <Page Include="Windows\AdminStudentInformationWindow.xaml">
+    <Page Include="Windows\AdminStudentInformationWindowHS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\OverwriteConfirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -261,13 +231,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model2.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model2.edmx.diagram">
-      <DependentUpon>Model2.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -279,18 +242,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model2.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model2.edmx</DependentUpon>
-      <LastGenOutput>Model2.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model2.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model2.edmx</DependentUpon>
-      <LastGenOutput>Model2.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

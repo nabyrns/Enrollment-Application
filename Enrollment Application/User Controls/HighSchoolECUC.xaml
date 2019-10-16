@@ -5,12 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Enrollment_Application"
              mc:Ignorable="d" 
-             d:DesignHeight="580" d:DesignWidth="1020" FontSize="14" FontFamily="Candara Light">
+             d:DesignHeight="580" d:DesignWidth="1020" FontSize="12" FontFamily="Segoe UI">
     <Grid x:Name="textFields">
 
+        <!--#region StackPanel containing majority of the information in the UC-->
         <StackPanel>
             <TextBlock Text="Emergency Contact Information" HorizontalAlignment="Center" Foreground="#2196f3" FontSize="24"/>
 
+            <!--#region Region contains first Parent/Guardian Info section-->
             <TextBlock Text="Parent/Guardian Information" HorizontalAlignment="Left" Margin="10" Foreground="#2196f3" FontSize="18"/>
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
@@ -94,7 +96,9 @@
                     <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="residesWithP1Check" HorizontalAlignment="Center" Margin="0, 5, 0, 0" IsChecked="{Binding residesWithP1, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </StackPanel>
+            <!--#endregion-->
 
+            <!--#region Region contains second Parent/Guardian Info section-->
             <TextBlock Text="Optional Parent/Guardian Information" HorizontalAlignment="Left" Margin="10" Foreground="#2196f3" FontSize="18"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
@@ -178,7 +182,9 @@
                     <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="residesWithP2Check" HorizontalAlignment="Center" Margin="0, 5, 0, 0" IsChecked="{Binding residesWithP2, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </StackPanel>
+            <!--#endregion-->
 
+            <!--#region Region contains Emergency Contact Info-->
             <TextBlock Text="Emergency Contact Information" HorizontalAlignment="Left" Margin="10" Foreground="#2196f3" FontSize="18"/>
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 0, 10, 0">
@@ -191,7 +197,10 @@
                 <TextBlock Text="Cell Number:" Foreground="GhostWhite" Margin="0, 20, 0, 0"/>
                 <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="EContactCellNumText" Width="100" Margin="10" Text="{Binding EContactCellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
+            <!--#endregion-->
+            
         </StackPanel>
+        <!--#endregion-->
 
         <!--#region Button stack panel-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -199,5 +208,6 @@
             <Button x:Name="nextBtn" Content="Next" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="NextBtn_Click"/>
         </StackPanel>
         <!--#endregion-->
+        
     </Grid>
 </UserControl>

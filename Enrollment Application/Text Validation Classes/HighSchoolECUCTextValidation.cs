@@ -10,6 +10,7 @@ namespace Enrollment_Application
 {
     class HighSchoolECUCTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
+        #region Declare variables to be used
         public string _parentNameOne;
         public string _parentOneRelationship;
         public string _parentOneAddress;
@@ -34,15 +35,18 @@ namespace Enrollment_Application
         public string _eContactCellNum;
         public bool _residesWithP1;
         public bool _residesWithP2;
+        #endregion
 
-        // string array that holds the values of all the variables declared above
-        // they do not have underscores because it is technically a different variable whose value is given by the declared variables above
+        #region String array that holds the values of all the variables to be validated
         private static readonly string[] ValidatedProperties = { "parentNameOne", "parentOneRelationship", "parentOneAddress", "parentOneCity", "parentOneState", "parentOneZip",
                                                                  "parentOnePrimaryNum", "parentOneCellNum", "parentOneEmail", "parentNameTwo", "parentTwoRelationship", "parentTwoAddress",
                                                                  "parentTwoCity", "parentTwoState", "parentTwoZip", "parentTwoPrimaryNum", "parentTwoCellNum", "parentTwoEmail",
                                                                  "EContactName", "EContactRelationship", "EContactPrimaryNum", "EContactCellNum", "residesWithP1", "residesWithP2" };
+        #endregion
 
+        #region IDataErrorInfo.Error
         string IDataErrorInfo.Error { get { return null; } }
+        #endregion
 
         #region Property Changed stuff
         // property changed event handler
@@ -59,7 +63,6 @@ namespace Enrollment_Application
             }
         }
         #endregion
-
 
         #region These variables all get their values from the variables that were declared above and that are initialized at creation
         public string parentNameOne
@@ -695,6 +698,36 @@ namespace Enrollment_Application
                 return true;
             }
 
+        }
+        #endregion
+
+        #region Method updates values of object of this class
+        public void UpdateValues(HighSchoolEmergencyContactClass hsec)
+        {
+            _parentNameOne = hsec.parentNameOne;
+            _parentNameTwo = hsec.parentNameTwo;
+            _parentOneRelationship = hsec.parentOneRelationship;
+            _parentTwoRelationship = hsec.parentTwoRelationship;
+            _parentOnePrimaryNum = hsec.parentOnePrimaryNum;
+            _parentTwoPrimaryNum = hsec.parentTwoPrimaryNum;
+            _parentOneCellNum = hsec.parentOneCellNum;
+            _parentTwoCellNum = hsec.parentTwoCellNum;
+            _parentOneAddress = hsec.parentOneAddress;
+            _parentTwoAddress = hsec.parentTwoAddress;
+            _parentOneCity = hsec.parentOneCity;
+            _parentTwoCity = hsec.parentTwoCity;
+            _parentOneState = hsec.parentOneState;
+            _parentTwoState = hsec.parentTwoState;
+            _parentOneZip = hsec.parentOneZip;
+            _parentTwoZip = hsec.parentTwoZip;
+            _parentOneEmail = hsec.parentOneEmail;
+            _parentTwoEmail = hsec.parentTwoEmail;
+            _residesWithP1 = bool.Parse(hsec.residesWithP1);
+            _residesWithP2 = bool.Parse(hsec.residesWithP2);
+            _eContactName = hsec.EContactName;
+            _eContactRelationship = hsec.EContactRelationship;
+            _eContactPrimaryNum = hsec.EContactPrimaryNum;
+            _eContactCellNum = hsec.EContactCellNum;
         }
         #endregion
     }

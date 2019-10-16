@@ -43,66 +43,59 @@ namespace Enrollment_Application
         // the forms may be navigated only using buttons in the user control
         public static int selectedIndex = 0;
 
-        #region Constructors
+        #region Constructor
         // Constructor for window with adult login parameter
-        public Information_Page(AdultLogin logIn)
+        public Information_Page(Login logIn)
         {
             InitializeComponent();
 
-            abiuc = new AdultBasicInformationUC();
-            abiuc.Visibility = Visibility.Visible;
+            if (logIn.studentType == "High School")
+            {
+                hsbiuc = new HighSchoolBasicInformationUC();
+                hsbiuc.Visibility = Visibility.Visible;
 
-            hiuc = new HealthInfoUC();
-            hiuc.Visibility = Visibility.Hidden;
+                hiuc = new HealthInfoUC();
+                hiuc.Visibility = Visibility.Hidden;
 
-            aecuc = new AdultECUC();
-            aecuc.Visibility = Visibility.Hidden;
+                hsecuc = new HighSchoolECUC();
+                hsecuc.Visibility = Visibility.Hidden;
 
-            aspuc = new AdultStudentPolicyUC();
-            aspuc.Visibility = Visibility.Hidden;
+                hsspuc = new HighSchoolStudentPolicyUC();
+                hsspuc.Visibility = Visibility.Hidden;
 
-            aciuc = new AdultConfidentialInfoUC();
-            aciuc.Visibility = Visibility.Hidden;
+                hsciuc = new HighSchoolConfidentialInfoUC();
+                hsciuc.Visibility = Visibility.Hidden;
 
-            UserControlGrid.Children.Add(abiuc);
-            UserControlGrid.Children.Add(hiuc);
-            UserControlGrid.Children.Add(aecuc);
-            UserControlGrid.Children.Add(aspuc);
-            UserControlGrid.Children.Add(aciuc);
+                UserControlGrid.Children.Add(hsbiuc);
+                UserControlGrid.Children.Add(hiuc);
+                UserControlGrid.Children.Add(hsecuc);
+                UserControlGrid.Children.Add(hsspuc);
+                UserControlGrid.Children.Add(hsciuc);
+            }
 
-            ucg = UserControlGrid;
+            else
+            {
+                abiuc = new AdultBasicInformationUC();
+                abiuc.Visibility = Visibility.Visible;
 
-            lv = ListViewMenu;
+                hiuc = new HealthInfoUC();
+                hiuc.Visibility = Visibility.Hidden;
 
-            lv.DataContext = selectedIndex;
-        }
+                aecuc = new AdultECUC();
+                aecuc.Visibility = Visibility.Hidden;
 
-        // Constructor for window with highschool login parameter
-        public Information_Page(HighSchoolLogin logIn)
-        {
-            InitializeComponent();
+                aspuc = new AdultStudentPolicyUC();
+                aspuc.Visibility = Visibility.Hidden;
 
-            hsbiuc = new HighSchoolBasicInformationUC();
-            hsbiuc.Visibility = Visibility.Visible;
+                aciuc = new AdultConfidentialInfoUC();
+                aciuc.Visibility = Visibility.Hidden;
 
-            hiuc = new HealthInfoUC();
-            hiuc.Visibility = Visibility.Hidden;
-
-            hsecuc = new HighSchoolECUC();
-            hsecuc.Visibility = Visibility.Hidden;
-
-            hsspuc = new HighSchoolStudentPolicyUC();
-            hsspuc.Visibility = Visibility.Hidden;
-
-            hsciuc = new HighSchoolConfidentialInfoUC();
-            hsciuc.Visibility = Visibility.Hidden;
-
-            UserControlGrid.Children.Add(hsbiuc);
-            UserControlGrid.Children.Add(hiuc);
-            UserControlGrid.Children.Add(hsecuc);
-            UserControlGrid.Children.Add(hsspuc);
-            UserControlGrid.Children.Add(hsciuc);
-
+                UserControlGrid.Children.Add(abiuc);
+                UserControlGrid.Children.Add(hiuc);
+                UserControlGrid.Children.Add(aecuc);
+                UserControlGrid.Children.Add(aspuc);
+                UserControlGrid.Children.Add(aciuc);
+            }
 
             ucg = UserControlGrid;
 

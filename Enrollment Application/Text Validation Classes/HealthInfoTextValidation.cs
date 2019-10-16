@@ -10,6 +10,7 @@ namespace Enrollment_Application
 {
     class HealthInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
+        #region Declare variables for the class
         public string _primaryPhysician;
         public string _otherPhysician;
         public string _pPhysicianPhoneNum;
@@ -28,12 +29,17 @@ namespace Enrollment_Application
         public string _otherMeds;
         public string _specificFirstAidNeeds;
         public string _repPermissionForTreatment;
+        #endregion
 
+        #region String array that contains the values of the object that will be validated
         // string array that holds the values of all the variables declared above
         // they do not have underscores because it is technically a different variable whose value is given by the declared variables above
         private static readonly string[] ValidatedProperties = { "primaryPhysician", "pPhysicianPhoneNum", "oPhysicianPhoneNum", "diabeticType", "repPermissionForTreatment"};
+        #endregion
 
+        #region IDataErrorInfo.Error
         string IDataErrorInfo.Error { get { return null; } }
+        #endregion
 
         #region Property Changed stuff
         // property changed event handler
@@ -392,6 +398,52 @@ namespace Enrollment_Application
                 return true;
             }
 
+        }
+        #endregion
+
+        #region Methods update values of the object of this class
+        public void UpdateValues(HighSchoolHealthInfoClass hshi)
+        {
+            _primaryPhysician = hshi.primaryPhysician;
+            _otherPhysician = hshi.otherPhysician;
+            _pPhysicianPhoneNum = hshi.pPhysicianPhoneNum;
+            _oPhysicianPhoneNum = hshi.oPhysicianPhoneNum;
+            _diabeticType = hshi.diabeticType;
+            _allergies = hshi.allergies;
+            _heartIssues = hshi.heartIssues;
+            _metabolic = bool.Parse(hshi.metabolic);
+            _jointMuscle = bool.Parse(hshi.jointMuscle);
+            _chronicIllness = bool.Parse(hshi.chronicIllness);
+            _migraines = bool.Parse(hshi.migraines);
+            _neurological = bool.Parse(hshi.neurological);
+            _pulmonary = bool.Parse(hshi.pulmonary);
+            _asthma = bool.Parse(hshi.asthma);
+            _other = bool.Parse(hshi.other);
+            _otherMeds = hshi.otherMeds;
+            _specificFirstAidNeeds = hshi.specificFirstAidNeeds;
+            _repPermissionForTreatment = hshi.repPermissionForTreatment;
+        }
+
+        public void UpdateValues(AdultHealthInfoClass ahi)
+        {
+            _primaryPhysician = ahi.primaryPhysician;
+            _otherPhysician = ahi.otherPhysician;
+            _pPhysicianPhoneNum = ahi.pPhysicianPhoneNum;
+            _oPhysicianPhoneNum = ahi.oPhysicianPhoneNum;
+            _diabeticType = ahi.diabeticType;
+            _allergies = ahi.allergies;
+            _heartIssues = ahi.heartIssues;
+            _metabolic = bool.Parse(ahi.metabolic);
+            _jointMuscle = bool.Parse(ahi.jointMuscle);
+            _chronicIllness = bool.Parse(ahi.chronicIllness);
+            _migraines = bool.Parse(ahi.migraines);
+            _neurological = bool.Parse(ahi.neurological);
+            _pulmonary = bool.Parse(ahi.pulmonary);
+            _asthma = bool.Parse(ahi.asthma);
+            _other = bool.Parse(ahi.other);
+            _otherMeds = ahi.otherMeds;
+            _specificFirstAidNeeds = ahi.specificFirstAidNeeds;
+            _repPermissionForTreatment = ahi.repPermissionForTreatment;
         }
         #endregion
     }

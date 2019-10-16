@@ -19,7 +19,6 @@ namespace Enrollment_Application
 {
     public partial class CreateAccountPage : Window
     {
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
         CreateAccountTextValidation validCheck = new CreateAccountTextValidation();
 
@@ -31,7 +30,16 @@ namespace Enrollment_Application
         #region Code executes when CreateAccBtn is clicked
         private void CreateAccBtn_Click(object sender, RoutedEventArgs e)
         {
-            textFields.DataContext = validCheck;
+            validCheck = new CreateAccountTextValidation()
+            {
+                _email = EmailText.Text.Trim(),
+                _studentType = studentTypeBox.Text
+            };
+
+            if (textFields.DataContext != validCheck)
+            {
+                textFields.DataContext = validCheck;
+            }
 
             string passPattern = @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$";
 
@@ -76,7 +84,11 @@ namespace Enrollment_Application
                 // this code creates a new login and adds it to the database, while also creating an instance of each of the corresponding student type tables with values to be filled in later
                 if (studentTypeBox.Text == "Adult")
                 {
-                    AdultLogin newLogin = new AdultLogin()
+                    DataAccess db = new DataAccess();
+
+                    db.AddLogin(EmailText.Text.Trim(), Convert.ToBase64String(hashedPassword), salt, DateTime.Now, "No", "Adult");
+
+                    /*AdultLogin newLogin = new AdultLogin()
                     {
                         email = EmailText.Text.Trim(),
                         passwordHash = Convert.ToBase64String(hashedPassword),
@@ -112,7 +124,7 @@ namespace Enrollment_Application
                     _db.AllLogins.Add(newAllLogin);
 
                     // changes to the database are saved and the create account page is closed
-                    _db.SaveChanges();
+                    _db.SaveChanges();*/
 
                     this.Close();
                 }
@@ -120,7 +132,11 @@ namespace Enrollment_Application
                 // same as code above, except it executes if the student type was set to high school
                 else
                 {
-                    HighSchoolLogin newLogin = new HighSchoolLogin()
+                    DataAccess db = new DataAccess();
+
+                    db.AddLogin(EmailText.Text.Trim(), Convert.ToBase64String(hashedPassword), salt, DateTime.Now, "No", "High School");
+
+                    /*HighSchoolLogin newLogin = new HighSchoolLogin()
                     {
                         email = EmailText.Text.Trim(),
                         passwordHash = Convert.ToBase64String(hashedPassword),
@@ -155,7 +171,7 @@ namespace Enrollment_Application
                     _db.HighSchoolLogins.Add(newLogin);
                     _db.AllLogins.Add(newAllLogin);
 
-                    _db.SaveChanges();
+                    _db.SaveChanges();*/
 
                     this.Close();
                 }

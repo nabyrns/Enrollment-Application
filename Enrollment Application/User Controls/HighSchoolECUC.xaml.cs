@@ -15,28 +15,28 @@ using System.Windows.Shapes;
 
 namespace Enrollment_Application
 {
-    /// <summary>
-    /// Interaction logic for HighSchoolECUC.xaml
-    /// </summary>
     public partial class HighSchoolECUC : UserControl
     {
         // declare variables that will be used
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
-        HighSchoolEmergencyContact hsec;
+        HighSchoolEmergencyContactClass hsec;
 
-        HighSchoolECUCTextValidation validCheck;
+        HighSchoolECUCTextValidation validCheck = new HighSchoolECUCTextValidation();
 
+        #region Constructor
         public HighSchoolECUC()
         {
             InitializeComponent();
 
-            // initialize AdultEmergencyContact variable to contain matching information pulled from the database
-            hsec = (from m in _db.HighSchoolEmergencyContacts where m.Id == LoginPage.highschoolCheck.Id select m).FirstOrDefault();
+            // DataAccess variable to retrieve and autofill previously stored data for the user
+            DataAccess db = new DataAccess();
+
+            hsec = db.GetHSEC(LoginPage.highschoolCheck.Id);
 
             // set the datacontext of the text fields to be the AdultEmergencyContact variable
             textFields.DataContext = hsec;
         }
+        #endregion
 
         #region Code executes when the BackBtn is clicked
         // changes UC visibility in Information_Page
@@ -53,9 +53,10 @@ namespace Enrollment_Application
         }
         #endregion
 
+        #region Code executes when the NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            // update aec information to contain what is in the text fields
+            // update hsec to contain current information
             hsec.parentNameOne = parentOneNameText.Text.Trim();
             hsec.parentOneRelationship = parentOneRelationshipText.Text.Trim();
             hsec.parentOneAddress = parentOneAddressText.Text.Trim();
@@ -82,35 +83,8 @@ namespace Enrollment_Application
             hsec.EContactCellNum = EContactCellNumText.Text.Trim();
 
 
-            // initialize or update the validCheck variable, which is a text validation variable
-            // the connection between the AdultEmergencyContact variable and the validCheck variable is what allows for updating in the database
-            validCheck = new HighSchoolECUCTextValidation()
-            {
-                _parentNameOne = hsec.parentNameOne,
-                _parentNameTwo = hsec.parentNameTwo,
-                _parentOneRelationship = hsec.parentOneRelationship,
-                _parentTwoRelationship = hsec.parentTwoRelationship,
-                _parentOnePrimaryNum = hsec.parentOnePrimaryNum,
-                _parentTwoPrimaryNum = hsec.parentTwoPrimaryNum,
-                _parentOneCellNum = hsec.parentOneCellNum,
-                _parentTwoCellNum = hsec.parentTwoCellNum,
-                _parentOneAddress = hsec.parentOneAddress,
-                _parentTwoAddress = hsec.parentTwoAddress,
-                _parentOneCity = hsec.parentOneCity,
-                _parentTwoCity = hsec.parentTwoCity,
-                _parentOneState = hsec.parentOneState,
-                _parentTwoState = hsec.parentTwoState,
-                _parentOneZip = hsec.parentOneZip,
-                _parentTwoZip = hsec.parentTwoZip,
-                _parentOneEmail = hsec.parentOneEmail,
-                _parentTwoEmail = hsec.parentTwoEmail,
-                _residesWithP1 = bool.Parse(hsec.residesWithP1),
-                _residesWithP2 = bool.Parse(hsec.residesWithP2),
-                _eContactName = hsec.EContactName,
-                _eContactRelationship = hsec.EContactRelationship,
-                _eContactPrimaryNum = hsec.EContactPrimaryNum,
-                _eContactCellNum = hsec.EContactCellNum
-            };
+            // update the validCheck variable
+            validCheck.UpdateValues(hsec);
 
             // update the datacontext to be validCheck if it was not already
             if (textFields.DataContext != validCheck)
@@ -122,8 +96,10 @@ namespace Enrollment_Application
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
             if (validCheck.IsValid)
             {
-                _db.SaveChanges();
+                // DataAccess variable to save information to database
+                DataAccess db = new DataAccess();
 
+                db.SaveHSEC(hsec);
 
                 Information_Page.hsecuc.Visibility = Visibility.Hidden;
 
@@ -133,6 +109,8 @@ namespace Enrollment_Application
 
                 Information_Page.lv.SelectedIndex = 3;
             }
+            #endregion
+
         }
     }
 }

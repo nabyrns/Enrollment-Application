@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -13,12 +15,11 @@ namespace Enrollment_Application
 
     class AdultBasicInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
         string IDataErrorInfo.Error { get { return null; } }
 
         #region Variable names
-        // variable names that are used for initialization when creating a new instance of the BasicInfoTextValidation class
+        // variable names that are used for initialization when creating a new instance of the AdultBasicInfoTextValidation class
         public string _lastName;
         public string _firstName;
         public string _middleInitial;
@@ -37,6 +38,8 @@ namespace Enrollment_Application
         public string _attendedCollegeOrTech;
         public string _liveWithParent;
         public string _SSN;
+
+        public int _Id;
         #endregion
 
         // string array that holds the values of all the variables declared above
@@ -60,6 +63,19 @@ namespace Enrollment_Application
         #endregion
 
         #region These variables all get their values from the variables that were declared above and that are initialized at creation
+
+        public int Id
+        {
+            get
+            {
+                return _Id;
+            }
+
+            set
+            {
+                _Id = value;
+            }
+        }
 
         public string SSN
         {
@@ -320,23 +336,32 @@ namespace Enrollment_Application
                         result = "Invalid Social Security Number.";
                     }
 
+                    else if (SSN.Length > 11)
+                    {
+                        result = "Too many characters.";
+                    }
+
                     else
                     {
                         byte[] saltedHash;
 
-                        var query = (from q in _db.AdultBasicInfoes where q.SSNhashAndSalt != null && q.firstName != _firstName && q.lastName != _lastName select q).ToList();
+                        List<AdultBasicInfoClass> ab;
 
-                        foreach (var v in query)
+                        using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("EnrollmentDB")))
                         {
-                            var hashAndSalt = v.SSNhashAndSalt;
+                            ab = connection.Query<AdultBasicInfoClass>($"Select * From AdultBasicInfo Where SSNhashAndSalt != 'NULL' And Id != '{ Id }'").ToList();
 
-                            saltedHash = CommonMethods.GenerateSaltedHash(Encoding.UTF8.GetBytes(SSN), Encoding.UTF8.GetBytes(v.SSNsalt));
-
-                            if (CommonMethods.CompareByteArrays(saltedHash, Convert.FromBase64String(v.SSNhashAndSalt)))
+                            foreach (var v in ab)
                             {
-                                result = "An account already exists with that SSN.";
 
-                                break;
+                                saltedHash = CommonMethods.GenerateSaltedHash(Encoding.UTF8.GetBytes(SSN), Encoding.UTF8.GetBytes(v.SSNsalt));
+
+                                if (CommonMethods.CompareByteArrays(saltedHash, Convert.FromBase64String(v.SSNhashAndSalt)))
+                                {
+                                    result = "An account already exists with that SSN.";
+
+                                    break;
+                                }
                             }
                         }
                         
@@ -581,6 +606,31 @@ namespace Enrollment_Application
                 return true;
             }
 
+        }
+        #endregion
+
+        #region Method is for updating the values of an object of this class, used when trying to advance the form
+        public void UpdateValues(AdultBasicInfoClass abi, string SSNtext)
+        {
+            _lastName = abi.lastName;
+                _firstName = abi.firstName;
+                _middleInitial = abi.middleInitial;
+                _program = abi.program;
+                _streetAddress = abi.streetAddress;
+                _city = abi.city;
+                _state = abi.state;
+                _zip = abi.zipCode;
+                _primaryPhoneNum = abi.primaryPhoneNum;
+                _cellPhoneNum = abi.cellPhoneNum;
+                _hispanicOrLatino = abi.hispanicOrLatino;
+                _race = abi.race;
+                _gender = abi.gender;
+                _dateOfBirth = abi.dateOfBirth;
+                _completedEdLevel = abi.completedEdLevel;
+                _attendedCollegeOrTech = abi.attendedCollegeOrTech;
+                _liveWithParent = abi.liveWithParent;
+                _SSN = SSNtext;
+                _Id = abi.Id;
         }
         #endregion
     }

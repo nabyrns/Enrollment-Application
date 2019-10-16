@@ -13,9 +13,9 @@ namespace Enrollment_Application
 
     class HighSchoolBasicInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
-
+        #region IDataErrorInfo.Error
         string IDataErrorInfo.Error { get { return null; } }
+        #endregion
 
         #region Variable names
         // variable names that are used for initialization when creating a new instance of the BasicInfoTextValidation class
@@ -37,9 +37,11 @@ namespace Enrollment_Application
         public string _sendingHS;
         #endregion
 
+        #region String array that holds the values of the variables to be validated later
         // string array that holds the values of all the variables declared above
         // they do not have underscores because it is technically a different variable whose value is given by the declared variables above
         private static readonly string[] ValidatedProperties = { "currentEdLevel", "sendingHS", "lastName", "firstName", "middleInitial", "program", "streetAddress", "city", "state", "zipCode", "primaryPhoneNum", "cellPhoneNum", "hispanicOrLatino", "race", "gender", "dateOfBirth" };
+        #endregion
 
         #region Property Changed stuff
         // property changed event handler
@@ -276,29 +278,6 @@ namespace Enrollment_Application
             switch (text)
             {
 
-
-                /* case "email":
-
-                     string pattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
-                                      + "@"
-                                      + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
-
-                     Regex r = new Regex(pattern);
-
-
-
-                     if (string.IsNullOrWhiteSpace(email))
-                     {
-                         result = "Text field cannot be empty.";
-                     }
-
-                     else if (!r.IsMatch(email))
-                     {
-                         result = "Invalid email address.";
-                     }
-
-                     break;*/
-
                 case "currentEdLevel":
 
                     if (string.IsNullOrWhiteSpace(currentEdLevel))
@@ -532,6 +511,28 @@ namespace Enrollment_Application
                 return true;
             }
 
+        }
+        #endregion
+
+        #region Method updates the values of the object of this class
+        public void UpdateValues(HighSchoolBasicInfoClass hbi)
+        {
+            _lastName = hbi.lastName;
+            _firstName = hbi.firstName;
+            _middleInitial = hbi.middleInitial;
+            _program = hbi.program;
+            _streetAddress = hbi.streetAddress;
+            _city = hbi.city;
+            _state = hbi.state;
+            _zip = hbi.zipCode;
+            _primaryPhoneNum = hbi.primaryPhoneNum;
+            _cellPhoneNum = hbi.cellPhoneNum;
+            _hispanicOrLatino = hbi.hispanicOrLatino;
+            _race = hbi.race;
+            _gender = hbi.gender;
+            _dateOfBirth = hbi.dateOfBirth;
+            _currentEdLevel = hbi.currentEdLevel;
+            _sendingHS = hbi.sendingHS;
         }
         #endregion
     }

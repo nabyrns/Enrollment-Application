@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Enrollment_Application"
              mc:Ignorable="d" 
-             d:DesignHeight="580" d:DesignWidth="1020" FontSize="14" FontFamily="Candara Light">
+             d:DesignHeight="580" d:DesignWidth="1020" FontSize="14" FontFamily="Segoe UI">
     <Grid x:Name="textFields">
         
         <!--#region Stack Panel containing all the text fields-->

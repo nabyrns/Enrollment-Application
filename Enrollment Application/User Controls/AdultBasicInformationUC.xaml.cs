@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,23 +18,24 @@ using System.Windows.Shapes;
 
 namespace Enrollment_Application
 {
-    /// <summary>
-    /// Interaction logic for BasicInformationUC.xaml
-    /// </summary>
+
     public partial class AdultBasicInformationUC : UserControl
     {
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
+        // declare variables that will be used in the class
 
-        AdultBasicInfoTextValidation validCheck;
+        AdultBasicInfoTextValidation validCheck = new AdultBasicInfoTextValidation();
 
-        AdultBasicInfo abi;
+        AdultBasicInfoClass abi;
 
         #region Constructor --- initializes variables and assigns datacontext for textfields in this UC
         public AdultBasicInformationUC()
         {
             InitializeComponent();
 
-            abi = (from m in _db.AdultBasicInfoes where m.Id == LoginPage.adultCheck.Id select m).FirstOrDefault();
+            // create DataAccess object to pull all the information stored in the database for this user and autofill fields
+            DataAccess db = new DataAccess();
+
+            abi = db.GetABI(LoginPage.adultCheck.Id);
 
             textFields.DataContext = abi;
         }
@@ -42,11 +44,11 @@ namespace Enrollment_Application
         #region Code executes when NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            // salt and hash SSN for storage in database
             String salt = CommonMethods.CreateSalt(20);
             byte[] hashedSSN = CommonMethods.GenerateSaltedHash(Encoding.UTF8.GetBytes(SSNtext.Text), Encoding.UTF8.GetBytes(salt));
 
-            // reassign the values of the BasicInfo object to be what is in the control for that variable
+            // update BasicInfo object values
             abi.lastName = lastNameText.Text.Trim();
             abi.firstName = firstNameText.Text.Trim();
             abi.middleInitial = middleInitialText.Text.Trim();
@@ -61,7 +63,6 @@ namespace Enrollment_Application
             abi.race = raceCombo.Text;
             abi.gender = genderCombo.Text;
             abi.dateOfBirth = birthdateCalendar.SelectedDate;
-            abi.filloutDate = DateTime.Now;
             abi.SSNhashAndSalt = Convert.ToBase64String(hashedSSN);
             abi.SSNsalt = salt;
             abi.completedEdLevel = educationLevelCombo.Text;
@@ -69,29 +70,9 @@ namespace Enrollment_Application
             abi.liveWithParent = liveWithParentCombo.Text;
 
 
-            // initialize or update validCheck to contain the newly updated values in the UC being used
-            // the connection between validCheck and the UC being used is what allows for saving to the database
-            validCheck = new AdultBasicInfoTextValidation()
-            {
-                _lastName = abi.lastName,
-                _firstName = abi.firstName,
-                _middleInitial = abi.middleInitial,
-                _program = abi.program,
-                _streetAddress = abi.streetAddress,
-                _city = abi.city,
-                _state = abi.state,
-                _zip = abi.zipCode,
-                _primaryPhoneNum = abi.primaryPhoneNum,
-                _cellPhoneNum = abi.cellPhoneNum,
-                _hispanicOrLatino = abi.hispanicOrLatino,
-                _race = abi.race,
-                _gender = abi.gender,
-                _dateOfBirth = abi.dateOfBirth,
-                _completedEdLevel = abi.completedEdLevel,
-                _attendedCollegeOrTech = abi.attendedCollegeOrTech,
-                _liveWithParent = abi.liveWithParent,
-                _SSN = SSNtext.Text
-            };
+            // update validCheck to contain the newly updated values in the UC being used
+
+            validCheck.UpdateValues(abi, SSNtext.Text);
 
             // update the datacontext to be validCheck if it was not already
             if (textFields.DataContext != validCheck)
@@ -103,9 +84,9 @@ namespace Enrollment_Application
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
             if (validCheck.IsValid)
             {
+                DataAccess db = new DataAccess();
 
-                _db.SaveChanges();
-
+                db.SaveABI(abi);
 
                 Information_Page.abiuc.Visibility = Visibility.Hidden;
 
@@ -120,6 +101,7 @@ namespace Enrollment_Application
 
         #endregion
 
+        #region This method controls the automatically added hyphens when typing a SSN
         private void SSNtext_KeyDown(object sender, KeyEventArgs e)
         {
             if (!string.IsNullOrEmpty(SSNtext.Text) && e.Key != Key.Back && SSNtext.Text.Length < 10)
@@ -137,5 +119,6 @@ namespace Enrollment_Application
                 SSNtext.SelectionStart = SSNtext.Text.Length;
             }
         }
+        #endregion
     }
 }

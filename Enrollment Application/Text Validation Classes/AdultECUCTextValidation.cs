@@ -10,6 +10,7 @@ namespace Enrollment_Application
 {
     class AdultECUCTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
+        #region Declare variables of class
         public string _contactName;
         public string _relationship;
         public string _primaryNum;
@@ -23,12 +24,17 @@ namespace Enrollment_Application
         public string _NRprimaryNum;
         public string _NRworkNum;
         public string _NRcellNum;
+        #endregion
 
+        #region String array that holds the values to be validated later
         // string array that holds the values of all the variables declared above
         // they do not have underscores because it is technically a different variable whose value is given by the declared variables above
         private static readonly string[] ValidatedProperties = { "contactName", "relationship", "primaryNum", "alternateNum", "nameNearestRelative", "NRrelationship", "NRstreetAddress", "NRcity", "NRstate", "NRzip", "NRprimaryNum", "NRworkNum", "NRcellNum"};
+        #endregion
 
+        #region IDataErrorInfo.Error
         string IDataErrorInfo.Error { get { return null; } }
+        #endregion
 
         #region Property Changed stuff
         // property changed event handler
@@ -449,6 +455,25 @@ namespace Enrollment_Application
                 return true;
             }
 
+        }
+        #endregion
+
+        #region Methods updates the values of the object of this class
+        public void UpdateValues(AdultEmergencyContactClass aec)
+        {
+            _contactName = aec.contactName;
+            _relationship = aec.relationship;
+            _primaryNum = aec.primaryNum;
+            _alternateNum = aec.alternateNum;
+            _nameNearestRelative = aec.nameNearestRelative;
+            _NRrelationship = aec.nameNearestRelative;
+            _NRstreetAddress = aec.NRstreetAddress;
+            _NRcity = aec.NRcity;
+            _NRstate = aec.NRstate;
+            _NRzip = aec.NRzip;
+            _NRprimaryNum = aec.NRprimaryNum;
+            _NRworkNum = aec.NRworkNum;
+            _NRcellNum = aec.NRcellNum;
         }
         #endregion
     }

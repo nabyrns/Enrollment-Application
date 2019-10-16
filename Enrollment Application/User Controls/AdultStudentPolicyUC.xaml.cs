@@ -16,26 +16,25 @@ using System.Windows.Shapes;
 
 namespace Enrollment_Application
 {
-    /// <summary>
-    /// Interaction logic for AdultStudentPolicyUC.xaml
-    /// </summary>
     public partial class AdultStudentPolicyUC : UserControl
     {
         // declare variables that will be used
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
-        AdultPolicy ap;
+        AdultPolicyClass ap;
 
-        PolicyTextValidation validCheck;
+        PolicyTextValidation validCheck = new PolicyTextValidation();
 
         #region Constructor --- initializes variables and assigns datacontext for textfields in this UC
         public AdultStudentPolicyUC()
         {
             InitializeComponent();
 
-            // initialize AdultPolicy variable to contain matching information pulled from the database
-            ap = (from m in _db.AdultPolicies where m.Id == LoginPage.adultCheck.Id select m).FirstOrDefault();
+            // Data Access variable to retrieve and autofill stored information for the user
+            DataAccess db = new DataAccess();
 
+            ap = db.GetAP(LoginPage.adultCheck.Id);
+
+            // code avoids getting an error on data retrieval if the signature has not been filled out yet
             if (ap.studentSignature != null)
             {
                 using (MemoryStream ms = new MemoryStream(ap.studentSignature))
@@ -48,6 +47,7 @@ namespace Enrollment_Application
             // set the datacontext of the text fields to be the AdultEmergencyContact variable
             textFields.DataContext = ap;
 
+            // set border of signature to be base color
             sigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
         }
         #endregion
@@ -67,6 +67,7 @@ namespace Enrollment_Application
         }
         #endregion
 
+        #region Code executes when NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             // variable to tell whether the signature fields have been filled out
@@ -97,7 +98,7 @@ namespace Enrollment_Application
             }
             #endregion
 
-            // update hsp information to contain what is in the text fields
+            // update ap object information
             ap.attendance = attendanceCheck.IsChecked.ToString();
             ap.tobacco = tobaccoCheck.IsChecked.ToString();
             ap.internetAccess = internetCheck.IsChecked.ToString();
@@ -110,20 +111,9 @@ namespace Enrollment_Application
             ap.studentSignature = signature;
 
 
-            // initialize or update the validCheck variable, which is a text validation variable
-            // the connection between the hsp variable and the validCheck variable is what allows for updating in the database
-            validCheck = new PolicyTextValidation()
-            {
-                _attendance = bool.Parse(ap.attendance),
-                _tobacco = bool.Parse(ap.tobacco),
-                _internetAccess = bool.Parse(ap.internetAccess),
-                _studentInsurance = bool.Parse(ap.studentInsurance),
-                _fieldTrips = bool.Parse(ap.fieldTrips),
-                _drugTesting = bool.Parse(ap.drugTesting),
-                _noticeOfDisclosures = bool.Parse(ap.noticeOfDisclosures),
-                _cellPhoneContact = bool.Parse(ap.cellPhoneContact),
-                _releaseForPhotography = bool.Parse(ap.releaseForPhotography)
-            };
+            // update the validCheck variable
+
+            validCheck.UpdateValues(ap);
 
             // update the datacontext to be validCheck if it was not already
             if (textFields.DataContext != validCheck)
@@ -135,8 +125,10 @@ namespace Enrollment_Application
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
             if (validCheck.IsValid && !sigError)
             {
-                _db.SaveChanges();
+                // DataAccess variable to be used to save information to the database
+                DataAccess db = new DataAccess();
 
+                db.SaveAP(ap);
 
                 Information_Page.aspuc.Visibility = Visibility.Hidden;
 
@@ -147,10 +139,13 @@ namespace Enrollment_Application
                 Information_Page.lv.SelectedIndex = 4;
             }
         }
+        #endregion
 
+        #region Code executes when SigClear is clicked
         private void SigClear_Click(object sender, RoutedEventArgs e)
         {
             signatureCanvas.Strokes.Clear();
         }
+        #endregion
     }
 }

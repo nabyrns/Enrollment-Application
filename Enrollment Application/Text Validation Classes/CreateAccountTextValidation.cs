@@ -10,7 +10,6 @@ namespace Enrollment_Application
 {
     class CreateAccountTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
         string IDataErrorInfo.Error { get { return null; } }
 
@@ -70,19 +69,20 @@ namespace Enrollment_Application
         {
             string result = null;
 
+            DataAccess db = new DataAccess();
+
             switch (text)
             {
                 case "email":
 
-                    var check = (from m in _db.HighSchoolLogins where m.email.ToLower().Equals(email.ToLower()) select m).FirstOrDefault();
-                    var checkTwo = (from n in _db.AdultLogins where n.email.ToLower().Equals(email.ToLower()) select n).FirstOrDefault();
+                    var check = db.CheckEmails(email);
 
                     if (string.IsNullOrWhiteSpace(email))
                     {
                         result = "Field must not be empty.";
                     }
 
-                    else if (check != null || checkTwo != null)
+                    else if (check != false)
                     {
                         result = "Account already exists with that email.";
                     }

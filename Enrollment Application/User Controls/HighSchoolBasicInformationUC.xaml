@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Enrollment_Application"
              mc:Ignorable="d" 
-             d:DesignHeight="580" d:DesignWidth="1020" FontSize="14" FontFamily="Candara Light" DataContext="">
+             d:DesignHeight="580" d:DesignWidth="1020" FontSize="11" FontFamily="Segoe UI" DataContext="">
 
     <!--Grid for user control-->
     <Grid x:Name="textFields">
@@ -41,7 +41,38 @@
                 <TextBlock Text="Sending High School:" Foreground="GhostWhite" Margin="0, 10, 5, 0"/>
                 <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="sendingHSText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding sendingHS, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Program:" Foreground="GhostWhite" Margin="10, 10, 5, 0"/>
-                <TextBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="programText" Width="150" Margin="10, 0, 10, 0" VerticalAlignment="Top" Text="{Binding program, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                <ComboBox Text="{Binding program, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="programText" Width="200" Margin="10, 0, 10, 0" VerticalAlignment="Top" >
+                    <ComboBoxItem Content="Accounting and Business Education" />
+                    <ComboBoxItem Content="Auto Collision Technology" />
+                    <ComboBoxItem Content="Auto Service Technology" />
+                    <ComboBoxItem Content="Aviation Maintenance Technology" />
+                    <ComboBoxItem Content="Biomedical Sciences" />
+                    <ComboBoxItem Content="Business Office Technology" />
+                    <ComboBoxItem Content="Computer Aided Drafting and Design" />
+                    <ComboBoxItem Content="Computer Information Systems" />
+                    <ComboBoxItem Content="Computer Programming" />
+                    <ComboBoxItem Content="Construction Trades" />
+                    <ComboBoxItem Content="Cosmetology" />
+                    <ComboBoxItem Content="Diesel Technology" />
+                    <ComboBoxItem Content="Digital Media Technology" />
+                    <ComboBoxItem Content="Early Care and Education" />
+                    <ComboBoxItem Content="Electrical Trades" />
+                    <ComboBoxItem Content="Graphic Design" />
+                    <ComboBoxItem Content="Health Careers" />
+                    <ComboBoxItem Content="Heating, Ventilation, Air Conditioning and Refrigeration" />
+                    <ComboBoxItem Content="Medical Assistant" />
+                    <ComboBoxItem Content="Medical Coding Specialist" />
+                    <ComboBoxItem Content="Medical Office Assistant" />
+                    <ComboBoxItem Content="Powersports" />
+                    <ComboBoxItem Content="Practical Nursing" />
+                    <ComboBoxItem Content="Pre-Engineering" />
+                    <ComboBoxItem Content="Precision Machining Technology" />
+                    <ComboBoxItem Content="Project Search" />
+                    <ComboBoxItem Content="Service Careers" />
+                    <ComboBoxItem Content="Service Careers - Hospitality" />
+                    <ComboBoxItem Content="Surgical Technology" />
+                    <ComboBoxItem Content="Welding" />
+                </ComboBox>
                 <TextBlock Text="Date of Birth:" Foreground="GhostWhite" Margin="10, 10, 5, 0"/>
                 <DatePicker ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="birthdateCalendar" Width="100" Margin="10, 0, 10, 0" SelectedDate="{Binding dateOfBirth, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>

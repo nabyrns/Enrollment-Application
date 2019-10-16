@@ -18,20 +18,21 @@ namespace Enrollment_Application
 {
     public partial class HealthInfoUC : UserControl
     {
-        // create new database connection
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
         // declare variables that may be used depending on which type of student the login was for
-        HighSchoolHealthInfo hshi;
-        AdultHealthInfo ahi;
+        HighSchoolHealthInfoClass hshi;
+        AdultHealthInfoClass ahi;
 
         // create new validation object
-        HealthInfoTextValidation validCheck;
+        HealthInfoTextValidation validCheck = new HealthInfoTextValidation();
 
         #region Constructor --- initializes variables based on student type of login and assigns datacontext for the textfields in this UC to whichever variable is used
         public HealthInfoUC()
         {
             InitializeComponent();
+
+            // DataAccess variable to be used to retrieve and autofill information stored in the database for the user
+            DataAccess db = new DataAccess();
 
             // initialize previously declared values to null for later checking
             hshi = null;
@@ -42,7 +43,8 @@ namespace Enrollment_Application
             // then assign the datacontext for the text fields in the UC to the newly reassigned variable
             if (LoginPage.highschoolCheck != null)
             {
-                hshi = (from m in _db.HighSchoolHealthInfoes where m.Id == LoginPage.highschoolCheck.Id select m).FirstOrDefault();
+
+                hshi = db.GetHSHI(LoginPage.highschoolCheck.Id);
 
                 if (hshi.healthSignature != null)
                 {
@@ -71,7 +73,8 @@ namespace Enrollment_Application
 
             else
             {
-                ahi = (from m in _db.AdultHealthInfoes where m.Id == LoginPage.adultCheck.Id select m).FirstOrDefault();
+
+                ahi = db.GetAHI(LoginPage.adultCheck.Id);
 
                 if (ahi.healthSignature != null)
                 {
@@ -87,6 +90,7 @@ namespace Enrollment_Application
                 siglabel.Text = "Student Signature: ";
             }
 
+            // set signature border to base color
             sigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
         }
         #endregion
@@ -94,14 +98,17 @@ namespace Enrollment_Application
         #region Code executes when NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
+            // variable that will check whether the signature field contains an error
             bool sigError = false;
 
+            // if the signature field is empty, sigError is set to true and the border color changes to the error color
             if (signatureCanvas.Strokes.Count == 0)
             {
                 sigCanBorder.BorderBrush = Brushes.Red;
                 sigError = true;
             }
 
+            // if the signature field is not empty and the box was the error color, change back to base color and set sigError to false
             else
             {
                 if (sigCanBorder.BorderBrush == Brushes.Red)
@@ -112,6 +119,7 @@ namespace Enrollment_Application
                 sigError = false;
             }
 
+            // assign stroke values to new byte array in order to later save the information to the database
             byte[] signature;
             using (MemoryStream ms = new MemoryStream())
             {
@@ -148,7 +156,7 @@ namespace Enrollment_Application
             // check what kind of student was logged in
             if (ahi != null)
             {
-                // reassign the values of the HealthInfo object to be what is in the control for that variable
+                // reassign the values of the HealthInfo object to be current
                 ahi.primaryPhysician = primaryPhysText.Text.Trim();
                 ahi.otherPhysician = oPhysicianText.Text.Trim();
                 ahi.pPhysicianPhoneNum = primaryPhysPhoneText.Text.Trim();
@@ -169,29 +177,9 @@ namespace Enrollment_Application
                 ahi.repPermissionForTreatment = treatmentPermissionCombo.Text;
                 ahi.healthSignature = signature;
 
-                // initialize or update validCheck to contain the newly updated values in the UC being used
-                // the connection between validCheck and the UC being used is what allows for saving to the database
-                validCheck = new HealthInfoTextValidation()
-                {
-                    _primaryPhysician = ahi.primaryPhysician,
-                    _otherPhysician = ahi.otherPhysician,
-                    _pPhysicianPhoneNum = ahi.pPhysicianPhoneNum,
-                    _oPhysicianPhoneNum = ahi.oPhysicianPhoneNum,
-                    _diabeticType = ahi.diabeticType,
-                    _allergies = ahi.allergies,
-                    _heartIssues = ahi.heartIssues,
-                    _metabolic = bool.Parse(ahi.metabolic),
-                    _jointMuscle = bool.Parse(ahi.jointMuscle),
-                    _chronicIllness = bool.Parse(ahi.chronicIllness),
-                    _migraines = bool.Parse(ahi.migraines),
-                    _neurological = bool.Parse(ahi.neurological),
-                    _pulmonary = bool.Parse(ahi.pulmonary),
-                    _asthma = bool.Parse(ahi.asthma),
-                    _other = bool.Parse(ahi.other),
-                    _otherMeds = ahi.otherMeds,
-                    _specificFirstAidNeeds = ahi.specificFirstAidNeeds,
-                    _repPermissionForTreatment = ahi.repPermissionForTreatment
-                };
+                // update validCheck to contain the newly updated values
+
+                validCheck.UpdateValues(ahi);
             }
 
             // same as above code
@@ -217,27 +205,7 @@ namespace Enrollment_Application
                 hshi.repPermissionForTreatment = treatmentPermissionCombo.Text;
                 hshi.healthSignature = signature;
 
-                validCheck = new HealthInfoTextValidation()
-                {
-                    _primaryPhysician = hshi.primaryPhysician,
-                    _otherPhysician = hshi.otherPhysician,
-                    _pPhysicianPhoneNum = hshi.pPhysicianPhoneNum,
-                    _oPhysicianPhoneNum = hshi.oPhysicianPhoneNum,
-                    _diabeticType = hshi.diabeticType,
-                    _allergies = hshi.allergies,
-                    _heartIssues = hshi.heartIssues,
-                    _metabolic = bool.Parse(hshi.metabolic),
-                    _jointMuscle = bool.Parse(hshi.jointMuscle),
-                    _chronicIllness = bool.Parse(hshi.chronicIllness),
-                    _migraines = bool.Parse(hshi.migraines),
-                    _neurological = bool.Parse(hshi.neurological),
-                    _pulmonary = bool.Parse(hshi.pulmonary),
-                    _asthma = bool.Parse(hshi.asthma),
-                    _other = bool.Parse(hshi.other),
-                    _otherMeds = hshi.otherMeds,
-                    _specificFirstAidNeeds = hshi.specificFirstAidNeeds,
-                    _repPermissionForTreatment = hshi.repPermissionForTreatment
-                };
+                validCheck.UpdateValues(hshi);
             }
 
             // update the datacontext to be validCheck if it was not already
@@ -250,17 +218,24 @@ namespace Enrollment_Application
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
             if (validCheck.IsValid && !sigError)
             {
-                _db.SaveChanges();
 
                 Information_Page.hiuc.Visibility = Visibility.Hidden;
 
                 if (LoginPage.adultCheck != null)
                 {
+                    DataAccess db = new DataAccess();
+
+                    db.SaveAHI(ahi);
+
                     Information_Page.aecuc.Visibility = Visibility.Visible;
                 }
 
                 else
                 {
+                    DataAccess db = new DataAccess();
+
+                    db.SaveHSHI(hshi);
+
                     Information_Page.hsecuc.Visibility = Visibility.Visible;
                 }
 
@@ -294,9 +269,11 @@ namespace Enrollment_Application
         }
         #endregion
 
+        #region Code exectues when SigClear is clicked
         private void SigClear_Click(object sender, RoutedEventArgs e)
         {
             signatureCanvas.Strokes.Clear();
         }
+        #endregion
     }
 }

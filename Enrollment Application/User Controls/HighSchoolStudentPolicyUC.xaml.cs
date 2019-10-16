@@ -16,26 +16,25 @@ using System.Windows.Shapes;
 
 namespace Enrollment_Application
 {
-    /// <summary>
-    /// Interaction logic for HighSchoolStudentPolicyUC.xaml
-    /// </summary>
     public partial class HighSchoolStudentPolicyUC : UserControl
     {
         // declare variables that will be used
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
-        HighSchoolPolicy hsp;
+        HighSchoolPolicyClass hsp;
 
-        PolicyTextValidation validCheck;
+        PolicyTextValidation validCheck = new PolicyTextValidation();
 
         #region Constructor --- initializes variables and assigns datacontext for textfields in this UC
         public HighSchoolStudentPolicyUC()
         {
             InitializeComponent();
 
-            // initialize AdultEmergencyContact variable to contain matching information pulled from the database
-            hsp = (from m in _db.HighSchoolPolicies where m.Id == LoginPage.highschoolCheck.Id select m).FirstOrDefault();
+            // DataAccess variable to retrieve and autofill previously stored information for the user
+            DataAccess db = new DataAccess();
 
+            hsp = db.GetHSP(LoginPage.highschoolCheck.Id);
+
+            // if signature fields have not been filled out yet, these code blocks avoid encountering an error
             if (hsp.studentSignature != null)
             {
                 using (MemoryStream ms = new MemoryStream(hsp.studentSignature))
@@ -57,6 +56,7 @@ namespace Enrollment_Application
             // set the datacontext of the text fields to be the AdultEmergencyContact variable
             textFields.DataContext = hsp;
 
+            // set base colors of signature borders
             sigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
             parSigCanBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 148, 243));
         }
@@ -77,6 +77,7 @@ namespace Enrollment_Application
         }
         #endregion
 
+        #region Code executes when the NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             // variable to tell whether the signature fields have been filled out
@@ -134,7 +135,7 @@ namespace Enrollment_Application
             }
             #endregion
 
-            // update hsp information to contain what is in the text fields
+            // update hsp information to current values
             hsp.attendance = attendanceCheck.IsChecked.ToString();
             hsp.tobacco = tobaccoCheck.IsChecked.ToString();
             hsp.internetAccess = internetCheck.IsChecked.ToString();
@@ -148,20 +149,9 @@ namespace Enrollment_Application
             hsp.parentSignature = parentSignature;
 
 
-            // initialize or update the validCheck variable, which is a text validation variable
-            // the connection between the hsp variable and the validCheck variable is what allows for updating in the database
-            validCheck = new PolicyTextValidation()
-            {
-                _attendance = bool.Parse(hsp.attendance),
-                _tobacco = bool.Parse(hsp.tobacco),
-                _internetAccess = bool.Parse(hsp.internetAccess),
-                _studentInsurance = bool.Parse(hsp.studentInsurance),
-                _fieldTrips = bool.Parse(hsp.fieldTrips),
-                _drugTesting = bool.Parse(hsp.drugTesting),
-                _noticeOfDisclosures = bool.Parse(hsp.noticeOfDisclosures),
-                _cellPhoneContact = bool.Parse(hsp.cellPhoneContact),
-                _releaseForPhotography = bool.Parse(hsp.releaseForPhotography)
-            };
+            // update the validCheck variable
+
+            validCheck.UpdateValues(hsp);
 
             // update the datacontext to be validCheck if it was not already
             if (textFields.DataContext != validCheck)
@@ -173,8 +163,10 @@ namespace Enrollment_Application
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
             if (validCheck.IsValid && !sigError)
             {
-                _db.SaveChanges();
+                // DataAccess variable to save information to DataBase
+                DataAccess db = new DataAccess();
 
+                db.SaveHSP(hsp);
 
                 Information_Page.hsspuc.Visibility = Visibility.Hidden;
 
@@ -185,7 +177,9 @@ namespace Enrollment_Application
                 Information_Page.lv.SelectedIndex = 4;
             }
         }
+        #endregion
 
+        #region Methods control clearing of Signature Fields
         private void SigClear_Click(object sender, RoutedEventArgs e)
         {
             signatureCanvas.Strokes.Clear();
@@ -195,5 +189,6 @@ namespace Enrollment_Application
         {
             parentSignatureCanvas.Strokes.Clear();
         }
+        #endregion
     }
 }

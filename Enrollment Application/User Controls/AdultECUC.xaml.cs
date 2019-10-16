@@ -15,33 +15,33 @@ using System.Windows.Shapes;
 
 namespace Enrollment_Application
 {
-    /// <summary>
-    /// Interaction logic for AdultECUC.xaml
-    /// </summary>
     public partial class AdultECUC : UserControl
     {
         // declare variables that will be used
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
-        AdultEmergencyContact aec;
+        AdultEmergencyContactClass aec;
 
-        AdultECUCTextValidation validCheck;
+        AdultECUCTextValidation validCheck = new AdultECUCTextValidation();
 
+        #region Constructor
         public AdultECUC()
         {
             InitializeComponent();
 
-            // initialize AdultEmergencyContact variable to contain matching information pulled from the database
-            aec = (from m in _db.AdultEmergencyContacts where m.Id == LoginPage.adultCheck.Id select m).FirstOrDefault();
+            // create DataAccess variable to retrieve stored information for the user, and autofill
+            DataAccess db = new DataAccess();
 
-            // set the datacontext of the text fields to be the AdultEmergencyContact variable
+            aec = db.GetAEC(LoginPage.adultCheck.Id);
+
+            // set the datacontext of the text fields
             textFields.DataContext = aec;
         }
+        #endregion
 
         #region Code executes when the NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            // update aec information to contain what is in the text fields
+            // update aec variables
             aec.contactName = EmergencyContactNameText.Text.Trim();
             aec.relationship = ECRelationshipText.Text.Trim();
             aec.primaryNum = ECPrimaryNumText.Text.Trim();
@@ -56,24 +56,9 @@ namespace Enrollment_Application
             aec.NRworkNum = workNumberText.Text.Trim();
             aec.NRcellNum = cellNumberText.Text.Trim();
 
-            // initialize or update the validCheck variable, which is a text validation variable
-            // the connection between the AdultEmergencyContact variable and the validCheck variable is what allows for updating in the database
-            validCheck = new AdultECUCTextValidation()
-            {
-                _contactName = aec.contactName,
-                _relationship = aec.relationship,
-                _primaryNum = aec.primaryNum,
-                _alternateNum = aec.alternateNum,
-                _nameNearestRelative = aec.nameNearestRelative,
-                _NRrelationship = aec.nameNearestRelative,
-                _NRstreetAddress = aec.NRstreetAddress,
-                _NRcity = aec.NRcity,
-                _NRstate = aec.NRstate,
-                _NRzip = aec.NRzip,
-                _NRprimaryNum = aec.NRprimaryNum,
-                _NRworkNum = aec.NRworkNum,
-                _NRcellNum = aec.NRcellNum
-            };
+            // update the validCheck variable
+
+            validCheck.UpdateValues(aec);
 
             // update the datacontext to be validCheck if it was not already
             if (textFields.DataContext != validCheck)
@@ -85,8 +70,10 @@ namespace Enrollment_Application
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
             if (validCheck.IsValid)
             {
-                _db.SaveChanges();
+                // DataAccess variable does the saving to the database
+                DataAccess db = new DataAccess();
 
+                db.SaveAEC(aec);
 
                 Information_Page.aecuc.Visibility = Visibility.Hidden;
 

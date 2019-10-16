@@ -14,31 +14,32 @@ using System.Windows.Shapes;
 
 namespace Enrollment_Application
 {
-    /// <summary>
-    /// Interaction logic for AdminWindow.xaml
-    /// </summary>
     public partial class AdminWindow : Window
     {
         public static string[] name = { "" };
-
-        EnrollmentDBEntities _db = new EnrollmentDBEntities();
 
         public AdminWindow()
         {
             InitializeComponent();
 
-            myDataGrid.ItemsSource = (from q in _db.AdultBasicInfoes where q.lastName != null && q.firstName != null select q).OrderBy(q => q.lastName).ToList();
-            myHSDataGrid.ItemsSource = (from q in _db.HighSchoolBasicInfoes where q.lastName != null && q.firstName != null select q).OrderBy(q => q.lastName).ToList();
+            DataAccess db = new DataAccess();
+
+            myDataGrid.ItemsSource = db.AdultDGSearch();
+            myHSDataGrid.ItemsSource = db.HSDGSearch();
         }
 
         private void ViewAndEditBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void ViewAndEditBtnHS_Click(object sender, RoutedEventArgs e)
         {
+            HighSchoolBasicInfoClass hsbi = myHSDataGrid.SelectedItem as HighSchoolBasicInfoClass;
 
+            AdminStudentInformationWindowHS asiw = new AdminStudentInformationWindowHS(hsbi.Id);
+
+            asiw.ShowDialog();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -50,9 +51,11 @@ namespace Enrollment_Application
         {
             adultSearchText.Text = adultSearchText.Text.Trim();
 
+            DataAccess db = new DataAccess();
+
             if (string.IsNullOrEmpty(adultSearchText.Text))
             {
-                myDataGrid.ItemsSource = (from q in _db.AdultBasicInfoes where q.lastName != null && q.firstName != null select q).OrderBy(q => q.lastName).ToList();
+                myDataGrid.ItemsSource = db.AdultDGSearch();
             }
 
             else
@@ -61,17 +64,12 @@ namespace Enrollment_Application
 
                 if (name.Length < 2)
                 {
-                    string search = name[0];
-
-                    myDataGrid.ItemsSource = (from q in _db.AdultBasicInfoes where q.firstName.ToLower().Contains(search.ToLower()) || q.lastName.ToLower().Contains(search.ToLower()) select q).OrderBy(q => q.lastName).ToList();
+                    myDataGrid.ItemsSource = db.AdultDGSearch(name[0]);
                 }
 
                 else
                 {
-                    string firstSearch = name[0];
-                    string secondSearch = name[1];
-
-                    myDataGrid.ItemsSource = (from q in _db.AdultBasicInfoes where (q.firstName.ToLower().Contains(firstSearch.ToLower()) && q.lastName.ToLower().Contains(secondSearch.ToLower())) || (q.firstName.ToLower().Contains(secondSearch.ToLower()) && q.lastName.ToLower().Contains(firstSearch.ToLower())) select q).ToList();
+                    myDataGrid.ItemsSource = db.AdultDGSearch(name[0], name[1]);
                 }
             }
         }
@@ -80,9 +78,11 @@ namespace Enrollment_Application
         {
             highSchoolSearchText.Text = highSchoolSearchText.Text.Trim();
 
+            DataAccess db = new DataAccess();
+
             if (string.IsNullOrEmpty(highSchoolSearchText.Text))
             {
-                myHSDataGrid.ItemsSource = (from q in _db.HighSchoolBasicInfoes where q.lastName != null && q.firstName != null select q).OrderBy(q => q.lastName).ToList();
+                myHSDataGrid.ItemsSource = db.HSDGSearch();
             }
 
             else
@@ -91,17 +91,12 @@ namespace Enrollment_Application
 
                 if (name.Length < 2)
                 {
-                    string search = name[0];
-
-                    myHSDataGrid.ItemsSource = (from q in _db.HighSchoolBasicInfoes where q.firstName.ToLower().Contains(search.ToLower()) || q.lastName.ToLower().Contains(search.ToLower()) select q).OrderBy(q => q.lastName).ToList();
+                    myHSDataGrid.ItemsSource = db.HSDGSearch(name[0]);
                 }
 
                 else
                 {
-                    string firstSearch = name[0];
-                    string secondSearch = name[1];
-
-                    myHSDataGrid.ItemsSource = (from q in _db.HighSchoolBasicInfoes where (q.firstName.ToLower().Contains(firstSearch.ToLower()) && q.lastName.ToLower().Contains(secondSearch.ToLower())) || (q.firstName.ToLower().Contains(secondSearch.ToLower()) && q.lastName.ToLower().Contains(firstSearch.ToLower())) select q).ToList();
+                    myHSDataGrid.ItemsSource = db.HSDGSearch(name[0], name[1]);
                 }
             }
         }
