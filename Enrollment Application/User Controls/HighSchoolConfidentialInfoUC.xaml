@@ -171,7 +171,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="40, 10, 10, 10">
-                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="workforceCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding outOfWorkforce, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                <CheckBox ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Height="15" Style="{DynamicResource MaterialDesignCheckBox}" x:Name="activeDutyCheck" RenderTransformOrigin="0.5,0.5" IsChecked="{Binding outOfWorkforce, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                     <CheckBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1.5" ScaleX="1.5"/>
@@ -183,7 +183,7 @@
                 </CheckBox>
 
                 <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" Width="900">
-                    <Run Foreground="GhostWhite" Text="Out of Workforce individuals"/>
+                    <Run Foreground="GhostWhite" Text="Parents on military active duty"/>
                 </TextBlock>
             </StackPanel>
         </StackPanel>

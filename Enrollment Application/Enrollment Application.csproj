@@ -74,6 +74,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Windows\AdminStudentInformationWindowA.xaml.cs">
+      <DependentUpon>AdminStudentInformationWindowA.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AdminStudentInformationWindowHS.xaml.cs">
       <DependentUpon>AdminStudentInformationWindowHS.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
     </Compile>
     <Compile Include="Text Validation Classes\AdultECUCTextValidation.cs" />
     <Compile Include="Text Validation Classes\AdultBasicInfoTextValidation.cs" />
+    <Page Include="Windows\AdminStudentInformationWindowA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AdminStudentInformationWindowHS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

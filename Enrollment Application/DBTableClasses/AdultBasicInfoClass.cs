@@ -24,8 +24,7 @@ namespace Enrollment_Application
         public string race { get; set; }
         public string gender { get; set; }
         public Nullable<System.DateTime> dateOfBirth { get; set; }
-        public string SSNhashAndSalt { get; set; }
-        public string SSNsalt { get; set; }
+        public string SSN { get; set; }
         public string completedEdLevel { get; set; }
         public string attendedCollegeOrTech { get; set; }
         public string liveWithParent { get; set; }

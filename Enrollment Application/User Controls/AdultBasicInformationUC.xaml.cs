@@ -44,9 +44,6 @@ namespace Enrollment_Application
         #region Code executes when NextBtn is clicked
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            // salt and hash SSN for storage in database
-            String salt = CommonMethods.CreateSalt(20);
-            byte[] hashedSSN = CommonMethods.GenerateSaltedHash(Encoding.UTF8.GetBytes(SSNtext.Text), Encoding.UTF8.GetBytes(salt));
 
             // update BasicInfo object values
             abi.lastName = lastNameText.Text.Trim();
@@ -63,8 +60,7 @@ namespace Enrollment_Application
             abi.race = raceCombo.Text;
             abi.gender = genderCombo.Text;
             abi.dateOfBirth = birthdateCalendar.SelectedDate;
-            abi.SSNhashAndSalt = Convert.ToBase64String(hashedSSN);
-            abi.SSNsalt = salt;
+            abi.SSN = SSNtext.Text;
             abi.completedEdLevel = educationLevelCombo.Text;
             abi.attendedCollegeOrTech = attendedCollegeCombo.Text;
             abi.liveWithParent = liveWithParentCombo.Text;
@@ -72,7 +68,7 @@ namespace Enrollment_Application
 
             // update validCheck to contain the newly updated values in the UC being used
 
-            validCheck.UpdateValues(abi, SSNtext.Text);
+            validCheck.UpdateValues(abi);
 
             // update the datacontext to be validCheck if it was not already
             if (textFields.DataContext != validCheck)

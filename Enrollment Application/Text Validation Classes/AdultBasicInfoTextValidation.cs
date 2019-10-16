@@ -343,20 +343,16 @@ namespace Enrollment_Application
 
                     else
                     {
-                        byte[] saltedHash;
 
                         List<AdultBasicInfoClass> ab;
 
                         using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("EnrollmentDB")))
                         {
-                            ab = connection.Query<AdultBasicInfoClass>($"Select * From AdultBasicInfo Where SSNhashAndSalt != 'NULL' And Id != '{ Id }'").ToList();
+                            ab = connection.Query<AdultBasicInfoClass>($"Select * From AdultBasicInfo Where SSN != 'NULL' And Id != '{ Id }'").ToList();
 
                             foreach (var v in ab)
                             {
-
-                                saltedHash = CommonMethods.GenerateSaltedHash(Encoding.UTF8.GetBytes(SSN), Encoding.UTF8.GetBytes(v.SSNsalt));
-
-                                if (CommonMethods.CompareByteArrays(saltedHash, Convert.FromBase64String(v.SSNhashAndSalt)))
+                                if (SSN.Equals(v.SSN))
                                 {
                                     result = "An account already exists with that SSN.";
 
@@ -610,7 +606,7 @@ namespace Enrollment_Application
         #endregion
 
         #region Method is for updating the values of an object of this class, used when trying to advance the form
-        public void UpdateValues(AdultBasicInfoClass abi, string SSNtext)
+        public void UpdateValues(AdultBasicInfoClass abi)
         {
             _lastName = abi.lastName;
                 _firstName = abi.firstName;
@@ -629,7 +625,7 @@ namespace Enrollment_Application
                 _completedEdLevel = abi.completedEdLevel;
                 _attendedCollegeOrTech = abi.attendedCollegeOrTech;
                 _liveWithParent = abi.liveWithParent;
-                _SSN = SSNtext;
+                _SSN = abi.SSN;
                 _Id = abi.Id;
         }
         #endregion

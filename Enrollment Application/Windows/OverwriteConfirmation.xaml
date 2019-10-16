@@ -9,7 +9,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Title="Create Account" FontFamily="" BorderBrush="#2196f3" BorderThickness="1" Height="275" Width="425" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        Title="Create Account" FontFamily="Segoe UI" BorderBrush="#2196f3" BorderThickness="1" Height="275" Width="425" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
             <TextBlock Text="Overwrite Data" FontSize="24" HorizontalAlignment="Center" Margin="10" Foreground="#2196f3"/>
