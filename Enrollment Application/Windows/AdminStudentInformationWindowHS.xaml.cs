@@ -75,7 +75,7 @@ namespace Enrollment_Application
 
             if (hsp.parentSignature != null)
             {
-                using (MemoryStream ms = new MemoryStream(hshi.healthSignature))
+                using (MemoryStream ms = new MemoryStream(hsp.parentSignature))
                 {
                     parentSigPolicyCanvas.Strokes = new System.Windows.Ink.StrokeCollection(ms);
                     ms.Close();
@@ -84,7 +84,7 @@ namespace Enrollment_Application
 
             if (hsp.studentSignature != null)
             {
-                using (MemoryStream ms = new MemoryStream(hshi.healthSignature))
+                using (MemoryStream ms = new MemoryStream(hsp.studentSignature))
                 {
                     policySignatureCanvas.Strokes = new System.Windows.Ink.StrokeCollection(ms);
                     ms.Close();
@@ -93,7 +93,7 @@ namespace Enrollment_Application
 
             if (hsci.parentSignature != null)
             {
-                using (MemoryStream ms = new MemoryStream(hshi.healthSignature))
+                using (MemoryStream ms = new MemoryStream(hsci.parentSignature))
                 {
                     parentSigCanvas.Strokes = new System.Windows.Ink.StrokeCollection(ms);
                     ms.Close();
@@ -255,7 +255,7 @@ namespace Enrollment_Application
             hsci.none = noneCheck.IsChecked.ToString();
             hsci.homeless = homelessCheck.IsChecked.ToString();
             hsci.agedOutFosterCare = agedOutCheck.IsChecked.ToString();
-            hsci.outOfWorkforce = workforceCheck.IsChecked.ToString();
+            hsci.parentsActiveDuty = activeDutyCheck.IsChecked.ToString();
             hsci.reducedLunch = reducedLunchCheck.IsChecked.ToString();
 
             DataAccess db = new DataAccess();

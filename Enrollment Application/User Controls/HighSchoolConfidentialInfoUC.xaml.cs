@@ -91,7 +91,7 @@ namespace Enrollment_Application
             hsci.none = noneCheck.IsChecked.ToString();
             hsci.homeless = homelessCheck.IsChecked.ToString();
             hsci.agedOutFosterCare = agedOutCheck.IsChecked.ToString();
-            hsci.outOfWorkforce = workforceCheck.IsChecked.ToString();
+            hsci.parentsActiveDuty = activeDutyCheck.IsChecked.ToString();
             hsci.reducedLunch = reducedLunchCheck.IsChecked.ToString();
             hsci.parentSignature = signature;
             hsci.formCompletionDate = DateTime.Now;

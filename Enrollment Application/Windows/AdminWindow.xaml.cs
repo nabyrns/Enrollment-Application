@@ -30,7 +30,11 @@ namespace Enrollment_Application
 
         private void ViewAndEditBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            AdultBasicInfoClass abi = myDataGrid.SelectedItem as AdultBasicInfoClass;
+
+            AdminStudentInformationWindowA asiwA = new AdminStudentInformationWindowA(abi.Id);
+
+            asiwA.ShowDialog();
         }
 
         private void ViewAndEditBtnHS_Click(object sender, RoutedEventArgs e)

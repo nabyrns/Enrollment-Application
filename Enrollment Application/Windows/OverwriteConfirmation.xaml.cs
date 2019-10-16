@@ -32,6 +32,8 @@ namespace Enrollment_Application
         {
             AdminStudentInformationWindowHS.overwrite = true;
 
+            AdminStudentInformationWindowA.overwrite = true;
+
             this.Close();
         }
 

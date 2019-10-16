@@ -25,13 +25,11 @@
           <Property Name="race" Type="nvarchar" MaxLength="50" />
           <Property Name="gender" Type="nvarchar" MaxLength="50" />
           <Property Name="dateOfBirth" Type="date" />
-          <Property Name="filloutDate" Type="datetime" />
           <Property Name="SSNhashAndSalt" Type="nvarchar" MaxLength="50" />
           <Property Name="SSNsalt" Type="nvarchar" MaxLength="50" />
           <Property Name="completedEdLevel" Type="nvarchar" MaxLength="50" />
           <Property Name="attendedCollegeOrTech" Type="nvarchar" MaxLength="50" />
           <Property Name="liveWithParent" Type="nvarchar" MaxLength="50" />
-          <Property Name="signature" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="AdultConfidentialInfo">
           <Key>
@@ -46,6 +44,7 @@
           <Property Name="homeless" Type="varchar" MaxLength="50" />
           <Property Name="agedOutFosterCare" Type="varchar" MaxLength="50" />
           <Property Name="outOfWorkforce" Type="varchar" MaxLength="50" />
+          <Property Name="formCompletionDate" Type="datetime" />
         </EntityType>
         <EntityType Name="AdultEmergencyContact">
           <Key>
@@ -101,6 +100,7 @@
           <Property Name="passwordSalt" Type="nvarchar" MaxLength="50" />
           <Property Name="dateCreated" Type="datetime" />
           <Property Name="submitted" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentType" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="AdultPolicy">
           <Key>
@@ -127,6 +127,8 @@
           <Property Name="passwordHash" Type="nvarchar" MaxLength="50" />
           <Property Name="passwordSalt" Type="nvarchar" MaxLength="50" />
           <Property Name="dateCreated" Type="datetime" />
+          <Property Name="studentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="submitted" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="HighSchoolBasicInfo">
           <Key>
@@ -150,7 +152,6 @@
           <Property Name="dateOfBirth" Type="date" />
           <Property Name="currentEdLevel" Type="nvarchar" MaxLength="50" />
           <Property Name="sendingHS" Type="nvarchar" MaxLength="50" />
-          <Property Name="filloutDate" Type="datetime" />
         </EntityType>
         <EntityType Name="HighSchoolConfidentialInfo">
           <Key>
@@ -164,9 +165,10 @@
           <Property Name="none" Type="varchar" MaxLength="50" />
           <Property Name="homeless" Type="varchar" MaxLength="50" />
           <Property Name="agedOutFosterCare" Type="varchar" MaxLength="50" />
-          <Property Name="outOfWorkforce" Type="varchar" MaxLength="50" />
           <Property Name="reducedLunch" Type="varchar" MaxLength="50" />
           <Property Name="parentSignature" Type="varbinary(max)" />
+          <Property Name="formCompletionDate" Type="datetime" />
+          <Property Name="parentsActiveDuty" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="HighSchoolEmergencyContact">
           <Key>
@@ -236,6 +238,7 @@
           <Property Name="passwordSalt" Type="nvarchar" MaxLength="50" />
           <Property Name="dateCreated" Type="datetime" />
           <Property Name="submitted" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentType" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="HighSchoolPolicy">
           <Key>
@@ -294,13 +297,11 @@
           <Property Name="race" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
-          <Property Name="filloutDate" Type="DateTime" Precision="3" />
           <Property Name="SSNhashAndSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SSNsalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="completedEdLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="attendedCollegeOrTech" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="liveWithParent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="AdultConfidentialInfo">
           <Key>
@@ -315,6 +316,7 @@
           <Property Name="homeless" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="agedOutFosterCare" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="outOfWorkforce" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="formCompletionDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="AdultEmergencyContact">
           <Key>
@@ -370,6 +372,7 @@
           <Property Name="passwordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="dateCreated" Type="DateTime" Precision="3" />
           <Property Name="submitted" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AdultPolicy">
           <Key>
@@ -396,6 +399,8 @@
           <Property Name="passwordHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="passwordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="dateCreated" Type="DateTime" Precision="3" />
+          <Property Name="studentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="submitted" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HighSchoolBasicInfo">
           <Key>
@@ -419,7 +424,6 @@
           <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="currentEdLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="sendingHS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="filloutDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="HighSchoolConfidentialInfo">
           <Key>
@@ -433,9 +437,10 @@
           <Property Name="none" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="homeless" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="agedOutFosterCare" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="outOfWorkforce" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="reducedLunch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="parentSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="formCompletionDate" Type="DateTime" Precision="3" />
+          <Property Name="parentsActiveDuty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="HighSchoolEmergencyContact">
           <Key>
@@ -505,6 +510,7 @@
           <Property Name="passwordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="dateCreated" Type="DateTime" Precision="3" />
           <Property Name="submitted" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HighSchoolPolicy">
           <Key>
@@ -563,13 +569,11 @@
                 <ScalarProperty Name="race" ColumnName="race" />
                 <ScalarProperty Name="gender" ColumnName="gender" />
                 <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
-                <ScalarProperty Name="filloutDate" ColumnName="filloutDate" />
                 <ScalarProperty Name="SSNhashAndSalt" ColumnName="SSNhashAndSalt" />
                 <ScalarProperty Name="SSNsalt" ColumnName="SSNsalt" />
                 <ScalarProperty Name="completedEdLevel" ColumnName="completedEdLevel" />
                 <ScalarProperty Name="attendedCollegeOrTech" ColumnName="attendedCollegeOrTech" />
                 <ScalarProperty Name="liveWithParent" ColumnName="liveWithParent" />
-                <ScalarProperty Name="signature" ColumnName="signature" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -585,6 +589,7 @@
                 <ScalarProperty Name="homeless" ColumnName="homeless" />
                 <ScalarProperty Name="agedOutFosterCare" ColumnName="agedOutFosterCare" />
                 <ScalarProperty Name="outOfWorkforce" ColumnName="outOfWorkforce" />
+                <ScalarProperty Name="formCompletionDate" ColumnName="formCompletionDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -643,6 +648,7 @@
                 <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
                 <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
                 <ScalarProperty Name="submitted" ColumnName="submitted" />
+                <ScalarProperty Name="studentType" ColumnName="studentType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -671,6 +677,8 @@
                 <ScalarProperty Name="passwordHash" ColumnName="passwordHash" />
                 <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
                 <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="studentType" ColumnName="studentType" />
+                <ScalarProperty Name="submitted" ColumnName="submitted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -695,7 +703,6 @@
                 <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
                 <ScalarProperty Name="currentEdLevel" ColumnName="currentEdLevel" />
                 <ScalarProperty Name="sendingHS" ColumnName="sendingHS" />
-                <ScalarProperty Name="filloutDate" ColumnName="filloutDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -710,9 +717,10 @@
                 <ScalarProperty Name="none" ColumnName="none" />
                 <ScalarProperty Name="homeless" ColumnName="homeless" />
                 <ScalarProperty Name="agedOutFosterCare" ColumnName="agedOutFosterCare" />
-                <ScalarProperty Name="outOfWorkforce" ColumnName="outOfWorkforce" />
                 <ScalarProperty Name="reducedLunch" ColumnName="reducedLunch" />
                 <ScalarProperty Name="parentSignature" ColumnName="parentSignature" />
+                <ScalarProperty Name="formCompletionDate" ColumnName="formCompletionDate" />
+                <ScalarProperty Name="parentsActiveDuty" ColumnName="parentsActiveDuty" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -785,6 +793,7 @@
                 <ScalarProperty Name="passwordSalt" ColumnName="passwordSalt" />
                 <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
                 <ScalarProperty Name="submitted" ColumnName="submitted" />
+                <ScalarProperty Name="studentType" ColumnName="studentType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
