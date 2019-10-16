@@ -47,6 +47,7 @@ namespace Enrollment_Application
             aci.homeless = homelessCheck.IsChecked.ToString();
             aci.agedOutFosterCare = agedOutCheck.IsChecked.ToString();
             aci.outOfWorkforce = workforceCheck.IsChecked.ToString();
+            aci.formCompletionDate = DateTime.Now;
 
             // if no boxes are checked, display error message
             if (aci.foodStamps == "False" && aci.dependentChildrenAid == "False" && aci.supplementaryIncome == "False" && aci.housingAssistance == "False" && aci.none == "False")

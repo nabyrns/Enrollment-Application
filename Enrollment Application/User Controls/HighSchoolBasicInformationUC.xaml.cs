@@ -56,7 +56,6 @@ namespace Enrollment_Application
             hbi.dateOfBirth = birthdateCalendar.SelectedDate;
             hbi.sendingHS = sendingHSText.Text.Trim();
             hbi.currentEdLevel = educationLevelCombo.Text;
-            hbi.filloutDate = DateTime.Now;
 
             // update values of validCheck
             validCheck.UpdateValues(hbi);

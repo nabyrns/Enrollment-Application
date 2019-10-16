@@ -63,7 +63,6 @@ namespace Enrollment_Application
             abi.race = raceCombo.Text;
             abi.gender = genderCombo.Text;
             abi.dateOfBirth = birthdateCalendar.SelectedDate;
-            abi.filloutDate = DateTime.Now;
             abi.SSNhashAndSalt = Convert.ToBase64String(hashedSSN);
             abi.SSNsalt = salt;
             abi.completedEdLevel = educationLevelCombo.Text;

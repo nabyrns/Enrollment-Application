@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Enrollment_Application"
              mc:Ignorable="d" 
-             d:DesignHeight="680" d:DesignWidth="1070" FontSize="14" FontFamily="Candara Light" DataContext="">
+             d:DesignHeight="680" d:DesignWidth="1070" FontSize="13" FontFamily="Segoe UI" DataContext="">
     
     <Grid x:Name="textFields">
 

@@ -17,5 +17,6 @@ namespace Enrollment_Application
         public string homeless { get; set; }
         public string agedOutFosterCare { get; set; }
         public string outOfWorkforce { get; set; }
+        public Nullable<System.DateTime> formCompletionDate { get; set; }
     }
 }

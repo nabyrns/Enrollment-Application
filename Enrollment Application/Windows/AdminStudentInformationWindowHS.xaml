@@ -9,32 +9,36 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        FontFamily="Candara Light"
-        Title="Student Information Page" FontSize="18" BorderBrush="#2196f3" BorderThickness="1" Height="720" Width="1130" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
-
+        FontFamily="Segoe UI"
+        Title="Student Information Page" FontSize="14" BorderBrush="#2196f3" BorderThickness="1" Height="720" Width="1130" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <Grid Height="720" Width="1080" HorizontalAlignment="Center">
+
+        <Button x:Name="closeBtn" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" VerticalAlignment="Top" Click="CloseBtn_Click">
+            <materialDesign:PackIcon Kind="Close" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Button>
+
         <StackPanel Orientation="Vertical" >
             <TextBlock Text="Student Information" Foreground="#2196f3" FontSize="24" HorizontalAlignment="Center" Margin="10"/>
 
-            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Height="630">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Height="660" >
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock Foreground="#2196f3" Text="Basic Information" FontSize="24"  HorizontalAlignment="Left"  />
                     <StackPanel x:Name="BasicInfoField">
                         <StackPanel Orientation="Horizontal" x:Name="BasicInfoNameField">
-                            <TextBlock Text="First Name: " VerticalAlignment="Center" FontSize="18" />
-                            <TextBox Text="{Binding firstName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aFirstName" FontSize="18" Margin="10" Width="150"  />
+                            <TextBlock Text="First Name: " VerticalAlignment="Center"  />
+                            <TextBox Text="{Binding firstName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aFirstName"  Margin="10" Width="150"  />
 
-                            <TextBlock Text="MI: " VerticalAlignment="Center" FontSize="18" Margin="10,0,0,0" />
-                            <TextBox Text="{Binding middleInitial, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aMiddleInitial" FontSize="18" Margin="10" Width="50"  />
+                            <TextBlock Text="MI: " VerticalAlignment="Center"  Margin="10,0,0,0" />
+                            <TextBox Text="{Binding middleInitial, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aMiddleInitial"  Margin="10" Width="50"  />
 
-                            <TextBlock Text="Lastname: " VerticalAlignment="Center" FontSize="18" Margin="10,0,0,0" />
-                            <TextBox Text="{Binding lastName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aLastName" FontSize="18" Margin="10" Width="150"  />
+                            <TextBlock Text="Lastname: " VerticalAlignment="Center"  Margin="10,0,0,0" />
+                            <TextBox Text="{Binding lastName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aLastName"  Margin="10" Width="150"  />
 
 
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" x:Name="BasicInfoEducationField">
-                            <TextBlock Text="Current Education Level:  " VerticalAlignment="Center" FontSize="18" Margin="0,0,0,0" />
+                            <TextBlock Text="Current Education Level:  " VerticalAlignment="Center"  Margin="0,0,0,0" />
 
                             <ComboBox Text="{Binding currentEdLevel, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aEducationLevel" Width="100" Margin="10" VerticalAlignment="Top">
                                 <ComboBoxItem Content="Sophomore"/>
@@ -42,30 +46,57 @@
                                 <ComboBoxItem Content="Senior"/>
                             </ComboBox>
 
-                            <TextBlock Text="Sending High School:  " VerticalAlignment="Center" FontSize="18" Margin="10,0,0,0" />
+                            <TextBlock Text="Sending High School:  " VerticalAlignment="Center"  Margin="10,0,0,0" />
 
                             <ComboBox Text="{Binding sendingHS, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aSendingHighSchool" Width="200" Margin="10" VerticalAlignment="Top">
                                 <ComboBoxItem Content="Yukon High School"/>
                                 <ComboBoxItem Content="Mustang High School"/>
                             </ComboBox>
 
-                            <TextBlock Text="Program:  " VerticalAlignment="Center" FontSize="18" Margin="10,0,0,0" />
+                            <TextBlock Text="Program:  " VerticalAlignment="Center"  Margin="10,0,0,0" />
 
                             <ComboBox Text="{Binding program, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aProgram" Width="200" Margin="10" VerticalAlignment="Top" >
-                                <ComboBoxItem Content="Computer Programming"/>
-                                <ComboBoxItem Content="Mustang High School"/>
-                                <ComboBoxItem Content="Mustang High School"/>
+                                <ComboBoxItem Content="Accounting and Business Education" />
+                                <ComboBoxItem Content="Auto Collision Technology" />
+                                <ComboBoxItem Content="Auto Service Technology" />
+                                <ComboBoxItem Content="Aviation Maintenance Technology" />
+                                <ComboBoxItem Content="Biomedical Sciences" />
+                                <ComboBoxItem Content="Business Office Technology" />
+                                <ComboBoxItem Content="Computer Aided Drafting and Design" />
+                                <ComboBoxItem Content="Computer Information Systems" />
+                                <ComboBoxItem Content="Computer Programming" />
+                                <ComboBoxItem Content="Construction Trades" />
+                                <ComboBoxItem Content="Cosmetology" />
+                                <ComboBoxItem Content="Diesel Technology" />
+                                <ComboBoxItem Content="Digital Media Technology" />
+                                <ComboBoxItem Content="Early Care and Education" />
+                                <ComboBoxItem Content="Electrical Trades" />
+                                <ComboBoxItem Content="Graphic Design" />
+                                <ComboBoxItem Content="Health Careers" />
+                                <ComboBoxItem Content="Heating, Ventilation, Air Conditioning and Refrigeration" />
+                                <ComboBoxItem Content="Medical Assistant" />
+                                <ComboBoxItem Content="Medical Coding Specialist" />
+                                <ComboBoxItem Content="Medical Office Assistant" />
+                                <ComboBoxItem Content="Powersports" />
+                                <ComboBoxItem Content="Practical Nursing" />
+                                <ComboBoxItem Content="Pre-Engineering" />
+                                <ComboBoxItem Content="Precision Machining Technology" />
+                                <ComboBoxItem Content="Project Search" />
+                                <ComboBoxItem Content="Service Careers" />
+                                <ComboBoxItem Content="Service Careers - Hospitality" />
+                                <ComboBoxItem Content="Surgical Technology" />
+                                <ComboBoxItem Content="Welding" />
                             </ComboBox>
 
                         </StackPanel>
 
 
                         <StackPanel Orientation="Horizontal" x:Name="BasicInfoContactField">
-                            <TextBlock Text="Primary Phone: " FontSize="18" VerticalAlignment="Center" />
-                            <TextBox Text="{Binding primaryPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentPrimaryPhone"  FontSize="18" Width="200"  Margin="10" />
+                            <TextBlock Text="Primary Phone: "  VerticalAlignment="Center" />
+                            <TextBox Text="{Binding primaryPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentPrimaryPhone"   Width="200"  Margin="10" />
 
-                            <TextBlock Text="Cell Phone: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                            <TextBox Text="{Binding cellPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentCellPhone"  FontSize="18" Width="200"  Margin="10" />
+                            <TextBlock Text="Cell Phone: "  VerticalAlignment="Center" Margin="10,0,0,0" />
+                            <TextBox Text="{Binding cellPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentCellPhone"   Width="200"  Margin="10" />
                         </StackPanel>
 
                         <Grid Margin="0,10,0,0" x:Name="BasicInfoAddressDemoField">
@@ -81,14 +112,14 @@
 
 
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Street Address: " FontSize="18" VerticalAlignment="Center" />
-                                    <TextBox Text="{Binding streetAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentStreetAddress"  FontSize="18" Width="300"  Margin="10" />
+                                    <TextBlock Text="Street Address: "  VerticalAlignment="Center" />
+                                    <TextBox Text="{Binding streetAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentStreetAddress"   Width="300"  Margin="10" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="City: " FontSize="18" VerticalAlignment="Center" />
-                                    <TextBox Text="{Binding city, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentCity"  FontSize="18" Width="150"  Margin="10" />
+                                    <TextBlock Text="City: "  VerticalAlignment="Center" />
+                                    <TextBox Text="{Binding city, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentCity"   Width="150"  Margin="10" />
 
-                                    <TextBlock Text="State: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                    <TextBlock Text="State: "  VerticalAlignment="Center" Margin="10,0,0,0" />
                                     <ComboBox Text="{Binding state, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentState" Width="50" Margin="10">
                                         <ComboBoxItem Content="AK"/>
                                         <ComboBoxItem Content="AL"/>
@@ -143,8 +174,8 @@
 
                                     </ComboBox>
 
-                                    <TextBlock Text="ZIP: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                                    <TextBox Text="{Binding zipCode, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentZIP"  FontSize="18" Width="75"  Margin="10"/>
+                                    <TextBlock Text="ZIP: "  VerticalAlignment="Center" Margin="10,0,0,0" />
+                                    <TextBox Text="{Binding zipCode, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentZIP"   Width="75"  Margin="10"/>
                                 </StackPanel>
 
 
@@ -155,12 +186,12 @@
 
 
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontSize="18" Text="Hispanic/Latino" Foreground="GhostWhite" Margin="0,10,0,15" VerticalAlignment="Center"/>
+                                    <TextBlock  Text="Hispanic/Latino" Foreground="GhostWhite" Margin="0,10,0,15" VerticalAlignment="Center"/>
                                     <ComboBox Text="{Binding hispanicOrLatino, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentLatino" Width="100" Margin="10" VerticalAlignment="Top">
                                         <ComboBoxItem Content="Yes"/>
                                         <ComboBoxItem Content="No"/>
                                     </ComboBox>
-                                    <TextBlock FontSize="18" Text="Race:" Foreground="GhostWhite" Margin="0,10,0,15" VerticalAlignment="Center"/>
+                                    <TextBlock  Text="Race:" Foreground="GhostWhite" Margin="0,10,0,15" VerticalAlignment="Center"/>
                                     <ComboBox Text="{Binding race, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentRace" Width="100" Margin="10" VerticalAlignment="Top">
                                         <ComboBoxItem Content="American Indian or Alaskan Native"/>
                                         <ComboBoxItem Content="Asian"/>
@@ -170,12 +201,12 @@
                                     </ComboBox>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontSize="18" Text="Gender: " Foreground="GhostWhite" Margin="0,10,0,15" VerticalAlignment="Center"/>
+                                    <TextBlock  Text="Gender: " Foreground="GhostWhite" Margin="0,10,0,15" VerticalAlignment="Center"/>
                                     <ComboBox Text="{Binding gender, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentGender" Width="50" Margin="10" VerticalAlignment="Top">
                                         <ComboBoxItem Content="Male"/>
                                         <ComboBoxItem Content="Female"/>
                                     </ComboBox>
-                                    <TextBlock FontSize="18" Text="Date of Birth:" Foreground="GhostWhite" Margin="0,10,0,15" VerticalAlignment="Center"/>
+                                    <TextBlock  Text="Date of Birth:" Foreground="GhostWhite" Margin="0,10,0,15" VerticalAlignment="Center"/>
 
                                     <DatePicker Text="{Binding dateOfBirth, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="aStudentDOB" Width="100" Margin="10"/>
                                 </StackPanel>
@@ -202,31 +233,31 @@
                         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" x:Name="EmergencyContactInfoField">
                             <TextBlock Foreground="#2196f3" Text="Parent/Guardian" FontSize="20"  HorizontalAlignment="Left" />
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Name: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentNameOne, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentName"  FontSize="18" Width="300"  Margin="10" />
+                                <TextBlock Text="Name: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentNameOne, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentName"   Width="300"  Margin="10" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Email: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentOneEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentEmail"  FontSize="18" Width="200"  Margin="10" />
+                                <TextBlock Text="Email: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentOneEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentEmail"   Width="200"  Margin="10" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Relationship: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentOneRelationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentRelationship"  FontSize="18" Width="150"  Margin="10" />
+                                <TextBlock Text="Relationship: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentOneRelationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentRelationship"   Width="150"  Margin="10" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Primary Number: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentOnePrimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentPrimaryNumber"  FontSize="18" Width="150"  Margin="10" />
+                                <TextBlock Text="Primary Number: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentOnePrimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentPrimaryNumber"   Width="150"  Margin="10" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Cell Number: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentOneCellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentCellNumber"  FontSize="18" Width="150"  Margin="10" />
+                                <TextBlock Text="Cell Number: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentOneCellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentCellNumber"   Width="150"  Margin="10" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Address: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentOneAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentAddress"  FontSize="18" Width="300"  Margin="10" />
+                                <TextBlock Text="Address: "  VerticalAlignment="Bottom" Margin="0, 0, 0, 12"/>
+                                <TextBox Text="{Binding parentOneAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentAddress"   Width="300"  Margin="10" />
 
                                 <StackPanel>
-                                    <TextBlock Text="Residing with" Foreground="GhostWhite" FontSize="18" Margin="0,0,0,5"/>
+                                    <TextBlock Text="Residing with" Foreground="GhostWhite"  Margin="0,0,0,5"/>
                                     <CheckBox IsChecked="{Binding residesWithP1, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentResiding" HorizontalAlignment="Center" Margin="10" RenderTransformOrigin="0.5,0.5">
                                         <CheckBox.RenderTransform>
                                             <TransformGroup>
@@ -240,10 +271,10 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="City: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentOneCity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentCity"  FontSize="18" Width="150"  Margin="10" />
+                                <TextBlock Text="City: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentOneCity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentCity"   Width="150"  Margin="10" />
 
-                                <TextBlock Text="State: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <TextBlock Text="State: "  VerticalAlignment="Center" Margin="10,0,0,0" />
                                 <ComboBox Text="{Binding parentOneState, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentState" Width="50" Margin="10">
                                     <ComboBoxItem Content="AK"/>
                                     <ComboBoxItem Content="AL"/>
@@ -298,8 +329,8 @@
 
                                 </ComboBox>
 
-                                <TextBlock Text="ZIP: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                                <TextBox Text="{Binding parentOneZip, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentZIP"  FontSize="18" Width="75"  Margin="10" />
+                                <TextBlock Text="ZIP: "  VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <TextBox Text="{Binding parentOneZip, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a1ParentZIP"   Width="75"  Margin="10" />
 
 
                             </StackPanel>
@@ -309,31 +340,31 @@
                         <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="0">
                             <TextBlock Foreground="#2196f3" Text="Optional Parent/Guardian" FontSize="20"  HorizontalAlignment="Left" />
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Name: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentNameTwo, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentName"  FontSize="18" Width="300"  Margin="10" />
+                                <TextBlock Text="Name: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentNameTwo, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentName"   Width="300"  Margin="10" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Email: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentTwoEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentEmail"  FontSize="18" Width="200" Margin="10" />
+                                <TextBlock Text="Email: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentTwoEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentEmail"   Width="200" Margin="10" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Relationship: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentTwoRelationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentRelationship"  FontSize="18" Width="150" Margin="10" />
+                                <TextBlock Text="Relationship: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentTwoRelationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentRelationship"   Width="150" Margin="10" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Primary Number: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentTwoPrimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentPrimaryNumber"  FontSize="18" Width="150" Margin="10" />
+                                <TextBlock Text="Primary Number: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentTwoPrimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentPrimaryNumber"   Width="150" Margin="10" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Cell Number: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentTwoCellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentCellNumber"  FontSize="18" Width="150" Margin="10" />
+                                <TextBlock Text="Cell Number: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentTwoCellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentCellNumber"   Width="150" Margin="10" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Address: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentTwoAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentAddress"  FontSize="18" Width="300" Margin="10" />
+                                <TextBlock Text="Address: "  VerticalAlignment="Bottom" Margin="0, 0, 0, 12"/>
+                                <TextBox Text="{Binding parentTwoAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentAddress"   Width="300" Margin="10" />
 
                                 <StackPanel Margin="10,0,0,0">
-                                    <TextBlock Text="Residing with" Foreground="GhostWhite" FontSize="18" Margin="0,0,0,5"/>
+                                    <TextBlock Text="Residing with" Foreground="GhostWhite"  Margin="0,0,0,5"/>
                                     <CheckBox IsChecked="{Binding residesWithP2, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentResiding" HorizontalAlignment="Center" Margin="10" RenderTransformOrigin="0.5,0.5">
                                         <CheckBox.RenderTransform>
                                             <TransformGroup>
@@ -347,10 +378,10 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="City: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding parentTwoCity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentCity"  FontSize="18" Width="150"  Margin="10" />
+                                <TextBlock Text="City: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding parentTwoCity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentCity"   Width="150"  Margin="10" />
 
-                                <TextBlock Text="State: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <TextBlock Text="State: "  VerticalAlignment="Center" Margin="10,0,0,0" />
                                 <ComboBox Text="{Binding parentTwoState, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentState" Width="50" Margin="10">
                                     <ComboBoxItem Content="AK"/>
                                     <ComboBoxItem Content="AL"/>
@@ -405,8 +436,8 @@
 
                                 </ComboBox>
 
-                                <TextBlock Text="ZIP: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                                <TextBox Text="{Binding paretnTwoZip, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentZIP"  FontSize="18" Width="75"  Margin="10" />
+                                <TextBlock Text="ZIP: "  VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <TextBox Text="{Binding paretnTwoZip, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="a2ParentZIP"   Width="75"  Margin="10" />
 
 
                             </StackPanel>
@@ -416,21 +447,21 @@
                         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,5,0,0">
                             <TextBlock Foreground="#2196f3" Text="Emergency Contact" FontSize="20"  HorizontalAlignment="Left" />
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Name: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding EContactName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="ECName"  FontSize="18" Width="300"  Margin="10" />
+                                <TextBlock Text="Name: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding EContactName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="ECName"   Width="300"  Margin="10" />
 
-                                <TextBlock Text="Relationship: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                                <TextBox Text="{Binding EContactRelationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="ECRelationship" FontSize="18" Width="150"  Margin="10" />
+                                <TextBlock Text="Relationship: "  VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <TextBox Text="{Binding EContactRelationship, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="ECRelationship"  Width="150"  Margin="10" />
 
 
 
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Primary Number: " FontSize="18" VerticalAlignment="Center" />
-                                <TextBox Text="{Binding EContactPrimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="ECPrimaryNum" FontSize="18" Width="150"  Margin="10" />
+                                <TextBlock Text="Primary Number: "  VerticalAlignment="Center" />
+                                <TextBox Text="{Binding EContactPrimaryNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="ECPrimaryNum"  Width="150"  Margin="10" />
 
-                                <TextBlock Text="Cell Number: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                                <TextBox Text="{Binding EContactCellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="ECCellNum" FontSize="18" Width="150"  Margin="10" />
+                                <TextBlock Text="Cell Number: "  VerticalAlignment="Center" Margin="10,0,0,0" />
+                                <TextBox Text="{Binding EContactCellNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" x:Name="ECCellNum"  Width="150"  Margin="10" />
                             </StackPanel>
                         </StackPanel>
 
@@ -442,36 +473,36 @@
                         <TextBlock Foreground="#2196f3" Text="Health Information" FontSize="24"  HorizontalAlignment="Left" Margin="0,20"  />
 
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Primary Physician: " FontSize="18" VerticalAlignment="Center" />
-                            <TextBox x:Name="primaryPhysicianText" Text="{Binding primaryPhysician, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" FontSize="18" Width="300"  Margin="10" />
+                            <TextBlock Text="Primary Physician: "  VerticalAlignment="Center" />
+                            <TextBox x:Name="primaryPhysicianText" Text="{Binding primaryPhysician, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}"  Width="300"  Margin="10" />
 
-                            <TextBlock Text="Phone Number: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                            <TextBox x:Name="primaryPhysPhoneText" Text="{Binding pPhysicianPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" FontSize="18" Width="150"  Margin="10" />
+                            <TextBlock Text="Phone Number: "  VerticalAlignment="Center" Margin="10,0,0,0" />
+                            <TextBox x:Name="primaryPhysPhoneText" Text="{Binding pPhysicianPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}"  Width="150"  Margin="10" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Other Physician: " FontSize="18" VerticalAlignment="Center" />
-                            <TextBox x:Name="oPhysicianText" Text="{Binding otherPhysician, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" FontSize="18" Width="300"  Margin="10" />
+                            <TextBlock Text="Other Physician: "  VerticalAlignment="Center" />
+                            <TextBox x:Name="oPhysicianText" Text="{Binding otherPhysician, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}"  Width="300"  Margin="10" />
 
-                            <TextBlock Text="Phone Number: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                            <TextBox x:Name="oPhysicianPhoneNum" Text="{Binding oPhysicianPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" FontSize="18" Width="150"  Margin="10" />
+                            <TextBlock Text="Phone Number: "  VerticalAlignment="Center" Margin="10,0,0,0" />
+                            <TextBox x:Name="oPhysicianPhoneNum" Text="{Binding oPhysicianPhoneNum, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}"  Width="150"  Margin="10" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="Diabetes:" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center"/>
+                            <TextBlock Text="Diabetes:" Foreground="GhostWhite"  VerticalAlignment="Center"/>
                             <ComboBox x:Name="diabetesCombo" Text="{Binding diabeticType, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Width="100" Margin="10">
                                 <ComboBoxItem Content="None"/>
                                 <ComboBoxItem Content="Type I"/>
                                 <ComboBoxItem Content="Type II"/>
                             </ComboBox>
 
-                            <TextBlock Text="Allergies: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                            <TextBox x:Name="allergiesText" Text="{Binding allergies, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" FontSize="18" Width="300"  Margin="10" />
+                            <TextBlock Text="Allergies: "  VerticalAlignment="Center" Margin="10,0,0,0" />
+                            <TextBox x:Name="allergiesText" Text="{Binding allergies, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}"  Width="300"  Margin="10" />
 
-                            <TextBlock Text="Heart Conditions: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                            <TextBox x:Name="heartConditionsText" Text="{Binding heartIssues, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" FontSize="18" Width="300"  Margin="10" />
+                            <TextBlock Text="Heart Conditions: "  VerticalAlignment="Center" Margin="10,0,0,0" />
+                            <TextBox x:Name="heartConditionsText" Text="{Binding heartIssues, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}"  Width="300"  Margin="10" />
 
                         </StackPanel>
 
-                        <TextBlock Text="Relevant Condition(s):" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="0,10"/>
+                        <TextBlock Text="Relevant Condition(s):" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="0,10"/>
                         <StackPanel Orientation="Horizontal" >
 
 
@@ -485,7 +516,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Metabolic" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Metabolic" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="jointMuscleCheck" IsChecked="{Binding jointMuscle, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -497,7 +528,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Joint/Muscle" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Joint/Muscle" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="chronicIllnessCheck" IsChecked="{Binding chronicIllness, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -509,7 +540,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Chronic Illness" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Chronic Illness" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
                             <CheckBox x:Name="migrainesCheck" IsChecked="{Binding migraines, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
                                     <TransformGroup>
@@ -520,7 +551,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Migraines" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Migraines" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
                             <CheckBox x:Name="neurologicalCheck" IsChecked="{Binding neurological, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
                                     <TransformGroup>
@@ -531,7 +562,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Neurological" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Neurological" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
                             <CheckBox x:Name="pulmonaryCheck" IsChecked="{Binding pulmonary, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
                                     <TransformGroup>
@@ -542,7 +573,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Pulmonary" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Pulmonary" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
                             <CheckBox x:Name="asthmaCheck" IsChecked="{Binding asthma, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
                                     <TransformGroup>
@@ -553,7 +584,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Asthma" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Asthma" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
                             <CheckBox x:Name="otherCheck" IsChecked="{Binding other, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
                                     <TransformGroup>
@@ -564,20 +595,20 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Other" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Other" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
-                            <TextBlock Text="Medications: " FontSize="18" VerticalAlignment="Center" />
-                            <TextBox x:Name="otherMedsText" Text="{Binding otherMeds, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" FontSize="18" Width="400"  Margin="10" />
+                            <TextBlock Text="Medications: "  VerticalAlignment="Center" />
+                            <TextBox x:Name="otherMedsText" Text="{Binding otherMeds, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}"  Width="400"  Margin="10" />
 
-                            <TextBlock Text="First aid needs: " FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0" />
-                            <TextBox x:Name="specificNeedsText" Text="{Binding specificFirstAidNeeds, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" FontSize="18" Width="400"  Margin="10" />
+                            <TextBlock Text="First aid needs: "  VerticalAlignment="Center" Margin="10,0,0,0" />
+                            <TextBox x:Name="specificNeedsText" Text="{Binding specificFirstAidNeeds, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}"  Width="400"  Margin="10" />
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
-                            <TextBlock Text="Permission to authorize medical treatment as needed: " FontSize="18" VerticalAlignment="Center" />
+                            <TextBlock Text="Permission to authorize medical treatment as needed: "  VerticalAlignment="Center" />
                             <ComboBox x:Name="treatmentPermissionCombo" Text="{Binding repPermissionForTreatment, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" Width="100" Margin="10">
                                 <ComboBoxItem Content="Yes" />
                                 <ComboBoxItem Content="No" />
@@ -587,7 +618,7 @@
 
                         <StackPanel Orientation="Horizontal">
                             <StackPanel>
-                                <TextBlock Text="Student Signature:" VerticalAlignment="Center" Foreground="GhostWhite" Margin="0, 27, 0, 0" FontSize="18"/>
+                                <TextBlock Text="Student Signature:" VerticalAlignment="Center" Foreground="GhostWhite" Margin="0, 27, 0, 0" />
                             </StackPanel>
 
                             <Border BorderThickness="1" Margin="10" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="305" Height="55">
@@ -612,7 +643,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Attendance" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Attendance" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="tobaccoCheck" IsChecked="{Binding tobacco, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -624,7 +655,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Tobacco" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Tobacco" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="internetCheck" IsChecked="{Binding internetAccess, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -636,7 +667,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Internet Access" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Internet Access" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="insuranceCheck" IsChecked="{Binding studentInsurance, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -648,7 +679,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Student Insurance" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Student Insurance" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="fieldTripsCheck" IsChecked="{Binding fieldTrips, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -660,7 +691,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Field Trips" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Field Trips" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="drugTestingCheck" IsChecked="{Binding drugTesting, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -672,7 +703,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Drug Testing" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Drug Testing" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
 
 
@@ -689,7 +720,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Notice of Disclosures" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Notice of Disclosures" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="cellPhoneContactCheck" IsChecked="{Binding cellPhoneContact, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -701,7 +732,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Cell Phone Contact" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Cell Phone Contact" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="photographyReleaseCheck" IsChecked="{Binding releaseForPhotography, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -713,13 +744,13 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Photography/Audiotaping/Videotaping" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Photography Release" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10, 15, 0, 0">
 
                             <StackPanel>
-                                <TextBlock Text="Student Signature:" VerticalAlignment="Center" Foreground="GhostWhite" Margin="0, 27, 0, 0" FontSize="18"/>
+                                <TextBlock Text="Student Signature:" VerticalAlignment="Center" Foreground="GhostWhite" Margin="0, 27, 0, 0" />
                             </StackPanel>
 
                             <Border BorderThickness="1" Margin="10" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="305" Height="55">
@@ -727,7 +758,7 @@
                             </Border>
 
                             <StackPanel>
-                                <TextBlock Text="Parent/Guardian Signature:" VerticalAlignment="Center" Foreground="GhostWhite" Margin="0, 27, 0, 0" FontSize="18"/>
+                                <TextBlock Text="Parent/Guardian Signature:" VerticalAlignment="Center" Foreground="GhostWhite" Margin="0, 27, 0, 0" />
                             </StackPanel>
 
                             <Border BorderThickness="1" Margin="10" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="305" Height="55">
@@ -750,7 +781,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Free or Reduced Priced Lunches" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Free or Reduced Priced Lunches" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="foodStampsCheck" IsChecked="{Binding foodStamps, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -762,7 +793,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Receive Food Stamps" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Food Stamps" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="dependentChildrenCheck" IsChecked="{Binding dependentChildrenAid, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -774,7 +805,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Families with dependent children" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Dependent Children" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                         </StackPanel>
 
@@ -789,7 +820,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Supplymentary Security Income" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Supplymentary Security Income" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="section8Check" IsChecked="{Binding housingAssistance, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -801,7 +832,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Housing Assistance" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Housing Assistance" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="homelessCheck" IsChecked="{Binding homeless, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -813,7 +844,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Homeless" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Homeless" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="agedOutCheck" IsChecked="{Binding agedOutFosterCare, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -825,7 +856,19 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="Aged out of Foster Care" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="Aged out of Foster Care" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                            <CheckBox x:Name="workforceCheck" IsChecked="{Binding outOfWorkforce, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                                <CheckBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </CheckBox.RenderTransform>
+                            </CheckBox>
+                            <TextBlock Text="Out of WorkForce" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
 
                             <CheckBox x:Name="noneCheck" IsChecked="{Binding none, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=(Validation.Errors).CurrentItem.ErrorContent, RelativeSource={x:Static RelativeSource.Self}}" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                                 <CheckBox.RenderTransform>
@@ -837,12 +880,12 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <TextBlock Text="None" Foreground="GhostWhite" FontSize="18" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <TextBlock Text="None" Foreground="GhostWhite"  VerticalAlignment="Center" Margin="10,0,10,0"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" >
                             <StackPanel>
-                                <TextBlock Text="Parent/Guardian Signature:" VerticalAlignment="Center" Foreground="GhostWhite" Margin="0, 27, 0, 0" FontSize="18"/>
+                                <TextBlock Text="Parent/Guardian Signature:" VerticalAlignment="Center" Foreground="GhostWhite" Margin="0, 27, 0, 0" />
                             </StackPanel>
 
                             <Border BorderThickness="1" Margin="10" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="305" Height="55">

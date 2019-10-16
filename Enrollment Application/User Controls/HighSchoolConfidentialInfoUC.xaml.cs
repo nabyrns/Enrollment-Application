@@ -94,6 +94,7 @@ namespace Enrollment_Application
             hsci.outOfWorkforce = workforceCheck.IsChecked.ToString();
             hsci.reducedLunch = reducedLunchCheck.IsChecked.ToString();
             hsci.parentSignature = signature;
+            hsci.formCompletionDate = DateTime.Now;
 
             // if no boxes are selected, display error
             if (hsci.foodStamps == "False" && hsci.dependentChildrenAid == "False" && hsci.supplementaryIncome == "False" && hsci.housingAssistance == "False" && hsci.none == "False")

@@ -17,6 +17,10 @@ namespace Enrollment_Application
 {
     public partial class AdminStudentInformationWindowHS : Window
     {
+
+        // declare all variables to be used
+
+        #region Variables
         int Id;
 
         public static bool overwrite = false;
@@ -31,11 +35,9 @@ namespace Enrollment_Application
         HighSchoolHealthInfoClass hshi;
         HighSchoolPolicyClass hsp;
         HighSchoolConfidentialInfoClass hsci;
+        #endregion
 
-        public AdminStudentInformationWindowHS()
-        {
-            InitializeComponent();
-        }
+        #region Constructor that takes the students ID number and assigns it to a local variable for later use --- also calls the Load() method to initialize data contexts and autofill information
 
         public AdminStudentInformationWindowHS(int studentId)
         {
@@ -99,11 +101,16 @@ namespace Enrollment_Application
             }
         }
 
+        #endregion
+
+        #region Drag Method
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
+        #endregion
 
+        #region Code executes when SubmitBtn is clicked
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
             // update BasicInfo variables to be current
@@ -123,7 +130,6 @@ namespace Enrollment_Application
             hsbi.dateOfBirth = aStudentDOB.SelectedDate;
             hsbi.sendingHS = aSendingHighSchool.Text.Trim();
             hsbi.currentEdLevel = aEducationLevel.Text;
-            hsbi.filloutDate = DateTime.Now;
 
             // update values of validCheck
             hsbiCheck.UpdateValues(hsbi);
@@ -249,7 +255,7 @@ namespace Enrollment_Application
             hsci.none = noneCheck.IsChecked.ToString();
             hsci.homeless = homelessCheck.IsChecked.ToString();
             hsci.agedOutFosterCare = agedOutCheck.IsChecked.ToString();
-            // hsci.outOfWorkforce = workforceCheck.IsChecked.ToString();
+            hsci.outOfWorkforce = workforceCheck.IsChecked.ToString();
             hsci.reducedLunch = reducedLunchCheck.IsChecked.ToString();
 
             DataAccess db = new DataAccess();
@@ -269,5 +275,13 @@ namespace Enrollment_Application
                 overwrite = false;
             }
         }
+        #endregion
+
+        #region Code executes when CloseBtn is clicked
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
     }
 }

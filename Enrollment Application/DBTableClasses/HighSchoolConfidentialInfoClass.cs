@@ -19,5 +19,6 @@ namespace Enrollment_Application
         public string outOfWorkforce { get; set; }
         public string reducedLunch { get; set; }
         public byte[] parentSignature { get; set; }
+        public Nullable<System.DateTime> formCompletionDate { get; set; }
     }
 }
