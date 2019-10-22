@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Enrollment_Application
 {
-    class HealthInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
+    public class HealthInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
         #region Declare variables for the class
         public string _primaryPhysician;
@@ -383,19 +383,21 @@ namespace Enrollment_Application
         #endregion
 
         #region Method checks if there are no errors returned in any of the variables being checked
-        public bool IsValid
+        public List<string> IsValid
         {
             get
             {
+                List<string> errorList = new List<string>();
+
                 foreach (string s in ValidatedProperties)
                 {
                     if (GetValidationError(s) != null)
                     {
-                        return false;
+                        errorList.Add(s);
                     }
                 }
 
-                return true;
+                return errorList;
             }
 
         }

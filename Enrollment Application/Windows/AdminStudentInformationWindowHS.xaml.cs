@@ -260,19 +260,17 @@ namespace Enrollment_Application
 
             DataAccess db = new DataAccess();
 
-            OverwriteConfirmation ow = new OverwriteConfirmation("Some of the information for this student may have been changed. Are you sure you want to overwrite the data for this user? The information may not be recovered.");
+            OverwriteConfirmation ow = new OverwriteConfirmation("Some of the information for this student may have been changed. Invalid values will not be saved. Are you sure you want to overwrite the data for this user? The information may not be recovered.");
 
             ow.ShowDialog();
 
             if (overwrite == true)
             {
-                db.SaveHSBI(hsbi);
-                db.SaveHSEC(hsec);
-                db.SaveHSHI(hshi);
-                db.SaveHSP(hsp);
+                db.SaveHSBI(hsbi, hsbiCheck);
+                db.SaveHSEC(hsec, hsecCheck);
+                db.SaveHSHI(hshi, hiCheck);
+                db.SaveHSP(hsp, pCheck);
                 db.SaveHSCI(hsci);
-
-                this.Close();
             }
         }
         #endregion

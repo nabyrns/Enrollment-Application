@@ -11,7 +11,7 @@ namespace Enrollment_Application
 {
 
 
-    class HighSchoolBasicInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
+    public class HighSchoolBasicInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
         #region IDataErrorInfo.Error
         string IDataErrorInfo.Error { get { return null; } }
@@ -496,19 +496,21 @@ namespace Enrollment_Application
         #endregion
 
         #region Method checks if there are no errors returned in any of the variables being checked
-        public bool IsValid
+        public List<string> IsValid
         {
             get
             {
+                List<string> errorList = new List<string>();
+
                 foreach (string s in ValidatedProperties)
                 {
                     if (GetValidationError(s) != null)
                     {
-                        return false;
+                        errorList.Add(s);
                     }
                 }
 
-                return true;
+                return errorList;
             }
 
         }

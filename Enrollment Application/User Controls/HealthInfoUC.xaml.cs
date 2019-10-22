@@ -181,25 +181,34 @@ namespace Enrollment_Application
 
             // if no errors are found, save changes to database and change visibility of UC to hidden
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
-            if (validCheck.IsValid && !sigError)
+
+            if (LoginPage.adultCheck != null)
+            {
+                DataAccess db = new DataAccess();
+
+                db.SaveAHI(ahi, validCheck);
+            }
+
+            else
+            {
+                DataAccess db = new DataAccess();
+
+                db.SaveHSHI(hshi, validCheck);
+            }
+
+            if (validCheck.IsValid.Count == 0 && !sigError)
             {
 
                 Information_Page.hiuc.Visibility = Visibility.Hidden;
 
                 if (LoginPage.adultCheck != null)
                 {
-                    DataAccess db = new DataAccess();
-
-                    db.SaveAHI(ahi);
 
                     Information_Page.aecuc.Visibility = Visibility.Visible;
                 }
 
                 else
                 {
-                    DataAccess db = new DataAccess();
-
-                    db.SaveHSHI(hshi);
 
                     Information_Page.hsecuc.Visibility = Visibility.Visible;
                 }

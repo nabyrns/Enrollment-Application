@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Enrollment_Application
 {
-    class AdultECUCTextValidation : IDataErrorInfo, INotifyPropertyChanged
+    public class AdultECUCTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
         #region Declare variables of class
         public string _contactName;
@@ -440,19 +440,21 @@ namespace Enrollment_Application
         #endregion
 
         #region Method checks if there are no errors returned in any of the variables being checked
-        public bool IsValid
+        public List<string> IsValid
         {
             get
             {
+                List<string> errorList = new List<string>();
+
                 foreach (string s in ValidatedProperties)
                 {
                     if (GetValidationError(s) != null)
                     {
-                        return false;
+                        errorList.Add(s);
                     }
                 }
 
-                return true;
+                return errorList;
             }
 
         }

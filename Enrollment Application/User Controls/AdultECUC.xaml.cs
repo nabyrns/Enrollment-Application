@@ -68,12 +68,13 @@ namespace Enrollment_Application
 
             // if no errors are found, save changes to database and change visibility of UC to hidden
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
-            if (validCheck.IsValid)
-            {
-                // DataAccess variable does the saving to the database
-                DataAccess db = new DataAccess();
+            // DataAccess variable does the saving to the database
+            DataAccess db = new DataAccess();
 
-                db.SaveAEC(aec);
+            db.SaveAEC(aec, validCheck);
+
+            if (validCheck.IsValid.Count == 0)
+            {
 
                 Information_Page.aecuc.Visibility = Visibility.Hidden;
 

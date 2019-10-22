@@ -121,14 +121,15 @@ namespace Enrollment_Application
                 textFields.DataContext = validCheck;
             }
 
+            // DataAccess variable to be used to save information to the database
+            DataAccess db = new DataAccess();
+
+            db.SaveAP(ap, validCheck);
+
             // if no errors are found, save changes to database and change visibility of UC to hidden
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
-            if (validCheck.IsValid && !sigError)
+            if (validCheck.IsValid.Count == 0 && !sigError)
             {
-                // DataAccess variable to be used to save information to the database
-                DataAccess db = new DataAccess();
-
-                db.SaveAP(ap);
 
                 Information_Page.aspuc.Visibility = Visibility.Hidden;
 

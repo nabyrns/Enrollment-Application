@@ -13,7 +13,7 @@ namespace Enrollment_Application
 {
 
 
-    class AdultBasicInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
+    public class AdultBasicInfoTextValidation : IDataErrorInfo, INotifyPropertyChanged
     {
 
         string IDataErrorInfo.Error { get { return null; } }
@@ -570,6 +570,16 @@ namespace Enrollment_Application
                         result = "Select a date.";
                     }
 
+                    else
+                    {
+                        int dateResult = DateTime.Compare(Convert.ToDateTime(dateOfBirth), DateTime.Now.AddYears(-14));
+
+                        if (!(dateResult < 0))
+                        {
+                            result = "Invalid date.";
+                        }
+                    }
+
                     break;
             }
 
@@ -587,19 +597,21 @@ namespace Enrollment_Application
         #endregion
 
         #region Method checks if there are no errors returned in any of the variables being checked
-        public bool IsValid
+        public List<string> IsValid
         {
             get
             {
+                List<string> errorList = new List<string>();
+
                 foreach (string s in ValidatedProperties)
                 {
                     if (GetValidationError(s) != null)
                     {
-                        return false;
+                        errorList.Add(s);
                     }
                 }
 
-                return true;
+                return errorList;
             }
 
         }
@@ -609,24 +621,24 @@ namespace Enrollment_Application
         public void UpdateValues(AdultBasicInfoClass abi)
         {
             _lastName = abi.lastName;
-                _firstName = abi.firstName;
-                _middleInitial = abi.middleInitial;
-                _program = abi.program;
-                _streetAddress = abi.streetAddress;
-                _city = abi.city;
-                _state = abi.state;
-                _zip = abi.zipCode;
-                _primaryPhoneNum = abi.primaryPhoneNum;
-                _cellPhoneNum = abi.cellPhoneNum;
-                _hispanicOrLatino = abi.hispanicOrLatino;
-                _race = abi.race;
-                _gender = abi.gender;
-                _dateOfBirth = abi.dateOfBirth;
-                _completedEdLevel = abi.completedEdLevel;
-                _attendedCollegeOrTech = abi.attendedCollegeOrTech;
-                _liveWithParent = abi.liveWithParent;
-                _SSN = abi.SSN;
-                _Id = abi.Id;
+            _firstName = abi.firstName;
+            _middleInitial = abi.middleInitial;
+            _program = abi.program;
+            _streetAddress = abi.streetAddress;
+            _city = abi.city;
+            _state = abi.state;
+            _zip = abi.zipCode;
+            _primaryPhoneNum = abi.primaryPhoneNum;
+            _cellPhoneNum = abi.cellPhoneNum;
+            _hispanicOrLatino = abi.hispanicOrLatino;
+            _race = abi.race;
+            _gender = abi.gender;
+            _dateOfBirth = abi.dateOfBirth;
+            _completedEdLevel = abi.completedEdLevel;
+            _attendedCollegeOrTech = abi.attendedCollegeOrTech;
+            _liveWithParent = abi.liveWithParent;
+            _SSN = abi.SSN;
+            _Id = abi.Id;
         }
         #endregion
     }

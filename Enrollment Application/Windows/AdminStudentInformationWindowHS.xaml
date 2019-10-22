@@ -24,6 +24,7 @@
             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Height="660" >
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock Foreground="#2196f3" Text="Basic Information" FontSize="24"  HorizontalAlignment="Left"  />
+
                     <StackPanel x:Name="BasicInfoField">
                         <StackPanel Orientation="Horizontal" x:Name="BasicInfoNameField">
                             <TextBlock Text="First Name: " VerticalAlignment="Center"  />

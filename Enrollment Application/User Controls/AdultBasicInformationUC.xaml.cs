@@ -49,7 +49,7 @@ namespace Enrollment_Application
             abi.lastName = lastNameText.Text.Trim();
             abi.firstName = firstNameText.Text.Trim();
             abi.middleInitial = middleInitialText.Text.Trim();
-            abi.program = programText.Text.Trim();
+            abi.program = programText.Text;
             abi.streetAddress = streetAddressText.Text.Trim();
             abi.city = cityText.Text.Trim();
             abi.state = stateCombo.Text;
@@ -78,11 +78,12 @@ namespace Enrollment_Application
 
             // if no errors are found, save changes to database and change visibility of UC to hidden
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
-            if (validCheck.IsValid)
-            {
-                DataAccess db = new DataAccess();
+            DataAccess db = new DataAccess();
 
-                db.SaveABI(abi);
+            db.SaveABI(abi, validCheck);
+
+            if (validCheck.IsValid.Count == 0)
+            {
 
                 Information_Page.abiuc.Visibility = Visibility.Hidden;
 

@@ -111,7 +111,7 @@ namespace Enrollment_Application
             abi.race = aStudentRace.Text;
             abi.gender = aStudentGender.Text;
             abi.dateOfBirth = aStudentDOB.SelectedDate;
-            abi.SSN = abi.SSN;
+            abi.SSN = SSNtext.Text;
             abi.completedEdLevel = aEducationLevel.Text;
             abi.attendedCollegeOrTech = attendedCollegeCombo.Text;
             abi.liveWithParent = liveWithParentCombo.Text;
@@ -222,21 +222,20 @@ namespace Enrollment_Application
             aci.agedOutFosterCare = agedOutCheck.IsChecked.ToString();
             aci.outOfWorkforce = workforceCheck.IsChecked.ToString();
 
+            // section to overwrite data
             DataAccess db = new DataAccess();
 
-            OverwriteConfirmation ow = new OverwriteConfirmation("Some of the information for this student may have been changed. Are you sure you want to overwrite the data for this user? The information may not be recovered.");
+            OverwriteConfirmation ow = new OverwriteConfirmation("Some of the information for this student may have been changed. Invalid values will not be saved. Are you sure you want to overwrite the data for this user? The information may not be recovered.") ;
 
             ow.ShowDialog();
 
             if (overwrite == true)
             {
-                db.SaveABI(abi);
-                db.SaveAEC(aec);
-                db.SaveAHI(ahi);
-                db.SaveAP(ap);
+                db.SaveABI(abi, abiCheck);
+                db.SaveAEC(aec, aecCheck);
+                db.SaveAHI(ahi, hiCheck);
+                db.SaveAP(ap, pCheck);
                 db.SaveACI(aci);
-
-                this.Close();
             }
         }
         #endregion
@@ -245,6 +244,26 @@ namespace Enrollment_Application
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        #endregion
+
+        #region This method controls the automatically added hyphens when typing a SSN
+        private void SSNtext_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(SSNtext.Text) && e.Key != Key.Back && SSNtext.Text.Length < 10)
+            {
+                if (SSNtext.Text.Length == 3)
+                {
+                    SSNtext.Text += "-";
+                }
+
+                else if (SSNtext.Text.Length == 6)
+                {
+                    SSNtext.Text += "-";
+                }
+
+                SSNtext.SelectionStart = SSNtext.Text.Length;
+            }
         }
         #endregion
     }

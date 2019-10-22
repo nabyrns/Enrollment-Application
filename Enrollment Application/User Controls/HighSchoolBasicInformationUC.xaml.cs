@@ -43,7 +43,7 @@ namespace Enrollment_Application
             hbi.lastName = lastNameText.Text.Trim();
             hbi.firstName = firstNameText.Text.Trim();
             hbi.middleInitial = middleInitialText.Text.Trim();
-            hbi.program = programText.Text.Trim();
+            hbi.program = programText.Text;
             hbi.streetAddress = streetAddressText.Text.Trim();
             hbi.city = cityText.Text.Trim();
             hbi.state = stateCombo.Text;
@@ -68,12 +68,13 @@ namespace Enrollment_Application
 
             // if no errors are found, save changes to database and change visibility of UC to hidden
             // also change selected index for Information_Page --- this is what controls the moving cursor grid on that page
-            if (validCheck.IsValid)
-            {
-                // DataAccess variable to save information to the database
-                DataAccess db = new DataAccess();
+            // DataAccess variable to save information to the database
+            DataAccess db = new DataAccess();
 
-                db.SaveHSBI(hbi);
+            db.SaveHSBI(hbi, validCheck);
+
+            if (validCheck.IsValid.Count == 0)
+            {
 
                 Information_Page.hsbiuc.Visibility = Visibility.Hidden;
 
