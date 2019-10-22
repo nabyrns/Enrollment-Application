@@ -578,6 +578,13 @@ namespace Enrollment_Application
                         {
                             result = "Invalid date.";
                         }
+
+                        dateResult = DateTime.Compare(Convert.ToDateTime(dateOfBirth), DateTime.Now.AddYears(-100));
+
+                        if (dateResult < 0)
+                        {
+                            result = "Invalid date.";
+                        }
                     }
 
                     break;

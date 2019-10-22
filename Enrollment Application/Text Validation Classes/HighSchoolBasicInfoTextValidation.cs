@@ -479,6 +479,23 @@ namespace Enrollment_Application
                         result = "Select a date.";
                     }
 
+                    else
+                    {
+                        int dateResult = DateTime.Compare(Convert.ToDateTime(dateOfBirth), DateTime.Now.AddYears(-14));
+
+                        if (!(dateResult < 0))
+                        {
+                            result = "Invalid date.";
+                        }
+
+                        dateResult = DateTime.Compare(Convert.ToDateTime(dateOfBirth), DateTime.Now.AddYears(-100));
+
+                        if (dateResult < 0)
+                        {
+                            result = "Invalid date.";
+                        }
+                    }
+
                     break;
             }
 
